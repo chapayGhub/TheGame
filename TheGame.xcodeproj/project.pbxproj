@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6884790167190DD008633AD /* Germ.m in Sources */ = {isa = PBXBuildFile; fileRef = C688478F167190DD008633AD /* Germ.m */; };
 		C68B0609166D82A0005306DD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68B0608166D82A0005306DD /* QuartzCore.framework */; };
 		C68B060B166D82A0005306DD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68B060A166D82A0005306DD /* OpenGLES.framework */; };
 		C68B060D166D82A0005306DD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68B060C166D82A0005306DD /* OpenAL.framework */; };
@@ -137,6 +138,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C688478E167190DD008633AD /* Germ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Germ.h; sourceTree = "<group>"; };
+		C688478F167190DD008633AD /* Germ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Germ.m; sourceTree = "<group>"; };
+		C688479216719453008633AD /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C68B0604166D82A0005306DD /* TheGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C68B0608166D82A0005306DD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C68B060A166D82A0005306DD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -844,6 +848,7 @@
 		C68B07A1166D82F1005306DD /* common */ = {
 			isa = PBXGroup;
 			children = (
+				C688479216719453008633AD /* Constants.h */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -881,6 +886,8 @@
 		C68B07B1166D8F9C005306DD /* model */ = {
 			isa = PBXGroup;
 			children = (
+				C688478E167190DD008633AD /* Germ.h */,
+				C688478F167190DD008633AD /* Germ.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1063,6 +1070,7 @@
 				C68B0797166D82A3005306DD /* HelloWorldLayer.m in Sources */,
 				C68B079A166D82A3005306DD /* IntroLayer.m in Sources */,
 				C68B07AE166D8673005306DD /* SceneManager.m in Sources */,
+				C6884790167190DD008633AD /* Germ.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1166,6 +1174,7 @@
 				C68B079F166D82A3005306DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
