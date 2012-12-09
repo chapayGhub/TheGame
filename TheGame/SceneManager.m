@@ -8,7 +8,6 @@
 
 @implementation SceneManager
 
-
 +(void) go: (CCLayer *) layer{
 	CCDirector *director = [CCDirector sharedDirector];
 	CCScene *newScene = [SceneManager wrap:layer];

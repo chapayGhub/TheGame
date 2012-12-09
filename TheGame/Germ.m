@@ -11,6 +11,7 @@
 @implementation Germ
 @synthesize x, y, value, sprite;
 
+
 -(id) initWithX: (int) posX Y: (int) posY{
 	self = [super init];
 	x = posX;
