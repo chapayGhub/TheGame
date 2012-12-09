@@ -9,7 +9,7 @@
 -(id) init{
 	self = [super init];
 	box = [[Box alloc] initWithSize:CGSizeMake(kBoxWidth,kBoxHeight) factor:6];
-	box.layer = self;
+	box.holder = self;
 	box.lock = YES;
     self.isTouchEnabled = YES;
 	return self;
@@ -32,18 +32,18 @@
 	int y = (location.y -kStartY) / kTileSize;
 	
 	
-	if (selectedTile && selectedTile.x ==x && selectedTile.y == y) {
+	if (selected && selected.x ==x && selected.y == y) {
 		return;
 	}
 	
 	Germ *tile = [box objectAtX:x Y:y];
 	
-	if (selectedTile && [selectedTile isNeighbor:tile]) {
+	if (selected && [selected isNeighbor:tile]) {
 		[box setLock:YES];
-		[self changeWithTileA: selectedTile TileB: tile sel: @selector(check:data:)];
-		selectedTile = nil;
+		[self changeWithTileA: selected TileB: tile sel: @selector(check:data:)];
+		selected = nil;
 	}else {
-		selectedTile = tile;
+		selected = tile;
 		[self afterOneShineTrun:tile.sprite];
 	}
 }
@@ -95,7 +95,7 @@
 
 
 -(void)afterOneShineTrun: (id) node{
-	if (selectedTile && node == selectedTile.sprite) {
+	if (selected && node == selected.sprite) {
 		CCSprite *sprite = (CCSprite *)node;
 		CCSequence *someAction = [CCSequence actions: 
 								  [CCScaleBy actionWithDuration:kMoveTileTime scale:0.5f],

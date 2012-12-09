@@ -5,7 +5,7 @@
 @interface PlayLayer : CCLayer
 {
 	Box *box;
-	Germ *selectedTile;
+	Germ *selected;
 	Germ *firstOne;
 }
 

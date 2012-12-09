@@ -14,7 +14,7 @@
 @end
 
 @implementation Box
-@synthesize layer;
+@synthesize holder;
 @synthesize size;
 @synthesize lock;
 
@@ -22,34 +22,36 @@
 -(id) initWithSize: (CGSize) aSize factor: (int) aFacotr{
 	self = [super init];
 	size = aSize;
-	outBorderTile = [[Germ alloc] initWithX:-1 Y:-1];
-    //放置所有的游戏节点
+	boarderGerm = [[Germ alloc] initWithX:-1 Y:-1];
+    //放置所有的游戏节点，此时只是空的，并没有真正的sprite
 	content = [NSMutableArray arrayWithCapacity: size.height];
 	for (int y=0; y<size.height; y++) {
 		
 		NSMutableArray *rowContent = [NSMutableArray arrayWithCapacity:size.width];
 		for (int x=0; x < size.width; x++) {
-			Germ *tile = [[Germ alloc] initWithX:x Y:y];
+			Germ *germ = [[Germ alloc] initWithX:x Y:y];
             
-			[rowContent addObject:tile];
-			[tile release];
+			[rowContent addObject:germ];
+			[germ release];
 		}
 		[content addObject:rowContent];
 		[content retain];
 	}
 	
-	readyToRemoveTiles = [NSMutableSet setWithCapacity:5];
-	[readyToRemoveTiles retain];
+	readyToRemove = [NSMutableSet setWithCapacity:5];
+	[readyToRemove retain];
 	return self;
 }
 
+//返回在指定坐标上的germ
 -(Germ *) objectAtX: (int) x Y: (int) y{
 	if (x < 0 || x >= kBoxWidth || y < 0 || y >= kBoxHeight) {
-		return outBorderTile;
+		return boarderGerm;
 	}
 	return [[content objectAtIndex: y] objectAtIndex: x];
 }
 
+//检查在某个方向上是否有三连
 -(void) checkWith: (Orientation) orient{
 	int iMax = (orient == OrientationHori) ? size.width : size.height;
 	int jMax = (orient == OrientationVert) ? size.height : size.width;
@@ -59,97 +61,105 @@
 		first = nil;
 		second = nil;
 		for (int j=0; j<jMax; j++) {
-			Germ *tile = [self objectAtX:((orient == OrientationHori) ?i :j)  Y:((orient == OrientationHori) ?j :i)];
-			if(tile.value == value){
+			Germ *germ = [self objectAtX:((orient == OrientationHori) ?i :j)  Y:((orient == OrientationHori) ?j :i)];
+			if(germ.value == value){
 				count++;
 				if (count > 3) {
-					[readyToRemoveTiles addObject:tile];
+					[readyToRemove addObject:germ];
 				}else
 					if (count == 3) {
-						[readyToRemoveTiles addObject:first];
-						[readyToRemoveTiles addObject:second];
-						[readyToRemoveTiles addObject:tile];
+						[readyToRemove addObject:first];
+						[readyToRemove addObject:second];
+						[readyToRemove addObject:germ];
 						first = nil;
 						second = nil;
-						
 					}else if (count == 2) {
-						second = tile;
-					}else {
-						
+						second = germ;
 					}
-				
 			}else {
 				count = 1;
-				first = tile;
+				first = germ;
 				second = nil;
-				value = tile.value;
+				value = germ.value;
 			}
 		}
 	}
 }
 
+//检查并修复
 -(BOOL) check{
-	[self checkWith:OrientationHori];
+	//从两个方向上检查
+    [self checkWith:OrientationHori];
 	[self checkWith:OrientationVert];
 	
-	NSArray *objects = [[readyToRemoveTiles objectEnumerator] allObjects];
+    //如果没有需要移除的则之间返回
+	NSArray *objects = [[readyToRemove objectEnumerator] allObjects];
 	if ([objects count] == 0) {
 		return NO;
 	}
 	
+    
 	int count = [objects count];
 	for (int i=0; i<count; i++) {
         
-		Germ *tile = [objects objectAtIndex:i];
-		tile.value = 0;
-		if (tile.sprite) {
+		Germ *germ = [objects objectAtIndex:i];
+		germ.value = 0;
+		if (germ.sprite) {
+            //设置被消除的孢子的消除效果 这里是缩放
 			CCAction *action = [CCSequence actions:[CCScaleTo actionWithDuration:0.3f scale:0.0f],
 								[CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
 								nil];
-			[tile.sprite runAction: action];
+			[germ.sprite runAction: action];
 		}
 	}
     
-	[readyToRemoveTiles removeAllObjects];
+	[readyToRemove removeAllObjects];
+    
+    // 修复，此时被消除的孢子应该已经在屏幕上看不到了
 	int maxCount = [self repair];
 	
-	[layer runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * maxCount + 0.03f],
+    //等修复完成以后，执行afterAllMoveDone的方法
+	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * maxCount + 0.03f],
 					   [CCCallFunc actionWithTarget:self selector:@selector(afterAllMoveDone)],
 					   nil]];
+    
 	return YES;
 }
 
 -(void) removeSprite: (id) sender{
-	[layer removeChild: sender cleanup:YES];
+	[holder removeChild: sender cleanup:YES];
 }
 
+//补全了所有的孢子
 -(void) afterAllMoveDone{
-	if([self check]){
+    
+	if([self check]){//检查补全后是否还有需要消除的
 		
-	}else {
-		if ([self haveMore]) {
+	}else {//如果没有
+		if ([self haveMore]) {//检查是否还有解，如果存在解，那么解锁继续游戏
 			[self unlock];
 		}else {
+            //如果已经无解，那么重新初始化游戏
 			for (int y=0; y< kBoxHeight; y++) {
 				for (int x=0; x< kBoxWidth; x++) {
-					Germ *tile = [self objectAtX:x Y:y];
-					tile.value = 0;
+					Germ *germ = [self objectAtX:x Y:y];
+					germ.value = 0;
 				}
 			}
 			[self check];
 		}
 	}
-    
 }
 
 -(void) unlock{
 	self.lock = NO;
 }
-
+//修复
 -(int) repair{
 	int maxCount = 0;
 	for (int x=0; x<size.width; x++) {
-		int count = [self repairSingleColumn:x];
+		//修复单列
+        int count = [self repairSingleColumn:x];
 		if (count > maxCount) {
 			maxCount = count;
 		}
@@ -158,90 +168,95 @@
 }
 
 -(int) repairSingleColumn: (int) columnIndex{
-	int extension = 0;
+	
+    int count = 0; //统计本列被消除的孢子的数目
+    
 	for (int y=0; y<size.height; y++) {
-		Germ *tile = [self objectAtX:columnIndex Y:y];
-        if(tile.value == 0){
-            extension++;
-        }else if (extension == 0) {
+		Germ *germ = [self objectAtX:columnIndex Y:y];
+        if(germ.value == 0){
+            count++;
+        }else if (count == 0) {
             
         }else{
-            Germ *destTile = [self objectAtX:columnIndex Y:y-extension];
-            
+            //如果某个孢子下面有被消除的孢子，那么它应该移动到那个孢子的位置去
+            Germ *destTile = [self objectAtX:columnIndex Y:y-count];
             CCSequence *action = [CCSequence actions:
-                                  [CCMoveBy actionWithDuration:kMoveTileTime*extension position:ccp(0,-kTileSize*extension)],
+                                  [CCMoveBy actionWithDuration:kMoveTileTime*count position:ccp(0,-kTileSize*count)],
                                   nil];
-            
-            [tile.sprite runAction: action];
-            
-            destTile.value = tile.value;
-            destTile.sprite = tile.sprite;
+            [germ.sprite runAction: action];
+            destTile.value = germ.value;
+            destTile.sprite = germ.sprite;
             
         }
 	}
-	
-	for (int i=0; i<extension; i++) {
+    
+	//目前所有移动都已经完成， 那么这一列上应该有count个孢子的缺口，下面来补全
+	for (int i=0; i<count; i++) {
+        // 随机出一种孢子
 		int value = (arc4random()%kKindCount+1);
-		Germ *destTile = [self objectAtX:columnIndex Y:kBoxHeight-extension+i];
+        //从下往上来
+		Germ *destGerm = [self objectAtX:columnIndex Y:kBoxHeight-count+i];
 		NSString *name = [NSString stringWithFormat:@"q%d.png",value];
 		CCSprite *sprite = [CCSprite spriteWithFile:name];
 		sprite.position = ccp(kStartX + columnIndex * kTileSize + kTileSize/2, kStartY + (kBoxHeight + i) * kTileSize + kTileSize/2);
-		CCSequence *action = [CCSequence actions:
-							  [CCMoveBy actionWithDuration:kMoveTileTime*extension position:ccp(0,-kTileSize*extension)],
+		
+        CCSequence *action = [CCSequence actions:
+							  [CCMoveBy actionWithDuration:kMoveTileTime*count position:ccp(0,-kTileSize*count)],
 							  nil];
-		[layer addChild: sprite];
+		[holder addChild: sprite];
 		[sprite runAction: action];
-		destTile.value = value;
-		destTile.sprite = sprite;
+		destGerm.value = value;
+		destGerm.sprite = sprite;
 	}
-	return extension;
+	return count;
 }
 
+// 当前情况下是否还有解
 -(BOOL) haveMore{
 	for (int y=0; y<size.height; y++) {
 		for (int x=0; x<size.width; x++) {
-			Germ *aTile = [self objectAtX:x Y:y];
+			Germ *aGerm = [self objectAtX:x Y:y];
 			
 			//v 1 2
-			if (aTile.y-1 >= 0) {
+			if (aGerm.y-1 >= 0) {
 				Germ *bTile = [self objectAtX:x Y:y-1];
-				if (aTile.value == bTile.value) {
+				if (aGerm.value == bTile.value) {
 					{
-						Germ *cTile = [self objectAtX:x Y:y+2];
-						if (cTile.value == aTile.value) {
+						Germ *cGerm = [self objectAtX:x Y:y+2];
+						if (cGerm.value == aGerm.value) {
 							return YES;
 						}
 					}
 					
 					{
-                        Germ *cTile = [self objectAtX:x-1 Y:y+1];
-                        if (cTile.value == aTile.value) {
+                        Germ *cGerm = [self objectAtX:x-1 Y:y+1];
+                        if (cGerm.value == aGerm.value) {
                             return YES;
                         }
 					}
 					{
-                        Germ *cTile = [self objectAtX:x+1 Y:y+1];
-                        if (cTile.value == aTile.value) {
+                        Germ *cGerm = [self objectAtX:x+1 Y:y+1];
+                        if (cGerm.value == aGerm.value) {
                             return YES;
                         }
 					}
 					
 					{
-						Germ *cTile = [self objectAtX:x Y:y-3];
-						if (cTile.value == aTile.value) {
+						Germ *cGerm = [self objectAtX:x Y:y-3];
+						if (cGerm.value == aGerm.value) {
 							return YES;
 						}
 					}
 					
 					{
-                        Germ *cTile = [self objectAtX:x-1 Y:y-2];
-                        if (cTile.value == aTile.value) {
+                        Germ *cGerm = [self objectAtX:x-1 Y:y-2];
+                        if (cGerm.value == aGerm.value) {
                             return YES;
                         }
 					}
 					{
-                        Germ *cTile = [self objectAtX:x+1 Y:y-2];
-                        if (cTile.value == aTile.value) {
+                        Germ *cGerm = [self objectAtX:x+1 Y:y-2];
+                        if (cGerm.value == aGerm.value) {
                             return YES;
                         }
                     }
@@ -250,20 +265,20 @@
                 
 			}
 			//v 1 3
-			if (aTile.y-2 >= 0) {
-				Germ *bTile = [self objectAtX:x Y:y-2];
-				if (aTile.value == bTile.value) {
+			if (aGerm.y-2 >= 0) {
+				Germ *bGerm = [self objectAtX:x Y:y-2];
+				if (aGerm.value == bGerm.value) {
 					
 					{
 						Germ *cTile = [self objectAtX:x Y:y+1];
-						if (cTile.value == aTile.value) {
+						if (cTile.value == aGerm.value) {
 							return YES;
 						}
 					}
 					
 					{
 						Germ *cTile = [self objectAtX:x Y:y-3];
-						if (cTile.value == aTile.value) {
+						if (cTile.value == aGerm.value) {
 							return YES;
 						}
 					}
@@ -272,13 +287,13 @@
                     
 					{
 						Germ *cTile = [self objectAtX:x-1 Y:y-1];
-						if (cTile.value == aTile.value) {
+						if (cTile.value == aGerm.value) {
 							return YES;
 						}
 					}
 					{
 						Germ *cTile = [self objectAtX:x+1 Y:y-1];
-						if (cTile.value == aTile.value) {
+						if (cTile.value == aGerm.value) {
 							return YES;
 						}
 					}
@@ -286,45 +301,45 @@
 				}
 			}
 			// h 1 2
-			if (aTile.x+1 < kBoxWidth) {
+			if (aGerm.x+1 < kBoxWidth) {
 				Germ *bTile = [self objectAtX:x+1 Y:y];
-				if (aTile.value == bTile.value) {
+				if (aGerm.value == bTile.value) {
 					{
 						Germ *cTile = [self objectAtX:x-2 Y:y];
-						if (cTile.value == aTile.value) {
+						if (cTile.value == aGerm.value) {
 							return YES;
 						}
 					}
 					
 					{
-						Germ *cTile = [self objectAtX:x-1 Y:y-1];
-						if (cTile.value == aTile.value) {
+						Germ *cGerm = [self objectAtX:x-1 Y:y-1];
+						if (cGerm.value == aGerm.value) {
 							return YES;
 						}
 					}
 					{
-						Germ *cTile = [self objectAtX:x-1 Y:y+1];
-						if (cTile.value == aTile.value) {
-							return YES;
-						}
-					}
-					
-					{
-						Germ *cTile = [self objectAtX:x+3 Y:y];
-						if (cTile.value == aTile.value) {
+						Germ *cGerm= [self objectAtX:x-1 Y:y+1];
+						if (cGerm.value == aGerm.value) {
 							return YES;
 						}
 					}
 					
 					{
-						Germ *cTile = [self objectAtX:x+2 Y:y-1];
-						if (cTile.value == aTile.value) {
+						Germ *cGerm = [self objectAtX:x+3 Y:y];
+						if (cGerm.value == aGerm.value) {
+							return YES;
+						}
+					}
+					
+					{
+						Germ *cGerm= [self objectAtX:x+2 Y:y-1];
+						if (cGerm.value == aGerm.value) {
 							return YES;
 						}
 					}
 					{
-						Germ *cTile = [self objectAtX:x+2 Y:y+1];
-						if (cTile.value == aTile.value) {
+						Germ *cGerm= [self objectAtX:x+2 Y:y+1];
+						if (cGerm.value == aGerm.value) {
 							return YES;
 						}
 					}
@@ -333,33 +348,33 @@
 			}
 			
 			//h 1 3
-			if (aTile.x+2 >= kBoxWidth) {
-				Germ *bTile = [self objectAtX:x+2 Y:y];
-				if (aTile.value == bTile.value) {
+			if (aGerm.x+2 >= kBoxWidth) {
+				Germ *bGerm = [self objectAtX:x+2 Y:y];
+				if (aGerm.value == bGerm.value) {
 					{
-						Germ *cTile = [self objectAtX:x+3 Y:y];
-						if (cTile.value == aTile.value) {
+						Germ *cGerm = [self objectAtX:x+3 Y:y];
+						if (cGerm.value == aGerm.value) {
 							return YES;
 						}
 					}
 					
 					{
-						Germ *cTile = [self objectAtX:x-1 Y:y];
-						if (cTile.value == aTile.value) {
+						Germ *cGerm = [self objectAtX:x-1 Y:y];
+						if (cGerm.value == aGerm.value) {
 							return YES;
 						}
 					}
 					
 					
 					{
-						Germ *cTile = [self objectAtX:x+1 Y:y-1];
-						if (cTile.value == aTile.value) {
+						Germ *cGerm = [self objectAtX:x+1 Y:y-1];
+						if (cGerm.value == aGerm.value) {
 							return YES;
 						}
 					}
 					{
-						Germ *cTile = [self objectAtX:x+1 Y:y+1];
-						if (cTile.value == aTile.value) {
+						Germ *cGerm = [self objectAtX:x+1 Y:y+1];
+						if (cGerm.value == aGerm.value) {
 							return YES;
 						}
 					}

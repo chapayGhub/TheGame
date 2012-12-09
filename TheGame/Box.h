@@ -14,12 +14,12 @@
 	id first, second;
 	CGSize size;
 	NSMutableArray *content;
-	NSMutableSet *readyToRemoveTiles;
+	NSMutableSet *readyToRemove;
 	BOOL lock;
-	CCLayer *layer;
-	Germ *outBorderTile;
+	CCLayer *holder;
+	Germ *boarderGerm;
 }
-@property(nonatomic, retain) CCLayer *layer;
+@property(nonatomic, retain) CCLayer *holder;
 @property(nonatomic, readonly) CGSize size;
 @property(nonatomic) BOOL lock;
 

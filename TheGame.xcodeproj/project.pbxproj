@@ -131,7 +131,6 @@
 		C68B078C166D82A3005306DD /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C68B078B166D82A3005306DD /* vec4.c */; };
 		C68B0791166D82A3005306DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0790166D82A3005306DD /* main.m */; };
 		C68B0794166D82A3005306DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0793166D82A3005306DD /* AppDelegate.m */; };
-		C68B0797166D82A3005306DD /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0796166D82A3005306DD /* HelloWorldLayer.m */; };
 		C68B079A166D82A3005306DD /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0799166D82A3005306DD /* IntroLayer.m */; };
 		C68B07AE166D8673005306DD /* SceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B07AD166D8673005306DD /* SceneManager.m */; };
 		C68B07B0166D8B51005306DD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C68B07AF166D8B50005306DD /* Default.png */; };
@@ -411,8 +410,6 @@
 		C68B0790166D82A3005306DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C68B0792166D82A3005306DD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C68B0793166D82A3005306DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C68B0795166D82A3005306DD /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		C68B0796166D82A3005306DD /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		C68B0798166D82A3005306DD /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		C68B0799166D82A3005306DD /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		C68B07AC166D8673005306DD /* SceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneManager.h; sourceTree = "<group>"; };
@@ -880,8 +877,6 @@
 				C6B9B7B3167450E500D19F8C /* PlayBackgroundLayer.m */,
 				C6B9B7B51674513A00D19F8C /* PlayLayer.h */,
 				C6B9B7B61674513A00D19F8C /* PlayLayer.m */,
-				C68B0795166D82A3005306DD /* HelloWorldLayer.h */,
-				C68B0796166D82A3005306DD /* HelloWorldLayer.m */,
 				C68B0798166D82A3005306DD /* IntroLayer.h */,
 				C68B0799166D82A3005306DD /* IntroLayer.m */,
 			);
@@ -1123,7 +1118,6 @@
 				C68B078C166D82A3005306DD /* vec4.c in Sources */,
 				C68B0791166D82A3005306DD /* main.m in Sources */,
 				C68B0794166D82A3005306DD /* AppDelegate.m in Sources */,
-				C68B0797166D82A3005306DD /* HelloWorldLayer.m in Sources */,
 				C68B079A166D82A3005306DD /* IntroLayer.m in Sources */,
 				C68B07AE166D8673005306DD /* SceneManager.m in Sources */,
 				C6884790167190DD008633AD /* Germ.m in Sources */,
