@@ -6,4 +6,6 @@
 @interface SceneManager : NSObject {
 }
 
++(void) goPlay;  //跳转到游戏页面
+
 @end

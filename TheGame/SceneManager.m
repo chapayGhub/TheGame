@@ -1,26 +1,27 @@
 #import "SceneManager.h"
+#import "PlayBackgroundLayer.h"
+#import "PlayLayer.h"
+
 
 @interface SceneManager ()
-+(void) go: (CCLayer *) layer;
-+(CCScene *) wrap: (CCLayer *) layer;
 @end
 
 
 @implementation SceneManager
 
-+(void) go: (CCLayer *) layer{
-	CCDirector *director = [CCDirector sharedDirector];
-	CCScene *newScene = [SceneManager wrap:layer];
-	if ([director runningScene]) {
++(void) goPlay{
+    CCDirector *director = [CCDirector sharedDirector];
+    CCScene *newScene = [CCScene node];
+    
+    [newScene addChild:[PlayBackgroundLayer node] z:-1];
+    [newScene addChild:[PlayLayer node] z:0];
+    
+    if ([director runningScene]) {
 		[director replaceScene:[CCTransitionFlipY transitionWithDuration: 1.0f scene: newScene]];
 	}else {
-		[director runWithScene:newScene];		
+		[director runWithScene:newScene];
 	}
 }
 
-+(CCScene *) wrap: (CCLayer *) layer{
-	CCScene *newScene = [CCScene node];
-	[newScene addChild: layer];
-	return newScene;
-}
+
 @end

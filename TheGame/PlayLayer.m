@@ -44,7 +44,7 @@
 	
 	Germ *tile = [box objectAtX:x Y:y];
 	
-	if (selectedTile && [selectedTile nearTile:tile]) {
+	if (selectedTile && [selectedTile isNeighbor:tile]) {
 		[box setLock:YES];
 		[self changeWithTileA: selectedTile TileB: tile sel: @selector(check:data:)];
 		selectedTile = nil;

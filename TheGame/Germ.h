@@ -7,12 +7,10 @@
 //
 
 #import "cocos2d.h"
-#import "Box.h"
 
 @interface Germ : NSObject{
     int x, y, value;
     CCSprite *sprite;
-
 }
 
 @property (nonatomic, readonly) int x, y;

@@ -6,10 +6,10 @@
 //
 //
 
-#import "Constants.h"
 #import "Germ.h"
 #import "CCLayer.h"
-#import "constants.h"
+#import "Constants.h"
+
 @interface Box : NSObject {
 	id first, second;
 	CGSize size;
@@ -18,7 +18,6 @@
 	BOOL lock;
 	CCLayer *layer;
 	Germ *outBorderTile;
-    
 }
 @property(nonatomic, retain) CCLayer *layer;
 @property(nonatomic, readonly) CGSize size;

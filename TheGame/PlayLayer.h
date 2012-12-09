@@ -2,7 +2,7 @@
 #import "Box.h"
 #import "PlayBackgroundLayer.h"
 
-@interface PlayLayer : PlayBackgroundLayer
+@interface PlayLayer : CCLayer
 {
 	Box *box;
 	Germ *selectedTile;
