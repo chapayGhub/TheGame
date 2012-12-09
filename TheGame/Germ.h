@@ -7,7 +7,7 @@
 //
 
 #import "cocos2d.h"
-
+#import "Constants.h"
 @interface Germ : NSObject{
     int x, y, value;
     CCSprite *sprite;

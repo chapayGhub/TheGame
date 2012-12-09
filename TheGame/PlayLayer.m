@@ -6,18 +6,12 @@
 
 @implementation PlayLayer
 
-+(id) scene{
-	CCScene *scene = [CCScene node];
-	PlayLayer *layer = [PlayLayer node];
-	[scene addChild: layer];
-	return scene;
-}
-
 -(id) init{
 	self = [super init];
 	box = [[Box alloc] initWithSize:CGSizeMake(kBoxWidth,kBoxHeight) factor:6];
 	box.layer = self;
 	box.lock = YES;
+    self.isTouchEnabled = YES;
 	return self;
 }
 

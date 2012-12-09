@@ -8,7 +8,7 @@
 	Germ *selectedTile;
 	Germ *firstOne;
 }
-+(id) scene;
+
 -(void) changeWithTileA: (Germ *) a TileB: (Germ *) b sel : (SEL) sel;
 -(void) check: (id) sender data: (id) data;
 @end

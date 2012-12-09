@@ -40,8 +40,7 @@
 
 
 -(CGPoint) pixPosition{
-    //TODO 
-	return ccp(0,0);
+    return ccp(kStartX + x * kTileSize +kTileSize/2.0f,kStartY + y * kTileSize +kTileSize/2.0f);
 }
 
 @end

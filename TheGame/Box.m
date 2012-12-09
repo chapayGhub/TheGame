@@ -18,10 +18,12 @@
 @synthesize size;
 @synthesize lock;
 
+//初始化函数
 -(id) initWithSize: (CGSize) aSize factor: (int) aFacotr{
 	self = [super init];
 	size = aSize;
 	outBorderTile = [[Germ alloc] initWithX:-1 Y:-1];
+    //放置所有的游戏节点
 	content = [NSMutableArray arrayWithCapacity: size.height];
 	for (int y=0; y<size.height; y++) {
 		
