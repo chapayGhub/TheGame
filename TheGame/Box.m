@@ -144,10 +144,12 @@
             g.value = 0;
             CCAction *action = [CCSequence actions:[CCMoveTo actionWithDuration:kConvergeTime position: centerP],
                                 [CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
+                                
                                 nil];
             [[g sprite] runAction: action];
         }else if(g==center)
         {
+            
             //把center变为超级孢子
             [holder removeChild:center.sprite cleanup:YES];
             [center transform:SuperGerm];
@@ -307,6 +309,7 @@
             //如果某个孢子下面有被消除的孢子，那么它应该移动到那个孢子的位置去
             Germ *destTile = [self objectAtX:columnIndex Y:y-count];
             CCSequence *action = [CCSequence actions:
+                                  [CCDelayTime actionWithDuration: 0.03f],
                                   [CCMoveBy actionWithDuration:kMoveTileTime*count position:ccp(0,-kTileSize*count)],
                                   nil];
             [germ.sprite runAction: action];
@@ -326,6 +329,7 @@
 		sprite.position = ccp(kStartX + columnIndex * kTileSize + kTileSize/2, kStartY + (kBoxHeight + i) * kTileSize + kTileSize/2);
 		
         CCSequence *action = [CCSequence actions:
+                              [CCDelayTime actionWithDuration: 0.03f],
 							  [CCMoveBy actionWithDuration:kMoveTileTime*count position:ccp(0,-kTileSize*count)],
 							  nil];
 		[holder addChild: sprite];

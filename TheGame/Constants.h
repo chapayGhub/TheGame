@@ -10,15 +10,15 @@
 #define TheGame_Constants_h
 
 /***这两个参数决定box的位置***/
-#define kStartX 20
-#define kStartY 80
+#define kStartX 10
+#define kStartY 120
 
 /**box的大小*/
 #define kBoxWidth 7
 #define kBoxHeight 7
 
 /**box中每个格子的大小*/
-#define kTileSize 40.0f
+#define kTileSize 43.0f
 
 #define kMoveTileTime 0.1f// 孢子移动的时间
 #define kShineFreq 0.3f//孢子被选中闪烁的速度
