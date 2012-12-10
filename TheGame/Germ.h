@@ -24,6 +24,6 @@
 -(BOOL) isNeighbor: (Germ *)otherGerm;
 -(void) trade:(Germ *)otherGerm;
 -(CGPoint) pixPosition;
-
+-(void) transform:(GermType)type;
 
 @end

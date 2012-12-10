@@ -16,6 +16,7 @@
 	self = [super init];
 	x = posX;
 	y = posY;
+    self.type = NormalGerm;
 	return self;
 }
 
@@ -43,4 +44,13 @@
     return ccp(kStartX + x * kTileSize +kTileSize/2.0f,kStartY + y * kTileSize +kTileSize/2.0f);
 }
 
+-(void)transform:(GermType)atype
+{
+    [self setType:atype];
+    NSString *name = [NSString stringWithFormat:@"q8.png"];
+    CCSprite *asprite = [CCSprite spriteWithFile:name];
+    [self setSprite:asprite];
+    [self setValue:8];
+    [sprite setPosition:self.pixPosition];
+}
 @end

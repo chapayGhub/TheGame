@@ -120,32 +120,41 @@
     }
     
     Germ *center = nil;
-    for(int j =0;j<[array count];j++)
-    {
-        if((ori==OrientationVert&&[readyToCombineHori containsObject:[array objectAtIndex:j]])||
-           (ori==OrientationHori&&[readyToCombineVerti containsObject:[array objectAtIndex:j]])){
-            center = [array objectAtIndex:j];
-            break;
-        }
-    }
+//    for(int j =0;j<[array count];j++)
+//    {
+//        if((ori==OrientationVert&&[readyToCombineHori containsObject:[array objectAtIndex:j]])||
+//           (ori==OrientationHori&&[readyToCombineVerti containsObject:[array objectAtIndex:j]])){
+//            center = [array objectAtIndex:j];
+//            break;
+//        }
+//    }
     if(center == nil)
     {
         center = [array objectAtIndex:[array count]/2];
     }
     CGPoint centerP = [center pixPosition];
+
+    //int centerValue = center.value;
     for(int j =0;j<[array count];j++)
     {
         Germ *g = [array objectAtIndex:j];
-        g.value = 0;
-        if([g sprite] /**&& g.y!=center.y*/)
+       
+        if([g sprite]&&g!=center)
         {
+            g.value = 0;
             CCAction *action = [CCSequence actions:[CCMoveTo actionWithDuration:kConvergeTime position: centerP],
                                 [CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
                                 nil];
             [[g sprite] runAction: action];
+        }else if(g==center)
+        {
+            //把center变为超级孢子
+            [holder removeChild:center.sprite cleanup:YES];
+            [center transform:SuperGerm];
+            [holder addChild:center.sprite];
         }
     }
-    //TODO 把center变为特殊的孢子
+
 }
 
 
@@ -223,9 +232,10 @@
 	for (int i=0; i<count; i++) {
         
 		Germ *germ = [objects objectAtIndex:i];
-		germ.value = 0;
+        germ.value = 0;
 		if (germ.sprite) {
-            //设置被消除的孢子的消除效果 这里是缩放
+            //设置被消除的孢子的消除效果
+           
 			CCAction *action = [CCSequence actions:[CCFadeOut actionWithDuration:0.3f],
 								[CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
 								nil];
@@ -240,7 +250,7 @@
 	int maxCount = [self repair];
 	
     //等修复完成以后，执行afterAllMoveDone的方法
-	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * 7 + 0.03f],
+	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * maxCount + 0.03f],
                         [CCCallFunc actionWithTarget:self selector:@selector(afterAllMoveDone)],
                         nil]];
     
@@ -492,8 +502,6 @@
 }
 
 -(void)fill{
-    //目前所有移动都已经完成， 那么这一列上应该有count个孢子的缺口，下面来补全
-	
     for (int i=0; i<[content count]; i++) {
         NSMutableArray *array = [content objectAtIndex:i];
         for(int j =0;j<[array count];j++)
@@ -502,6 +510,10 @@
             int value = (arc4random()%kKindCount+1);
             //从下往上来
             Germ *destGerm = [self objectAtX:j Y:i];
+            if(destGerm.sprite)
+            {
+                [holder removeChild:destGerm.sprite cleanup:YES];
+            }
             NSString *name = [NSString stringWithFormat:@"q%d.png",value];
             CCSprite *sprite = [CCSprite spriteWithFile:name];
             sprite.position = ccp(kStartX + j * kTileSize + kTileSize/2, kStartY +  i * kTileSize + kTileSize/2);
@@ -510,6 +522,7 @@
             destGerm.sprite = sprite;
         }
 	}
+
     
 }
 

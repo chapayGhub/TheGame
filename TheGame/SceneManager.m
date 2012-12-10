@@ -13,7 +13,7 @@
     CCDirector *director = [CCDirector sharedDirector];
     CCScene *newScene = [CCScene node];
     
-    [newScene addChild:[PlayBackgroundLayer node] z:-1];
+    [newScene addChild:[PlayBackgroundLayer node] z:0];
     [newScene addChild:[PlayLayer node] z:0];
     
     if ([director runningScene]) {

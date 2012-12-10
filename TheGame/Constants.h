@@ -29,7 +29,7 @@
 
 #define kMaxLevelNo 10
 #define kMaxRecordCount 5
-#define kKindCount 5
+#define kKindCount 4
 
 typedef enum {
 	OrientationHori,
@@ -37,6 +37,7 @@ typedef enum {
 } Orientation;
 
 typedef enum {
+    SuperGerm,
     BombGerm,
     PoisonousGerm,
     NormalGerm,
