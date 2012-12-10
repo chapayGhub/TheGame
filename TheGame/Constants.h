@@ -36,5 +36,10 @@ typedef enum {
 	OrientationVert,
 } Orientation;
 
+typedef enum {
+    BombGerm,
+    PoisonousGerm,
+    NormalGerm,
+} GermType;
 
 #endif

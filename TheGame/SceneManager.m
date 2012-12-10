@@ -17,7 +17,7 @@
     [newScene addChild:[PlayLayer node] z:0];
     
     if ([director runningScene]) {
-        [director replaceScene:[CCTransitionFlipY transitionWithDuration: 1.0f scene: newScene]];
+        [director replaceScene:[CCTransitionPageTurn transitionWithDuration: 1.0f scene: newScene]];
 	}else {
 		[director runWithScene:newScene];
 	}

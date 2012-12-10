@@ -12,7 +12,6 @@
 -(int) repairSingleColumn: (int) columnIndex;
 -(void) combine;
 -(void) handleCombineAnimation:(Orientation) ori array:(NSMutableArray*) array;
--(void) renew;
 @end
 
 @implementation Box
@@ -241,7 +240,7 @@
 	int maxCount = [self repair];
 	
     //等修复完成以后，执行afterAllMoveDone的方法
-	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * maxCount + 0.03f],
+	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * 7 + 0.03f],
                         [CCCallFunc actionWithTarget:self selector:@selector(afterAllMoveDone)],
                         nil]];
     
@@ -262,21 +261,10 @@
 			[self unlock];
 		}else {
             //如果已经无解，那么重新初始化游戏
-            [self renew];
+            [self fill];
+            [self check];
 		}
 	}
-}
-
-
--(void)renew
-{
-    for (int y=0; y< kBoxHeight; y++) {
-        for (int x=0; x< kBoxWidth; x++) {
-            Germ *germ = [self objectAtX:x Y:y];
-            germ.value = 0;
-        }
-    }
-    [self check];
 }
 
 -(void) unlock{

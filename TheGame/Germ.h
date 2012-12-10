@@ -11,9 +11,11 @@
 @interface Germ : NSObject{
     int x, y, value;
     CCSprite *sprite;
+    GermType type;
 }
 
 @property (nonatomic, readonly) int x, y;
+@property (nonatomic) GermType type;
 @property (nonatomic) int value;
 @property (nonatomic, retain) CCSprite *sprite;
 

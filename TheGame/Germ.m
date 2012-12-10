@@ -9,7 +9,7 @@
 #import "Germ.h"
 
 @implementation Germ
-@synthesize x, y, value, sprite;
+@synthesize x, y, value, sprite,type;
 
 
 -(id) initWithX: (int) posX Y: (int) posY{
