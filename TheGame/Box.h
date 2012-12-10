@@ -15,6 +15,8 @@
 	CGSize size;
 	NSMutableArray *content;
 	NSMutableSet *readyToRemove;
+    NSMutableArray *readyToCombineVerti;
+    NSMutableArray *readyToCombineHori;
 	BOOL lock;
 	CCLayer *holder;
 	Germ *boarderGerm;
@@ -26,9 +28,11 @@
 -(id) initWithSize: (CGSize) size factor: (int) facotr;
 -(Germ *) objectAtX: (int) posX Y: (int) posY;
 
+-(void) fill;
 -(BOOL) check;
 -(void) unlock;
 -(void) removeSprite: (id) sender;
 -(void) afterAllMoveDone;
 -(BOOL) haveMore;
+-(int) repair;
 @end
