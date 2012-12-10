@@ -12,11 +12,13 @@
     int x, y, value;
     CCSprite *sprite;
     GermType type;
+    bool centerFlag;
 }
 
 @property (nonatomic, readonly) int x, y;
 @property (nonatomic) GermType type;
 @property (nonatomic) int value;
+@property (nonatomic) bool centerFlag;
 @property (nonatomic, retain) CCSprite *sprite;
 
 

@@ -10,8 +10,10 @@
 
 @interface Box()
 -(int) repairSingleColumn: (int) columnIndex;
--(void) combine;
--(void) handleCombineAnimation:(Orientation) ori array:(NSMutableArray*) array;
+-(void) combine:(NSMutableArray *)array;
+-(void) erase:(NSMutableArray*) a1;
+-(void) addSpriteToLayer:(id) sender;
+
 @end
 
 @implementation Box
@@ -37,12 +39,11 @@
 		[content addObject:rowContent];
 		[content retain];
 	}
-	readyToRemove = [NSMutableSet setWithCapacity:5];
-    readyToCombineHori = [[NSMutableArray alloc] init];
-    readyToCombineVerti = [[NSMutableArray alloc] init];
-	[readyToRemove retain];
-    [readyToCombineHori retain];
-    [readyToCombineVerti retain];
+	readyToRemoveHori = [[NSMutableArray alloc] init];
+    readyToRemoveVerti = [[NSMutableArray alloc] init];
+	[readyToRemoveHori retain];
+    [readyToRemoveVerti retain];
+    
     return self;
 }
 
@@ -68,41 +69,31 @@
 			if(germ.value == value){
 				count++;
 				if (count > 3) {
-                
-                    if(count==4)
-                    {
-                        
-                        for(int k=3;k>0;k--)
-                        {
-                            Germ *lastgerm = [self objectAtX:((orient == OrientationHori) ?germ.x-k:germ.x)  Y:((orient == OrientationHori) ?germ.y:germ.y-k)];
-                            [readyToRemove removeObject:lastgerm];
-                            if(orient == OrientationHori)
-                            {
-                                [readyToCombineHori addObject:lastgerm];
-                            }else{
-                                [readyToCombineVerti addObject:lastgerm];
-                            }
-                        }
-                    }
-                    
                     if(orient == OrientationHori)
                     {
-                        [readyToCombineHori addObject:germ];
+                        [readyToRemoveHori addObject:germ];
                     }else{
-                        [readyToCombineVerti addObject:germ];
+                        [readyToRemoveVerti addObject:germ];
                     }
-                    
-                    
 				}else
 					if (count == 3) {
-						[readyToRemove addObject:first];
-						[readyToRemove addObject:second];
-						[readyToRemove addObject:germ];
-						first = nil;
+                        if(orient == OrientationHori)
+                        {
+						    [readyToRemoveHori addObject:first];
+						    [readyToRemoveHori addObject:second];
+						    [readyToRemoveHori addObject:germ];
+                        }else{
+                            [readyToRemoveVerti addObject:first];
+                            [readyToRemoveVerti addObject:second];
+                            [readyToRemoveVerti addObject:germ];
+                        }
+                        
+                        first = nil;
 						second = nil;
-					}else if (count == 2) {
-						second = germ;
 					}
+                    else if (count == 2) {
+                        second = germ;
+                    }
 			}else {
 				count = 1;
 				first = germ;
@@ -112,7 +103,7 @@
 		}
 	}
 }
--(void) handleCombineAnimation:(Orientation)ori array:(NSMutableArray *)array
+-(void) combine:(NSMutableArray *)array
 {
     if(array == nil || [array count] ==0 )
     {
@@ -120,25 +111,28 @@
     }
     
     Germ *center = nil;
-//    for(int j =0;j<[array count];j++)
-//    {
-//        if((ori==OrientationVert&&[readyToCombineHori containsObject:[array objectAtIndex:j]])||
-//           (ori==OrientationHori&&[readyToCombineVerti containsObject:[array objectAtIndex:j]])){
-//            center = [array objectAtIndex:j];
-//            break;
-//        }
-//    }
+    for(int i=0;i<[array count];i++)
+    {
+        Germ *t = [array objectAtIndex:i];
+        if( t.centerFlag)
+        {
+            center = t;
+            [t setCenterFlag:NO];
+        }
+    }
+    
     if(center == nil)
     {
         center = [array objectAtIndex:[array count]/2];
     }
+    
     CGPoint centerP = [center pixPosition];
-
+    
     //int centerValue = center.value;
     for(int j =0;j<[array count];j++)
     {
         Germ *g = [array objectAtIndex:j];
-       
+        
         if([g sprite]&&g!=center)
         {
             g.value = 0;
@@ -149,73 +143,14 @@
             [[g sprite] runAction: action];
         }else if(g==center)
         {
-            
             //把center变为超级孢子
             [holder removeChild:center.sprite cleanup:YES];
             [center transform:SuperGerm];
             [holder addChild:center.sprite];
         }
     }
-
 }
 
-
--(void)combine
-{
-    //合并
-    int count = [readyToCombineVerti count];
-    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:5];
-    Germ *last = nil;
-    if(count>0)
-    {
-        last = [readyToCombineVerti objectAtIndex:0];
-    }
-    for (int i=0; i<count; i++) {
-        if(i==0)
-        {
-            [tempArray addObject:last];
-        }else{
-            Germ *tp = [readyToCombineVerti objectAtIndex:i];
-            if ([last isNeighbor:tp])
-            {
-                [tempArray addObject:[readyToCombineVerti objectAtIndex:i]];
-            }else{ //处理combine
-                [self handleCombineAnimation:OrientationVert array:tempArray];
-            }
-        }
-        last =[readyToCombineVerti objectAtIndex:i];
-    }
-    [self handleCombineAnimation:OrientationVert array:tempArray];
-    
-    [tempArray removeAllObjects];
-    count = [readyToCombineHori count];
-    if(count>0)
-    {
-        last = [readyToCombineHori objectAtIndex:0];
-    }
-    for (int i=0; i<count; i++) {
-        if(i==0)
-        {
-            [tempArray addObject:last];
-        }else{
-            Germ *tp = [readyToCombineHori objectAtIndex:i];
-            if ([last isNeighbor:tp])
-            {
-                [tempArray addObject:[readyToCombineHori objectAtIndex:i]];
-            }else{ //处理combine
-                [self handleCombineAnimation:OrientationHori array:tempArray];
-            }
-        }
-        last =[readyToCombineHori objectAtIndex:i];
-        
-    }
-    [self handleCombineAnimation:OrientationHori array:tempArray];
-    [tempArray removeAllObjects];
-    [tempArray release];
-    
-    [readyToCombineVerti removeAllObjects];
-    [readyToCombineHori removeAllObjects];
-}
 
 //检查并修复
 -(BOOL) check{
@@ -223,30 +158,142 @@
     [self checkWith:OrientationHori];
 	[self checkWith:OrientationVert];
 	
-    //如果没有需要移除的则之间返回
-	NSArray *objects = [[readyToRemove objectEnumerator] allObjects];
-    if ([objects count] == 0 && [readyToCombineHori count] ==0 && [readyToCombineVerti count] ==0) {
-		return NO;
-	}
+    /**接下来对要消除的列表进行拆分，顺便统计消除的次数*/
+    int countH = [readyToRemoveHori count];
+    int countV = [readyToRemoveVerti count];
+    if(countH==0&&countV==0)
+    {
+        return NO;
+    }
     
-    // 消除
-	int count = [objects count];
-	for (int i=0; i<count; i++) {
+    Germ *last=nil;
+    int iterate=0;
+    NSMutableArray* tp = nil;
+    int count =0 ;
+    Germ *germ = nil;
+    
+    while([readyToRemoveHori count]!=0)
+    {
+        if(iterate<[readyToRemoveHori count])
+        {
+            germ = [readyToRemoveHori objectAtIndex:iterate];
+        }
         
-		Germ *germ = [objects objectAtIndex:i];
-        germ.value = 0;
-		if (germ.sprite) {
-            //设置被消除的孢子的消除效果
-           
-			CCAction *action = [CCSequence actions:[CCFadeOut actionWithDuration:0.3f],
-								[CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
-								nil];
-			[germ.sprite runAction: action];
-		}
-	}
-	[readyToRemove removeAllObjects];
+        if((![germ isNeighbor:last])||iterate == [readyToRemoveHori count])//如果和上一个不是neighbor了，或者到头了
+        {
+            if(tp != nil)
+            {
+                //消除一轮
+                if([tp count]>3) //如果大于三个 要用合并
+                {
+                    [self combine:tp];
+                }
+                else{ // 如果是刚好三个 要用消除
+                    [self erase:tp];
+                }
+                
+                //消除之后要从现有数组中删除这些元素
+                [readyToRemoveHori removeObjectsInArray:tp];
+                
+                count++;
+                [tp release];
+                
+                if(0 == [readyToRemoveHori count])//如果到头了需要break掉
+                {
+                    break;
+                }
+            }
+            
+            tp = [[NSMutableArray alloc] init];
+            iterate = 0;
+        }
+        int index = [readyToRemoveVerti indexOfObject:germ];
+        if(index != NSNotFound) //如果找到了，需要从下一个列表中把相关的germ取出来放到tp中,这种情况要消除的一定大于三个，一定是要合并的
+        {
+            [germ setCenterFlag:YES];
+            Germ *lastInVerti = germ;
+            Germ* tg = nil;
+            
+            for(int i=index+1;i<[readyToRemoveVerti count];i++)//先向前找
+            {
+                tg = [readyToRemoveVerti objectAtIndex:i];
+                if([tg isNeighbor:lastInVerti])
+                {
+                    [tp addObject:tg];
+                }
+                else{
+                    break;
+                }
+                lastInVerti = tg;
+            }
+            lastInVerti = germ;
+            for(int i=index-1;i>=0;i--)
+            {
+                tg = [readyToRemoveVerti objectAtIndex:i];
+                if([tg isNeighbor:lastInVerti])
+                {
+                    [tp addObject:tg];
+                }
+                else{
+                    break;
+                }
+                lastInVerti = tg;
+            }
+            [readyToRemoveVerti removeObjectsInArray:tp];
+            [readyToRemoveVerti removeObject:germ];
+        }//如果没找到，什么都不用做，继续添加
+        
+        [tp addObject:germ];
+        iterate++;
+        last = germ;
+    }
     
-    [self combine];
+    //对于剩下的数组来说已经不存在相交的情况，只需要考虑大于四个合并的情况
+    tp = nil;
+    last=nil;
+    iterate=0;
+    while([readyToRemoveVerti count]!=0)
+    {
+        if(iterate<[readyToRemoveVerti count])
+        {
+            germ = [readyToRemoveVerti objectAtIndex:iterate];
+        }
+        if((![germ isNeighbor:last])||iterate == [readyToRemoveVerti count])//如果和上一个不是neighbor了，或者到头了
+        {
+            if(tp != nil)
+            {
+                //消除一轮
+                if([tp count]>3) //如果大于三个 要用合并
+                {
+                    [self combine:tp];
+                }
+                else{ // 如果是刚好三个 要用消除
+                    [self erase:tp];
+                }
+                
+                //消除之后要从现有数组中删除这些元素
+                [readyToRemoveVerti removeObjectsInArray:tp];
+                
+                count++;
+                [tp release];
+                
+                if(0 == [readyToRemoveVerti count])//如果到头了需要break掉
+                {
+                    break;
+                }
+            }
+            
+            tp = [[NSMutableArray alloc] init];
+            iterate = 0;
+        }
+        
+        [tp addObject:germ];
+        iterate++;
+        last = germ;
+    }
+    
+    //[readyToRemoveHori removeAllObjects];
+    //[readyToRemoveVerti removeAllObjects];
     
     // 修复，此时被消除的孢子应该已经在屏幕上看不到了
 	int maxCount = [self repair];
@@ -255,8 +302,27 @@
 	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * maxCount + 0.03f],
                         [CCCallFunc actionWithTarget:self selector:@selector(afterAllMoveDone)],
                         nil]];
-    
 	return YES;
+}
+
+-(void) erase:(NSMutableArray *)a1
+{
+    //如果没有需要移除的则之间返回
+	NSArray *objects = [[a1 objectEnumerator] allObjects];
+    // 消除
+	int count = [objects count];
+	for (int i=0; i<count; i++) {
+        
+		Germ *germ = [objects objectAtIndex:i];
+        germ.value = 0;
+		if (germ.sprite) {
+            //设置被消除的孢子的消除效果
+			CCAction *action = [CCSequence actions:[CCFadeOut actionWithDuration:0.3f],
+								[CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
+								nil];
+			[germ.sprite runAction: action];
+		}
+	}
 }
 
 -(void) removeSprite: (id) sender{
@@ -309,7 +375,7 @@
             //如果某个孢子下面有被消除的孢子，那么它应该移动到那个孢子的位置去
             Germ *destTile = [self objectAtX:columnIndex Y:y-count];
             CCSequence *action = [CCSequence actions:
-                                  [CCDelayTime actionWithDuration: 0.03f],
+                                  [CCDelayTime actionWithDuration: kFallDownDelayTime],
                                   [CCMoveBy actionWithDuration:kMoveTileTime*count position:ccp(0,-kTileSize*count)],
                                   nil];
             [germ.sprite runAction: action];
@@ -329,15 +395,23 @@
 		sprite.position = ccp(kStartX + columnIndex * kTileSize + kTileSize/2, kStartY + (kBoxHeight + i) * kTileSize + kTileSize/2);
 		
         CCSequence *action = [CCSequence actions:
-                              [CCDelayTime actionWithDuration: 0.03f],
+                              [CCDelayTime actionWithDuration: kFallDownDelayTime],
 							  [CCMoveBy actionWithDuration:kMoveTileTime*count position:ccp(0,-kTileSize*count)],
+                              [CCCallFuncN actionWithTarget:self selector:@selector(addSpriteToLayer:)],
 							  nil];
-		[holder addChild: sprite];
-		[sprite runAction: action];
+		[sprite setVisible:NO];
+        [holder addChild: sprite];
+        
+        [sprite runAction: action];
 		destGerm.value = value;
 		destGerm.sprite = sprite;
 	}
 	return count;
+}
+
+-(void) addSpriteToLayer:(id) sender
+{
+    [sender setVisible:YES];
 }
 
 // 当前情况下是否还有解
@@ -526,7 +600,7 @@
             destGerm.sprite = sprite;
         }
 	}
-
+    
     
 }
 

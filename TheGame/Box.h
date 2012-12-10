@@ -14,9 +14,8 @@
 	id first, second;
 	CGSize size;
 	NSMutableArray *content;
-	NSMutableSet *readyToRemove;
-    NSMutableArray *readyToCombineVerti;
-    NSMutableArray *readyToCombineHori;
+	NSMutableArray *readyToRemoveHori;
+    NSMutableArray *readyToRemoveVerti;
 	BOOL lock;
 	CCLayer *holder;
 	Germ *boarderGerm;

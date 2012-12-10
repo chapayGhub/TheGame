@@ -435,6 +435,7 @@
 		C6B9B7B61674513A00D19F8C /* PlayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayLayer.m; sourceTree = "<group>"; };
 		C6B9B7B8167458EF00D19F8C /* GameContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameContext.h; sourceTree = "<group>"; };
 		C6B9B7B9167458EF00D19F8C /* GameContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameContext.m; sourceTree = "<group>"; };
+		C6FEE91816766EA700888B02 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -890,6 +891,7 @@
 			isa = PBXGroup;
 			children = (
 				C688479216719453008633AD /* Constants.h */,
+				C6FEE91816766EA700888B02 /* Definitions.h */,
 			);
 			name = common;
 			sourceTree = "<group>";

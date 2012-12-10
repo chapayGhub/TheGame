@@ -10,18 +10,23 @@
 
 @implementation Germ
 @synthesize x, y, value, sprite,type;
-
+@synthesize centerFlag;
 
 -(id) initWithX: (int) posX Y: (int) posY{
 	self = [super init];
 	x = posX;
 	y = posY;
     self.type = NormalGerm;
+    centerFlag = NO;
 	return self;
 }
 
 
 -(BOOL) isNeighbor: (Germ *)otherGerm{
+    if(otherGerm==nil)
+    {
+        return NO;
+    }
 	return
 	(x == otherGerm.x && abs(y - otherGerm.y)==1)
 	||

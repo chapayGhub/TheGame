@@ -18,6 +18,7 @@
 -(void) onEnterTransitionDidFinish{
 	[box fill];
     [box check];
+    [box unlock];
 }
 
 - (void)ccTouchesBegan:(NSSet*)touches withEvent:(UIEvent*)event{
