@@ -14,4 +14,5 @@
 
 -(void) changeWithTileA: (Germ *) a TileB: (Germ *) b sel : (SEL) sel;
 -(void) check: (id) sender data: (id) data;
+-(void) hint;
 @end

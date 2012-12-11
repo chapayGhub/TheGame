@@ -21,7 +21,8 @@
 /**box中每个格子的大小*/
 #define kTileSize 43.0f
 
-#define kMoveTileTime 0.2f// 孢子移动的时间
+#define kMoveTileTime 0.2f// 孢子交换的移动的时间
+#define kTileDropTime 0.1f// 新孢子产生下落的时间
 #define kShineFreq 0.3f//孢子被选中闪烁的速度
 #define kConvergeTime 0.2f//孢子合并的时间
 #define kFallDownDelayTime 0.3f//孢子下落之前的延迟时间

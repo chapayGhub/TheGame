@@ -336,7 +336,9 @@
 	if([self check]){//检查补全后是否还有需要消除的
 		
 	}else {//如果没有
-		if ([self haveMore]) {//检查是否还有解，如果存在解，那么解锁继续游戏
+		CGPoint p = [self haveMore];
+        
+        if (p.x!=-1||p.y!=-1) {//检查是否还有解，如果存在解，那么解锁继续游戏
 			[self unlock];
 		}else {
             //如果已经无解，那么重新初始化游戏
@@ -377,7 +379,7 @@
             Germ *destTile = [self objectAtX:columnIndex Y:y-count];
             CCSequence *action = [CCSequence actions:
                                   [CCDelayTime actionWithDuration: kFallDownDelayTime],
-                                  [CCMoveBy actionWithDuration:kMoveTileTime*count position:ccp(0,-kTileSize*count)],
+                                  [CCMoveBy actionWithDuration:kTileDropTime*count position:ccp(0,-kTileSize*count)],
                                   nil];
             [germ.sprite runAction: action];
             destTile.value = germ.value;
@@ -397,7 +399,7 @@
 		
         CCSequence *action = [CCSequence actions:
                               [CCDelayTime actionWithDuration: kFallDownDelayTime],
-							  [CCMoveBy actionWithDuration:kMoveTileTime*count position:ccp(0,-kTileSize*count)],
+							  [CCMoveBy actionWithDuration:kTileDropTime*count position:ccp(0,-kTileSize*count)],
                               [CCCallFuncN actionWithTarget:self selector:@selector(addSpriteToLayer:)],
 							  nil];
 		[sprite setVisible:NO];
@@ -416,7 +418,7 @@
 }
 
 // 当前情况下是否还有解
--(BOOL) haveMore{
+-(CGPoint) haveMore{
 	for (int y=0; y<size.height; y++) {
 		for (int x=0; x<size.width; x++) {
 			Germ *aGerm = [self objectAtX:x Y:y];
@@ -428,39 +430,39 @@
 					{
 						Germ *cGerm = [self objectAtX:x Y:y+2];
 						if (cGerm.value == aGerm.value) {
-							return YES;
+							return ccp(x,y+2);
 						}
 					}
 					{
                         Germ *cGerm = [self objectAtX:x-1 Y:y+1];
                         if (cGerm.value == aGerm.value) {
-                            return YES;
+                            return ccp(x-1,y+1);
                         }
 					}
 					{
                         Germ *cGerm = [self objectAtX:x+1 Y:y+1];
                         if (cGerm.value == aGerm.value) {
-                            return YES;
+                            return ccp(x+1,y+1);
                         }
 					}
 					
 					{
 						Germ *cGerm = [self objectAtX:x Y:y-3];
 						if (cGerm.value == aGerm.value) {
-							return YES;
+							return ccp(x,y-3);
 						}
 					}
 					
 					{
                         Germ *cGerm = [self objectAtX:x-1 Y:y-2];
                         if (cGerm.value == aGerm.value) {
-                            return YES;
+                           return ccp(x-1,y-2);
                         }
 					}
 					{
                         Germ *cGerm = [self objectAtX:x+1 Y:y-2];
                         if (cGerm.value == aGerm.value) {
-                            return YES;
+                            return ccp(x+1,y-2);
                         }
                     }
                 }
@@ -472,25 +474,25 @@
 					{
 						Germ *cTile = [self objectAtX:x Y:y+1];
 						if (cTile.value == aGerm.value) {
-							return YES;
+							return ccp(x,y+1);
 						}
 					}
 					{
 						Germ *cTile = [self objectAtX:x Y:y-3];
 						if (cTile.value == aGerm.value) {
-							return YES;
+							return ccp(x,y-3);
 						}
 					}
 					{
 						Germ *cTile = [self objectAtX:x-1 Y:y-1];
 						if (cTile.value == aGerm.value) {
-							return YES;
+							return ccp(x-1,y-1);
 						}
 					}
 					{
 						Germ *cTile = [self objectAtX:x+1 Y:y-1];
 						if (cTile.value == aGerm.value) {
-							return YES;
+							return ccp(x+1,y-1);
 						}
 					}
 				}
@@ -502,40 +504,40 @@
 					{
 						Germ *cTile = [self objectAtX:x-2 Y:y];
 						if (cTile.value == aGerm.value) {
-							return YES;
+							return ccp(x-2,y);
 						}
 					}
 					
 					{
 						Germ *cGerm = [self objectAtX:x-1 Y:y-1];
 						if (cGerm.value == aGerm.value) {
-							return YES;
+							return ccp(x-1,y-1);
                         }
                     }
 					{
 						Germ *cGerm= [self objectAtX:x-1 Y:y+1];
 						if (cGerm.value == aGerm.value) {
-                            return YES;
+                            return ccp(x-1,y+1);
 						}
 					}
 					
 					{
 						Germ *cGerm = [self objectAtX:x+3 Y:y];
 						if (cGerm.value == aGerm.value) {
-							return YES;
+							return ccp(x+3,y);
 						}
 					}
 					
 					{
 						Germ *cGerm= [self objectAtX:x+2 Y:y-1];
 						if (cGerm.value == aGerm.value) {
-							return YES;
+							return ccp(x+2,y-1);
 						}
 					}
 					{
 						Germ *cGerm= [self objectAtX:x+2 Y:y+1];
 						if (cGerm.value == aGerm.value) {
-							return YES;
+							return ccp(x+2,y+1);
 						}
 					}
 					
@@ -549,14 +551,14 @@
 					{
 						Germ *cGerm = [self objectAtX:x+3 Y:y];
 						if (cGerm.value == aGerm.value) {
-							return YES;
+							return ccp(x+3,y);
 						}
 					}
 					
 					{
 						Germ *cGerm = [self objectAtX:x-1 Y:y];
 						if (cGerm.value == aGerm.value) {
-							return YES;
+							return ccp(x-1,y);
 						}
 					}
 					
@@ -564,20 +566,20 @@
 					{
 						Germ *cGerm = [self objectAtX:x+1 Y:y-1];
 						if (cGerm.value == aGerm.value) {
-							return YES;
+							return ccp(x+1,y-1);
 						}
 					}
 					{
 						Germ *cGerm = [self objectAtX:x+1 Y:y+1];
 						if (cGerm.value == aGerm.value) {
-							return YES;
+							return ccp(x+1,y+1);
 						}
 					}
 				}
 			}
 		}
 	}
-	return NO;
+	return ccp(-1,-1);
 }
 
 -(void)fill{

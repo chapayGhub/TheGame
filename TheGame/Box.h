@@ -33,6 +33,6 @@
 -(void) unlock;
 -(void) removeSprite: (id) sender;
 -(void) afterAllMoveDone;
--(BOOL) haveMore;
+-(CGPoint) haveMore;
 -(int) repair;
 @end

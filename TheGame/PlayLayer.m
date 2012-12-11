@@ -22,6 +22,15 @@
     [box unlock];
 }
 
+-(void) hint
+{
+    CGPoint point = [box haveMore];
+    Germ *tile = [box objectAtX:point.x Y:point.y];
+    selected = tile;
+    [self afterOneShineTrun:tile.sprite];
+}
+
+
 - (void)ccTouchesBegan:(NSSet*)touches withEvent:(UIEvent*)event{
 	if ([box lock]) {
 		return;
@@ -31,9 +40,15 @@
 	CGPoint location = [touch locationInView: touch.view];
 	location = [[CCDirector sharedDirector] convertToGL: location];
 	
-	int x = (location.x -kStartX) / kTileSize;
-	int y = (location.y -kStartY) / kTileSize;
-
+    int difX = location.x -kStartX;
+    int difY = location.y -kStartY;
+    if(difX<0 || difY<0)
+    {
+        return;
+    }
+	int x = difX / kTileSize;
+	int y = difY / kTileSize;
+    
 	
 	//如果两次选到的是同一个 直接返回
 	if (selected && selected.x ==x && selected.y == y) {
