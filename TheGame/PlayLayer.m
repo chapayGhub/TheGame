@@ -44,6 +44,7 @@
     int difY = location.y -kStartY;
     if(difX<0 || difY<0)
     {
+        [self hint];
         return;
     }
 	int x = difX / kTileSize;
