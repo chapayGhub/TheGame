@@ -300,7 +300,7 @@
 	int maxCount = [self repair];
 	
     //等修复完成以后，执行afterAllMoveDone的方法
-	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * maxCount + 0.03f],
+	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * maxCount + 0.5f],
                         [CCCallFunc actionWithTarget:self selector:@selector(afterAllMoveDone)],
                         nil]];
 	return YES;
