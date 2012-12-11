@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/SceneManager.m"
-         timestampString = "376277055.967983"
+         timestampString = "376901080.685937"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "9"
-         endingLineNumber = "9">
+         startingLineNumber = "11"
+         endingLineNumber = "11">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -259,6 +259,32 @@
          startingLineNumber = "162"
          endingLineNumber = "162"
          landmarkName = "-check"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TheGame/SceneManager.m"
+         timestampString = "376901307.630531"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "19"
+         endingLineNumber = "19"
+         landmarkName = "+getBanner"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TheGame/SceneManager.m"
+         timestampString = "376901104.839416"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "17"
+         endingLineNumber = "17"
+         landmarkName = "+getBanner"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
