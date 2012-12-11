@@ -27,7 +27,7 @@
 #define kConvergeTime 0.2f//孢子合并的时间
 #define kFallDownDelayTime 0.3f//孢子下落之前的延迟时间
 
-#define kKindCount 5
+#define kKindCount 4
 
 
 
