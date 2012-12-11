@@ -12,15 +12,18 @@
 @implementation SceneManager
 static MobiSageAdBanner* banner;
 
-+(MobiSageAdBanner*) getBanner
-{
-    if(banner == nil)
-    {
-        banner = [[MobiSageAdBanner alloc] initWithAdSize:Ad_320X50];
-        [banner setInterval:Ad_Refresh_15];
-        [banner setFrame:CGRectMake(0,430, 320, 50)];
-    }
-    return banner;
++(void) goMainMenu{
+    CCDirector *director = [CCDirector sharedDirector];
+    CCScene *newScene = [CCScene node];
+    
+    [newScene addChild:[MainMenuLayer node] z:0];
+    
+    [SceneManager addAdBanner];
+    if ([director runningScene]) {
+        [director replaceScene:[CCTransitionCrossFade transitionWithDuration: 0.5f scene: newScene]];
+	}else {
+		[director runWithScene:newScene];
+	}
 }
 
 +(void) goPlay{
@@ -30,10 +33,10 @@ static MobiSageAdBanner* banner;
     [newScene addChild:[PlayBackgroundLayer node] z:0];
     [newScene addChild:[PlayLayer node] z:0];
     
-    [SceneManager addAdBanner];
+    //[SceneManager addAdBanner];
     
     if ([director runningScene]) {
-        [director replaceScene:[CCTransitionPageTurn transitionWithDuration: 0.5f scene: newScene]];
+        [director replaceScene:[CCTransitionPageTurn transitionWithDuration: 0.3f scene: newScene]];
 	}else {
 		[director runWithScene:newScene];
 	}
@@ -49,5 +52,17 @@ static MobiSageAdBanner* banner;
 +(void) removeAdBanner
 {
     [[SceneManager getBanner] removeFromSuperview];
+}
+
+
++(MobiSageAdBanner*) getBanner
+{
+    if(banner == nil)
+    {
+        banner = [[MobiSageAdBanner alloc] initWithAdSize:Ad_320X50];
+        [banner setInterval:Ad_Refresh_15];
+        [banner setFrame:CGRectMake(0,430, 320, 50)];
+    }
+    return banner;
 }
 @end

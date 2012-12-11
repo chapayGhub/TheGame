@@ -20,6 +20,7 @@
 @synthesize holder;
 @synthesize size;
 @synthesize lock;
+@synthesize boarderGerm;
 
 //初始化函数
 -(id) initWithSize: (CGSize) aSize factor: (int) aFacotr{

@@ -185,6 +185,7 @@
 		C6B9B7B4167450E500D19F8C /* PlayBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B9B7B3167450E500D19F8C /* PlayBackgroundLayer.m */; };
 		C6B9B7B71674513A00D19F8C /* PlayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B9B7B61674513A00D19F8C /* PlayLayer.m */; };
 		C6B9B7BA167458EF00D19F8C /* GameContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B9B7B9167458EF00D19F8C /* GameContext.m */; };
+		C6ECE97E1677951400B4B468 /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6ECE97D1677951400B4B468 /* MainMenuLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -546,6 +547,8 @@
 		C6B9B7B61674513A00D19F8C /* PlayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayLayer.m; sourceTree = "<group>"; };
 		C6B9B7B8167458EF00D19F8C /* GameContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameContext.h; sourceTree = "<group>"; };
 		C6B9B7B9167458EF00D19F8C /* GameContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameContext.m; sourceTree = "<group>"; };
+		C6ECE97C1677951400B4B468 /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLayer.h; sourceTree = "<group>"; };
+		C6ECE97D1677951400B4B468 /* MainMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuLayer.m; sourceTree = "<group>"; };
 		C6FEE91816766EA700888B02 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1000,6 +1003,8 @@
 		C68B07A0166D82E3005306DD /* layers */ = {
 			isa = PBXGroup;
 			children = (
+				C6ECE97C1677951400B4B468 /* MainMenuLayer.h */,
+				C6ECE97D1677951400B4B468 /* MainMenuLayer.m */,
 				C6B9B7B2167450E500D19F8C /* PlayBackgroundLayer.h */,
 				C6B9B7B3167450E500D19F8C /* PlayBackgroundLayer.m */,
 				C6B9B7B51674513A00D19F8C /* PlayLayer.h */,
@@ -1572,6 +1577,7 @@
 				C68DC6EA1677091F00F5412F /* MSTencentWeiboPackage.m in Sources */,
 				C68DC6EB1677091F00F5412F /* MSTencentPicWeibo.m in Sources */,
 				C68DC6EC1677091F00F5412F /* MSTencentWeiboAdd.m in Sources */,
+				C6ECE97E1677951400B4B468 /* MainMenuLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

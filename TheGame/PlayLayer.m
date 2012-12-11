@@ -5,6 +5,7 @@
 @end
 
 @implementation PlayLayer
+@synthesize context = _context;
 
 -(id) init{
 	self = [super init];
@@ -32,6 +33,7 @@
 	
 	int x = (location.x -kStartX) / kTileSize;
 	int y = (location.y -kStartY) / kTileSize;
+
 	
 	//如果两次选到的是同一个 直接返回
 	if (selected && selected.x ==x && selected.y == y) {
@@ -39,7 +41,7 @@
 	}
 	
 	Germ *tile = [box objectAtX:x Y:y];
-	
+
 	if (selected && [selected isNeighbor:tile]) {
 		[box setLock:YES];
 		[self changeWithTileA: selected TileB: tile sel: @selector(check:data:)];

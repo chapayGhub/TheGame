@@ -23,6 +23,7 @@
 @property(nonatomic, retain) CCLayer *holder;
 @property(nonatomic, readonly) CGSize size;
 @property(nonatomic) BOOL lock;
+@property(nonatomic,readonly) Germ *boarderGerm;
 
 -(id) initWithSize: (CGSize) size factor: (int) facotr;
 -(Germ *) objectAtX: (int) posX Y: (int) posY;
