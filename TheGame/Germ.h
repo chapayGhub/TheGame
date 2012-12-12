@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) int x, y;
 @property (nonatomic) GermType type;
 @property (nonatomic) int value;
+@property (nonatomic) bool moving;
 @property (nonatomic) bool centerFlag,erased;
 @property (nonatomic, retain) CCSprite *sprite;
 

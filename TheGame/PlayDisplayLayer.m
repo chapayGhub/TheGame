@@ -35,10 +35,11 @@
 
 
 -(id)init{
-    if([super init])
+    self = [super init];
+    if(self)
     {
         paused=NO;
-        timeRemain = 90;
+        timeRemain = 1000;
         CGSize winSize = [CCDirector sharedDirector].winSize;
         // 设置倒计时的位置
         clockLabel = [CCLabelTTF labelWithString:[self generateString] fontName:@"Arial" fontSize:15];
@@ -84,6 +85,7 @@
     {
         return;
     }
+    
     score=value;
     [scoreLabel setString:[NSString stringWithFormat:@"%d",score]];
     
@@ -94,6 +96,7 @@
         for(int j =0;j<[array count];j++)
         {
             Germ *g= [array objectAtIndex:j];
+            
             if([g erased])
             {
                 [g setErased:NO];
@@ -107,8 +110,9 @@
                 [self addChild:tempLabel];
                 [tempLabel runAction:action];
             }
-            
         }
+        
+        
     }
 }
 

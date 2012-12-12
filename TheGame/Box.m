@@ -123,6 +123,12 @@
             center = t;
             [t setCenterFlag:NO];
         }
+        //如果其中已经包含一个超级孢子 那么直接消除掉
+        if(t.type==SuperGerm)
+        {
+            [self erase:array];
+            return;
+        }
     }
     
     if(center == nil)
@@ -317,7 +323,7 @@
         iterate++;
         last = germ;
     }
-    
+
     // 修复，此时被消除的孢子应该已经在屏幕上看不到了
 	int maxCount = [self repair];
 	
@@ -332,12 +338,8 @@
 {
     [self addScore:[a1 count]];
     //如果没有需要移除的则之间返回
-	NSArray *objects = [[a1 objectEnumerator] allObjects];
-    // 消除
-	int count = [objects count];
-	for (int i=0; i<count; i++) {
-        
-		Germ *germ = [objects objectAtIndex:i];
+	for (int i=0; i<[a1 count]; i++) {
+		Germ *germ = [a1 objectAtIndex:i];
         germ.value = 0;
 		if (germ.sprite) {
             //设置被消除的孢子的消除效果
@@ -346,6 +348,24 @@
 								nil];
 			[germ.sprite runAction: action];
             germ.erased = YES;
+
+            // 处理特殊孢子的情况
+            // 如果是超级孢子，那把这个孢子周围3*3的孢子都干掉
+            if(germ.type == SuperGerm)
+            {
+                germ.type = NormalGerm;
+                NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:9];
+                for(int i=-1;i<=1;i++)
+                {
+                    for(int j=-1;j<=1;j++)
+                    {
+                        [array addObject:[self objectAtX:(germ.x+i) Y:(germ.y+j)]];
+                    }
+                }
+                [self erase:array];
+                [array release];
+            }
+            
 		}
 	}
 }
@@ -363,16 +383,17 @@
 		CGPoint p = [self haveMore];
         
         if (p.x!=-1||p.y!=-1) {//检查是否还有解，如果存在解，那么解锁继续游戏
-			[self unlock];
+            [self unlock];
 		}else {
             //如果已经无解，那么重新初始化游戏
             [self fill];
             [self check];
+            
 		}
 	}
 }
 
--(void) unlock{
+-(void) unlock{ // unlock的时候强制检查
 	self.lock = NO;
 }
 //修复
@@ -401,6 +422,7 @@
         }else{
             //如果某个孢子下面有被消除的孢子，那么它应该移动到那个孢子的位置去
             Germ *destGerm = [self objectAtX:columnIndex Y:y-count];
+            destGerm.moving = YES;
             CCSequence *action = [CCSequence actions:
                                   [CCDelayTime actionWithDuration: kFallDownDelayTime],
                                   [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
@@ -409,6 +431,8 @@
             [germ.sprite runAction: action];
             destGerm.value = germ.value;
             destGerm.sprite = germ.sprite;
+            destGerm.type = germ.type;
+            germ.type=NormalGerm;
         }
 	}
     
@@ -422,7 +446,7 @@
 		CCSprite *sprite = [CCSprite spriteWithFile:name];
         sprite.scale = 0.5;
 		sprite.position = ccp(kStartX + columnIndex * kTileSize + kTileSize/2, kStartY + (kBoxHeight + i) * kTileSize + kTileSize/2);
-		
+		destGerm.moving = YES;
         CCSequence *action = [CCSequence actions:
                               [CCDelayTime actionWithDuration: kFallDownDelayTime],
 							  [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
@@ -434,6 +458,7 @@
         [sprite runAction: action];
 		destGerm.value = value;
 		destGerm.sprite = sprite;
+        destGerm.type = NormalGerm;
 	}
 	return count;
 }
@@ -445,6 +470,7 @@
     
     [sender setPosition: [germ pixPosition]];
     [sender setVisible:YES];
+    germ.moving = NO;
 }
 
 // 当前情况下是否还有解

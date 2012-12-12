@@ -12,7 +12,7 @@
 @synthesize x, y, value, sprite,type;
 @synthesize centerFlag;
 @synthesize erased;
-
+@synthesize moving;
 -(id) initWithX: (int) posX Y: (int) posY{
 	self = [super init];
 	x = posX;
@@ -20,6 +20,7 @@
     self.type = NormalGerm;
     centerFlag = NO;
     erased = NO;
+    moving = NO;
 	return self;
 }
 
@@ -39,10 +40,14 @@
 -(void) trade:(Germ *)otherGerm{
     CCSprite *tempSprite = [sprite retain];
 	int tempValue = value;
-	self.sprite = otherGerm.sprite;
+	GermType tempType = type;
+    self.sprite = otherGerm.sprite;
 	self.value = otherGerm.value;
-	otherGerm.sprite = tempSprite;
+	self.type = otherGerm.type;
+    
+    otherGerm.sprite = tempSprite;
 	otherGerm.value = tempValue;
+    otherGerm.type = tempType;
 	[tempSprite release];    
 }
 
@@ -53,11 +58,28 @@
 
 -(void)transform:(GermType)atype
 {
+    if(value == 0)
+    {
+        return;
+    }
     [self setType:atype];
-    NSString *name = [NSString stringWithFormat:@"q8.png"];
-    CCSprite *asprite = [CCSprite spriteWithFile:name];
+    CCSprite* asprite = nil;
+    switch(atype)
+    {
+        case SuperGerm:
+            asprite = [CCSprite spriteWithFile:[NSString stringWithFormat:@"q%d.png",value]];
+            asprite.scale=0.5;
+            [asprite setColor: ccc3(100, 100, 100)];
+            break;
+        case PoisonousGerm:
+            asprite = [CCSprite spriteWithFile:[NSString stringWithFormat:@"q7.png"]];
+            [self setValue:7];
+            break;
+        default:
+            break;
+    }
+    
     [self setSprite:asprite];
-    [self setValue:8];
     [sprite setPosition:self.pixPosition];
 }
 @end

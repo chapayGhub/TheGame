@@ -11,6 +11,7 @@
 @synthesize stepCount=_stepCount;
 
 int lastHit;
+int clickcount;
 -(id) init{
 	self = [super init];
 	box = [[Box alloc] initWithSize:CGSizeMake(kBoxWidth,kBoxHeight) factor:6];
@@ -19,6 +20,7 @@ int lastHit;
     _stepCount=0;
     self.isTouchEnabled = YES;
     lastHit = 0;
+    clickcount=0;
 	return self;
 }
 
@@ -27,11 +29,30 @@ int lastHit;
     [box check];
     [box unlock];
     [_display startClock];
-    [self schedule:@selector(renewScoreBoard) interval:0.1]; //每0.1秒更新一次计分板状态
+    [self schedule:@selector(renewScoreBoard) interval:0.2]; //每0.1秒更新一次计分板状态
+    [self schedule:@selector(checkPosition) interval:0.5];
 }
 
+-(void) checkPosition
+{
+    NSMutableArray *content = [box content];
+    for (int i=0; i<[content count]; i++) {
+        NSMutableArray *array = [content objectAtIndex:i];
+        for(int j =0;j<[array count];j++)
+        {
+            Germ *g= [array objectAtIndex:j];
+            if(!g.moving)
+            {
+                [g.sprite setPosition:g.pixPosition];
+            }
+        }
+    }
+    
+}
 -(void) renewScoreBoard{
+    
     [[self display] setScore:[box score] Content:[box content]];
+    
     int hit = [box hitInARoll];
     if(hit == lastHit||hit<2)
     {
@@ -41,6 +62,9 @@ int lastHit;
         lastHit = hit;
         [[self display] showMultiHit:hit];
     }
+    
+    
+    
 }
 
 -(void) hint
@@ -78,11 +102,21 @@ int lastHit;
 	
 	//如果两次选到的是同一个 直接返回
 	if (selected && selected.x ==x && selected.y == y) {
+        clickcount++;
+        if(clickcount==2)
+        {
+            clickcount=0;
+            [self removeChild:selected.sprite cleanup:YES];
+            [selected transform:SuperGerm];
+            [self addChild:selected.sprite];
+            [box check];
+        }
 		return;
 	}
-	
+	clickcount=0;
+    
 	Germ *tile = [box objectAtX:x Y:y];
-
+    
 	if (selected && [selected isNeighbor:tile]) {
 		[box setLock:YES];
 		[self changeWithTileA: selected TileB: tile sel: @selector(check:data:)];
@@ -106,10 +140,15 @@ int lastHit;
 						 [CCCallFuncND actionWithTarget:self selector:sel data: b],
 						 nil
 						 ];
-	[a.sprite runAction:actionA];
+	//a.moving = YES;
+    //b.moving = YES;
+    [a.sprite runAction:actionA];
 	[b.sprite runAction:actionB];
-	
+    
+    
 	[a trade:b];
+    a.moving=NO;
+    b.moving=NO;
 }
 
 -(void) backCheck: (id) sender data: (id) data{
@@ -118,7 +157,6 @@ int lastHit;
 		return;
 	}
 	firstOne = nil;
-	[box setLock:NO];
 }
 // 检查转换是否有效，如果无效则换回来
 -(void) check: (id) sender data: (id) data{
@@ -128,15 +166,15 @@ int lastHit;
 	}
 	BOOL result = [box check];
 	if (result) {
-        
+        [self nextStep];
 		//[box setLock:NO];
 	}else {
-		[self changeWithTileA:(Germ *)data TileB:firstOne sel:@selector(backCheck:data:)]; 
+		[self changeWithTileA:(Germ *)data TileB:firstOne sel:@selector(backCheck:data:)];
 		[self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:kMoveTileTime + 0.03f],
 						 [CCCallFunc actionWithTarget:box selector:@selector(unlock)],
 						 nil]];
 	}
-
+    
 	firstOne = nil;
 }
 
@@ -145,18 +183,19 @@ int lastHit;
     [box setLock:YES];
     
     NSMutableArray *content = [box content];
-    for (int i=0; i<[content count]; i++) {
+    for (int i=[content count]-1; i>=0; i--) {
         NSMutableArray *array = [content objectAtIndex:i];
         for(int j =0;j<[array count];j++)
         {
             Germ *g= [array objectAtIndex:j];
             if(g.type == BombGerm || g.type ==PoisonousGerm)
             {
-                if(i==0)
+                if(i==6)
                 {
                     // 游戏结束
                 }else{
-                    [self changeWithTileA:(Germ *)g TileB:[box objectAtX:j Y:(i-1)] sel:@selector(backCheck:data:)];
+                    [self changeWithTileA:(Germ *)g TileB:[box objectAtX:j Y:(i+1)] sel:@selector(backCheck:data:)];
+                    [box check];
                 }
             }
             
