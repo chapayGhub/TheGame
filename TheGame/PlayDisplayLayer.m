@@ -10,7 +10,7 @@
 #import "Germ.h"
 
 @interface PlayDisplayLayer(){
-
+    
     CCLabelTTF* clockLabel;
     CCLabelTTF* scoreLabel;
     CCLabelTTF* passScore;
@@ -39,7 +39,7 @@
     {
         paused=NO;
         timeRemain = 90;
-         CGSize winSize = [CCDirector sharedDirector].winSize;
+        CGSize winSize = [CCDirector sharedDirector].winSize;
         // 设置倒计时的位置
         clockLabel = [CCLabelTTF labelWithString:[self generateString] fontName:@"Arial" fontSize:15];
         clockLabel.position = ccp(winSize.width*0.33, winSize.height*0.92);
@@ -87,7 +87,7 @@
     score=value;
     [scoreLabel setString:[NSString stringWithFormat:@"%d",score]];
     
-
+    
     // 动画效果
     for (int i=0; i<[content count]; i++) {
         NSMutableArray *array = [content objectAtIndex:i];
@@ -100,10 +100,10 @@
                 CCAction *action = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
                                     [CCCallFuncN actionWithTarget: self selector:@selector(removeLabel:)],
                                     nil];
-                CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[self generateString] fontName:@"Arial" fontSize:15];
+                CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"+%d",15] fontName:@"Arial" fontSize:15];
                 tempLabel.color=ccc3(200, 50, 50);
                 tempLabel.position=g.pixPosition;
-                [tempLabel setString:[NSString stringWithFormat:@"+%d",15]];
+                
                 [self addChild:tempLabel];
                 [tempLabel runAction:action];
             }
@@ -122,6 +122,18 @@
     int minutes = timeRemain/60;
     int seconds = timeRemain%60;
     return [NSString stringWithFormat:@"%d:%d",minutes,seconds];
+}
+
+-(void) showMultiHit:(int)hit{
+    CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"Arial" fontSize:30];
+    tempLabel.position = ccp(kStartX+kTileSize*kBoxWidth/2,kStartY+kTileSize*kBoxHeight/2);
+    tempLabel.color = ccc3(0,0,0);
+    [self addChild:tempLabel];
+    
+    CCAction *action = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
+                        [CCCallFuncN actionWithTarget: self selector:@selector(removeLabel:)],
+                        nil];
+    [tempLabel runAction:action];
 }
 
 @end

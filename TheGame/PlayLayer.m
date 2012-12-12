@@ -2,17 +2,20 @@
 
 @interface PlayLayer()
 -(void)afterOneShineTrun: (id) node;
+
 @end
 
 @implementation PlayLayer
 @synthesize context = _context;
 @synthesize display=_display;
+int lastHit;
 -(id) init{
 	self = [super init];
 	box = [[Box alloc] initWithSize:CGSizeMake(kBoxWidth,kBoxHeight) factor:6];
 	box.holder = self;
 	box.lock = YES;
     self.isTouchEnabled = YES;
+    lastHit = 0;
 	return self;
 }
 
@@ -26,6 +29,15 @@
 
 -(void) renewScoreBoard{
     [[self display] setScore:[box score] Content:[box content]];
+    int hit = [box hitInARoll];
+    if(hit == lastHit||hit<2)
+    {
+        lastHit = hit;
+        return;
+    }else{
+        lastHit = hit;
+        [[self display] showMultiHit:hit];
+    }
 }
 
 -(void) hint
