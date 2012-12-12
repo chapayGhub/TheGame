@@ -29,9 +29,13 @@ static MobiSageAdBanner* banner;
 +(void) goPlay{
     CCDirector *director = [CCDirector sharedDirector];
     CCScene *newScene = [CCScene node];
+    PlayDisplayLayer *display = [PlayDisplayLayer node];
+    PlayLayer *play = [PlayLayer node];
+    [play setDisplay:display];
     
     [newScene addChild:[PlayBackgroundLayer node] z:0];
-    [newScene addChild:[PlayLayer node] z:0];
+    [newScene addChild:display z:2];
+    [newScene addChild:play z:1];
     
     //[SceneManager addAdBanner];
     
@@ -44,7 +48,7 @@ static MobiSageAdBanner* banner;
 
 +(void) addAdBanner
 {
-     CCDirector *director = [CCDirector sharedDirector];
+    CCDirector *director = [CCDirector sharedDirector];
     [[MobiSageManager getInstance] setPublisherID:@"ea1b5c3fa4b6434fa38b2e3d689b6169"];
     [director.view addSubview:[SceneManager getBanner]];
 }

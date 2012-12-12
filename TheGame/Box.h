@@ -13,17 +13,21 @@
 @interface Box : NSObject {
 	id first, second;
 	CGSize size;
-	NSMutableArray *content;
+	
 	NSMutableArray *readyToRemoveHori;
     NSMutableArray *readyToRemoveVerti;
 	BOOL lock;
-	CCLayer *holder;
 	Germ *boarderGerm;
 }
+
 @property(nonatomic, retain) CCLayer *holder;
 @property(nonatomic, readonly) CGSize size;
 @property(nonatomic) BOOL lock;
 @property(nonatomic,readonly) Germ *boarderGerm;
+@property(nonatomic, retain) NSMutableArray *content;
+@property(atomic) int score,maxHit;
+@property(nonatomic) int hitInARoll;
+@property(nonatomic) double lastTime;
 
 -(id) initWithSize: (CGSize) size factor: (int) facotr;
 -(Germ *) objectAtX: (int) posX Y: (int) posY;
@@ -35,4 +39,5 @@
 -(void) afterAllMoveDone;
 -(CGPoint) haveMore;
 -(int) repair;
+-(void) restart;
 @end

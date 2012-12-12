@@ -30,5 +30,11 @@
 #define kKindCount 5
 
 
+/*根据num计算分数的规则*/
+// 孢子数*基础分+(孢子数-3)*奖励分
+#define basicScore 10
+#define bonusScore 20
+// 基础间隔时间，如果两次消除的时间在这个时间以内那么算一次连击
+#define leastTimeInteval 0.5f
 
 #endif

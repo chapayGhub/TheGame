@@ -13,7 +13,6 @@
 -(void) combine:(NSMutableArray *)array;
 -(void) erase:(NSMutableArray*) a1;
 -(void) addSpriteToLayer:(id) sender;
-
 @end
 
 @implementation Box
@@ -21,6 +20,11 @@
 @synthesize size;
 @synthesize lock;
 @synthesize boarderGerm;
+@synthesize score;
+@synthesize lastTime;
+@synthesize maxHit;
+@synthesize hitInARoll;
+@synthesize content;
 
 //初始化函数
 -(id) initWithSize: (CGSize) aSize factor: (int) aFacotr{
@@ -44,6 +48,11 @@
     readyToRemoveVerti = [[NSMutableArray alloc] init];
 	[readyToRemoveHori retain];
     [readyToRemoveVerti retain];
+    
+    score=0;
+    lastTime=0;
+    hitInARoll=0;
+    maxHit=0;
     
     return self;
 }
@@ -106,11 +115,12 @@
 }
 -(void) combine:(NSMutableArray *)array
 {
+    
     if(array == nil || [array count] ==0 )
     {
         return;
     }
-    
+    [self addScore:[array count]];
     Germ *center = nil;
     for(int i=0;i<[array count];i++)
     {
@@ -133,15 +143,15 @@
     for(int j =0;j<[array count];j++)
     {
         Germ *g = [array objectAtIndex:j];
-        
+        g.erased = YES;
         if([g sprite]&&g!=center)
         {
             g.value = 0;
             CCAction *action = [CCSequence actions:[CCMoveTo actionWithDuration:kConvergeTime position: centerP],
                                 [CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
-                                
                                 nil];
             [[g sprite] runAction: action];
+            
         }else if(g==center)
         {
             //把center变为超级孢子
@@ -152,6 +162,27 @@
     }
 }
 
+-(void) addScore:(int)num
+{
+    int add = num*basicScore + (num-3)*bonusScore;
+    score += add;
+    
+    double now = [[NSDate date] timeIntervalSince1970];
+    double dif = now - lastTime;
+    lastTime = now;
+    
+    if(dif<leastTimeInteval)
+    {
+        hitInARoll+=1;
+        if(hitInARoll>maxHit)
+        {
+            maxHit = hitInARoll;
+        }
+    }else{
+        hitInARoll = 1;
+    }
+   
+}
 
 //检查并修复
 -(BOOL) check{
@@ -300,7 +331,7 @@
 	int maxCount = [self repair];
 	
     //等修复完成以后，执行afterAllMoveDone的方法
-	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * maxCount + 0.5f],
+	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * maxCount + 0.6f],
                         [CCCallFunc actionWithTarget:self selector:@selector(afterAllMoveDone)],
                         nil]];
 	return YES;
@@ -308,6 +339,7 @@
 
 -(void) erase:(NSMutableArray *)a1
 {
+    [self addScore:[a1 count]];
     //如果没有需要移除的则之间返回
 	NSArray *objects = [[a1 objectEnumerator] allObjects];
     // 消除
@@ -322,6 +354,7 @@
 								[CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
 								nil];
 			[germ.sprite runAction: action];
+            germ.erased = YES;
 		}
 	}
 }
@@ -599,12 +632,25 @@
             CCSprite *sprite = [CCSprite spriteWithFile:name];
             sprite.position = ccp(kStartX + j * kTileSize + kTileSize/2, kStartY +  i * kTileSize + kTileSize/2);
             [holder addChild: sprite];
+            destGerm.centerFlag=NO;
+            destGerm.erased = NO;
             destGerm.value = value;
             destGerm.sprite = sprite;
         }
 	}
     
     
+}
+
+-(void) restart{
+    self.hitInARoll=0;
+    self.score=0;
+    self.maxHit=0;
+    self.lastTime=0;
+    
+    [self fill];
+    [self check];
+    [self unlock];
 }
 
 @end

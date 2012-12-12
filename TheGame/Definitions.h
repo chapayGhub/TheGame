@@ -9,11 +9,13 @@
 #ifndef TheGame_Definitions_h
 #define TheGame_Definitions_h
 
+//检查方向
 typedef enum {
 	OrientationHori,
 	OrientationVert,
 } Orientation;
 
+//孢子种类
 typedef enum {
     SuperGerm,
     BombGerm,

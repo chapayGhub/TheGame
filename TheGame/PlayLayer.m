@@ -6,7 +6,7 @@
 
 @implementation PlayLayer
 @synthesize context = _context;
-
+@synthesize display=_display;
 -(id) init{
 	self = [super init];
 	box = [[Box alloc] initWithSize:CGSizeMake(kBoxWidth,kBoxHeight) factor:6];
@@ -20,12 +20,22 @@
 	[box fill];
     [box check];
     [box unlock];
+    [display startClock];
+    [self schedule:@selector(renewScoreBoard) interval:0.1];
+}
+
+-(void) renewScoreBoard{
+    [[self display] setScore:[box score] Content:[box content]];
 }
 
 -(void) hint
 {
     CGPoint point = [box haveMore];
     Germ *tile = [box objectAtX:point.x Y:point.y];
+    if(selected == tile)
+    {
+        return;
+    }
     selected = tile;
     [self afterOneShineTrun:tile.sprite];
 }

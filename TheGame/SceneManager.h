@@ -3,12 +3,12 @@
 #import "CCTransition.h"
 #import "MobiSageSDK.h"
 #import "MainMenuLayer.h"
-
+#import "PlayDisplayLayer.h"
 @interface SceneManager : NSObject {
 
 }
 
 +(void) goPlay;  //跳转到游戏页面
-+(void) goMainMenu;
-+(MobiSageAdBanner*) getBanner;
++(void) goMainMenu; //跳转到主菜单
+
 @end

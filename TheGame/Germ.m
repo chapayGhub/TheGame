@@ -11,6 +11,7 @@
 @implementation Germ
 @synthesize x, y, value, sprite,type;
 @synthesize centerFlag;
+@synthesize erased;
 
 -(id) initWithX: (int) posX Y: (int) posY{
 	self = [super init];
@@ -18,6 +19,7 @@
 	y = posY;
     self.type = NormalGerm;
     centerFlag = NO;
+    erased = NO;
 	return self;
 }
 
