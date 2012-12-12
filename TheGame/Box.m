@@ -409,14 +409,15 @@
             
         }else{
             //如果某个孢子下面有被消除的孢子，那么它应该移动到那个孢子的位置去
-            Germ *destTile = [self objectAtX:columnIndex Y:y-count];
+            Germ *destGerm = [self objectAtX:columnIndex Y:y-count];
             CCSequence *action = [CCSequence actions:
                                   [CCDelayTime actionWithDuration: kFallDownDelayTime],
-                                  [CCMoveBy actionWithDuration:kTileDropTime*count position:ccp(0,-kTileSize*count)],
+                                  [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
+                                  [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:destGerm],
                                   nil];
             [germ.sprite runAction: action];
-            destTile.value = germ.value;
-            destTile.sprite = germ.sprite;
+            destGerm.value = germ.value;
+            destGerm.sprite = germ.sprite;
         }
 	}
     
@@ -432,8 +433,8 @@
 		
         CCSequence *action = [CCSequence actions:
                               [CCDelayTime actionWithDuration: kFallDownDelayTime],
-							  [CCMoveBy actionWithDuration:kTileDropTime*count position:ccp(0,-kTileSize*count)],
-                              [CCCallFuncN actionWithTarget:self selector:@selector(addSpriteToLayer:)],
+							  [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
+                              [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:destGerm],
 							  nil];
 		[sprite setVisible:NO];
         [holder addChild: sprite];
@@ -445,8 +446,11 @@
 	return count;
 }
 
--(void) addSpriteToLayer:(id) sender
+
+
+-(void) addSpriteToLayer:(id) sender germ:(Germ *) germ
 {
+    [sender setPosition: [germ pixPosition]];
     [sender setVisible:YES];
 }
 
