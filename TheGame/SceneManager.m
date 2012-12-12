@@ -37,7 +37,7 @@ static MobiSageAdBanner* banner;
     [newScene addChild:display z:2];
     [newScene addChild:play z:1];
     
-    //[SceneManager addAdBanner];
+    [SceneManager addAdBanner];
     
     if ([director runningScene]) {
         [director replaceScene:[CCTransitionPageTurn transitionWithDuration: 0.3f scene: newScene]];

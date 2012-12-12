@@ -133,9 +133,12 @@
     tempLabel.color = ccc3(0,0,0);
     [self addChild:tempLabel];
     
-    CCAction *action = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
+    CCAction *action = [CCSequence actions:[CCSpawn actions:
+                                            [CCMoveBy actionWithDuration:0.5f position:ccp(0,20)],
+                                            [CCScaleBy actionWithDuration:0.5f scale:1.3],nil],
                         [CCCallFuncN actionWithTarget: self selector:@selector(removeLabel:)],
                         nil];
+    
     [tempLabel runAction:action];
 }
 

@@ -412,7 +412,6 @@
                                   [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
                                   [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:destGerm],
                                   nil];
-            [self setLock:YES];
             [germ.sprite runAction: action];
             destGerm.value = germ.value;
             destGerm.sprite = germ.sprite;
@@ -435,7 +434,6 @@
 							  [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
                               [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:destGerm],
 							  nil];
-        [self setLock:YES];
 		[sprite setVisible:NO];
         [holder addChild: sprite];
         
@@ -450,7 +448,7 @@
 
 -(void) addSpriteToLayer:(id) sender germ:(Germ *) germ
 {
-    [self setLock:NO];
+    
     [sender setPosition: [germ pixPosition]];
     [sender setVisible:YES];
 }

@@ -22,7 +22,7 @@
 
 @property(nonatomic, retain) CCLayer *holder;
 @property(nonatomic, readonly) CGSize size;
-@property(nonatomic) BOOL lock;
+@property(atomic) BOOL lock;
 @property(nonatomic,readonly) Germ *boarderGerm;
 @property(nonatomic, retain) NSMutableArray *content;
 @property(atomic) int score,maxHit;

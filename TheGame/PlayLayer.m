@@ -125,7 +125,7 @@ int lastHit;
 	}
 	BOOL result = [box check];
 	if (result) {
-		[box setLock:NO];	
+		//[box setLock:NO];
 	}else {
 		[self changeWithTileA:(Germ *)data TileB:firstOne sel:@selector(backCheck:data:)]; 
 		[self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:kMoveTileTime + 0.03f],
