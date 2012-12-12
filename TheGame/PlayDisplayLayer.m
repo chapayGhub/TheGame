@@ -125,8 +125,11 @@
 }
 
 -(void) showMultiHit:(int)hit{
+    int randomx = arc4random()%90-45;
+    int randomy = arc4random()%90-45;
+    
     CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"Arial" fontSize:30];
-    tempLabel.position = ccp(kStartX+kTileSize*kBoxWidth/2,kStartY+kTileSize*kBoxHeight/2);
+    tempLabel.position = ccp(kStartX+kTileSize*kBoxWidth/2+randomx, kStartY+kTileSize*kBoxHeight/2+randomy);
     tempLabel.color = ccc3(0,0,0);
     [self addChild:tempLabel];
     

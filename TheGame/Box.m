@@ -324,9 +324,6 @@
         last = germ;
     }
     
-    //[readyToRemoveHori removeAllObjects];
-    //[readyToRemoveVerti removeAllObjects];
-    
     // 修复，此时被消除的孢子应该已经在屏幕上看不到了
 	int maxCount = [self repair];
 	
@@ -415,6 +412,7 @@
                                   [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
                                   [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:destGerm],
                                   nil];
+            [self setLock:YES];
             [germ.sprite runAction: action];
             destGerm.value = germ.value;
             destGerm.sprite = germ.sprite;
@@ -429,6 +427,7 @@
 		Germ *destGerm = [self objectAtX:columnIndex Y:kBoxHeight-count+i];
 		NSString *name = [NSString stringWithFormat:@"q%d.png",value];
 		CCSprite *sprite = [CCSprite spriteWithFile:name];
+        sprite.scale = 0.5;
 		sprite.position = ccp(kStartX + columnIndex * kTileSize + kTileSize/2, kStartY + (kBoxHeight + i) * kTileSize + kTileSize/2);
 		
         CCSequence *action = [CCSequence actions:
@@ -436,6 +435,7 @@
 							  [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
                               [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:destGerm],
 							  nil];
+        [self setLock:YES];
 		[sprite setVisible:NO];
         [holder addChild: sprite];
         
@@ -450,6 +450,7 @@
 
 -(void) addSpriteToLayer:(id) sender germ:(Germ *) germ
 {
+    [self setLock:NO];
     [sender setPosition: [germ pixPosition]];
     [sender setVisible:YES];
 }
@@ -632,8 +633,10 @@
             {
                 [holder removeChild:destGerm.sprite cleanup:YES];
             }
-            NSString *name = [NSString stringWithFormat:@"q%d.png",value];
+            NSString *name = [NSString stringWithFormat:@"q%d.png",value]
+            ;
             CCSprite *sprite = [CCSprite spriteWithFile:name];
+            sprite.scale = 0.5;
             sprite.position = ccp(kStartX + j * kTileSize + kTileSize/2, kStartY +  i * kTileSize + kTileSize/2);
             [holder addChild: sprite];
             destGerm.centerFlag=NO;
