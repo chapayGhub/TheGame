@@ -8,12 +8,15 @@
 @implementation PlayLayer
 @synthesize context = _context;
 @synthesize display=_display;
+@synthesize stepCount=_stepCount;
+
 int lastHit;
 -(id) init{
 	self = [super init];
 	box = [[Box alloc] initWithSize:CGSizeMake(kBoxWidth,kBoxHeight) factor:6];
 	box.holder = self;
 	box.lock = YES;
+    _stepCount=0;
     self.isTouchEnabled = YES;
     lastHit = 0;
 	return self;
@@ -23,8 +26,8 @@ int lastHit;
 	[box fill];
     [box check];
     [box unlock];
-    [display startClock];
-    [self schedule:@selector(renewScoreBoard) interval:0.1];
+    [_display startClock];
+    [self schedule:@selector(renewScoreBoard) interval:0.1]; //每0.1秒更新一次计分板状态
 }
 
 -(void) renewScoreBoard{
@@ -125,6 +128,7 @@ int lastHit;
 	}
 	BOOL result = [box check];
 	if (result) {
+        
 		//[box setLock:NO];
 	}else {
 		[self changeWithTileA:(Germ *)data TileB:firstOne sel:@selector(backCheck:data:)]; 
@@ -134,6 +138,31 @@ int lastHit;
 	}
 
 	firstOne = nil;
+}
+
+-(void) nextStep{
+    _stepCount++;
+    [box setLock:YES];
+    
+    NSMutableArray *content = [box content];
+    for (int i=0; i<[content count]; i++) {
+        NSMutableArray *array = [content objectAtIndex:i];
+        for(int j =0;j<[array count];j++)
+        {
+            Germ *g= [array objectAtIndex:j];
+            if(g.type == BombGerm || g.type ==PoisonousGerm)
+            {
+                if(i==0)
+                {
+                    // 游戏结束
+                }else{
+                    [self changeWithTileA:(Germ *)g TileB:[box objectAtX:j Y:(i-1)] sel:@selector(backCheck:data:)];
+                }
+            }
+            
+        }
+    }
+    [box unlock];
 }
 
 

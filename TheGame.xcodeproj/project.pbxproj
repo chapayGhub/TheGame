@@ -187,6 +187,7 @@
 		C6ECE97E1677951400B4B468 /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6ECE97D1677951400B4B468 /* MainMenuLayer.m */; };
 		C6ECE9821677CA4700B4B468 /* PlayDisplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6ECE9811677CA4700B4B468 /* PlayDisplayLayer.m */; };
 		C6ECE98C1677E48100B4B468 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = C6ECE98B1677E48100B4B468 /* background.png */; };
+		C6FFA0471678F4260069C640 /* ActiveBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FFA0461678F4260069C640 /* ActiveBackgroundLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -553,6 +554,8 @@
 		C6ECE9811677CA4700B4B468 /* PlayDisplayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayDisplayLayer.m; sourceTree = "<group>"; };
 		C6ECE98B1677E48100B4B468 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
 		C6FEE91816766EA700888B02 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
+		C6FFA0451678F4260069C640 /* ActiveBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveBackgroundLayer.h; sourceTree = "<group>"; };
+		C6FFA0461678F4260069C640 /* ActiveBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveBackgroundLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1016,6 +1019,8 @@
 				C68B0799166D82A3005306DD /* IntroLayer.m */,
 				C6ECE9801677CA4700B4B468 /* PlayDisplayLayer.h */,
 				C6ECE9811677CA4700B4B468 /* PlayDisplayLayer.m */,
+				C6FFA0451678F4260069C640 /* ActiveBackgroundLayer.h */,
+				C6FFA0461678F4260069C640 /* ActiveBackgroundLayer.m */,
 			);
 			name = layers;
 			sourceTree = "<group>";
@@ -1584,6 +1589,7 @@
 				C68DC6EC1677091F00F5412F /* MSTencentWeiboAdd.m in Sources */,
 				C6ECE97E1677951400B4B468 /* MainMenuLayer.m in Sources */,
 				C6ECE9821677CA4700B4B468 /* PlayDisplayLayer.m in Sources */,
+				C6FFA0471678F4260069C640 /* ActiveBackgroundLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1642,7 +1648,6 @@
 				INFOPLIST_FILE = TheGame/Resources/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Downloads/mobiSage_iOS_SDK/MobiSageSDK\"",
 					"\"$(SRCROOT)/TheGame/libs\"",
 					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK\"",
 				);
@@ -1666,7 +1671,6 @@
 				INFOPLIST_FILE = TheGame/Resources/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Downloads/mobiSage_iOS_SDK/MobiSageSDK\"",
 					"\"$(SRCROOT)/TheGame/libs\"",
 					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK\"",
 				);

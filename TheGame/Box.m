@@ -8,13 +8,6 @@
 
 #import "Box.h"
 
-@interface Box()
--(int) repairSingleColumn: (int) columnIndex;
--(void) combine:(NSMutableArray *)array;
--(void) erase:(NSMutableArray*) a1;
--(void) addSpriteToLayer:(id) sender;
-@end
-
 @implementation Box
 @synthesize holder;
 @synthesize size;
@@ -164,7 +157,7 @@
 
 -(void) addScore:(int)num
 {
-    int add = num*basicScore + (num-3)*bonusScore;
+    int add = num*basicScore;
     score += add;
     
     double now = [[NSDate date] timeIntervalSince1970];
@@ -176,6 +169,7 @@
         hitInARoll+=1;
         if(hitInARoll>maxHit)
         {
+            score+=(hitInARoll-1)*bonusScore;
             maxHit = hitInARoll;
         }
     }else{

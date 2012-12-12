@@ -4,6 +4,7 @@
 #import "MobiSageSDK.h"
 #import "MainMenuLayer.h"
 #import "PlayDisplayLayer.h"
+#import "ActiveBackgroundLayer.h"
 @interface SceneManager : NSObject {
 
 }

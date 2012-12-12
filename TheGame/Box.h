@@ -11,13 +11,9 @@
 #import "Constants.h"
 
 @interface Box : NSObject {
-	id first, second;
-	CGSize size;
-	
+	id first, second;	
 	NSMutableArray *readyToRemoveHori;
     NSMutableArray *readyToRemoveVerti;
-	BOOL lock;
-	Germ *boarderGerm;
 }
 
 @property(nonatomic, retain) CCLayer *holder;

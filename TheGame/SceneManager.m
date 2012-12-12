@@ -17,7 +17,7 @@ static MobiSageAdBanner* banner;
     CCScene *newScene = [CCScene node];
     
     [newScene addChild:[MainMenuLayer node] z:0];
-    
+    [newScene addChild:[ActiveBackgroundLayer node] z:-1];
     [SceneManager addAdBanner];
     if ([director runningScene]) {
         [director replaceScene:[CCTransitionCrossFade transitionWithDuration: 0.5f scene: newScene]];

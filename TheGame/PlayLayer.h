@@ -9,13 +9,13 @@
 	Box *box;
 	Germ *selected;
 	Germ *firstOne;
-    GameContext *context;
-    PlayDisplayLayer *display;
 }
 @property (nonatomic,retain) GameContext* context;
 @property (nonatomic,retain) PlayDisplayLayer* display;
+@property (nonatomic) int stepCount;
 
 -(void) changeWithTileA: (Germ *) a TileB: (Germ *) b sel : (SEL) sel;
 -(void) check: (id) sender data: (id) data;
 -(void) hint;
+-(void) nextStep;
 @end
