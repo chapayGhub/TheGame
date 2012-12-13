@@ -13,6 +13,8 @@
 @synthesize centerFlag;
 @synthesize erased;
 @synthesize moving;
+@synthesize bombCount;
+
 -(id) initWithX: (int) posX Y: (int) posY{
 	self = [super init];
 	x = posX;

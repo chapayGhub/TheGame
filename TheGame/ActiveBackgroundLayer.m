@@ -12,7 +12,7 @@
 @implementation ActiveBackgroundLayer
 
 -(id) init{
-    if(self = [super init])
+    if([super init])
     {
         [self setIsTouchEnabled:NO];
     }

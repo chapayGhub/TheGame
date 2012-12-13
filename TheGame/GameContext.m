@@ -9,5 +9,7 @@
 #import "GameContext.h"
 
 @implementation GameContext
+@synthesize BombNum,level,levelScore,PoisonousNum,type,time;
+
 
 @end

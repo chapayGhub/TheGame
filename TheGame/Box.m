@@ -386,8 +386,8 @@
             [self unlock];
 		}else {
             //如果已经无解，那么重新初始化游戏
-            [self fill];
-            [self check];
+//            [self fill];
+//            [self check];
             
 		}
 	}

@@ -121,9 +121,11 @@ int clickcount;
 		[box setLock:YES];
 		[self changeWithTileA: selected TileB: tile sel: @selector(check:data:)];
 		selected = nil;
+        firstOne = nil;
 	}else {
         //如果选择到的不是neighbor 相当于重新选择
 		selected = tile;
+        firstOne = tile;
 		[self afterOneShineTrun:tile.sprite];
 	}
 }
@@ -188,7 +190,7 @@ int clickcount;
         for(int j =0;j<[array count];j++)
         {
             Germ *g= [array objectAtIndex:j];
-            if(g.type == BombGerm || g.type ==PoisonousGerm)
+            if( g.type ==PoisonousGerm )
             {
                 if(i==6)
                 {

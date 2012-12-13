@@ -38,6 +38,7 @@
     self = [super init];
     if(self)
     {
+        
         paused=NO;
         timeRemain = 1000;
         CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -103,7 +104,7 @@
                 CCAction *action = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
                                     [CCCallFuncN actionWithTarget: self selector:@selector(removeLabel:)],
                                     nil];
-                CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"+%d",15] fontName:@"Arial" fontSize:15];
+                CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"+%d",basicScore] fontName:@"Arial" fontSize:20];
                 tempLabel.color=ccc3(200, 50, 50);
                 tempLabel.position=g.pixPosition;
                 

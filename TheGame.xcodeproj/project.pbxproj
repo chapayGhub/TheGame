@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C656B112167A812700B24E87 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C656B111167A812700B24E87 /* CommonUtils.m */; };
+		C656B115167A838100B24E87 /* GameDef.m in Sources */ = {isa = PBXBuildFile; fileRef = C656B114167A838100B24E87 /* GameDef.m */; };
 		C6884790167190DD008633AD /* Germ.m in Sources */ = {isa = PBXBuildFile; fileRef = C688478F167190DD008633AD /* Germ.m */; };
 		C68B0609166D82A0005306DD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68B0608166D82A0005306DD /* QuartzCore.framework */; };
 		C68B060B166D82A0005306DD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68B060A166D82A0005306DD /* OpenGLES.framework */; };
@@ -191,6 +193,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C656B110167A812700B24E87 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		C656B111167A812700B24E87 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
+		C656B113167A838100B24E87 /* GameDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDef.h; sourceTree = "<group>"; };
+		C656B114167A838100B24E87 /* GameDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDef.m; sourceTree = "<group>"; };
 		C688478E167190DD008633AD /* Germ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Germ.h; sourceTree = "<group>"; };
 		C688478F167190DD008633AD /* Germ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Germ.m; sourceTree = "<group>"; };
 		C688479216719453008633AD /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -1039,6 +1045,8 @@
 			children = (
 				C68B07AC166D8673005306DD /* SceneManager.h */,
 				C68B07AD166D8673005306DD /* SceneManager.m */,
+				C656B110167A812700B24E87 /* CommonUtils.h */,
+				C656B111167A812700B24E87 /* CommonUtils.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1075,6 +1083,8 @@
 				C6B9B7B9167458EF00D19F8C /* GameContext.m */,
 				C693E7701675A3FE0079D60D /* UserProfile.h */,
 				C693E7711675A3FE0079D60D /* UserProfile.m */,
+				C656B113167A838100B24E87 /* GameDef.h */,
+				C656B114167A838100B24E87 /* GameDef.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1590,6 +1600,8 @@
 				C6ECE97E1677951400B4B468 /* MainMenuLayer.m in Sources */,
 				C6ECE9821677CA4700B4B468 /* PlayDisplayLayer.m in Sources */,
 				C6FFA0471678F4260069C640 /* ActiveBackgroundLayer.m in Sources */,
+				C656B112167A812700B24E87 /* CommonUtils.m in Sources */,
+				C656B115167A838100B24E87 /* GameDef.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

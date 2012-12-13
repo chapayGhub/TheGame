@@ -16,6 +16,7 @@
 @property (nonatomic) int value;
 @property (nonatomic) bool moving;
 @property (nonatomic) bool centerFlag,erased;
+@property (nonatomic) int bombCount;
 @property (nonatomic, retain) CCSprite *sprite;
 
 

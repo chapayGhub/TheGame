@@ -23,4 +23,14 @@ typedef enum {
     NormalGerm,
 } GermType;
 
+
+typedef enum{
+    Classic,
+    Bomb,
+    Poisonous,
+}GameType;
+
+
+
+
 #endif
