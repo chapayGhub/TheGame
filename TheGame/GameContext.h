@@ -17,5 +17,6 @@
 @property (nonatomic) int BombNum;// 炸弹孢子数目
 @property (nonatomic) int PoisonousNum; //毒药孢子数目
 @property (nonatomic) int time; //时间（s），如果时间是0代表不倒计时
+@property (nonatomic) int kindCount; //孢子种类数
 
 @end

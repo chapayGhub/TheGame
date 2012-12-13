@@ -107,7 +107,7 @@ int clickcount;
         {
             clickcount=0;
             [self removeChild:selected.sprite cleanup:YES];
-            [selected transform:SuperGerm];
+            [selected transform:PoisonousGerm];
             [self addChild:selected.sprite];
             [box check];
         }
