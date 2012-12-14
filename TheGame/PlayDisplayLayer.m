@@ -25,21 +25,20 @@
     CCSprite* reload;
     
     int timeRemain;
-    int starsAchieved;
     GameType type;
 }
 
 @end
 @implementation PlayDisplayLayer
 
-@synthesize score,levelScore,time;
+@synthesize score,levelScore,time,star;
 
 
 -(id)init{
     self = [super init];
     if(self)
     {
-        starsAchieved = 0;
+        star = 0;
         CGSize winSize = [CCDirector sharedDirector].winSize;
         // 设置倒计时的位置
         clockLabel = [CCLabelTTF labelWithString:[self generateString] fontName:@"Arial" fontSize:15];
@@ -120,9 +119,9 @@
     {
         if(type==Classic) //经典玩法中累计星星
         {
-            if(starsAchieved<3) //还没有拿到三颗星
+            if(star<3) //还没有拿到三颗星
             {
-                starsAchieved++;
+                star++;
                 [self resetLevelScore:levelScore*getStarSpan];
                 return Going;
             }
@@ -196,7 +195,5 @@
     [tempLabel runAction:action];
 }
 
--(int) getStars{
-    return starsAchieved;
-}
+
 @end

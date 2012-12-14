@@ -17,14 +17,13 @@
 
 @property (nonatomic) int levelScore;
 @property (nonatomic) int score;
-@property (nonatomic) int time;
+@property (nonatomic) int time,star;
 
 -(id) init;
--(void) startClock;
--(void) stopClock;
 -(GameStatus) setScore:(int) value Content:(NSMutableArray*) array;
 -(void) showMultiHit:(int) hit;
 -(void) resetLevelScore:(int)alevelScore;
 -(void) resetTime:(int)atime;
 -(void) setType:(GameType)atype;
+
 @end
