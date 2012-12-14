@@ -13,7 +13,7 @@
     
     CCLabelTTF* clockLabel;
     CCLabelTTF* scoreLabel;
-    CCLabelTTF* passScore;
+    CCLabelTTF* passScoreLabel;
     
     CCSprite* pause;
     CCSprite* menu;
@@ -25,32 +25,31 @@
     CCSprite* reload;
     
     int timeRemain;
-    bool paused;
+    int starsAchieved;
+    GameType type;
 }
 
 @end
 @implementation PlayDisplayLayer
 
-@synthesize score;
+@synthesize score,levelScore,time;
 
 
 -(id)init{
     self = [super init];
     if(self)
     {
-        
-        paused=NO;
-        timeRemain = 1000;
+        starsAchieved = 0;
         CGSize winSize = [CCDirector sharedDirector].winSize;
         // 设置倒计时的位置
         clockLabel = [CCLabelTTF labelWithString:[self generateString] fontName:@"Arial" fontSize:15];
         clockLabel.position = ccp(winSize.width*0.33, winSize.height*0.92);
         clockLabel.color = ccc3(0,0,0);
         [self addChild:clockLabel];
-        [self schedule:@selector(changeClock) interval:1];
+        
         
         // 设置计分板
-        score=1000;
+        score=0;
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Arial" fontSize:15];
         scoreLabel.position = ccp(winSize.width*0.33, winSize.height*0.97);
         scoreLabel.color = ccc3(0,0,0);
@@ -63,16 +62,51 @@
     return self;
 }
 
--(void) startClock{
-    paused = NO;
+-(void) onEnterTransitionDidFinish
+{
+    if(self.time!=0)
+    {
+        [self schedule:@selector(changeClock) interval:1];
+    }
 }
--(void) stopClock{
-    paused = YES;
+
+-(void) setType:(GameType)atype
+{
+    type=atype;
 }
+
+-(void) resetLevelScore:(int)alevelScore
+{
+    self.levelScore=alevelScore;
+    if(type==Classic)
+    {
+        if(passScoreLabel)
+        {
+            [passScoreLabel setString:[NSString stringWithFormat:@"%d",levelScore]];
+            return;
+        }
+        
+        //如果是第一次设置，调用方法初始化label
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+        // 设置计分板
+        passScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",levelScore] fontName:@"Arial" fontSize:15];
+        passScoreLabel.position = ccp(winSize.width*0.55, winSize.height*0.97);
+        passScoreLabel.color = ccc3(0,0,0);
+        [self addChild:passScoreLabel];
+        
+    }
+}
+-(void) resetTime:(int)atime
+{
+    self.time=atime;
+    timeRemain=atime;
+}
+
 -(void) changeClock
 {
-    if(paused||timeRemain<=0)
+    if(timeRemain<=0)
     {
+        timeRemain =0;
         return;
     }else{
         timeRemain--;
@@ -80,11 +114,27 @@
     }
 }
 
--(void) setScore:(int) value Content:(NSMutableArray *)content
+-(GameStatus) setScore:(int) value Content:(NSMutableArray *)content
 {
+    if(score>=levelScore&&levelScore!=0)
+    {
+        if(type==Classic) //经典玩法中累计星星
+        {
+            if(starsAchieved<3) //还没有拿到三颗星
+            {
+                starsAchieved++;
+                [self resetLevelScore:levelScore*getStarSpan];
+                return Going;
+            }
+        }
+        return Won;
+    }
+    if (timeRemain<=0&&[self time]!=0){
+        return Lost;
+    }
     if(score == value)
     {
-        return;
+        return Going;
     }
     
     score=value;
@@ -112,9 +162,8 @@
                 [tempLabel runAction:action];
             }
         }
-        
-        
     }
+    return Going;
 }
 
 -(void) removeLabel: (id) sender{
@@ -147,4 +196,7 @@
     [tempLabel runAction:action];
 }
 
+-(int) getStars{
+    return starsAchieved;
+}
 @end

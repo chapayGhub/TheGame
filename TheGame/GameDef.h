@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "GameContext.h"
+#import "CommonUtils.h"
 @interface GameDef : NSObject
 @property (nonatomic,retain) NSMutableDictionary* settings;
 
 +(GameDef*) sharedInstance;
--(void) refresh;
--(void) writeBackToFile;
 @end

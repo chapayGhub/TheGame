@@ -26,18 +26,22 @@ static MobiSageAdBanner* banner;
 	}
 }
 
-+(void) goPlay{
++(void) goPlay:(GameType)type level:(int)level{
     CCDirector *director = [CCDirector sharedDirector];
     CCScene *newScene = [CCScene node];
     PlayDisplayLayer *display = [PlayDisplayLayer node];
+    
+    GameContext *context = [[[GameDef sharedInstance] settings] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:level]];
     PlayLayer *play = [PlayLayer node];
     [play setDisplay:display];
+    [play resetWithContext:context];
     
     [newScene addChild:[PlayBackgroundLayer node] z:0];
     [newScene addChild:display z:2];
     [newScene addChild:play z:1];
     
     [SceneManager addAdBanner];
+    
     
     if ([director runningScene]) {
         [director replaceScene:[CCTransitionPageTurn transitionWithDuration: 0.3f scene: newScene]];

@@ -18,4 +18,6 @@
 -(void) check: (id) sender data: (id) data;
 -(void) hint;
 -(void) nextStep;
+-(id) init;
+-(void) resetWithContext:(GameContext *)context;
 @end

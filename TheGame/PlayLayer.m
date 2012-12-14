@@ -12,6 +12,8 @@
 
 int lastHit;
 int clickcount;
+bool paused;
+
 -(id) init{
 	self = [super init];
 	box = [[Box alloc] initWithSize:CGSizeMake(kBoxWidth,kBoxHeight) factor:6];
@@ -21,15 +23,29 @@ int clickcount;
     self.isTouchEnabled = YES;
     lastHit = 0;
     clickcount=0;
+    paused=NO;
 	return self;
+}
+
+-(void) pauseGame{
+    paused=YES;
+    [self pauseSchedulerAndActions];
+    [box setPaused:YES];
+    [self.display pauseSchedulerAndActions];
+}
+
+-(void) resumeGame{
+    paused=NO;
+    [self resumeSchedulerAndActions];
+    [box setPaused:NO];
+    [self.display resumeSchedulerAndActions];
 }
 
 -(void) onEnterTransitionDidFinish{
 	[box fill];
     [box check];
     [box unlock];
-    [_display startClock];
-    [self schedule:@selector(renewScoreBoard) interval:0.2]; //每0.1秒更新一次计分板状态
+    [self schedule:@selector(renewScoreBoard) interval:0.2]; //每0.2秒更新一次计分板状态
     [self schedule:@selector(checkPosition) interval:0.5];
 }
 
@@ -47,11 +63,37 @@ int clickcount;
             }
         }
     }
-    
 }
 -(void) renewScoreBoard{
     
-    [[self display] setScore:[box score] Content:[box content]];
+    GameStatus status = [[self display] setScore:[box score] Content:[box content]];
+    GameType type = [_context type];
+    int a;
+    switch (status) {
+        case Won:
+            if(type==Classic) //跳到中间页面
+            {
+                a=1;
+            }else if(type==Bomb||type==Poisonous) //直接进入下一个关卡
+            {
+                a=2;
+            }
+            break;
+        case Lost:
+            if(type==Classic) //跳到中间页面
+            {
+                a=3;
+            }else if(type==Bomb) //跳到中间页面
+            {
+                a=4;
+            }else if(type==Poisonous) //跳到中间页面
+            {
+                a=5;
+            }
+            break;
+        default:
+            break;
+    }
     
     int hit = [box hitInARoll];
     if(hit == lastHit||hit<2)
@@ -67,6 +109,15 @@ int clickcount;
     
 }
 
+-(void) resetWithContext:(GameContext *)context
+{
+    _context = context;
+    [self.display resetTime:[context time]];
+    [self.display resetLevelScore:[context levelScore]];
+    [self.display setType:[context type]];
+    
+    [box setKind:context.kindCount];
+}
 -(void) hint
 {
     CGPoint point = [box haveMore];
@@ -79,6 +130,12 @@ int clickcount;
     [self afterOneShineTrun:tile.sprite];
 }
 
+-(void) reload
+{
+    [box fill];
+    [box check];
+    [box unlock];
+}
 
 - (void)ccTouchesBegan:(NSSet*)touches withEvent:(UIEvent*)event{
 	if ([box lock]) {
@@ -91,9 +148,29 @@ int clickcount;
 	
     int difX = location.x -kStartX;
     int difY = location.y -kStartY;
-    if(difX<0 || difY<0)
+    if(difY<0)
     {
-        [self hint];
+        if(difX>150)
+        {
+            [self hint];
+        }else{
+            [self reload];
+        }
+        return;
+    }
+    if(difY>kTileSize*7)
+    {
+        if(difX>150)
+        {
+            [self resumeGame];
+        }else{
+            [self pauseGame];
+        }
+        return;
+    }
+    
+    if(paused)//如果被暂定 就直接返回
+    {
         return;
     }
 	int x = difX / kTileSize;

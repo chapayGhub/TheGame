@@ -18,6 +18,8 @@
 @synthesize maxHit;
 @synthesize hitInARoll;
 @synthesize content;
+@synthesize paused;
+@synthesize kind;
 
 //初始化函数
 -(id) initWithSize: (CGSize) aSize factor: (int) aFacotr{
@@ -42,11 +44,12 @@
 	[readyToRemoveHori retain];
     [readyToRemoveVerti retain];
     
+    kind = 6; //defaultValue
     score=0;
     lastTime=0;
     hitInARoll=0;
     maxHit=0;
-    
+    paused=NO;
     return self;
 }
 
@@ -186,6 +189,10 @@
 
 //检查并修复
 -(BOOL) check{
+
+    if (paused) {
+        return NO;
+    }
 	//从两个方向上检查
     [self checkWith:OrientationHori];
 	[self checkWith:OrientationVert];
@@ -439,7 +446,7 @@
 	//目前所有移动都已经完成， 那么这一列上应该有count个孢子的缺口，下面来补全
 	for (int i=0; i<count; i++) {
         // 随机出一种孢子
-		int value = (arc4random()%kKindCount+1);
+		int value = (arc4random()%self.kind+1);
         //从下往上来
 		Germ *destGerm = [self objectAtX:columnIndex Y:kBoxHeight-count+i];
 		NSString *name = [NSString stringWithFormat:@"q%d.png",value];
@@ -644,35 +651,37 @@
         for(int j =0;j<[array count];j++)
         {
             // 随机出一种孢子
-            int value = (arc4random()%kKindCount+1);
+            int value = (arc4random()%self.kind+1);
             //从下往上来
             Germ *destGerm = [self objectAtX:j Y:i];
             if(destGerm.sprite)
             {
-                [holder removeChild:destGerm.sprite cleanup:YES];
+                [self removeSprite:destGerm.sprite];
             }
+            
             NSString *name = [NSString stringWithFormat:@"q%d.png",value]
             ;
             CCSprite *sprite = [CCSprite spriteWithFile:name];
             sprite.scale = 0.5;
-            sprite.position = ccp(kStartX + j * kTileSize + kTileSize/2, kStartY +  i * kTileSize + kTileSize/2);
+            sprite.position = destGerm.pixPosition;
             [holder addChild: sprite];
             destGerm.centerFlag=NO;
             destGerm.erased = NO;
             destGerm.value = value;
             destGerm.sprite = sprite;
+            
         }
 	}
-    
-    
 }
+
+
 
 -(void) restart{
     self.hitInARoll=0;
     self.score=0;
     self.maxHit=0;
     self.lastTime=0;
-    
+    self.paused=NO;
     [self fill];
     [self check];
     [self unlock];

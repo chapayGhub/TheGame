@@ -58,11 +58,10 @@
 }
 
 - (void)onStartNew:(id)sender{
-
-	[self onResume: sender];
+	[SceneManager goPlay:Classic level:1];
 }
 - (void)onResume:(id)sender{
-	[SceneManager goPlay];
+	[SceneManager goPlay:Classic level:3];
 }
 
 - (void)onHighscores:(id)sender{

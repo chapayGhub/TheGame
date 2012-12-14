@@ -13,10 +13,11 @@
 
 @property (nonatomic) GameType type; //当前游戏类型
 @property (nonatomic) int level; // 当前关卡数
-@property (nonatomic) int levelScore; // 达标分数
-@property (nonatomic) int BombNum;// 炸弹孢子数目
-@property (nonatomic) int PoisonousNum; //毒药孢子数目
+@property (nonatomic) int levelScore; // 达标分数,如果为0代表没有levelScore
+
 @property (nonatomic) int time; //时间（s），如果时间是0代表不倒计时
 @property (nonatomic) int kindCount; //孢子种类数
+@property (nonatomic) int interval; //刷新炸弹/毒药孢子的间隔步数/时间
 
+-(id) initWithValues:(GameType)gameType Level:(int)levelcount Score:(int)levelscore Time:(int)atime KindCound:(int)kindcount Interval:(int)ainteval;
 @end

@@ -31,6 +31,10 @@ typedef enum{
 }GameType;
 
 
-
+typedef enum{
+    Going,
+    Won,
+    Lost,
+}GameStatus;
 
 #endif

@@ -39,4 +39,7 @@
 // 基础间隔时间，如果两次消除的时间在这个时间以内那么算一次连击
 #define leastTimeInteval 1.5f
 
+// 在经典玩法中 达到了某个分数以后 要再达到这个分数的某个比例 可以多获得一颗星
+#define getStarSpan 1.2f
+
 #endif

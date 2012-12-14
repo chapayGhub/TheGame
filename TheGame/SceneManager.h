@@ -5,11 +5,13 @@
 #import "MainMenuLayer.h"
 #import "PlayDisplayLayer.h"
 #import "ActiveBackgroundLayer.h"
+#import "GameDef.h"
+#import "CommonUtils.h"
 @interface SceneManager : NSObject {
 
 }
 
-+(void) goPlay;  //跳转到游戏页面
++(void) goPlay:(GameType)type level:(int)level;  //跳转到游戏页面
 +(void) goMainMenu; //跳转到主菜单
 
 @end

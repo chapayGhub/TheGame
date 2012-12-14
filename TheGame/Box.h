@@ -18,10 +18,10 @@
 
 @property(nonatomic, retain) CCLayer *holder;
 @property(nonatomic, readonly) CGSize size;
-@property(atomic) BOOL lock;
+@property(atomic) BOOL lock,paused;
 @property(nonatomic,readonly) Germ *boarderGerm;
 @property(nonatomic, retain) NSMutableArray *content;
-@property(atomic) int score,maxHit;
+@property(atomic) int score,maxHit,kind;
 @property(nonatomic) int hitInARoll;
 @property(nonatomic) double lastTime;
 
