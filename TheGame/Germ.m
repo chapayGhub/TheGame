@@ -11,7 +11,6 @@
 @implementation Germ
 @synthesize x, y, value, sprite,type;
 @synthesize centerFlag;
-@synthesize erased;
 @synthesize moving;
 @synthesize bombCount;
 
@@ -21,7 +20,6 @@
 	y = posY;
     self.type = NormalGerm;
     centerFlag = NO;
-    erased = NO;
     moving = NO;
 	return self;
 }
@@ -40,7 +38,7 @@
 
 
 -(void) trade:(Germ *)otherGerm{
-    CCSprite *tempSprite = [sprite retain];
+    GermFigure *tempSprite = [sprite retain];
 	int tempValue = value;
 	GermType tempType = type;
     self.sprite = otherGerm.sprite;
@@ -65,16 +63,16 @@
         return;
     }
     [self setType:atype];
-    CCSprite* asprite = nil;
+    GermFigure* asprite = nil;
     switch(atype)
     {
         case SuperGerm:
-            asprite = [CCSprite spriteWithFile:[NSString stringWithFormat:@"q%d.png",value]];
+            asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q%d.png",value]];
             asprite.scale=0.5;
             [asprite setColor: ccc3(100, 100, 100)];
             break;
         case PoisonousGerm:
-            asprite = [CCSprite spriteWithFile:[NSString stringWithFormat:@"q7.png"]];
+            asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q7.png"]];
             [self setValue:7];
             break;
         default:

@@ -186,6 +186,7 @@
 		C6B9B7B4167450E500D19F8C /* PlayBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B9B7B3167450E500D19F8C /* PlayBackgroundLayer.m */; };
 		C6B9B7B71674513A00D19F8C /* PlayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B9B7B61674513A00D19F8C /* PlayLayer.m */; };
 		C6B9B7BA167458EF00D19F8C /* GameContext.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B9B7B9167458EF00D19F8C /* GameContext.m */; };
+		C6E5AE34167D2AA300F2811E /* GermFigure.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E5AE33167D2AA300F2811E /* GermFigure.m */; };
 		C6ECE97E1677951400B4B468 /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6ECE97D1677951400B4B468 /* MainMenuLayer.m */; };
 		C6ECE9821677CA4700B4B468 /* PlayDisplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6ECE9811677CA4700B4B468 /* PlayDisplayLayer.m */; };
 		C6ECE98C1677E48100B4B468 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = C6ECE98B1677E48100B4B468 /* background.png */; };
@@ -554,6 +555,8 @@
 		C6B9B7B61674513A00D19F8C /* PlayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayLayer.m; sourceTree = "<group>"; };
 		C6B9B7B8167458EF00D19F8C /* GameContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameContext.h; sourceTree = "<group>"; };
 		C6B9B7B9167458EF00D19F8C /* GameContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameContext.m; sourceTree = "<group>"; };
+		C6E5AE32167D2AA300F2811E /* GermFigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GermFigure.h; sourceTree = "<group>"; };
+		C6E5AE33167D2AA300F2811E /* GermFigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GermFigure.m; sourceTree = "<group>"; };
 		C6ECE97C1677951400B4B468 /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLayer.h; sourceTree = "<group>"; };
 		C6ECE97D1677951400B4B468 /* MainMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuLayer.m; sourceTree = "<group>"; };
 		C6ECE9801677CA4700B4B468 /* PlayDisplayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayDisplayLayer.h; sourceTree = "<group>"; };
@@ -1085,6 +1088,8 @@
 				C693E7711675A3FE0079D60D /* UserProfile.m */,
 				C656B113167A838100B24E87 /* GameDef.h */,
 				C656B114167A838100B24E87 /* GameDef.m */,
+				C6E5AE32167D2AA300F2811E /* GermFigure.h */,
+				C6E5AE33167D2AA300F2811E /* GermFigure.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1602,6 +1607,7 @@
 				C6FFA0471678F4260069C640 /* ActiveBackgroundLayer.m in Sources */,
 				C656B112167A812700B24E87 /* CommonUtils.m in Sources */,
 				C656B115167A838100B24E87 /* GameDef.m in Sources */,
+				C6E5AE34167D2AA300F2811E /* GermFigure.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -258,7 +258,7 @@ static PlayLayer* thisLayer;
 
 -(void)afterOneShineTrun: (id) node{
 	if (selected && node == selected.sprite) {
-		CCSprite *sprite = (CCSprite *)node;
+		GermFigure *sprite = (GermFigure *)node;
 		CCSequence *someAction = [CCSequence actions:
 								  [CCScaleBy actionWithDuration:kShineFreq scale:0.5f],
 								  [CCScaleBy actionWithDuration:kShineFreq scale:2.0f],

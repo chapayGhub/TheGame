@@ -145,7 +145,6 @@
     for(int j =0;j<[array count];j++)
     {
         Germ *g = [array objectAtIndex:j];
-        g.erased = YES;
         
         
         CCAction *action1 = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
@@ -370,7 +369,6 @@
 								[CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
 								nil];
 			[germ.sprite runAction: action];
-            germ.erased = YES;
             
             CCAction *action1 = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
                                 [CCCallFuncN actionWithTarget: display selector:@selector(removeLabel:)],
@@ -476,7 +474,7 @@
         //从下往上来
 		Germ *destGerm = [self objectAtX:columnIndex Y:kBoxHeight-count+i];
 		NSString *name = [NSString stringWithFormat:@"q%d.png",value];
-		CCSprite *sprite = [CCSprite spriteWithFile:name];
+		GermFigure *sprite = [GermFigure spriteWithFile:name];
         sprite.scale = 0.5;
 		sprite.position = ccp(kStartX + columnIndex * kTileSize + kTileSize/2, kStartY + (kBoxHeight + i) * kTileSize + kTileSize/2);
 		destGerm.moving = YES;
@@ -685,14 +683,14 @@
                 [self removeSprite:destGerm.sprite];
             }
             
-            NSString *name = [NSString stringWithFormat:@"q%d.png",value]
-            ;
-            CCSprite *sprite = [CCSprite spriteWithFile:name];
+            NSString *name = [NSString stringWithFormat:@"q%d.png",value];
+            
+            
+            GermFigure *sprite = [GermFigure spriteWithFile:name];
             sprite.scale = 0.5;
             sprite.position = destGerm.pixPosition;
             [holder addChild: sprite];
             destGerm.centerFlag=NO;
-            destGerm.erased = NO;
             destGerm.value = value;
             destGerm.sprite = sprite;
             

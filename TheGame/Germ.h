@@ -8,6 +8,8 @@
 
 #import "cocos2d.h"
 #import "Constants.h"
+#import "GermFigure.h"
+
 @interface Germ : NSObject{
 }
 
@@ -15,9 +17,9 @@
 @property (nonatomic) GermType type;
 @property (nonatomic) int value;
 @property (nonatomic) bool moving;
-@property (nonatomic) bool centerFlag,erased;
+@property (nonatomic) bool centerFlag;
 @property (nonatomic) int bombCount;
-@property (nonatomic, retain) CCSprite *sprite;
+@property (nonatomic, retain) GermFigure *sprite;
 
 
 -(id) initWithX: (int) posX Y: (int) posY;
