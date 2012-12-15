@@ -7,12 +7,28 @@
 
 @implementation PlayLayer
 @synthesize context = _context;
-@synthesize display=_display;
 @synthesize stepCount=_stepCount;
 
 int lastHit;
 int clickcount;
 bool paused;
+
+static PlayLayer* thisLayer;
+
++(PlayLayer*) sharedInstance:(BOOL) refresh
+{
+    if(thisLayer&&refresh)
+    {
+        [thisLayer release];
+    }
+    if(!thisLayer)
+    {
+        thisLayer = [PlayLayer node];
+    }
+    
+    return thisLayer;
+}
+
 
 -(id) init{
 	self = [super init];
@@ -27,25 +43,24 @@ bool paused;
 	return self;
 }
 
+
+
 -(void) pauseGame{
     paused=YES;
     [self pauseSchedulerAndActions];
     [box setPaused:YES];
-    [self.display pauseSchedulerAndActions];
 }
 
 -(void) resumeGame{
     paused=NO;
     [self resumeSchedulerAndActions];
     [box setPaused:NO];
-    [self.display resumeSchedulerAndActions];
 }
 
 -(void) onEnterTransitionDidFinish{
 	[box fill];
     [box check];
     [box unlock];
-    [self schedule:@selector(renewScoreBoard) interval:0.2]; //每0.2秒更新一次计分板状态
     [self schedule:@selector(checkPosition) interval:0.5];
 }
 
@@ -64,57 +79,14 @@ bool paused;
         }
     }
 }
--(void) renewScoreBoard{
-    
-    GameStatus status = [[self display] setScore:[box score] Content:[box content]];
-    GameType type = [_context type];
-    int a;
-    switch (status) {
-        case Won:
-            if(type==Classic) //跳到中间页面
-            {
-                a=1;
-            }else if(type==Bomb||type==Poisonous) //直接进入下一个关卡
-            {
-                a=2;
-            }
-            break;
-        case Lost:
-            if(type==Classic) //跳到中间页面
-            {
-                a=3;
-            }else if(type==Bomb) //跳到中间页面
-            {
-                a=4;
-            }else if(type==Poisonous) //跳到中间页面
-            {
-                a=5;
-            }
-            break;
-        default:
-            break;
-    }
-    
-    int hit = [box hitInARoll];
-    if(hit == lastHit||hit<2)
-    {
-        lastHit = hit;
-        return;
-    }else{
-        lastHit = hit;
-        [[self display] showMultiHit:hit];
-    }
-    
-    
-    
-}
+
 
 -(void) resetWithContext:(GameContext *)context
 {
     _context = context;
-    [self.display resetTime:[context time]];
-    [self.display resetLevelScore:[context levelScore]];
-    [self.display setType:[context type]];
+    [[PlayDisplayLayer sharedInstance:NO] resetTime:[context time]];
+    [[PlayDisplayLayer sharedInstance:NO] resetLevelScore:[context levelScore]];
+    [[PlayDisplayLayer sharedInstance:NO] setType:[context type]];
     
     [box setKind:context.kindCount];
 }
@@ -298,5 +270,9 @@ bool paused;
 		[sprite runAction:someAction];
 	}
     
+}
+
+-(Box*) getBox{
+    return box;
 }
 @end

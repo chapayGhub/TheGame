@@ -33,6 +33,22 @@
 
 @synthesize score,levelScore,time,star;
 
+static PlayDisplayLayer* thisLayer;
+
++(PlayDisplayLayer*) sharedInstance:(BOOL) refresh
+{
+    if(thisLayer&&refresh)
+    {
+        [thisLayer release];
+    }
+    if(!thisLayer)
+    {
+        thisLayer = [PlayDisplayLayer node];
+    }
+    
+    return thisLayer;
+}
+
 
 -(id)init{
     self = [super init];
@@ -113,7 +129,7 @@
     }
 }
 
--(GameStatus) setScore:(int) value Content:(NSMutableArray *)content
+-(void) setScore:(int) value
 {
     if(score>=levelScore&&levelScore!=0)
     {
@@ -123,46 +139,12 @@
             {
                 star++;
                 [self resetLevelScore:levelScore*getStarSpan];
-                return Going;
             }
         }
-        return Won;
-    }
-    if (timeRemain<=0&&[self time]!=0){
-        return Lost;
-    }
-    if(score == value)
-    {
-        return Going;
     }
     
     score=value;
     [scoreLabel setString:[NSString stringWithFormat:@"%d",score]];
-    
-    
-    // 动画效果
-    for (int i=0; i<[content count]; i++) {
-        NSMutableArray *array = [content objectAtIndex:i];
-        for(int j =0;j<[array count];j++)
-        {
-            Germ *g= [array objectAtIndex:j];
-            
-            if([g erased])
-            {
-                [g setErased:NO];
-                CCAction *action = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
-                                    [CCCallFuncN actionWithTarget: self selector:@selector(removeLabel:)],
-                                    nil];
-                CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"+%d",basicScore] fontName:@"Arial" fontSize:20];
-                tempLabel.color=ccc3(200, 50, 50);
-                tempLabel.position=g.pixPosition;
-                
-                [self addChild:tempLabel];
-                [tempLabel runAction:action];
-            }
-        }
-    }
-    return Going;
 }
 
 -(void) removeLabel: (id) sender{
@@ -194,6 +176,14 @@
     
     [tempLabel runAction:action];
 }
+-(void) pauseGame{
+    [self pauseSchedulerAndActions];
+    [[PlayLayer sharedInstance:NO] pauseGame];
+}
 
+-(void) resumeGame{
+    [self resumeSchedulerAndActions];
+    [[PlayLayer sharedInstance:NO] resumeSchedulerAndActions];
+}
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "Box.h"
-
+#import "PlayDisplayLayer.h"
 @implementation Box
 @synthesize holder;
 @synthesize size;
@@ -111,7 +111,7 @@
 }
 -(void) combine:(NSMutableArray *)array
 {
-    
+    PlayDisplayLayer *display = [PlayDisplayLayer sharedInstance:NO];
     if(array == nil || [array count] ==0 )
     {
         return;
@@ -146,6 +146,17 @@
     {
         Germ *g = [array objectAtIndex:j];
         g.erased = YES;
+        
+        
+        CCAction *action1 = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
+                             [CCCallFuncN actionWithTarget: display selector:@selector(removeLabel:)],
+                             nil];
+        CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"+%d",basicScore] fontName:@"Arial" fontSize:20];
+        tempLabel.color=ccc3(200, 50, 50);
+        tempLabel.position=g.pixPosition;
+        [display addChild:tempLabel];
+        [tempLabel runAction:action1];
+        
         if([g sprite]&&g!=center)
         {
             g.value = 0;
@@ -169,9 +180,11 @@
     int add = num*basicScore;
     score += add;
     
+    [[PlayDisplayLayer sharedInstance:NO] setScore:score];
     double now = [[NSDate date] timeIntervalSince1970];
     double dif = now - lastTime;
     lastTime = now;
+    
     
     if(dif<leastTimeInteval)
     {
@@ -181,6 +194,8 @@
             score+=(hitInARoll-1)*bonusScore;
             maxHit = hitInARoll;
         }
+        [[PlayDisplayLayer sharedInstance:NO] showMultiHit:hitInARoll];
+        
     }else{
         hitInARoll = 1;
     }
@@ -343,6 +358,7 @@
 
 -(void) erase:(NSMutableArray *)a1
 {
+    PlayDisplayLayer *display = [PlayDisplayLayer sharedInstance:NO];
     [self addScore:[a1 count]];
     //如果没有需要移除的则之间返回
 	for (int i=0; i<[a1 count]; i++) {
@@ -355,6 +371,16 @@
 								nil];
 			[germ.sprite runAction: action];
             germ.erased = YES;
+            
+            CCAction *action1 = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
+                                [CCCallFuncN actionWithTarget: display selector:@selector(removeLabel:)],
+                                nil];
+            CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"+%d",basicScore] fontName:@"Arial" fontSize:20];
+            tempLabel.color=ccc3(200, 50, 50);
+            tempLabel.position=germ.pixPosition;
+            
+            [display addChild:tempLabel];
+            [tempLabel runAction:action1];
 
             // 处理特殊孢子的情况
             // 如果是超级孢子，那把这个孢子周围3*3的孢子都干掉

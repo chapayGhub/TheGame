@@ -29,11 +29,10 @@ static MobiSageAdBanner* banner;
 +(void) goPlay:(GameType)type level:(int)level{
     CCDirector *director = [CCDirector sharedDirector];
     CCScene *newScene = [CCScene node];
-    PlayDisplayLayer *display = [PlayDisplayLayer node];
+    PlayDisplayLayer *display = [PlayDisplayLayer sharedInstance:YES];
     
     GameContext *context = [[[GameDef sharedInstance] settings] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:level]];
-    PlayLayer *play = [PlayLayer node];
-    [play setDisplay:display];
+    PlayLayer *play = [PlayLayer sharedInstance:YES];
     [play resetWithContext:context];
     
     [newScene addChild:[PlayBackgroundLayer node] z:0];

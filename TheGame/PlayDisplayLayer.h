@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Constants.h"
+#import "PlayLayer.h"
+
 //用于显示游戏界面的各种label和按钮
 @interface PlayDisplayLayer : CCLayer{
 
@@ -20,10 +22,11 @@
 @property (nonatomic) int time,star;
 
 -(id) init;
--(GameStatus) setScore:(int) value Content:(NSMutableArray*) array;
+-(void) setScore:(int) value;
 -(void) showMultiHit:(int) hit;
 -(void) resetLevelScore:(int)alevelScore;
 -(void) resetTime:(int)atime;
 -(void) setType:(GameType)atype;
++(PlayDisplayLayer*) sharedInstance:(BOOL) refresh;
 
 @end

@@ -9,6 +9,7 @@
 #import "Germ.h"
 #import "CCLayer.h"
 #import "Constants.h"
+//#import "PlayDisplayLayer.h"
 
 @interface Box : NSObject {
 	id first, second;	
