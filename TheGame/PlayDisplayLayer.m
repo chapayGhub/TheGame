@@ -148,7 +148,7 @@ static PlayDisplayLayer* thisLayer;
 }
 
 -(void) removeLabel: (id) sender{
-	[self removeChild: sender cleanup:YES];
+    [self removeChild:sender cleanup:YES];
 }
 
 

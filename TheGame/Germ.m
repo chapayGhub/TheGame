@@ -70,9 +70,14 @@
             asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q%d.png",value]];
             asprite.scale=0.5;
             [asprite setColor: ccc3(100, 100, 100)];
+            [asprite setPosition:self.pixPosition];
+            
             break;
         case PoisonousGerm:
             asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q7.png"]];
+            
+            [asprite setPosition:self.pixPosition];
+            [asprite setLabelValue:30];
             [self setValue:7];
             break;
         default:
@@ -80,6 +85,6 @@
     }
     
     [self setSprite:asprite];
-    [sprite setPosition:self.pixPosition];
+    
 }
 @end

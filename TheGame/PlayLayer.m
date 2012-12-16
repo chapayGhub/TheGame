@@ -61,7 +61,7 @@ static PlayLayer* thisLayer;
 	[box fill];
     [box check];
     [box unlock];
-    [self schedule:@selector(checkPosition) interval:0.5];
+    //[self schedule:@selector(checkPosition) interval:0.5];
 }
 
 -(void) checkPosition
@@ -75,7 +75,9 @@ static PlayLayer* thisLayer;
             if(!g.moving)
             {
                 [g.sprite setPosition:g.pixPosition];
+                [g.sprite recorrectLabelPosition];
             }
+            
         }
     }
 }
@@ -158,6 +160,7 @@ static PlayLayer* thisLayer;
             [self removeChild:selected.sprite cleanup:YES];
             [selected transform:PoisonousGerm];
             [self addChild:selected.sprite];
+            [self addChild:selected.sprite.label];
             [box check];
         }
 		return;
@@ -180,26 +183,23 @@ static PlayLayer* thisLayer;
 }
 
 -(void) changeWithTileA: (Germ *) a TileB: (Germ *) b sel : (SEL) sel{
-	CCAction *actionA = [CCSequence actions:
-						 [CCMoveTo actionWithDuration:kMoveTileTime position:[b pixPosition]],
+	CGPoint pa = a.pixPosition;
+    CGPoint pb = b.pixPosition;
+    
+    CCAction *actionA = [CCSequence actions:
+						 [CCMoveBy actionWithDuration:kMoveTileTime position:ccp(pb.x-pa.x,pb.y-pa.y)],
 						 [CCCallFuncND actionWithTarget:self selector:sel data: a],
 						 nil
 						 ];
 	
 	CCAction *actionB = [CCSequence actions:
-						 [CCMoveTo actionWithDuration:kMoveTileTime position:[a pixPosition]],
+						 [CCMoveBy actionWithDuration:kMoveTileTime position:ccp(pa.x-pb.x,pa.y-pb.y)],
 						 [CCCallFuncND actionWithTarget:self selector:sel data: b],
 						 nil
 						 ];
-	//a.moving = YES;
-    //b.moving = YES;
     [a.sprite runAction:actionA];
 	[b.sprite runAction:actionB];
-    
-    
 	[a trade:b];
-    a.moving=NO;
-    b.moving=NO;
 }
 
 -(void) backCheck: (id) sender data: (id) data{
@@ -217,7 +217,7 @@ static PlayLayer* thisLayer;
 	}
 	BOOL result = [box check];
 	if (result) {
-        [self nextStep];
+        //[self nextStep];
 		//[box setLock:NO];
 	}else {
 		[self changeWithTileA:(Germ *)data TileB:firstOne sel:@selector(backCheck:data:)];
@@ -231,7 +231,6 @@ static PlayLayer* thisLayer;
 
 -(void) nextStep{
     _stepCount++;
-    [box setLock:YES];
     
     NSMutableArray *content = [box content];
     for (int i=[content count]-1; i>=0; i--) {
@@ -246,13 +245,16 @@ static PlayLayer* thisLayer;
                     // 游戏结束
                 }else{
                     [self changeWithTileA:(Germ *)g TileB:[box objectAtX:j Y:(i+1)] sel:@selector(backCheck:data:)];
+                    CCAction *action = [CCSequence actions:[CCDelayTime actionWithDuration:kMoveTileTime+0.3f],
+                                        [CCCallFunc actionWithTarget:self selector:@selector(checkPosition)],
+                                        nil];
+                    [self runAction:action];
                     [box check];
                 }
             }
             
         }
     }
-    [box unlock];
 }
 
 

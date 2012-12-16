@@ -20,6 +20,7 @@
 @synthesize content;
 @synthesize paused;
 @synthesize kind;
+int runningProcedure;
 
 //初始化函数
 -(id) initWithSize: (CGSize) aSize factor: (int) aFacotr{
@@ -50,6 +51,7 @@
     hitInARoll=0;
     maxHit=0;
     paused=NO;
+    runningProcedure = 0;
     return self;
 }
 
@@ -146,7 +148,7 @@
     {
         Germ *g = [array objectAtIndex:j];
         
-        
+        // 在display图层上操作
         CCAction *action1 = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
                              [CCCallFuncN actionWithTarget: display selector:@selector(removeLabel:)],
                              nil];
@@ -162,11 +164,15 @@
             CCAction *action = [CCSequence actions:[CCMoveTo actionWithDuration:kConvergeTime position: centerP],
                                 [CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
                                 nil];
+            runningProcedure++;
             [[g sprite] runAction: action];
             
         }else if(g==center)
         {
             //把center变为超级孢子
+            if (center.sprite.label!=nil) {
+                [holder removeChild:center.sprite.label cleanup:YES];
+            }
             [holder removeChild:center.sprite cleanup:YES];
             [center transform:SuperGerm];
             [holder addChild:center.sprite];
@@ -349,7 +355,7 @@
 	int maxCount = [self repair];
 	
     //等修复完成以后，执行afterAllMoveDone的方法
-	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime * maxCount + 0.6f],
+	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kTileDropTime * maxCount + 0.6f],
                         [CCCallFunc actionWithTarget:self selector:@selector(afterAllMoveDone)],
                         nil]];
 	return YES;
@@ -365,7 +371,7 @@
         germ.value = 0;
 		if (germ.sprite) {
             //设置被消除的孢子的消除效果
-			CCAction *action = [CCSequence actions:[CCFadeOut actionWithDuration:0.3f],
+			CCAction *action = [CCSequence actions:[CCScaleTo actionWithDuration:0.3f scale:0.0f],
 								[CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
 								nil];
 			[germ.sprite runAction: action];
@@ -401,8 +407,10 @@
 	}
 }
 
+
 -(void) removeSprite: (id) sender{
-	[holder removeChild: sender cleanup:YES];
+    [holder removeChild:sender cleanup:YES];
+    runningProcedure--;
 }
 
 //补全了所有的孢子
@@ -413,9 +421,14 @@
 	}else {//如果没有
 		CGPoint p = [self haveMore];
         
+        [self unlock];
+        [[PlayLayer sharedInstance:NO] nextStep];
+        
         if (p.x!=-1||p.y!=-1) {//检查是否还有解，如果存在解，那么解锁继续游戏
-            [self unlock];
+            
+            
 		}else {
+            
             //如果已经无解，那么重新初始化游戏
 //            [self fill];
 //            [self check];
@@ -453,11 +466,13 @@
         }else{
             //如果某个孢子下面有被消除的孢子，那么它应该移动到那个孢子的位置去
             Germ *destGerm = [self objectAtX:columnIndex Y:y-count];
-            destGerm.moving = YES;
+            germ.moving = YES;
+    
+            CGPoint dest = ccp(destGerm.pixPosition.x-germ.pixPosition.x, destGerm.pixPosition.y-germ.pixPosition.y);
             CCSequence *action = [CCSequence actions:
                                   [CCDelayTime actionWithDuration: kFallDownDelayTime],
-                                  [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
-                                  [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:destGerm],
+                                  [CCMoveBy actionWithDuration:kTileDropTime*count position:dest],
+                                  [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:germ],
                                   nil];
             [germ.sprite runAction: action];
             destGerm.value = germ.value;
@@ -485,7 +500,6 @@
 							  nil];
 		[sprite setVisible:NO];
         [holder addChild: sprite];
-        
         [sprite runAction: action];
 		destGerm.value = value;
 		destGerm.sprite = sprite;
@@ -498,8 +512,6 @@
 
 -(void) addSpriteToLayer:(id) sender germ:(Germ *) germ
 {
-    
-    [sender setPosition: [germ pixPosition]];
     [sender setVisible:YES];
     germ.moving = NO;
 }
