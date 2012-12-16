@@ -15,13 +15,14 @@
 @synthesize label;
 
 int currentNumber;
+CCAction *tempAction;
 
 -(CCAction*) runAction:(CCAction*) action{
     [super runAction:action];
-    CCAction *actionCopy = [action copy];
+    CCAction *tempAction = [action copy];
     if(label!=nil)
     {
-        [label runAction:actionCopy];
+        [label runAction:tempAction];
     }
     
     return action;

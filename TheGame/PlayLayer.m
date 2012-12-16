@@ -157,10 +157,12 @@ static PlayLayer* thisLayer;
         if(clickcount==2)
         {
             clickcount=0;
+            [self removeChild:selected.sprite.label cleanup:YES];
             [self removeChild:selected.sprite cleanup:YES];
             [selected transform:PoisonousGerm];
             [self addChild:selected.sprite];
             [self addChild:selected.sprite.label];
+            [self afterOneShineTrun:selected.sprite];
             [box check];
         }
 		return;
@@ -211,7 +213,7 @@ static PlayLayer* thisLayer;
 }
 // 检查转换是否有效，如果无效则换回来
 -(void) check: (id) sender data: (id) data{
-	if(nil == firstOne){
+	if(nil == firstOne||firstOne==data){
 		firstOne = data;
 		return;
 	}
