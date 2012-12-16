@@ -14,12 +14,17 @@
 
 @synthesize label;
 
+static NSMutableArray* timeBombs;
+static NSMutableArray* poisonous;
+static NSMutableArray* bombs;
+
+
 int currentNumber;
 CCAction *tempAction;
 
 -(CCAction*) runAction:(CCAction*) action{
     [super runAction:action];
-    CCAction *tempAction = [action copy];
+    CCAction *tempAction = [[action copy] autorelease];
     if(label!=nil)
     {
         [label runAction:tempAction];
@@ -32,6 +37,18 @@ CCAction *tempAction;
     self = [super spriteWithFile:filename];
 
     return self;
+}
+
+-(void) removeFromParentAndCleanup:(BOOL)cleanup
+{
+    [timeBombs removeObject:self];
+    [poisonous removeObject:self];
+    [bombs removeObject:self];
+    if(label!=nil)
+    {
+        [label removeFromParentAndCleanup:YES];
+    }
+    [super removeFromParentAndCleanup:YES];
 }
 
 -(void) setLabelValue:(int) number{
@@ -54,6 +71,32 @@ CCAction *tempAction;
     currentNumber--;
     [label setString:[NSString stringWithFormat:@"%d",currentNumber]];
     return currentNumber;
+}
+
++(NSMutableArray*) getArrayByType:(GermType) type
+{
+    switch (type) {
+        case BombGerm:
+            if(bombs==nil)
+            {
+                bombs = [[NSMutableArray alloc] init];
+            }
+            return bombs;
+        case TimeBombGerm:
+            if(timeBombs==nil)
+            {
+                timeBombs = [[NSMutableArray alloc] init];
+            }
+            return timeBombs;
+        case PoisonousGerm:
+            if(poisonous==nil)
+            {
+                poisonous = [[NSMutableArray alloc] init];
+            }
+            return poisonous;
+        default:
+            return nil;
+    }
 }
 
 @end

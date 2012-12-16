@@ -170,10 +170,7 @@ int runningProcedure;
         }else if(g==center)
         {
             //把center变为超级孢子
-            if (center.sprite.label!=nil) {
-                [holder removeChild:center.sprite.label cleanup:YES];
-            }
-            [holder removeChild:center.sprite cleanup:YES];
+            [center.sprite removeFromParentAndCleanup:YES];
             [center transform:SuperGerm];
             [holder addChild:center.sprite];
         }
@@ -409,7 +406,7 @@ int runningProcedure;
 
 
 -(void) removeSprite: (id) sender{
-    [holder removeChild:sender cleanup:YES];
+    [sender removeFromParentAndCleanup:YES];
     runningProcedure--;
 }
 

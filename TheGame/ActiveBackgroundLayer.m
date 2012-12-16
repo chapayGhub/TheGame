@@ -60,7 +60,7 @@
 
 -(void)removeSprite:(id) sender
 {
-    [self removeChild:sender cleanup:YES];
+    [sender removeFromParentAndCleanup:YES];
 }
 
 @end

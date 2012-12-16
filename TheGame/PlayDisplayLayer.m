@@ -126,6 +126,19 @@ static PlayDisplayLayer* thisLayer;
     }else{
         timeRemain--;
         [clockLabel setString:[self generateString]];
+        //更新炸弹孢子计时
+        NSMutableArray *array = [GermFigure getArrayByType:TimeBombGerm];
+        int length = [array count];
+        for(int i=0;i<length;i++)
+        {
+            GermFigure *sprite = [array objectAtIndex:i];
+            int i=[sprite nextValue];
+            if(i==0)
+            {
+                //炸弹爆炸 扣一格血
+            }
+        }
+        
     }
 }
 
@@ -149,8 +162,19 @@ static PlayDisplayLayer* thisLayer;
 
 -(void) removeLabel: (id) sender{
     [self removeChild:sender cleanup:YES];
+   
 }
 
+-(void) pauseGame{
+    [self pauseSchedulerAndActions];
+    [[PlayLayer sharedInstance:NO]  pauseGame];
+}
+
+-(void) resumeGame
+{
+    [self resumeSchedulerAndActions];
+     [[PlayLayer sharedInstance:NO]  resumeGame];
+}
 
 -(NSString*) generateString
 {
@@ -176,14 +200,6 @@ static PlayDisplayLayer* thisLayer;
     
     [tempLabel runAction:action];
 }
--(void) pauseGame{
-    [self pauseSchedulerAndActions];
-    [[PlayLayer sharedInstance:NO] pauseGame];
-}
 
--(void) resumeGame{
-    [self resumeSchedulerAndActions];
-    [[PlayLayer sharedInstance:NO] resumeSchedulerAndActions];
-}
 
 @end

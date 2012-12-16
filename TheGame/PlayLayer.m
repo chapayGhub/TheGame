@@ -136,9 +136,9 @@ static PlayLayer* thisLayer;
     {
         if(difX>150)
         {
-            [self resumeGame];
+            [[PlayDisplayLayer sharedInstance:NO] resumeGame];
         }else{
-            [self pauseGame];
+            [[PlayDisplayLayer sharedInstance:NO] pauseGame];
         }
         return;
     }
@@ -157,9 +157,8 @@ static PlayLayer* thisLayer;
         if(clickcount==2)
         {
             clickcount=0;
-            [self removeChild:selected.sprite.label cleanup:YES];
-            [self removeChild:selected.sprite cleanup:YES];
-            [selected transform:PoisonousGerm];
+            [selected.sprite removeFromParentAndCleanup:YES];
+            [selected transform:TimeBombGerm];
             [self addChild:selected.sprite];
             [self addChild:selected.sprite.label];
             [self afterOneShineTrun:selected.sprite];
@@ -233,7 +232,7 @@ static PlayLayer* thisLayer;
 
 -(void) nextStep{
     _stepCount++;
-    
+
     NSMutableArray *content = [box content];
     for (int i=[content count]-1; i>=0; i--) {
         NSMutableArray *array = [content objectAtIndex:i];
@@ -252,6 +251,14 @@ static PlayLayer* thisLayer;
                                         nil];
                     [self runAction:action];
                     [box check];
+                }
+            }
+            else if(g.type == BombGerm)
+            {
+                int i=[g.sprite nextValue];
+                if(i==0)
+                {
+                    //扣一格血
                 }
             }
             

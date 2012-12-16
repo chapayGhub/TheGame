@@ -28,5 +28,6 @@
 -(void) resetTime:(int)atime;
 -(void) setType:(GameType)atype;
 +(PlayDisplayLayer*) sharedInstance:(BOOL) refresh;
-
+-(void) pauseGame;
+-(void) resumeGame;
 @end

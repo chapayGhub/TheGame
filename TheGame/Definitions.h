@@ -17,10 +17,11 @@ typedef enum {
 
 //孢子种类
 typedef enum {
-    SuperGerm,
-    BombGerm,
-    PoisonousGerm,
-    NormalGerm,
+    SuperGerm,  //超级吃撑孢子
+    BombGerm,   //计步数炸弹孢子
+    PoisonousGerm,//毒药孢子
+    TimeBombGerm, //计时炸弹孢子
+    NormalGerm,   //普通孢子
 } GermType;
 
 

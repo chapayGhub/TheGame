@@ -71,20 +71,31 @@
             asprite.scale=0.5;
             [asprite setColor: ccc3(100, 100, 100)];
             [asprite setPosition:self.pixPosition];
-            
             break;
         case PoisonousGerm:
             asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q7.png"]];
-            
+            [asprite setPosition:self.pixPosition];
+            [self setValue:7];
+            break;
+        case BombGerm:
+            asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q8.png"]];
+            [asprite setPosition:self.pixPosition];
+            [asprite setLabelValue:10];
+            [self setValue:8];
+            break;
+        case TimeBombGerm:
+            asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q6.png"]];
             [asprite setPosition:self.pixPosition];
             [asprite setLabelValue:30];
-            [self setValue:7];
+            [asprite setScale:0.5f];
+            [self setValue:6];
             break;
         default:
             break;
     }
     
     [self setSprite:asprite];
+    [[GermFigure getArrayByType:atype] addObject:asprite];
     
 }
 @end
