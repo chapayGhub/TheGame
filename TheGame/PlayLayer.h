@@ -3,6 +3,7 @@
 #import "PlayBackgroundLayer.h"
 #import "GameContext.h"
 #import "PlayDisplayLayer.h"
+#import "SceneManager.h"
 
 @interface PlayLayer : CCLayer
 {
@@ -22,6 +23,5 @@
 +(PlayLayer*) sharedInstance:(BOOL) refresh;
 -(Box*) getBox;
 -(void) pauseGame;
-
 -(void) resumeGame;
 @end

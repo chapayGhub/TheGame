@@ -17,11 +17,12 @@ static PlayLayer* thisLayer;
 
 +(PlayLayer*) sharedInstance:(BOOL) refresh
 {
-    if(thisLayer&&refresh)
+    if(thisLayer!=nil&&refresh)
     {
         [thisLayer release];
+        thisLayer =nil;
     }
-    if(!thisLayer)
+    if(thisLayer==nil)
     {
         thisLayer = [PlayLayer node];
     }
@@ -58,10 +59,7 @@ static PlayLayer* thisLayer;
 }
 
 -(void) onEnterTransitionDidFinish{
-	[box fill];
-    [box check];
-    [box unlock];
-    //[self schedule:@selector(checkPosition) interval:0.5];
+    [self checkPosition];
 }
 
 -(void) checkPosition
@@ -72,12 +70,8 @@ static PlayLayer* thisLayer;
         for(int j =0;j<[array count];j++)
         {
             Germ *g= [array objectAtIndex:j];
-            if(!g.moving)
-            {
-                [g.sprite setPosition:g.pixPosition];
-                [g.sprite recorrectLabelPosition];
-            }
-            
+            [g.sprite setPosition:g.pixPosition];
+            [g.sprite recorrectLabelPosition];
         }
     }
 }
@@ -91,6 +85,9 @@ static PlayLayer* thisLayer;
     [[PlayDisplayLayer sharedInstance:NO] setType:[context type]];
     
     [box setKind:context.kindCount];
+    [box fill];
+    [box check];
+    [box unlock];
 }
 -(void) hint
 {
@@ -136,9 +133,8 @@ static PlayLayer* thisLayer;
     {
         if(difX>150)
         {
-            [[PlayDisplayLayer sharedInstance:NO] resumeGame];
-        }else{
             [[PlayDisplayLayer sharedInstance:NO] pauseGame];
+            [SceneManager goPauseMenu];
         }
         return;
     }
@@ -264,6 +260,7 @@ static PlayLayer* thisLayer;
             
         }
     }
+    [self checkPosition];
 }
 
 

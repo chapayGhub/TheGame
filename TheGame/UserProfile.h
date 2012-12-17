@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Constants.h"
+#import "cocos2d.h"
 
-@interface UserProfile : NSObject
+@interface UserProfile : NSObject{
+}
 
+//道具数目 count代表游戏局数
+@property (nonatomic) int tools_hint,tools_life,tools_refill,count;
+@property (nonatomic,retain) NSMutableDictionary* userRecord;
+
++(UserProfile*) sharedInstance;
++(void) writeBackToFile;
 @end

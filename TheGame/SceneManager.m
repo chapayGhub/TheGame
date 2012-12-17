@@ -72,4 +72,21 @@ static MobiSageAdBanner* banner;
     }
     return banner;
 }
+
++(void) pushScene:(CCScene*) scence{
+    CCDirector *director = [CCDirector sharedDirector];
+    [director pushScene:scence];
+}
+
++(void) popScene{
+    CCDirector *director = [CCDirector sharedDirector];
+    [director popScene];
+}
+
++(void) goPauseMenu{
+    CCDirector *director = [CCDirector sharedDirector];
+    CCScene *newScene = [CCScene node];
+    [newScene addChild:[PauseMenuLayer node]];
+    [director pushScene:newScene];
+}
 @end

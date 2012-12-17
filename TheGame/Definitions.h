@@ -21,6 +21,7 @@ typedef enum {
     BombGerm,   //计步数炸弹孢子
     PoisonousGerm,//毒药孢子
     TimeBombGerm, //计时炸弹孢子
+    FixedGerm,    //固定孢子
     NormalGerm,   //普通孢子
 } GermType;
 
@@ -29,13 +30,8 @@ typedef enum{
     Classic,
     Bomb,
     Poisonous,
+    TimeBomb,
 }GameType;
 
-
-typedef enum{
-    Going,
-    Won,
-    Lost,
-}GameStatus;
 
 #endif

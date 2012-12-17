@@ -44,7 +44,6 @@ static GameDef* def;
     GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:1600 Time:60 KindCound:7 Interval:0];
     
     [settings setValue:context forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context type] level:[context level]]];
-
     [settings setValue:context1 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context1 type] level:[context1 level]]];
     [settings setValue:context2 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context2 type] level:[context2 level]]];
     [settings setValue:context3 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context3 type] level:[context3 level]]];
@@ -53,7 +52,6 @@ static GameDef* def;
     [settings setValue:context6 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context6 type] level:[context6 level]]];
     [settings setValue:context7 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context7 type] level:[context7 level]]];
     [settings setValue:context8 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context8 type] level:[context8 level]]];
-    
 }
 
 @end

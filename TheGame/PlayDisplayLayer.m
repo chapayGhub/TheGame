@@ -16,7 +16,7 @@
     CCLabelTTF* passScoreLabel;
     
     CCSprite* pause;
-    CCSprite* menu;
+
     CCSprite* restart;
     
     /*UserTools*/
@@ -37,11 +37,12 @@ static PlayDisplayLayer* thisLayer;
 
 +(PlayDisplayLayer*) sharedInstance:(BOOL) refresh
 {
-    if(thisLayer&&refresh)
+    if(thisLayer!=nil&&refresh)
     {
         [thisLayer release];
+        thisLayer =nil;
     }
-    if(!thisLayer)
+    if(thisLayer==nil)
     {
         thisLayer = [PlayDisplayLayer node];
     }
@@ -69,6 +70,7 @@ static PlayDisplayLayer* thisLayer;
         scoreLabel.position = ccp(winSize.width*0.33, winSize.height*0.97);
         scoreLabel.color = ccc3(0,0,0);
         [self addChild:scoreLabel];
+        
         
         
         self.isTouchEnabled = YES;
@@ -166,6 +168,7 @@ static PlayDisplayLayer* thisLayer;
 }
 
 -(void) pauseGame{
+
     [self pauseSchedulerAndActions];
     [[PlayLayer sharedInstance:NO]  pauseGame];
 }
@@ -173,7 +176,7 @@ static PlayDisplayLayer* thisLayer;
 -(void) resumeGame
 {
     [self resumeSchedulerAndActions];
-     [[PlayLayer sharedInstance:NO]  resumeGame];
+    [[PlayLayer sharedInstance:NO]  resumeGame];
 }
 
 -(NSString*) generateString

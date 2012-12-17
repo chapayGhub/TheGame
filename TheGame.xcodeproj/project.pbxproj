@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C609E610167EAAC3000BF64F /* PauseMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C609E60F167EAAC3000BF64F /* PauseMenuLayer.m */; };
 		C656B112167A812700B24E87 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C656B111167A812700B24E87 /* CommonUtils.m */; };
 		C656B115167A838100B24E87 /* GameDef.m in Sources */ = {isa = PBXBuildFile; fileRef = C656B114167A838100B24E87 /* GameDef.m */; };
 		C6884790167190DD008633AD /* Germ.m in Sources */ = {isa = PBXBuildFile; fileRef = C688478F167190DD008633AD /* Germ.m */; };
@@ -194,6 +195,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C609E60E167EAAC3000BF64F /* PauseMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenuLayer.h; sourceTree = "<group>"; };
+		C609E60F167EAAC3000BF64F /* PauseMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseMenuLayer.m; sourceTree = "<group>"; };
 		C656B110167A812700B24E87 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
 		C656B111167A812700B24E87 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
 		C656B113167A838100B24E87 /* GameDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDef.h; sourceTree = "<group>"; };
@@ -1030,6 +1033,8 @@
 				C6ECE9811677CA4700B4B468 /* PlayDisplayLayer.m */,
 				C6FFA0451678F4260069C640 /* ActiveBackgroundLayer.h */,
 				C6FFA0461678F4260069C640 /* ActiveBackgroundLayer.m */,
+				C609E60E167EAAC3000BF64F /* PauseMenuLayer.h */,
+				C609E60F167EAAC3000BF64F /* PauseMenuLayer.m */,
 			);
 			name = layers;
 			sourceTree = "<group>";
@@ -1608,6 +1613,7 @@
 				C656B112167A812700B24E87 /* CommonUtils.m in Sources */,
 				C656B115167A838100B24E87 /* GameDef.m in Sources */,
 				C6E5AE34167D2AA300F2811E /* GermFigure.m in Sources */,
+				C609E610167EAAC3000BF64F /* PauseMenuLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
