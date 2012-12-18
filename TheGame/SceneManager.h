@@ -8,6 +8,7 @@
 #import "GameDef.h"
 #import "CommonUtils.h"
 #import "PauseMenuLayer.h"
+#import "GameModeChooseLayer.h"
 
 @interface SceneManager : NSObject {
 
@@ -18,4 +19,5 @@
 +(void) pushScene:(CCScene*) scence;
 +(void) popScene;
 +(void) goPauseMenu;
++(void) goGameModeChoose;
 @end

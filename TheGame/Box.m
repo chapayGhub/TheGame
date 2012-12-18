@@ -463,7 +463,6 @@ int runningProcedure;
         }else{
             //如果某个孢子下面有被消除的孢子，那么它应该移动到那个孢子的位置去
             Germ *destGerm = [self objectAtX:columnIndex Y:y-count];
-            germ.moving = YES;
     
             CGPoint dest = ccp(destGerm.pixPosition.x-germ.pixPosition.x, destGerm.pixPosition.y-germ.pixPosition.y);
             CCSequence *action = [CCSequence actions:
@@ -485,11 +484,8 @@ int runningProcedure;
 		int value = (arc4random()%self.kind+1);
         //从下往上来
 		Germ *destGerm = [self objectAtX:columnIndex Y:kBoxHeight-count+i];
-		NSString *name = [NSString stringWithFormat:@"q%d.png",value];
-		GermFigure *sprite = [GermFigure spriteWithFile:name];
-        sprite.scale = 0.5;
+		GermFigure *sprite = [self getFigure:value];
 		sprite.position = ccp(kStartX + columnIndex * kTileSize + kTileSize/2, kStartY + (kBoxHeight + i) * kTileSize + kTileSize/2);
-		destGerm.moving = YES;
         CCSequence *action = [CCSequence actions:
                               [CCDelayTime actionWithDuration: kFallDownDelayTime],
 							  [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
@@ -510,7 +506,6 @@ int runningProcedure;
 -(void) addSpriteToLayer:(id) sender germ:(Germ *) germ
 {
     [sender setVisible:YES];
-    germ.moving = NO;
 }
 
 // 当前情况下是否还有解
@@ -683,19 +678,14 @@ int runningProcedure;
         NSMutableArray *array = [content objectAtIndex:i];
         for(int j =0;j<[array count];j++)
         {
-            // 随机出一种孢子
-            int value = (arc4random()%self.kind+1);
             //从下往上来
             Germ *destGerm = [self objectAtX:j Y:i];
             if(destGerm.sprite)
             {
                 [self removeSprite:destGerm.sprite];
             }
-            
-            NSString *name = [NSString stringWithFormat:@"q%d.png",value];
-            
-            
-            GermFigure *sprite = [GermFigure spriteWithFile:name];
+            int value = (arc4random()%self.kind+1);
+            GermFigure *sprite = [self getFigure:value];
             sprite.scale = 0.5;
             sprite.position = destGerm.pixPosition;
             [holder addChild: sprite];
@@ -707,6 +697,14 @@ int runningProcedure;
 	}
 }
 
+
+-(GermFigure*) getFigure:(int) value{
+    
+    NSString *name = [NSString stringWithFormat:@"q%d.png",value];
+    GermFigure *sprite = [GermFigure spriteWithFile:name];
+    sprite.scale = 0.5;
+    return sprite;
+}
 
 
 -(void) restart{

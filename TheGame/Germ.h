@@ -16,7 +16,6 @@
 @property (nonatomic, readonly) int x, y;
 @property (nonatomic) GermType type;
 @property (nonatomic) int value;
-@property (nonatomic) bool moving;
 @property (nonatomic) bool centerFlag;
 @property (nonatomic) int bombCount;
 @property (nonatomic, retain) GermFigure *sprite;

@@ -77,7 +77,7 @@ static PlayLayer* thisLayer;
 }
 
 
--(void) resetWithContext:(GameContext *)context
+-(void) resetWithContext:(GameContext *)context refresh:(BOOL) fresh
 {
     _context = context;
     [[PlayDisplayLayer sharedInstance:NO] resetTime:[context time]];
@@ -85,9 +85,13 @@ static PlayLayer* thisLayer;
     [[PlayDisplayLayer sharedInstance:NO] setType:[context type]];
     
     [box setKind:context.kindCount];
-    [box fill];
-    [box check];
-    [box unlock];
+    if(fresh)
+    {
+        [box fill];
+        [box check];
+        [box unlock];
+    }
+    
 }
 -(void) hint
 {
@@ -228,7 +232,10 @@ static PlayLayer* thisLayer;
 
 -(void) nextStep{
     _stepCount++;
-
+    if(_stepCount==1000) //到达某个数目的时候重置，避免溢出
+    {
+        _stepCount=1;
+    }
     NSMutableArray *content = [box content];
     for (int i=[content count]-1; i>=0; i--) {
         NSMutableArray *array = [content objectAtIndex:i];
@@ -278,6 +285,11 @@ static PlayLayer* thisLayer;
 		[sprite runAction:someAction];
 	}
     
+}
+
+-(void) toNextLevel:(BOOL) refresh{
+    GameContext *context = [[self context] getNextLevel];
+    [self resetWithContext:context refresh:refresh];
 }
 
 -(Box*) getBox{

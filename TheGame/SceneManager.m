@@ -33,7 +33,7 @@ static MobiSageAdBanner* banner;
     
     GameContext *context = [[[GameDef sharedInstance] settings] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:level]];
     PlayLayer *play = [PlayLayer sharedInstance:YES];
-    [play resetWithContext:context];
+    [play resetWithContext:context refresh:YES];
     
     [newScene addChild:[PlayBackgroundLayer node] z:0];
     [newScene addChild:display z:2];
@@ -88,5 +88,17 @@ static MobiSageAdBanner* banner;
     CCScene *newScene = [CCScene node];
     [newScene addChild:[PauseMenuLayer node]];
     [director pushScene:newScene];
+}
+
++(void) goGameModeChoose{
+    CCDirector *director = [CCDirector sharedDirector];
+    CCScene *newScene = [CCScene node];
+    [newScene addChild:[GameModeChooseLayer node]];
+    if ([director runningScene]) {
+        [director replaceScene:[CCTransitionCrossFade transitionWithDuration: 0.5f scene: newScene]];
+	}else {
+		[director runWithScene:newScene];
+	}
+
 }
 @end

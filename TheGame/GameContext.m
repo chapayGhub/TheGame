@@ -7,7 +7,7 @@
 //
 
 #import "GameContext.h"
-
+#import "GameDef.h"
 @implementation GameContext
 @synthesize level,levelScore,type,time,kindCount;
 
@@ -21,5 +21,16 @@
     self.kindCount = kindcount;
     self.interval=ainteval;
     return self;
+}
+
+-(GameContext*) getNextLevel
+{
+    NSMutableDictionary* settings = [[GameDef sharedInstance] settings];
+    GameContext *g = [settings objectForKey:[CommonUtils getKeyStringByGameTypeAndLevel:[self type] level:([self level]+1)]];
+    if(g==nil)
+    {
+        return self;
+    }
+    return g;
 }
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Constants.h"
+// 动态背景
 @interface ActiveBackgroundLayer :CCLayer
 
 -(id) init;

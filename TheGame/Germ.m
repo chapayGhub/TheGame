@@ -11,7 +11,6 @@
 @implementation Germ
 @synthesize x, y, value, sprite,type;
 @synthesize centerFlag;
-@synthesize moving;
 @synthesize bombCount;
 
 -(id) initWithX: (int) posX Y: (int) posY{
@@ -20,7 +19,6 @@
 	y = posY;
     self.type = NormalGerm;
     centerFlag = NO;
-    moving = NO;
 	return self;
 }
 

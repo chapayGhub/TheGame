@@ -1,6 +1,8 @@
 #import "cocos2d.h"
 #import "SceneManager.h"
+#import "UserProfile.h"
 
+// 主菜单
 @interface MainMenuLayer :CCLayer{
 }
 

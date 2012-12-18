@@ -5,6 +5,7 @@
 #import "PlayDisplayLayer.h"
 #import "SceneManager.h"
 
+// 游戏界面
 @interface PlayLayer : CCLayer
 {
 	Box *box;
@@ -19,9 +20,10 @@
 -(void) hint;
 -(void) nextStep;
 -(id) init;
--(void) resetWithContext:(GameContext *)context;
+-(void) resetWithContext:(GameContext *)context refresh:(BOOL) fresh;
 +(PlayLayer*) sharedInstance:(BOOL) refresh;
 -(Box*) getBox;
 -(void) pauseGame;
 -(void) resumeGame;
+-(void) toNextLevel:(BOOL) refresh;
 @end

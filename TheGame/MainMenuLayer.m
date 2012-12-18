@@ -11,7 +11,7 @@
 	
     CCMenuItemFont *startNew = [CCMenuItemFont itemFromString:@"经典模式" target:self selector: @selector(onStartNew:)];
 
-	CCMenuItemFont *resume = [CCMenuItemFont itemFromString:@"无限闯关" target:self selector: @selector(onResume:)];
+	CCMenuItemFont *resume = [CCMenuItemFont itemFromString:@"无限闯关" target:self selector: @selector(onInfiniteMode:)];
 
 	CCMenuItemFont *highscores = [CCMenuItemFont itemFromString:@"得分榜" target:self selector: @selector(onHighscores:)];
 
@@ -54,14 +54,17 @@
 	[menu alignItemsVerticallyWithPadding: 40.0f];
 	[self addChild:menu z: 2];
 
+    
+    
+    
 	return self;
 }
 
 - (void)onStartNew:(id)sender{
 	[SceneManager goPlay:Classic level:1];
 }
-- (void)onResume:(id)sender{
-	[SceneManager goPlay:Classic level:3];
+- (void)onInfiniteMode:(id)sender{
+	[SceneManager goGameModeChoose];
 }
 
 - (void)onHighscores:(id)sender{

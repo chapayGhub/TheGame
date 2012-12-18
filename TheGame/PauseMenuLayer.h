@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "SceneManager.h"
 
+// 暂停菜单
 @interface PauseMenuLayer : CCLayer
 
 @property (nonatomic,retain) CCMenu *menu;

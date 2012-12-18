@@ -20,4 +20,5 @@
 @property (nonatomic) int interval; //刷新炸弹/毒药孢子的间隔步数/时间
 
 -(id) initWithValues:(GameType)gameType Level:(int)levelcount Score:(int)levelscore Time:(int)atime KindCound:(int)kindcount Interval:(int)ainteval;
+-(GameContext*) getNextLevel;
 @end

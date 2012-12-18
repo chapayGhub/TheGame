@@ -9,15 +9,15 @@
 #import "UserProfile.h"
 #import "CommonUtils.h"
 @implementation UserProfile
-@synthesize tools_hint,tools_life,tools_refill,userRecord,count;
+@synthesize tools_hint,tools_life,tools_refill,userRecord,count,lastTime;
 
 static UserProfile* instance;
 
 +(UserProfile*) sharedInstance{
     if(instance == nil)
     {
-        NSFileManager *fileManager = [[NSFileManager alloc] init];
-        if([fileManager fileExistsAtPath:@"user.dat"]) //如果存在则读取文件，如果不存在则初始化文件
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if([fileManager fileExistsAtPath:[UserProfile getConfigurationFilePath] isDirectory:NO]) //如果存在则读取文件，如果不存在则初始化文件
         {
             [UserProfile readFile];
         }else{
@@ -32,16 +32,23 @@ static UserProfile* instance;
 //读取文件初始化
 +(void) readFile
 {
-    NSData *data=[NSData dataWithContentsOfFile:@"user.dat"];
+    NSData *data=[NSData dataWithContentsOfFile:[UserProfile getConfigurationFilePath]];
     instance=[NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
 //写回文件
-+(void) writeBackToFile
++(BOOL) writeBackToFile
 {
     NSData *data=[NSKeyedArchiver archivedDataWithRootObject:instance];
     //转成NSData类型后就可以写入本地磁盘了
-    [data writeToFile:@"user.dat" atomically:YES];
+    BOOL result = [data writeToFile:[UserProfile getConfigurationFilePath] atomically:YES];
+    return result;
+}
+
++(NSString*) getConfigurationFilePath{
+    ccResolutionType resolution;
+    NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:@"user.dat" resolutionType:&resolution];
+    return fullpath;
 }
 
 +(void) firstTimeFileInitialize{
@@ -49,7 +56,8 @@ static UserProfile* instance;
     [instance setTools_hint:0];
     [instance setTools_life:0];
     [instance setTools_refill:0];
-    [instance setCount:0];
+    [instance setCount:1];
+    [instance setLastTime:[[NSDate alloc] init]];
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
 
     GameType type = Classic;
@@ -76,15 +84,16 @@ static UserProfile* instance;
     NSString *des = [NSString stringWithFormat:@"user record"];
     return des;
 }
--(void)encodeWithCoder:(NSCoder *)aCoder//要一一对应
+-(void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeInt:tools_hint forKey:@"hint"];
     [aCoder encodeInt:tools_life forKey:@"life"];
     [aCoder encodeInt:tools_refill forKey:@"refill"];
     [aCoder encodeInt:count forKey:@"count"];
     [aCoder encodeObject:userRecord forKey:@"record"];
+    [aCoder encodeObject:lastTime forKey:@"lasttime"];
 }
--(id)initWithCoder:(NSCoder *)aDecoder//和上面对应
+-(id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self=[super init]) {
         self.tools_hint=[aDecoder decodeIntForKey:@"hint"];
@@ -92,8 +101,55 @@ static UserProfile* instance;
         self.tools_refill=[aDecoder decodeIntForKey:@"refill"];
         self.count=[aDecoder decodeIntForKey:@"count"];
         self.userRecord=[aDecoder decodeObjectForKey:@"record"];
+        self.lastTime=[aDecoder decodeObjectForKey:@"lasttime"];
     }
     return self;
+}
+
+
+-(SeriesLoginCounts) getCountInARoll{
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    NSInteger unitFlags =NSMonthCalendarUnit|NSDayCalendarUnit;
+
+    //int week=0;
+    NSDateComponents *comps = [calendar components:unitFlags fromDate:date];
+    int month = [comps month];
+    int day = [comps day];
+    
+    comps = [calendar components:unitFlags fromDate:lastTime];
+    int last_month = [comps month];
+    int last_day = [comps day];
+    
+    
+    //这里判断比较简单 是有BUG的 但是就这样吧
+    if(day==last_day && month == last_month)//同一天登陆
+    {
+        return SameDay;
+    }else if((month == last_month && day==last_day+1)||(month==last_month+1 && day==1))//连续第N天的登陆
+    {
+        count = count+1;
+        self.lastTime = date;
+        if(count==2)
+        {
+            return TwoDay;
+        }
+        if(count >=3)
+        {
+            if(count%3==0)
+            {
+                return ThreeDay;
+            }else
+            {
+                return TwoDay;
+            }
+        }
+    }else{ //连续登陆日期终端
+        count = 1;
+        self.lastTime = date;
+        return OneDay;
+    }
+    return OneDay;
 }
 
 @end

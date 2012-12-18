@@ -154,6 +154,10 @@ static PlayDisplayLayer* thisLayer;
             {
                 star++;
                 [self resetLevelScore:levelScore*getStarSpan];
+            }else{  //拿到三颗星
+                // 胜利
+                // 跳到中间页面
+                //[[PlayLayer sharedInstance:NO] toNextLevel:YES];
             }
         }
     }

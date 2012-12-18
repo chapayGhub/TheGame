@@ -23,6 +23,9 @@
         case Poisonous:
             typename= [NSString stringWithFormat:@"p%d",level];
             break;
+        case TimeBomb:
+            typename= [NSString stringWithFormat:@"t%d",level];
+            break;
         default:
             break;
     }
