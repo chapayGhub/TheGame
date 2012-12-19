@@ -95,4 +95,5 @@
     [self setSprite:asprite];
     
 }
+
 @end

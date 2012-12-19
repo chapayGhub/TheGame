@@ -718,5 +718,13 @@ int runningProcedure;
     [self unlock];
 }
 
-
+-(void)dealloc{
+    [readyToRemoveHori release];
+    readyToRemoveHori = nil;
+    [readyToRemoveVerti release];
+    readyToRemoveVerti = nil;
+    [content release];
+    content = nil;
+    [super dealloc];
+}
 @end

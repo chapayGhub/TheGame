@@ -159,9 +159,9 @@ static PlayLayer* thisLayer;
         {
             clickcount=0;
             [selected.sprite removeFromParentAndCleanup:YES];
-            [selected transform:TimeBombGerm];
+            [selected transform:PoisonousGerm];
             [self addChild:selected.sprite];
-            [self addChild:selected.sprite.label];
+            //[self addChild:selected.sprite.label];
             [self afterOneShineTrun:selected.sprite];
             [box check];
         }
@@ -187,15 +187,16 @@ static PlayLayer* thisLayer;
 -(void) changeWithTileA: (Germ *) a TileB: (Germ *) b sel : (SEL) sel{
 	CGPoint pa = a.pixPosition;
     CGPoint pb = b.pixPosition;
-    
+    int difx = pa.x-pb.x;
+    int dify = pa.y-pb.y;
     CCAction *actionA = [CCSequence actions:
-						 [CCMoveBy actionWithDuration:kMoveTileTime position:ccp(pb.x-pa.x,pb.y-pa.y)],
+						 [CCMoveBy actionWithDuration:kMoveTileTime position:ccp(-difx,-dify)],
 						 [CCCallFuncND actionWithTarget:self selector:sel data: a],
 						 nil
 						 ];
 	
 	CCAction *actionB = [CCSequence actions:
-						 [CCMoveBy actionWithDuration:kMoveTileTime position:ccp(pa.x-pb.x,pa.y-pb.y)],
+						 [CCMoveBy actionWithDuration:kMoveTileTime position:ccp(difx,dify)],
 						 [CCCallFuncND actionWithTarget:self selector:sel data: b],
 						 nil
 						 ];
@@ -250,7 +251,7 @@ static PlayLayer* thisLayer;
                 {
                     // 游戏结束
                 }else{
-                    [self changeWithTileA:(Germ *)g TileB:[box objectAtX:j Y:(i+1)] sel:@selector(backCheck:data:)];
+                    [self changeWithTileA:[box objectAtX:j Y:(i+1)] TileB:g sel:@selector(backCheck:data:)];
                     CCAction *action = [CCSequence actions:[CCDelayTime actionWithDuration:kMoveTileTime+0.3f],
                                         [CCCallFunc actionWithTarget:self selector:@selector(checkPosition)],
                                         nil];
@@ -277,7 +278,7 @@ static PlayLayer* thisLayer;
             [self changeOneGermByType:_context.type];
         }
     }
-    [self checkPosition];
+    //[self checkPosition];
 }
 
 -(void) changeOneGermByType:(GameType) type
