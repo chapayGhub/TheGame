@@ -80,9 +80,10 @@ static PlayLayer* thisLayer;
 -(void) resetWithContext:(GameContext *)context refresh:(BOOL) fresh
 {
     _context = context;
-    [[PlayDisplayLayer sharedInstance:NO] resetTime:[context time]];
-    [[PlayDisplayLayer sharedInstance:NO] resetLevelScore:[context levelScore]];
-    [[PlayDisplayLayer sharedInstance:NO] setType:[context type]];
+    PlayDisplayLayer *dis = [PlayDisplayLayer sharedInstance:NO];
+    [dis resetTime:[context time]];
+    [dis resetLevelScore:[context levelScore]];
+    [dis setType:[context type]];
     
     [box setKind:context.kindCount];
     if(fresh)
@@ -236,6 +237,7 @@ static PlayLayer* thisLayer;
     {
         _stepCount=1;
     }
+
     NSMutableArray *content = [box content];
     for (int i=[content count]-1; i>=0; i--) {
         NSMutableArray *array = [content objectAtIndex:i];
@@ -267,7 +269,44 @@ static PlayLayer* thisLayer;
             
         }
     }
+    if(_context.type!=Classic && _context.interval!=0)
+    {
+        if(_stepCount%_context.interval==0)
+        {
+            // 刷新孢子
+            [self changeOneGermByType:_context.type];
+        }
+    }
     [self checkPosition];
+}
+
+-(void) changeOneGermByType:(GameType) type
+{
+    int x = arc4random()%7;
+    int y = arc4random()%7;
+    
+    GermType t = TimeBombGerm;
+    switch (type) {
+        case Bomb:
+            t=BombGerm;
+            break;
+        case Poisonous:
+            t =PoisonousGerm;
+            y=0;
+            break;
+        default:
+            break;
+    }
+    
+    Germ* g = [box objectAtX:x Y:y];
+    [g.sprite removeFromParentAndCleanup:YES];
+    [g transform:t];
+    [self addChild:g.sprite];
+    if(t==TimeBombGerm||t==BombGerm)
+    {
+        [self addChild:g.sprite.label];
+    }
+
 }
 
 

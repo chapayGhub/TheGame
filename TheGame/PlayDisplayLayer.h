@@ -17,7 +17,7 @@
 
 
 @property (nonatomic) int levelScore;
-@property (nonatomic) int score;
+@property (nonatomic) int score,life;
 @property (nonatomic) int time,star;
 
 -(id) init;

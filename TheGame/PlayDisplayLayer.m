@@ -16,7 +16,7 @@
     CCLabelTTF* passScoreLabel;
     
     CCSprite* pause;
-
+    
     CCSprite* restart;
     
     /*UserTools*/
@@ -31,7 +31,7 @@
 @end
 @implementation PlayDisplayLayer
 
-@synthesize score,levelScore,time,star;
+@synthesize score,levelScore,time,star,life;
 
 static PlayDisplayLayer* thisLayer;
 
@@ -56,6 +56,7 @@ static PlayDisplayLayer* thisLayer;
     if(self)
     {
         star = 0;
+        life = 3;
         CGSize winSize = [CCDirector sharedDirector].winSize;
         // 设置倒计时的位置
         clockLabel = [CCLabelTTF labelWithString:[self generateString] fontName:@"Arial" fontSize:15];
@@ -97,7 +98,7 @@ static PlayDisplayLayer* thisLayer;
     self.levelScore=alevelScore;
     if(type==Classic)
     {
-        if(passScoreLabel)
+        if(passScoreLabel!=nil)
         {
             [passScoreLabel setString:[NSString stringWithFormat:@"%d",levelScore]];
             return;
@@ -110,7 +111,6 @@ static PlayDisplayLayer* thisLayer;
         passScoreLabel.position = ccp(winSize.width*0.55, winSize.height*0.97);
         passScoreLabel.color = ccc3(0,0,0);
         [self addChild:passScoreLabel];
-        
     }
 }
 -(void) resetTime:(int)atime
@@ -128,19 +128,27 @@ static PlayDisplayLayer* thisLayer;
     }else{
         timeRemain--;
         [clockLabel setString:[self generateString]];
-        //更新炸弹孢子计时
-        NSMutableArray *array = [GermFigure getArrayByType:TimeBombGerm];
-        int length = [array count];
-        for(int i=0;i<length;i++)
+        if(type == TimeBomb)
         {
-            GermFigure *sprite = [array objectAtIndex:i];
-            int i=[sprite nextValue];
-            if(i==0)
-            {
-                //炸弹爆炸 扣一格血
+            NSMutableArray *content = [[[PlayLayer sharedInstance:NO] getBox] content];
+            for (int i=[content count]-1; i>=0; i--) {
+                NSMutableArray *array = [content objectAtIndex:i];
+                for(int j =0;j<[array count];j++)
+                {
+                    Germ *g= [array objectAtIndex:j];
+                    if(g.type==TimeBombGerm)
+                    {
+                        GermFigure *sprite = g.sprite;
+                        int i=[sprite nextValue];
+                        if(i==0)
+                        {
+                            //炸弹爆炸 扣一格血
+                        }
+                    }
+                    
+                }
             }
         }
-        
     }
 }
 
@@ -160,6 +168,12 @@ static PlayDisplayLayer* thisLayer;
                 //[[PlayLayer sharedInstance:NO] toNextLevel:YES];
             }
         }
+        
+        else{ // 无限模式中直接增加级别
+            PlayLayer* l = [PlayLayer sharedInstance:NO];
+            GameContext* c = [[l context] getNextLevel];
+            [l resetWithContext:c refresh:NO];
+        }
     }
     
     score=value;
@@ -168,11 +182,11 @@ static PlayDisplayLayer* thisLayer;
 
 -(void) removeLabel: (id) sender{
     [self removeChild:sender cleanup:YES];
-   
+    
 }
 
 -(void) pauseGame{
-
+    
     [self pauseSchedulerAndActions];
     [[PlayLayer sharedInstance:NO]  pauseGame];
 }
