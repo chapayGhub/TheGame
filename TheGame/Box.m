@@ -692,6 +692,7 @@ int runningProcedure;
             destGerm.centerFlag=NO;
             destGerm.value = value;
             destGerm.sprite = sprite;
+            [destGerm setType:NormalGerm];
             
         }
 	}
