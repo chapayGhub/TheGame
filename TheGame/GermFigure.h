@@ -15,13 +15,12 @@
 
 
 @property (nonatomic,retain) CCLabelTTF* label;
-
+@property (atomic) int currentNumber;
 
 -(void) setLabelValue:(int) number;
 -(CCAction*) runAction:(CCAction*) action;
 +(id)spriteWithFile:(NSString*)filename;
 -(int) nextValue;//让label上的数字递减
 -(void) recorrectLabelPosition;
-+(NSMutableArray*) getArrayByType:(GermType) type;
 -(void) removeFromParentAndCleanup:(BOOL)cleanup;
 @end

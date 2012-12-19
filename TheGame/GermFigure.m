@@ -12,14 +12,8 @@
 @implementation GermFigure
 
 
-@synthesize label;
+@synthesize label,currentNumber;
 
-static NSMutableArray* timeBombs;
-static NSMutableArray* poisonous;
-static NSMutableArray* bombs;
-
-
-int currentNumber;
 CCAction *tempAction;
 
 -(CCAction*) runAction:(CCAction*) action{
@@ -41,9 +35,6 @@ CCAction *tempAction;
 
 -(void) removeFromParentAndCleanup:(BOOL)cleanup
 {
-    [timeBombs removeObject:self];
-    [poisonous removeObject:self];
-    [bombs removeObject:self];
     if(label!=nil)
     {
         [label removeFromParentAndCleanup:YES];
@@ -68,36 +59,16 @@ CCAction *tempAction;
 }
 
 -(int) nextValue{
+    if(currentNumber<=0)
+    {
+        return 0;
+    }
     currentNumber--;
     [label setString:[NSString stringWithFormat:@"%d",currentNumber]];
     return currentNumber;
 }
 
-+(NSMutableArray*) getArrayByType:(GermType) type
-{
-    switch (type) {
-        case BombGerm:
-            if(bombs==nil)
-            {
-                bombs = [[NSMutableArray alloc] init];
-            }
-            return bombs;
-        case TimeBombGerm:
-            if(timeBombs==nil)
-            {
-                timeBombs = [[NSMutableArray alloc] init];
-            }
-            return timeBombs;
-        case PoisonousGerm:
-            if(poisonous==nil)
-            {
-                poisonous = [[NSMutableArray alloc] init];
-            }
-            return poisonous;
-        default:
-            return nil;
-    }
-}
+
 
 
 

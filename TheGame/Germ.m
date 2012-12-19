@@ -93,7 +93,6 @@
     }
     
     [self setSprite:asprite];
-    [[GermFigure getArrayByType:atype] addObject:asprite];
     
 }
 @end
