@@ -12,7 +12,7 @@
 
 /***这两个参数决定box的位置***/
 #define kStartX 10
-#define kStartY 118
+#define kStartY 112
 
 /**box的大小*/
 #define kBoxWidth 7
@@ -41,5 +41,15 @@
 
 // 在经典玩法中 达到了某个分数以后 要再达到这个分数的某个比例 可以多获得一颗星
 #define getStarSpan 1.2f
+
+
+// 在经典玩法中， 控制星星出现的动画
+// 星星由某个位置先变大，再变小然后镶嵌到该出现的位置
+// 这个参数控制变大花费的时间
+#define apearspeed 0.8f
+// 这个参数控制镶嵌的时间
+#define fixspeed 0.8f
+// 这个参数控制变大的大小
+#define openScale 1.0f
 
 #endif

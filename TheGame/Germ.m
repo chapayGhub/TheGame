@@ -7,7 +7,7 @@
 //
 
 #import "Germ.h"
-
+#import "PlayLayer.h"
 @implementation Germ
 @synthesize x, y, value, sprite,type;
 @synthesize centerFlag;
@@ -56,43 +56,50 @@
 
 -(void)transform:(GermType)atype
 {
+    PlayLayer *layer = [PlayLayer sharedInstance:NO];
     if(value == 0)
     {
         return;
     }
     [self setType:atype];
+    [self.sprite removeFromParentAndCleanup:YES];
+    
     GermFigure* asprite = nil;
+    asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q%d.png",value]];
+    asprite.scale=0.5f;
+    [asprite setPosition:self.pixPosition];
+
     switch(atype)
     {
-        case SuperGerm:
-            asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q%d.png",value]];
-            asprite.scale=0.5;
+        case SuperGerm:         
             [asprite setColor: ccc3(100, 100, 100)];
-            [asprite setPosition:self.pixPosition];
+            [layer addChild:asprite];
             break;
         case PoisonousGerm:
-            asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q7.png"]];
-            [asprite setPosition:self.pixPosition];
-            [self setValue:7];
+            [asprite setBombPictureWithFile:@"poison.png"];
+            [layer addChild:asprite];
+            [layer addChild:asprite.bomb];
             break;
         case BombGerm:
-            asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q8.png"]];
-            [asprite setPosition:self.pixPosition];
+            [asprite setBombPictureWithFile:@"bomb.png"];
             [asprite setLabelValue:10];
-            [self setValue:8];
+            [layer addChild:asprite];
+            [layer addChild:asprite.bomb];
+            [layer addChild:asprite.label];
             break;
         case TimeBombGerm:
-            asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q6.png"]];
-            [asprite setPosition:self.pixPosition];
+            [asprite setBombPictureWithFile:@"bomb.png"];
             [asprite setLabelValue:30];
-            [asprite setScale:0.5f];
-            [self setValue:6];
+            [layer addChild:asprite];
+            [layer addChild:asprite.bomb];
+            [layer addChild:asprite.label];
             break;
         default:
             break;
     }
     
     [self setSprite:asprite];
+    
     
 }
 

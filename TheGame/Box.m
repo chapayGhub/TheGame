@@ -170,9 +170,7 @@ int runningProcedure;
         }else if(g==center)
         {
             //把center变为超级孢子
-            [center.sprite removeFromParentAndCleanup:YES];
             [center transform:SuperGerm];
-            [holder addChild:center.sprite];
         }
     }
 }

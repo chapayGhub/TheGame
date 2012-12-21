@@ -29,4 +29,5 @@
 +(PlayDisplayLayer*) sharedInstance:(BOOL) refresh;
 -(void) pauseGame;
 -(void) resumeGame;
+-(void) setWithContext:(GameContext*) context;
 @end

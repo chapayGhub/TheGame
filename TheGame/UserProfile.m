@@ -129,7 +129,9 @@ static UserProfile* instance;
     }else if((month == last_month && day==last_day+1)||(month==last_month+1 && day==1))//连续第N天的登陆
     {
         count = count+1;
+        
         self.lastTime = date;
+        [UserProfile writeBackToFile];
         if(count==2)
         {
             return TwoDay;
@@ -146,7 +148,9 @@ static UserProfile* instance;
         }
     }else{ //连续登陆日期终端
         count = 1;
+        
         self.lastTime = date;
+        [UserProfile writeBackToFile];
         return OneDay;
     }
     return OneDay;

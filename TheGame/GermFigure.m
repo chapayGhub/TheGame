@@ -12,18 +12,24 @@
 @implementation GermFigure
 
 
-@synthesize label,currentNumber;
+@synthesize label,currentNumber,bomb;
 
 CCAction *tempAction;
-
+CCAction *tempAction1;
 -(CCAction*) runAction:(CCAction*) action{
     [super runAction:action];
-    CCAction *tempAction = [[action copy] autorelease];
+    
+    
     if(label!=nil)
     {
+        tempAction = [[action copy] autorelease];
         [label runAction:tempAction];
     }
-    
+    if(bomb!=nil)
+    {
+        tempAction1 = [[action copy] autorelease];
+        [bomb runAction:tempAction1];
+    }
     return action;
 }
 
@@ -39,6 +45,10 @@ CCAction *tempAction;
     {
         [label removeFromParentAndCleanup:YES];
     }
+    if(bomb!=nil)
+    {
+        [bomb removeFromParentAndCleanup:YES];
+    }
     [super removeFromParentAndCleanup:YES];
 }
 
@@ -50,7 +60,7 @@ CCAction *tempAction;
     }
     label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",number] fontName:@"Arial" fontSize:15];
     [self recorrectLabelPosition];
-    [label setColor:ccc3(0, 0, 0)];
+    [label setColor:ccc3(255, 255, 255)];
     
 }
 -(void) recorrectLabelPosition{
@@ -58,6 +68,12 @@ CCAction *tempAction;
     [label setPosition:ccp(p.x+10,p.y-10)];
 }
 
+-(void) setBombPictureWithFile:(NSString*) file{
+    bomb = [CCSprite spriteWithFile:file];
+    CGPoint p = self.position;
+    [bomb setPosition:ccp(p.x+10,p.y-10)];
+    [bomb setScale:0.7f];
+}
 -(int) nextValue{
     if(currentNumber<=0)
     {

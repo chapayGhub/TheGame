@@ -15,6 +15,7 @@
 
 
 @property (nonatomic,retain) CCLabelTTF* label;
+@property (nonatomic,retain) CCSprite* bomb;
 @property (atomic) int currentNumber;
 
 -(void) setLabelValue:(int) number;
@@ -23,4 +24,5 @@
 -(int) nextValue;//让label上的数字递减
 -(void) recorrectLabelPosition;
 -(void) removeFromParentAndCleanup:(BOOL)cleanup;
+-(void) setBombPictureWithFile:(NSString*) file;
 @end

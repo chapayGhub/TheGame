@@ -80,11 +80,8 @@ static PlayLayer* thisLayer;
 -(void) resetWithContext:(GameContext *)context refresh:(BOOL) fresh
 {
     _context = context;
-    PlayDisplayLayer *dis = [PlayDisplayLayer sharedInstance:NO];
-    [dis resetTime:[context time]];
-    [dis resetLevelScore:[context levelScore]];
-    [dis setType:[context type]];
-    
+    [[PlayDisplayLayer sharedInstance:NO] setWithContext:context];
+
     [box setKind:context.kindCount];
     if(fresh)
     {
@@ -158,10 +155,8 @@ static PlayLayer* thisLayer;
         if(clickcount==2)
         {
             clickcount=0;
-            [selected.sprite removeFromParentAndCleanup:YES];
-            [selected transform:PoisonousGerm];
-            [self addChild:selected.sprite];
-            //[self addChild:selected.sprite.label];
+            GermType t = TimeBombGerm;
+            [selected transform:t];
             [self afterOneShineTrun:selected.sprite];
             [box check];
         }
@@ -300,14 +295,7 @@ static PlayLayer* thisLayer;
     }
     
     Germ* g = [box objectAtX:x Y:y];
-    [g.sprite removeFromParentAndCleanup:YES];
     [g transform:t];
-    [self addChild:g.sprite];
-    if(t==TimeBombGerm||t==BombGerm)
-    {
-        [self addChild:g.sprite.label];
-    }
-
 }
 
 
@@ -316,7 +304,7 @@ static PlayLayer* thisLayer;
 		GermFigure *sprite = (GermFigure *)node;
 		CCSequence *someAction = [CCSequence actions:
 								  [CCScaleBy actionWithDuration:kShineFreq scale:0.5f],
-								  [CCScaleBy actionWithDuration:kShineFreq scale:2.0f],
+								  [CCScaleBy actionWithDuration:kShineFreq scale:2],
                                   
 								  [CCCallFuncN actionWithTarget:self selector:@selector(afterOneShineTrun:)],//重新调用 持续闪烁
                                   

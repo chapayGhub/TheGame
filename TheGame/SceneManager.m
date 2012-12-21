@@ -13,6 +13,9 @@
 static MobiSageAdBanner* banner;
 
 +(void) goMainMenu{
+    SeriesLoginCounts count = [[UserProfile sharedInstance] getCountInARoll];
+    
+    
     CCDirector *director = [CCDirector sharedDirector];
     CCScene *newScene = [CCScene node];
     
@@ -29,10 +32,10 @@ static MobiSageAdBanner* banner;
 +(void) goPlay:(GameType)type level:(int)level{
     CCDirector *director = [CCDirector sharedDirector];
     CCScene *newScene = [CCScene node];
-    PlayDisplayLayer *display = [PlayDisplayLayer sharedInstance:YES];
     
     GameContext *context = [[[GameDef sharedInstance] settings] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:level]];
     PlayLayer *play = [PlayLayer sharedInstance:YES];
+    PlayDisplayLayer *display = [PlayDisplayLayer sharedInstance:YES];
     [play resetWithContext:context refresh:YES];
     
     [newScene addChild:[PlayBackgroundLayer node] z:0];
