@@ -2,7 +2,6 @@
 #import "PlayBackgroundLayer.h"
 #import "PlayLayer.h"
 
-//#import "AdSageView.h"
 
 @interface SceneManager ()
 
@@ -13,12 +12,13 @@
 static MobiSageAdBanner* banner;
 
 +(void) goMainMenu{
-    SeriesLoginCounts count = [[UserProfile sharedInstance] getCountInARoll];
+
     
     
     CCDirector *director = [CCDirector sharedDirector];
     CCScene *newScene = [CCScene node];
-    
+    UserProfile * profile = [UserProfile sharedInstance];
+    NSString *str= [profile description];
     [newScene addChild:[MainMenuLayer node] z:0];
     [newScene addChild:[ActiveBackgroundLayer node] z:-1];
     [SceneManager addAdBanner];

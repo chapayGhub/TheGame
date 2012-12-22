@@ -10,7 +10,7 @@
 
 #import "AppDelegate.h"
 #import "IntroLayer.h"
-
+#import "Constants.h"
 @implementation AppController
 
 @synthesize window=window_, navController=navController_, director=director_;
@@ -87,6 +87,8 @@
 	// make main window visible
 	[window_ makeKeyAndVisible];
 	
+
+    
 	return YES;
 }
 

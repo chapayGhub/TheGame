@@ -72,18 +72,23 @@ static PlayDisplayLayer* thisLayer;
         CGSize winSize = [CCDirector sharedDirector].winSize;
         //设置道具
         hint = [CCSprite spriteWithFile:@"t_hint.png"];
-        hint.scale=0.5f;
+        
         hint.position = ccp(winSize.width*0.2,winSize.height*0.17);
         
         heal = [CCSprite spriteWithFile:@"t_reset.png"];
-        heal.scale=0.5f;
+        
         heal.position = ccp(winSize.width*0.5,winSize.height*0.17);
         
         
         reload =[CCSprite spriteWithFile:@"t_rotate.png"];
-        reload.scale=0.5f;
-        reload.position = ccp(winSize.width*0.8,winSize.height*0.17);
         
+        reload.position = ccp(winSize.width*0.8,winSize.height*0.17);
+        if(!isRetina)
+        {
+            hint.scale=0.5f;
+            heal.scale=0.5f;
+            reload.scale=0.5f;
+        }
         starPictures=[[NSMutableArray alloc] init];
         for(int i=1;i<=3;i++)
         {
@@ -114,7 +119,7 @@ static PlayDisplayLayer* thisLayer;
         heal.color = ccc3(80,80,80);
         
         title = [CCSprite spriteWithFile:@"leveltitle.png"];
-        title.scale=0.5f;
+        
         title.position = ccp(winSize.width*0.5f,winSize.height-32);
         [self addChild:title];
         
@@ -135,8 +140,12 @@ static PlayDisplayLayer* thisLayer;
        // clockLine.position = ccp(winSize.width*0.16,winSize.height*0.882);
         clockLine.anchorPoint=ccp(0,0);
        // clockLine.color = ccc3(0,0,0);
-        clockLine.scaleY=0.5f;
-        clockLine.scaleX=0.51f;
+        if(!isRetina)
+        {
+            title.scale=0.5f;
+            clockLine.scaleY=0.5f;
+            clockLine.scaleX=0.51f;
+        }
         
         //[self addChild:clockLine];
         timer=[CCProgressTimer progressWithSprite:clockLine];
@@ -150,7 +159,10 @@ static PlayDisplayLayer* thisLayer;
     
     }else{
         title = [CCSprite spriteWithFile:@"endlesstitle.png"];
-        title.scale=0.5f;
+        if(!isRetina)
+        {
+            title.scale=0.5f;
+        }
         title.position = ccp(winSize.width*0.5f,winSize.height-32);
         [self addChild:title];
         
@@ -288,7 +300,7 @@ static PlayDisplayLayer* thisLayer;
     CCSprite *astar = [starPictures objectAtIndex:star];
     astar.scale=0.0f;
     //astar.position = ccp(winSize.width*0.795f,winSize.height*0.92f);
-    astar.position = ccp(winSize.width*0.5+star*offset ,winSize.height*0.7f);
+    astar.position = ccp(winSize.width*(0.55+star*offset) ,winSize.height*0.7f);
     
     star++;
     CCAction *action;

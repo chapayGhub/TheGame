@@ -66,7 +66,10 @@
     
     GermFigure* asprite = nil;
     asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q%d.png",value]];
-    asprite.scale=0.5f;
+    if(!isRetina)
+    {
+        asprite.scale=0.5f;
+    }
     [asprite setPosition:self.pixPosition];
 
     switch(atype)

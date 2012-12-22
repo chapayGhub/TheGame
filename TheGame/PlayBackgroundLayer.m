@@ -1,5 +1,5 @@
 #import "PlayBackgroundLayer.h"
-
+#import "Constants.h"
 
 @implementation PlayBackgroundLayer
 -(id) init{
@@ -11,7 +11,10 @@
 	self.isTouchEnabled = YES;
 	
 	CCSprite *bg = [CCSprite spriteWithFile: @"background.png"];
-    [bg setScale:0.5f];
+    if(!isRetina)
+    {
+        [bg setScale:0.5f];
+    }
     bg.position = ccp(160,240);
     
    

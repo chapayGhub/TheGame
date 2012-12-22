@@ -11,10 +11,10 @@
 @implementation UserProfile
 @synthesize tools_hint,tools_life,tools_refill,userRecord,count,lastTime;
 
-static UserProfile* instance;
+static UserProfile* userprofile;
 
 +(UserProfile*) sharedInstance{
-    if(instance == nil)
+    if(userprofile == nil)
     {
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if([fileManager fileExistsAtPath:[UserProfile getConfigurationFilePath] isDirectory:NO]) //如果存在则读取文件，如果不存在则初始化文件
@@ -26,20 +26,20 @@ static UserProfile* instance;
         }
     }
     
-    return instance;
+    return userprofile;
 }
 
 //读取文件初始化
 +(void) readFile
 {
     NSData *data=[NSData dataWithContentsOfFile:[UserProfile getConfigurationFilePath]];
-    instance=[NSKeyedUnarchiver unarchiveObjectWithData:data];
+    userprofile=[[NSKeyedUnarchiver unarchiveObjectWithData:data] retain];
 }
 
 //写回文件
 +(BOOL) writeBackToFile
 {
-    NSData *data=[NSKeyedArchiver archivedDataWithRootObject:instance];
+    NSData *data=[NSKeyedArchiver archivedDataWithRootObject:userprofile];
     //转成NSData类型后就可以写入本地磁盘了
     BOOL result = [data writeToFile:[UserProfile getConfigurationFilePath] atomically:YES];
     return result;
@@ -52,12 +52,12 @@ static UserProfile* instance;
 }
 
 +(void) firstTimeFileInitialize{
-    instance = [[UserProfile alloc] init];
-    [instance setTools_hint:0];
-    [instance setTools_life:0];
-    [instance setTools_refill:0];
-    [instance setCount:1];
-    [instance setLastTime:[[NSDate alloc] init]];
+    userprofile = [[[UserProfile alloc] init] retain];
+    [userprofile setTools_hint:0];
+    [userprofile setTools_life:0];
+    [userprofile setTools_refill:0];
+    [userprofile setCount:1];
+    [userprofile setLastTime:[[NSDate alloc] init]];
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
 
     GameType type = Classic;
@@ -76,7 +76,7 @@ static UserProfile* instance;
     type = TimeBomb;
     [dictionary setValue:0 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:1]];
     
-    [instance setUserRecord:dictionary];
+    [userprofile setUserRecord:dictionary];
 }
 
 -(NSString *)description

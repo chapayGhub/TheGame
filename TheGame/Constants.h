@@ -52,4 +52,6 @@
 // 这个参数控制变大的大小
 #define openScale 1.0f
 
+
+#define isRetina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640,960), [[UIScreen mainScreen] currentMode].size) : NO)
 #endif
