@@ -11,7 +11,6 @@
 
 @interface PlayDisplayLayer(){
     
-    CCLabelTTF* clockLabel;
     CCLabelTTF* scoreLabel;
     CCLabelTTF* passScoreLabel;
     
@@ -31,6 +30,7 @@
     CCSprite* reload;
     
     
+    CCSprite *clock;
     NSMutableArray *starPictures;
     
     int timeRemain;
@@ -128,34 +128,32 @@ static PlayDisplayLayer* thisLayer;
         passScoreLabel.position = ccp(winSize.width*0.62, winSize.height*0.97);
         passScoreLabel.color = ccc3(0,0,0);
         [self addChild:passScoreLabel];
-        
-        
-        // 设置倒计时的位置
-        clockLabel = [CCLabelTTF labelWithString:[self generateString] fontName:@"Arial" fontSize:15];
-        clockLabel.position = ccp(winSize.width*0.33, winSize.height*0.92);
-        clockLabel.color = ccc3(0,0,0);
-        [self addChild:clockLabel];
+    
         
         clockLine = [CCSprite spriteWithFile:@"clock_line.png"];
-       // clockLine.position = ccp(winSize.width*0.16,winSize.height*0.882);
-        clockLine.anchorPoint=ccp(0,0);
-       // clockLine.color = ccc3(0,0,0);
-        if(!isRetina)
-        {
-            title.scale=0.5f;
-            clockLine.scaleY=0.5f;
-            clockLine.scaleX=0.51f;
-        }
         
         //[self addChild:clockLine];
         timer=[CCProgressTimer progressWithSprite:clockLine];
-        [timer setPosition:ccp(winSize.width*0.161,winSize.height*0.884)];
+        [timer setPosition:ccp(winSize.width*0.36f,winSize.height*0.912f)];
         [timer setType:kCCProgressTimerTypeBar];
         [timer setMidpoint:ccp(0,0)];
         [timer setBarChangeRate:ccp(1,0)];
-        [timer setAnchorPoint:ccp(0,0)];
-        [timer setScale:0.5f];
         [self addChild:timer];
+        
+        clock = [CCSprite spriteWithFile:@"clock.png"];
+        clock.position = ccp(winSize.width*0.34f,winSize.height*0.915f);
+        [self addChild:clock];
+        
+        
+        if(!isRetina)
+        {
+            title.scale=0.5f;
+            [timer setScale:0.51f];
+            clock.scale=0.5f;
+        }
+
+        
+        
     
     }else{
         title = [CCSprite spriteWithFile:@"endlesstitle.png"];
@@ -250,7 +248,6 @@ static PlayDisplayLayer* thisLayer;
         return;
     }else{
         timeRemain--;
-        [clockLabel setString:[self generateString]];
     }
 }
 
@@ -360,12 +357,6 @@ static PlayDisplayLayer* thisLayer;
     [[PlayLayer sharedInstance:NO]  resumeGame];
 }
 
--(NSString*) generateString
-{
-    int minutes = timeRemain/60;
-    int seconds = timeRemain%60;
-    return [NSString stringWithFormat:@"%d:%d",minutes,seconds];
-}
 
 -(void) showMultiHit:(int)hit{
     int randomx = arc4random()%90-45;

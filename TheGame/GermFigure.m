@@ -16,9 +16,11 @@
 
 CCAction *tempAction;
 CCAction *tempAction1;
+int shiftvalueX;
+int shiftvalueY;
+int size;
 -(CCAction*) runAction:(CCAction*) action{
     [super runAction:action];
-    
     
     if(label!=nil)
     {
@@ -35,8 +37,16 @@ CCAction *tempAction1;
 
 +(id)spriteWithFile:(NSString*)filename{
     self = [super spriteWithFile:filename];
-
+    shiftvalueX=10;//default values
+    shiftvalueY=-10;
+    size=15;
     return self;
+}
+
+-(void) setShiftValue:(int) x y:(int) y size:(int) s{
+    shiftvalueX=x;
+    shiftvalueY=y;
+    size = s;
 }
 
 -(void) removeFromParentAndCleanup:(BOOL)cleanup
@@ -58,20 +68,20 @@ CCAction *tempAction1;
     {
         [label release];
     }
-    label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",number] fontName:@"Arial" fontSize:15];
+    label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",number] fontName:@"Arial" fontSize:size];
     [self recorrectLabelPosition];
     [label setColor:ccc3(255, 255, 255)];
     
 }
 -(void) recorrectLabelPosition{
     CGPoint p = self.position;
-    [label setPosition:ccp(p.x+10,p.y-10)];
+    [label setPosition:ccp(p.x+shiftvalueX,p.y+shiftvalueY)];
 }
 
 -(void) setBombPictureWithFile:(NSString*) file{
     bomb = [CCSprite spriteWithFile:file];
     CGPoint p = self.position;
-    [bomb setPosition:ccp(p.x+10,p.y-10)];
+    [bomb setPosition:ccp(p.x+shiftvalueX,p.y+shiftvalueY)];
     [bomb setScale:0.7f];
 }
 -(int) nextValue{

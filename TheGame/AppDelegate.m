@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "IntroLayer.h"
 #import "Constants.h"
+#import "UserProfile.h"
+
 @implementation AppController
 
 @synthesize window=window_, navController=navController_, director=director_;
@@ -116,13 +118,19 @@
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {
 	if( [navController_ visibleViewController] == director_ )
+    {
 		[director_ stopAnimation];
+    }
+    
+    
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application
 {
 	if( [navController_ visibleViewController] == director_ )
+    {
 		[director_ startAnimation];
+    }
 }
 
 // application will be killed
