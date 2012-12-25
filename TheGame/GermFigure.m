@@ -43,6 +43,14 @@ int size;
     return self;
 }
 
++(id)spriteWithFrame:(CCSpriteFrame*)frame{
+    self = [super spriteWithSpriteFrame:frame];
+    shiftvalueX=10;//default values
+    shiftvalueY=-10;
+    size=15;
+    return self;
+}
+
 -(void) setShiftValue:(int) x y:(int) y size:(int) s{
     shiftvalueX=x;
     shiftvalueY=y;
@@ -68,7 +76,7 @@ int size;
     {
         [label release];
     }
-    label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",number] fontName:@"Arial" fontSize:size];
+    label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",number] fontName:@"Arial-BoldMT" fontSize:size];
     [self recorrectLabelPosition];
     [label setColor:ccc3(255, 255, 255)];
     

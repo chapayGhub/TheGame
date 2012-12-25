@@ -99,9 +99,6 @@ static PlayDisplayLayer* thisLayer;
         [self addChild:hint];
         [self addChild:heal];
         [self addChild:reload];
-        
-
-        
     }
     return self;
 }
@@ -118,43 +115,43 @@ static PlayDisplayLayer* thisLayer;
     {
         heal.color = ccc3(80,80,80);
         
-        title = [CCSprite spriteWithFile:@"leveltitle.png"];
-        
-        title.position = ccp(winSize.width*0.5f,winSize.height-32);
-        [self addChild:title];
-        
-        
-        passScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",levelScore] fontName:@"Arial" fontSize:15];
-        passScoreLabel.position = ccp(winSize.width*0.62, winSize.height*0.97);
-        passScoreLabel.color = ccc3(0,0,0);
-        [self addChild:passScoreLabel];
-    
-        
-        clockLine = [CCSprite spriteWithFile:@"clock_line.png"];
-        
-        //[self addChild:clockLine];
-        timer=[CCProgressTimer progressWithSprite:clockLine];
-        [timer setPosition:ccp(winSize.width*0.36f,winSize.height*0.912f)];
-        [timer setType:kCCProgressTimerTypeBar];
-        [timer setMidpoint:ccp(0,0)];
-        [timer setBarChangeRate:ccp(1,0)];
-        [self addChild:timer];
-        
-        clock = [CCSprite spriteWithFile:@"clock.png"];
-        clock.position = ccp(winSize.width*0.34f,winSize.height*0.915f);
-        [self addChild:clock];
-        
-        
-        if(!isRetina)
+        if(title==nil)
         {
-            title.scale=0.5f;
-            [timer setScale:0.51f];
-            clock.scale=0.5f;
-        }
-
+            title = [CCSprite spriteWithFile:@"leveltitle.png"];
+            title.position = ccp(winSize.width*0.5f,winSize.height-32);
+            [self addChild:title];
         
         
+            passScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",levelScore] fontName:@"Arial-BoldMT" fontSize:13];
+            passScoreLabel.position = ccp(winSize.width*0.62, winSize.height*0.97);
+            passScoreLabel.color = ccc3(250,250,250);
+            [self addChild:passScoreLabel];
     
+        
+            clockLine = [CCSprite spriteWithFile:@"clock_line.png"];
+        
+            //[self addChild:clockLine];
+            timer=[CCProgressTimer progressWithSprite:clockLine];
+            [timer setPosition:ccp(winSize.width*0.36f,winSize.height*0.912f)];
+            [timer setType:kCCProgressTimerTypeBar];
+            [timer setMidpoint:ccp(0,0)];
+            [timer setBarChangeRate:ccp(1,0)];
+            [self addChild:timer];
+    
+            clock = [CCSprite spriteWithFile:@"clock.png"];
+            clock.position = ccp(winSize.width*0.34f,winSize.height*0.915f);
+            [self addChild:clock];
+        
+        
+            if(!isRetina)
+            {
+                title.scale=0.5f;
+                [timer setScale:0.51f];
+                clock.scale=0.5f;
+            }
+        }else{
+            
+        }
     }else{
         title = [CCSprite spriteWithFile:@"endlesstitle.png"];
         if(!isRetina)
@@ -163,19 +160,19 @@ static PlayDisplayLayer* thisLayer;
         }
         title.position = ccp(winSize.width*0.5f,winSize.height-32);
         [self addChild:title];
-        
-        
-
     }
 
     
     
     // 设置计分板
-    scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Arial" fontSize:15];
-    scoreLabel.position = ccp(winSize.width*0.33, winSize.height*0.97);
-    scoreLabel.color = ccc3(0,0,0);
+    if(scoreLabel==nil)
+    {
+        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Arial-BoldMT" fontSize:13];
+        scoreLabel.position = ccp(winSize.width*0.33, winSize.height*0.97);
+        scoreLabel.color = ccc3(250,250,250);
+        [self addChild:scoreLabel];
+    }
     
-    [self addChild:scoreLabel];
     [self resetTime:[context time]];
     [self resetLevelScore:[context levelScore]];
     [self setType:[context type]];
@@ -311,9 +308,6 @@ static PlayDisplayLayer* thisLayer;
                                      [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.585f,winSize.height*0.92f)],
                                       nil],
                    nil];
-        
-        
-         
     }else if(star==2)
     {
         action = [CCSequence actions:[CCSpawn actions:[CCScaleTo actionWithDuration:apearspeed scale:openScale],
@@ -362,7 +356,7 @@ static PlayDisplayLayer* thisLayer;
     int randomx = arc4random()%90-45;
     int randomy = arc4random()%90-45;
     
-    CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"Arial" fontSize:30];
+    CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"Arial-BoldMT" fontSize:30];
     tempLabel.position = ccp(kStartX+kTileSize*kBoxWidth/2+randomx, kStartY+kTileSize*kBoxHeight/2+randomy);
     tempLabel.color = ccc3(0,0,0);
     [self addChild:tempLabel];

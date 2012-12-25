@@ -16,6 +16,7 @@
     CCSprite* timeBomb;
     CCSprite* poison;
     CCLabelTTF *description;
+    CCSprite * menu;
 }
 -(id) init;
 @end

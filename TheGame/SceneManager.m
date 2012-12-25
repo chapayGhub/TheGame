@@ -1,7 +1,7 @@
 #import "SceneManager.h"
 #import "PlayBackgroundLayer.h"
 #import "PlayLayer.h"
-
+#import "RewardLayer.h"
 
 @interface SceneManager ()
 
@@ -12,13 +12,20 @@
 static MobiSageAdBanner* banner;
 
 +(void) goMainMenu{
-
-    
-    
     CCDirector *director = [CCDirector sharedDirector];
     CCScene *newScene = [CCScene node];
     UserProfile * profile = [UserProfile sharedInstance];
-    NSString *str= [profile description];
+    int count = [profile getCountInARoll];
+    if(count!=0)
+    {
+        [newScene addChild:[RewardLayer node:count]];
+        if ([director runningScene]) {
+            [director replaceScene:[CCTransitionCrossFade transitionWithDuration: 0.5f scene: newScene]];
+        }else {
+            [director runWithScene:newScene];
+        }
+        return;
+    }
     [newScene addChild:[MainMenuLayer node] z:0];
     [newScene addChild:[ActiveBackgroundLayer node] z:-1];
     [SceneManager addAdBanner];

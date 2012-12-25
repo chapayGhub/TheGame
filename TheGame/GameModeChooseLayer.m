@@ -15,18 +15,24 @@
     if(self)
     {
         CGSize winSize = [CCDirector sharedDirector].winSize;
+        CCSprite* background = [CCSprite spriteWithFile:@"endless_bg.png"];
+        background.position=ccp(winSize.width*0.5f,winSize.height*0.5f);
+
         
-        poison =[CCSprite spriteWithFile:@"q1.png"];
-        poison.position = ccp(winSize.width*0.4f,winSize.height*0.8);
-        poison.scale=1.2f;
         
-        bomb = [CCSprite spriteWithFile:@"q2.png"];
-        bomb.position = ccp(winSize.width*0.6f,winSize.height*0.6);
-        bomb.scale=1.2f;
         
-        timeBomb = [CCSprite spriteWithFile:@"q3.png"];
-        timeBomb.position = ccp(winSize.width*0.4f,winSize.height*0.4);
-        timeBomb.scale=1.2f;
+        poison =[CCSprite spriteWithFile:@"poison_bt.png"];
+        poison.position = ccp(winSize.width*0.4f,winSize.height*0.75);
+        
+        
+        timeBomb = [CCSprite spriteWithFile:@"timebomb_bt.png"];
+        timeBomb.position = ccp(winSize.width*0.6f,winSize.height*0.58);
+        
+        
+        bomb = [CCSprite spriteWithFile:@"numbomb_bt.png"];
+        bomb.position = ccp(winSize.width*0.4f,winSize.height*0.45);
+        
+
         
         description = [CCLabelTTF labelWithString:@"" fontName:@"Arial" fontSize:20];
         description.position = ccp(winSize.width*0.5f,winSize.height*0.2);
@@ -35,10 +41,25 @@
         //[description setTextureRect:CGRectMake(winSize.width*0.1f, winSize.height*0.3, winSize.width*0.8f, winSize.width*0.2)];
         [self setLabelText:0];
         
+        
+        menu = [CCSprite spriteWithFile:@"menu_bt.png"];
+        menu.position=ccp(winSize.width*0.25,winSize.height*0.88);
+        
+        if(!isRetina)
+        {
+            background.scale=0.5f;
+            poison.scale=0.5f;
+            bomb.scale=0.5f;
+            timeBomb.scale=0.5f;
+            menu.scale=0.5f;
+        }
+        
+        [self addChild:background];
         [self addChild:poison];
         [self addChild:bomb];
         [self addChild:timeBomb];
         [self addChild:description];
+        [self addChild:menu];
         [self setIsTouchEnabled:YES];
     }
     return self;
@@ -63,8 +84,6 @@
     {
         [self onselect:3 selected:YES];
     }
-    
-
 }
 
 -(void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -105,9 +124,17 @@
 
 
 -(void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    poison.scale = 1.2f;
-    bomb.scale=1.2f;
-    timeBomb.scale=1.2f;
+    if(!isRetina)
+    {
+        poison.scale = 0.5f;
+        bomb.scale=0.5f;
+        timeBomb.scale=0.5f;
+    }else{
+        poison.scale = 1;
+        bomb.scale=1;
+        timeBomb.scale=1;
+    }
+    
     UITouch* touch = [touches anyObject];
     CGPoint location = [touch locationInView: touch.view];
 	location = [[CCDirector sharedDirector] convertToGL: location];
@@ -124,6 +151,12 @@
     if(CGRectContainsPoint([timeBomb boundingBox], location))
     {
         [SceneManager goPlay:TimeBomb level:1];
+    }
+    
+    
+    if(CGRectContainsPoint([menu boundingBox], location))
+    {
+        [SceneManager goMainMenu];
     }
 }
 
@@ -149,8 +182,9 @@
 }
 
 -(void) onselect:(int) choice selected:(BOOL) select{
-    float selected = 1.5f;
-    float unselected = 1.2f;
+    BOOL flag = isRetina;
+    float selected = flag?1.1f:0.6f;
+    float unselected = flag?1.0f:0.5f;
     switch(choice)
     {
         case 1:

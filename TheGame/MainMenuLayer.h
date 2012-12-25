@@ -7,7 +7,7 @@
 }
 
 - (void)onStartNew:(id)sender;
-- (void)onResume:(id)sender;
-- (void)onHighscores:(id)sender;
-- (void)onMyGerms:(id)sender;
+- (void)onInfiniteMode:(id)sender;
+- (void)onOtherGames:(id)sender;
+- (void)onHelp:(id)sender;
 @end

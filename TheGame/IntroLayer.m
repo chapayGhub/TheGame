@@ -56,6 +56,7 @@
 	// In one second transition to the new scene
 	[self scheduleOnce:@selector(makeTransition:) delay:1];
     
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"germs.plist"];
     
 }
 

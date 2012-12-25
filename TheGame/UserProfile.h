@@ -20,7 +20,7 @@
 
 +(UserProfile*) sharedInstance;
 +(BOOL) writeBackToFile;
--(SeriesLoginCounts) getCountInARoll;//获得连续登陆的天数
+-(int) getCountInARoll;//获得连续登陆的天数
 
 -(NSString *)description;
 -(void)encodeWithCoder:(NSCoder *)aCoder;

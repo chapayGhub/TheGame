@@ -34,11 +34,4 @@ typedef enum{
 }GameType;
 
 
-typedef enum{
-    SameDay,
-    OneDay,
-    TwoDay,
-    ThreeDay,
-}SeriesLoginCounts;
-
 #endif

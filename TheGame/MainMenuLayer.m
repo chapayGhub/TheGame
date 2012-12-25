@@ -5,55 +5,65 @@
 
 -(id) init{
 	self = [super init];
-		
-	CCLabelTTF *titleLeft = [CCLabelTTF labelWithString:@"孢子 " fontName:@"Marker Felt" fontSize:48];
-	CCLabelTTF *titleRight = [CCLabelTTF labelWithString:@" 大战" fontName:@"Marker Felt" fontSize:48];
+	CGSize winSize = [CCDirector sharedDirector].winSize;
+    CCSprite* background = [CCSprite spriteWithFile:@"start_bg.png"];
+    background.position=ccp(winSize.width*0.5f,winSize.height*0.5f);
+    if(!isRetina)
+    {
+        background.scale=0.5f;
+    }
+    [self addChild:background];
+    
 	
-    CCMenuItemFont *startNew = [CCMenuItemFont itemFromString:@"经典模式" target:self selector: @selector(onStartNew:)];
+    CCSprite *l = [CCSprite spriteWithFile:@"mn_level.png"];
+    CCSprite *ls = [CCSprite spriteWithFile:@"mn_level.png"];
+    
+    CCSprite *i = [CCSprite spriteWithFile:@"mn_endless.png"];
+    CCSprite *is = [CCSprite spriteWithFile:@"mn_endless.png"];
+    
+    CCSprite *m = [CCSprite spriteWithFile:@"mn_moregame.png"];
+    CCSprite *ms = [CCSprite spriteWithFile:@"mn_moregame.png"];
+    
+    CCSprite *h = [CCSprite spriteWithFile:@"mn_help.png"];
+    CCSprite *hs = [CCSprite spriteWithFile:@"mn_help.png"];
 
-	CCMenuItemFont *resume = [CCMenuItemFont itemFromString:@"无限闯关" target:self selector: @selector(onInfiniteMode:)];
+    ls.scale=1.1f;
+    is.scale=1.1f;
+    ms.scale=1.1f;
+    hs.scale=1.1f;
 
-	CCMenuItemFont *highscores = [CCMenuItemFont itemFromString:@"得分榜" target:self selector: @selector(onHighscores:)];
+    CCMenuItemSprite *startNew = [CCMenuItemSprite  itemWithNormalSprite:l selectedSprite:ls target:self selector:@selector(onStartNew:)];
+    CCMenuItemSprite *resume = [CCMenuItemSprite  itemWithNormalSprite:i selectedSprite:is target:self selector:@selector(onStartNew:)];
+    CCMenuItemSprite *highscores = [CCMenuItemSprite  itemWithNormalSprite:m selectedSprite:ms target:self selector:@selector(onStartNew:)];
+    CCMenuItemSprite *mygerms = [CCMenuItemSprite  itemWithNormalSprite:h selectedSprite:hs target:self selector:@selector(onStartNew:)];
 
-	CCMenuItemFont *mygerms = [CCMenuItemFont itemFromString:@"我的孢子" target:self selector: @selector(onMyGerms:)];
+    if(!isRetina)
+    {
+        startNew.scale=0.5f;
+        resume.scale=0.5f;
+        highscores.scale=0.5f;
+        mygerms.scale=0.5;
+    }
+
 	
 	CCMenu *menu = [CCMenu menuWithItems:startNew, resume, highscores, mygerms, nil];
+    
 	
-	float delayTime = 0.3f;
-	
+    float delayTime = 0.3f;
 	for (CCMenuItemFont *each in [menu children]) {
-		each.scaleX = 0.0f;
-		each.scaleY = 0.0f;
-		CCAction *action = [CCSequence actions:
+		each.scale=0;
+        CCAction *action = [CCSequence actions:
 		 [CCDelayTime actionWithDuration: delayTime],
-		 [CCScaleTo actionWithDuration:0.5F scale:1.0],
+		 [CCScaleTo actionWithDuration:0.5F scale:0.5],
 		 nil];
-		delayTime += 0.2f;
+		delayTime += 0.5;
 		[each runAction: action];
 	}
 	
-	titleLeft.position = ccp(-80, 340);
-	CCAction *titleLeftAction = [CCSequence actions:
-			[CCDelayTime actionWithDuration: delayTime],
-			[CCEaseBackOut actionWithAction:
-			 [CCMoveTo actionWithDuration: 1.0 position:ccp(120,340)]],
-			nil];
-	[self addChild: titleLeft];
-	[titleLeft runAction: titleLeftAction];
-	
-	titleRight.position = ccp(400, 340);
-	CCAction *titleRightAction = [CCSequence actions:
-								 [CCDelayTime actionWithDuration: delayTime],
-								 [CCEaseBackOut actionWithAction:
-								  [CCMoveTo actionWithDuration: 1.0 position:ccp(200,340)]],
-								 nil];
-	[self addChild: titleRight];
-	[titleRight runAction: titleRightAction];
-	
+    
 	menu.position = ccp(160, 240);
-	[menu alignItemsVerticallyWithPadding: 40.0f];
-	[self addChild:menu z: 2];
-
+    [menu alignItemsVerticallyWithPadding: 50.0f];
+	[self addChild:menu];
     
     
     
@@ -67,10 +77,10 @@
 	[SceneManager goGameModeChoose];
 }
 
-- (void)onHighscores:(id)sender{
+- (void)onOtherGames:(id)sender{
 	//[SceneManager goHighScores];
 }
-- (void)onMyGerms:(id)sender{
+- (void)onHelp:(id)sender{
 	//[SceneManager goCredits];
 }
 @end

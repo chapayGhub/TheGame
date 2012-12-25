@@ -107,7 +107,7 @@ static UserProfile* userprofile;
 }
 
 
--(SeriesLoginCounts) getCountInARoll{
+-(int) getCountInARoll{
     NSDate *date = [NSDate date];
     NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
     NSInteger unitFlags =NSMonthCalendarUnit|NSDayCalendarUnit;
@@ -125,35 +125,16 @@ static UserProfile* userprofile;
     //这里判断比较简单 是有BUG的 但是就这样吧
     if(day==last_day && month == last_month)//同一天登陆
     {
-        return SameDay;
+        return -1;
     }else if((month == last_month && day==last_day+1)||(month==last_month+1 && day==1))//连续第N天的登陆
     {
         count = count+1;
-        
         self.lastTime = date;
-        [UserProfile writeBackToFile];
-        if(count==2)
-        {
-            return TwoDay;
-        }
-        if(count >=3)
-        {
-            if(count%3==0)
-            {
-                return ThreeDay;
-            }else
-            {
-                return TwoDay;
-            }
-        }
     }else{ //连续登陆日期终端
         count = 1;
-        
         self.lastTime = date;
-        [UserProfile writeBackToFile];
-        return OneDay;
     }
-    return OneDay;
+    return self.count;
 }
 
 @end

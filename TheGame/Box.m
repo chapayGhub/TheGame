@@ -700,7 +700,7 @@ int runningProcedure;
 -(GermFigure*) getFigure:(int) value{
     
     NSString *name = [NSString stringWithFormat:@"q%d.png",value];
-    GermFigure *sprite = [GermFigure spriteWithFile:name];
+    GermFigure *sprite =[GermFigure spriteWithFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:name]];
     sprite.scale = 0.5;
     return sprite;
 }
