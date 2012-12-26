@@ -19,7 +19,7 @@ static PlayLayer* thisLayer;
 {
     if(thisLayer!=nil&&refresh)
     {
-        [thisLayer release];
+        //[thisLayer release];
         thisLayer =nil;
     }
     if(thisLayer==nil)
@@ -44,8 +44,6 @@ static PlayLayer* thisLayer;
 	return self;
 }
 
-
-
 -(void) pauseGame{
     paused=YES;
     [self pauseSchedulerAndActions];
@@ -60,6 +58,8 @@ static PlayLayer* thisLayer;
 
 -(void) onEnterTransitionDidFinish{
     [self checkPosition];
+    [box check];
+    [box unlock];
 }
 
 -(void) checkPosition
@@ -121,27 +121,9 @@ static PlayLayer* thisLayer;
 	
     int difX = location.x -kStartX;
     int difY = location.y -kStartY;
-    if(difY<0)
-    {
-        if(difX>150)
-        {
-            [self hint];
-        }else{
-            [self reload];
-        }
-        return;
-    }
-    if(difY>kTileSize*7)
-    {
-        if(difX>150)
-        {
-            [[PlayDisplayLayer sharedInstance:NO] pauseGame];
-            [SceneManager goPauseMenu];
-        }
-        return;
-    }
+
     
-    if(paused)//如果被暂定 就直接返回
+    if(paused||difY<0)//如果被暂定 就直接返回
     {
         return;
     }
@@ -155,7 +137,7 @@ static PlayLayer* thisLayer;
         if(clickcount==2)
         {
             clickcount=0;
-            GermType t = TimeBombGerm;
+            GermType t = SuperGerm;
             [selected transform:t];
             [self afterOneShineTrun:selected.sprite];
             [box check];
@@ -244,7 +226,11 @@ static PlayLayer* thisLayer;
             {
                 if(i==6)
                 {
-                    // 游戏结束
+                    [g transform:NormalGerm];
+                    if([[PlayDisplayLayer sharedInstance:NO] subLife])
+                    {
+                        [[PlayDisplayLayer sharedInstance:NO] gameOver];
+                    }
                 }else{
                     [self changeWithTileA:[box objectAtX:j Y:(i+1)] TileB:g sel:@selector(backCheck:data:)];
                     CCAction *action = [CCSequence actions:[CCDelayTime actionWithDuration:kMoveTileTime+0.3f],
@@ -259,7 +245,12 @@ static PlayLayer* thisLayer;
                 int i=[g.sprite nextValue];
                 if(i==0)
                 {
-                    //扣一格血
+                    [g transform:NormalGerm];
+                    if([[PlayDisplayLayer sharedInstance:NO] subLife])
+                    {
+                        [[PlayDisplayLayer sharedInstance:NO] gameOver];
+                    }
+
                 }
             }
             
@@ -267,13 +258,13 @@ static PlayLayer* thisLayer;
     }
     if(_context.type!=Classic && _context.interval!=0)
     {
-        if(_stepCount%_context.interval==0)
+        if(_stepCount%_context.interval==0||_stepCount==2)
         {
             // 刷新孢子
             [self changeOneGermByType:_context.type];
         }
     }
-    //[self checkPosition];
+    [self checkPosition];
 }
 
 -(void) changeOneGermByType:(GameType) type

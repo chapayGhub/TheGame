@@ -10,4 +10,5 @@
 - (void)onInfiniteMode:(id)sender;
 - (void)onOtherGames:(id)sender;
 - (void)onHelp:(id)sender;
+-(void) enableMenu:(BOOL) flag;
 @end

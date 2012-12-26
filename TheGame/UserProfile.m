@@ -25,7 +25,7 @@ static UserProfile* userprofile;
             [UserProfile writeBackToFile];
         }
     }
-    
+
     return userprofile;
 }
 
@@ -61,20 +61,20 @@ static UserProfile* userprofile;
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
 
     GameType type = Classic;
-    int levels  = 10;
+    int levels  = 9;
     for(int i=1;i<=levels;i++)
     {
-        [dictionary setValue:0 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:i]];
+        [dictionary setValue:[NSNumber numberWithInt:-1] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:i]];
     }
     
     type = Bomb;
-    [dictionary setValue:0 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:1]];
+    [dictionary setValue:[NSNumber numberWithInt:-1] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:1]];
     
     type = Poisonous;
-    [dictionary setValue:0 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:1]];
+    [dictionary setValue:[NSNumber numberWithInt:-1] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:1]];
     
     type = TimeBomb;
-    [dictionary setValue:0 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:1]];
+    [dictionary setValue:[NSNumber numberWithInt:-1] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:1]];
     
     [userprofile setUserRecord:dictionary];
 }
@@ -137,4 +137,14 @@ static UserProfile* userprofile;
     return self.count;
 }
 
+
+-(void) addHint:(int)value{
+    tools_hint+=value;
+}
+-(void) addLife:(int)value{
+    tools_life+=value;
+}
+-(void) addRotate:(int)value{
+    tools_refill+=value;
+}
 @end

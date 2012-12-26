@@ -8,7 +8,8 @@
 
 #import "PlayDisplayLayer.h"
 #import "Germ.h"
-
+#import "GameDef.h"
+#import "CommonUtils.h"
 @interface PlayDisplayLayer(){
     
     CCLabelTTF* scoreLabel;
@@ -16,7 +17,7 @@
     
     CCSprite* pause;
     
-    CCSprite* restart;
+    CCSprite* menu;
     
     CCSprite *title;
     
@@ -25,9 +26,9 @@
     
     
     /*UserTools*/
-    CCSprite* hint;
-    CCSprite* heal;
-    CCSprite* reload;
+    GermFigure* hint;
+    GermFigure* heal;
+    GermFigure* reload;
     
     
     CCSprite *clock;
@@ -35,6 +36,7 @@
     
     int timeRemain;
     GameType type;
+    int life;
 }
 
 @end
@@ -48,7 +50,7 @@ static PlayDisplayLayer* thisLayer;
 {
     if(thisLayer!=nil&&refresh)
     {
-        [thisLayer release];
+        //[thisLayer release];
         thisLayer =nil;
     }
     if(thisLayer==nil)
@@ -68,68 +70,82 @@ static PlayDisplayLayer* thisLayer;
         life = 3;
         score=0;
         self.isTouchEnabled = YES;
-        
         CGSize winSize = [CCDirector sharedDirector].winSize;
+        UserProfile *profile = [UserProfile sharedInstance];
+        
+        menu = [CCSprite spriteWithFile:@"menu_bt.png"];
+        pause = [CCSprite spriteWithFile:@"stop_bt.png"];
+        menu.position = ccp(winSize.width*0.09,winSize.height*0.93);
+        pause.position = ccp(winSize.width*0.91,winSize.height*0.93);
+        
+        
         //设置道具
-        hint = [CCSprite spriteWithFile:@"t_hint.png"];
-        
+        hint = [GermFigure spriteWithFile:@"t_hint.png"];
         hint.position = ccp(winSize.width*0.2,winSize.height*0.17);
+        [hint setShiftValue:1];
+        [hint setLabelValue:[profile tools_hint]];
         
-        heal = [CCSprite spriteWithFile:@"t_reset.png"];
-        
+        heal = [GermFigure spriteWithFile:@"t_reset.png"];
         heal.position = ccp(winSize.width*0.5,winSize.height*0.17);
+        [heal setShiftValue:1];
+        [heal setLabelValue:[profile tools_life]];
         
-        
-        reload =[CCSprite spriteWithFile:@"t_rotate.png"];
-        
+        reload =[GermFigure spriteWithFile:@"t_rotate.png"];
         reload.position = ccp(winSize.width*0.8,winSize.height*0.17);
+        [reload setShiftValue:1];
+        [reload setLabelValue:[profile tools_refill]];
+        
         if(!isRetina)
         {
             hint.scale=0.5f;
             heal.scale=0.5f;
             reload.scale=0.5f;
+            menu.scale=0.5f;
+            pause.scale=0.5f;
         }
-        starPictures=[[NSMutableArray alloc] init];
-        for(int i=1;i<=3;i++)
-        {
-            [starPictures addObject:[CCSprite spriteWithFile: [NSString stringWithFormat:@"star%d.png",i]]];
-        }
-
-
+        starPictures=[[NSMutableArray alloc] initWithCapacity:3];        
+        
         [self addChild:hint];
         [self addChild:heal];
         [self addChild:reload];
+        [self addChild:[hint label]];
+        [self addChild:[heal label]];
+        [self addChild:[reload label]];
     }
     return self;
 }
 
--(void)dealloc{
-    [starPictures release];
-    starPictures=nil;
-    [super dealloc];
-}
 -(void) setWithContext:(GameContext*) context{
     CGSize winSize = [CCDirector sharedDirector].winSize;
     type = context.type;
     if(type==Classic)
     {
-        heal.color = ccc3(80,80,80);
+        CGPoint pos = heal.position;
+        [heal removeFromParentAndCleanup:YES];
+        heal = [GermFigure spriteWithFile:@"grayreset_bt.png"];
+        heal.position = pos;
+        [self addChild:heal];
+        
+        for(int i=1;i<=3;i++)
+        {
+            [starPictures addObject:[CCSprite spriteWithFile: [NSString stringWithFormat:@"star%d.png",i]]];
+        }
         
         if(title==nil)
         {
             title = [CCSprite spriteWithFile:@"leveltitle.png"];
             title.position = ccp(winSize.width*0.5f,winSize.height-32);
             [self addChild:title];
-        
-        
-            passScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",levelScore] fontName:@"Arial-BoldMT" fontSize:13];
+            
+            
+            passScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",levelScore] fontName:@"Arial-BoldMT" fontSize:15];
             passScoreLabel.position = ccp(winSize.width*0.62, winSize.height*0.97);
             passScoreLabel.color = ccc3(250,250,250);
             [self addChild:passScoreLabel];
-    
-        
+            
+            
             clockLine = [CCSprite spriteWithFile:@"clock_line.png"];
-        
+            
             //[self addChild:clockLine];
             timer=[CCProgressTimer progressWithSprite:clockLine];
             [timer setPosition:ccp(winSize.width*0.36f,winSize.height*0.912f)];
@@ -137,38 +153,60 @@ static PlayDisplayLayer* thisLayer;
             [timer setMidpoint:ccp(0,0)];
             [timer setBarChangeRate:ccp(1,0)];
             [self addChild:timer];
-    
+            
             clock = [CCSprite spriteWithFile:@"clock.png"];
             clock.position = ccp(winSize.width*0.34f,winSize.height*0.915f);
             [self addChild:clock];
-        
-        
+            
+            
             if(!isRetina)
             {
                 title.scale=0.5f;
                 [timer setScale:0.51f];
                 clock.scale=0.5f;
+                heal.scale = 0.5f;
             }
-        }else{
-            
         }
     }else{
-        title = [CCSprite spriteWithFile:@"endlesstitle.png"];
-        if(!isRetina)
+        if(title==nil)
         {
-            title.scale=0.5f;
+            title = [CCSprite spriteWithFile:@"endlesstitle.png"];
+            if(!isRetina)
+            {
+                title.scale=0.5f;
+            }
+            title.position = ccp(winSize.width*0.5f,winSize.height-32);
+            [self addChild:title];
+            
+            for(int i=0;i<3;i++)
+            {
+                CCSprite *astar = [CCSprite spriteWithFile: [NSString stringWithFormat:@"heart.png"]];
+                if(!isRetina)
+                {
+                    astar.scale=0.5f;
+                }
+                astar.position = ccp(winSize.width*(0.592+i*0.102) ,winSize.height*0.938f);
+                [starPictures addObject:astar];
+                [self addChild:astar];
+            }
+            
         }
-        title.position = ccp(winSize.width*0.5f,winSize.height-32);
-        [self addChild:title];
     }
-
-    
-    
+    if(pause.parent==nil&&menu.parent==nil)
+    {
+        [self addChild:pause];
+        [self addChild:menu];
+    }
     // 设置计分板
     if(scoreLabel==nil)
     {
-        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Arial-BoldMT" fontSize:13];
-        scoreLabel.position = ccp(winSize.width*0.33, winSize.height*0.97);
+        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Arial-BoldMT" fontSize:15];
+        if(context.type==Classic)
+        {
+            scoreLabel.position = ccp(winSize.width*0.33, winSize.height*0.97);
+        }else{
+            scoreLabel.position = ccp(winSize.width*0.35, winSize.height*0.936);
+        }
         scoreLabel.color = ccc3(250,250,250);
         [self addChild:scoreLabel];
     }
@@ -203,10 +241,10 @@ static PlayDisplayLayer* thisLayer;
             [passScoreLabel setString:[NSString stringWithFormat:@"%d",levelScore]];
             return;
         }
-
+        
     }
     
-
+    
 }
 -(void) resetTime:(int)atime
 {
@@ -230,18 +268,25 @@ static PlayDisplayLayer* thisLayer;
                     int i=[sprite nextValue];
                     if(i==0)
                     {
-                        //炸弹爆炸 扣一格血
+                        [g transform:NormalGerm];
+                        if([self subLife])
+                        {
+                            //游戏结束
+                        }
                     }
                 }
                 
             }
         }
     }
-
-
+    
+    
     if(timeRemain<=0)
     {
         timeRemain =0;
+        // 游戏结束
+        [self gameOver];
+        
         return;
     }else{
         timeRemain--;
@@ -257,14 +302,15 @@ static PlayDisplayLayer* thisLayer;
     {
         if(type==Classic) //经典玩法中累计星星
         {
+            [self addAStar];
             while(star<3) //还没有拿到三颗星
             {
-                [self addAStar];
                 [self resetLevelScore:levelScore*getStarSpan];
                 if(value<levelScore)
                 {
                     break;
                 }
+                [self addAStar];
             }
             if(star == 3)
             {  //拿到三颗星
@@ -280,11 +326,13 @@ static PlayDisplayLayer* thisLayer;
             [l resetWithContext:c refresh:NO];
         }
     }
-    
-
 }
 
 -(void) addAStar{
+    if(star==3)
+    {
+        return;
+    }
     CGSize winSize = [CCDirector sharedDirector].winSize;
     float offset = 0.105f;
     
@@ -298,16 +346,16 @@ static PlayDisplayLayer* thisLayer;
     
     star++;
     CCAction *action;
-
+    
     if(star==1)
     {
         action = [CCSequence actions:[CCSpawn actions:[CCScaleTo actionWithDuration:apearspeed scale:openScale],
-                                        [CCMoveBy actionWithDuration:apearspeed position:ccp(-10,20)],
-                                        nil],
-                                    [CCSpawn actions:[CCScaleTo actionWithDuration:fixspeed scale:0.5f],
-                                     [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.585f,winSize.height*0.92f)],
+                                      [CCMoveBy actionWithDuration:apearspeed position:ccp(-10,20)],
                                       nil],
-                   nil];
+                  [CCSpawn actions:[CCScaleTo actionWithDuration:fixspeed scale:0.5f],
+                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.585f,winSize.height*0.92f)],
+                   nil],
+                  nil];
     }else if(star==2)
     {
         action = [CCSequence actions:[CCSpawn actions:[CCScaleTo actionWithDuration:apearspeed scale:openScale],
@@ -339,36 +387,119 @@ static PlayDisplayLayer* thisLayer;
     
 }
 
--(void) pauseGame{
-    
-    [self pauseSchedulerAndActions];
-    [[PlayLayer sharedInstance:NO]  pauseGame];
-}
-
--(void) resumeGame
-{
-    [self resumeSchedulerAndActions];
-    [[PlayLayer sharedInstance:NO]  resumeGame];
-}
-
 
 -(void) showMultiHit:(int)hit{
     int randomx = arc4random()%90-45;
     int randomy = arc4random()%90-45;
     
-    CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"Arial-BoldMT" fontSize:30];
+    CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"Courier-Bold" fontSize:28];
     tempLabel.position = ccp(kStartX+kTileSize*kBoxWidth/2+randomx, kStartY+kTileSize*kBoxHeight/2+randomy);
-    tempLabel.color = ccc3(0,0,0);
+    tempLabel.color = ccc3(60,60,60);
     [self addChild:tempLabel];
     
     CCAction *action = [CCSequence actions:[CCSpawn actions:
-                                            [CCMoveBy actionWithDuration:0.5f position:ccp(0,20)],
-                                            [CCScaleBy actionWithDuration:0.5f scale:1.3],nil],
+                                            [CCMoveBy actionWithDuration:0.6f position:ccp(0,20)],
+                                            [CCScaleBy actionWithDuration:0.6f scale:1.3],nil],
                         [CCCallFuncN actionWithTarget: self selector:@selector(removeLabel:)],
                         nil];
     
     [tempLabel runAction:action];
 }
 
+- (void)ccTouchesBegan:(NSSet*)touches withEvent:(UIEvent*)event{
+	UITouch* touch = [touches anyObject];
+	CGPoint location = [touch locationInView: touch.view];
+	location = [[CCDirector sharedDirector] convertToGL: location];
+    
+    if(CGRectContainsPoint([hint boundingBox], location))
+    {
+        [[PlayLayer sharedInstance:NO] hint];
+        return;
+    }
+    
+    if(CGRectContainsPoint([heal boundingBox], location))
+    {
+        [self addLife];
+    }
+    
+    if(CGRectContainsPoint([reload boundingBox], location))
+    {
+        [[PlayLayer sharedInstance:NO] reload];
+        return;
+    }
+    
+    
+    if(CGRectContainsPoint([menu boundingBox], location))
+    {
+        [self pauseGame];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"是否放弃当前游戏返回主菜单？" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+        [alert release];
+    }
+    
+    if(CGRectContainsPoint([pause boundingBox], location))
+    {
+        [self pauseGame];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"休息一下：)" message:@"" delegate:self cancelButtonTitle:@"继续" otherButtonTitles:@"返回主菜单", nil];
+        [alert show];
+        [alert release];
+        //[SceneManager goPauseMenu];
+        return;
+    }
+    
+}
 
+-(void) pauseGame{
+    [timer pauseSchedulerAndActions];
+    [self pauseSchedulerAndActions];
+    [[PlayLayer sharedInstance:NO]  pauseGame];
+}
+
+-(void) resumeGame
+{
+    [timer resumeSchedulerAndActions];
+    [self resumeSchedulerAndActions];
+    [[PlayLayer sharedInstance:NO]  resumeGame];
+}
+
+-(BOOL) addLife{
+    if(life<3)
+    {
+        life++;
+    }else{
+        return NO;
+    }
+    [[starPictures objectAtIndex:3-life] setVisible:YES];
+
+    return YES;
+}
+
+-(BOOL) subLife{
+    if(life == 0)
+    {
+        return YES;
+    }
+    CCSprite *heart = [starPictures objectAtIndex:3-life];
+    heart.visible = NO;
+    life--;
+    if(life==0)
+    {
+        return YES;
+    }
+    return NO;
+}
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex==1){
+        [SceneManager goMainMenu];
+    }
+    else if(buttonIndex ==0){
+        [self resumeGame];
+    }
+}
+
+-(void) gameOver{
+    [self pauseGame];
+    [SceneManager goRewardLayer:type==Classic?1:2];
+}
 @end

@@ -97,6 +97,9 @@
             [layer addChild:asprite.bomb];
             [layer addChild:asprite.label];
             break;
+        case NormalGerm:
+            [layer addChild:asprite];
+            break;
         default:
             break;
     }

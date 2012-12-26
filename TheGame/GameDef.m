@@ -31,7 +31,7 @@ static GameDef* def;
     }
     settings = [[NSMutableDictionary alloc] init];
     //经典玩法的关卡设置
-    GameContext *context = [[GameContext alloc] initWithValues:Classic Level:1 Score:200 Time:5 KindCound:5 Interval:0];
+    GameContext *context = [[GameContext alloc] initWithValues:Classic Level:1 Score:200 Time:10 KindCound:5 Interval:0];
     GameContext *context1 = [[GameContext alloc] initWithValues:Classic Level:2 Score:300 Time:90 KindCound:5 Interval:0];
     GameContext *context2 = [[GameContext alloc] initWithValues:Classic Level:3 Score:500 Time:85 KindCound:5 Interval:0];
     
@@ -47,6 +47,8 @@ static GameDef* def;
     
     //无尽模式的关卡设置
     GameContext *context10 = [[GameContext alloc] initWithValues:Poisonous Level:1 Score:200 Time:100 KindCound:5 Interval:2];
+    GameContext *context11 = [[GameContext alloc] initWithValues:Poisonous Level:2 Score:200 Time:100 KindCound:5 Interval:2];
+    GameContext *context12 = [[GameContext alloc] initWithValues:Poisonous Level:3 Score:200 Time:100 KindCound:5 Interval:2];
     
     GameContext *context20 = [[GameContext alloc] initWithValues:Bomb Level:1 Score:200 Time:100 KindCound:5 Interval:2];
     
@@ -64,6 +66,11 @@ static GameDef* def;
     
     
     [settings setValue:context10 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context10 type] level:[context10 level]]];
+    [settings setValue:context11 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context11 type] level:[context11 level]]];
+    [settings setValue:context12 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context12 type] level:[context12 level]]];
+    
+    
+    
     [settings setValue:context20 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context20 type] level:[context20 level]]];
     [settings setValue:context30 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context30 type] level:[context30 level]]];
 }

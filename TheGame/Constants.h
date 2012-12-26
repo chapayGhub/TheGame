@@ -30,6 +30,17 @@
 #define kKindCount 6
 
 
+/****childtags***/
+#define rewardLayerTag 618
+#define giftTag 100
+#define menuLayerTag 7
+#define mainmenuTag 15
+#define continueTag 12
+#define likeusTag 22
+#define backtomenuTag 32
+#define redoTag 42
+#define menuTag 52
+
 /*根据num计算分数的规则*/
 // 孢子数*基础分
 // （连击数-1）*奖励分

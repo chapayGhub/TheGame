@@ -33,8 +33,8 @@
     hs.scale=1.1f;
 
     CCMenuItemSprite *startNew = [CCMenuItemSprite  itemWithNormalSprite:l selectedSprite:ls target:self selector:@selector(onStartNew:)];
-    CCMenuItemSprite *resume = [CCMenuItemSprite  itemWithNormalSprite:i selectedSprite:is target:self selector:@selector(onStartNew:)];
-    CCMenuItemSprite *highscores = [CCMenuItemSprite  itemWithNormalSprite:m selectedSprite:ms target:self selector:@selector(onStartNew:)];
+    CCMenuItemSprite *resume = [CCMenuItemSprite  itemWithNormalSprite:i selectedSprite:is target:self selector:@selector(onInfiniteMode:)];
+    CCMenuItemSprite *highscores = [CCMenuItemSprite  itemWithNormalSprite:m selectedSprite:ms target:self selector:@selector(onOtherGames:)];
     CCMenuItemSprite *mygerms = [CCMenuItemSprite  itemWithNormalSprite:h selectedSprite:hs target:self selector:@selector(onStartNew:)];
 
     if(!isRetina)
@@ -47,7 +47,6 @@
 
 	
 	CCMenu *menu = [CCMenu menuWithItems:startNew, resume, highscores, mygerms, nil];
-    
 	
     float delayTime = 0.3f;
 	for (CCMenuItemFont *each in [menu children]) {
@@ -56,31 +55,32 @@
 		 [CCDelayTime actionWithDuration: delayTime],
 		 [CCScaleTo actionWithDuration:0.5F scale:0.5],
 		 nil];
-		delayTime += 0.5;
+		delayTime += 0.2f;
 		[each runAction: action];
 	}
-	
-    
+
 	menu.position = ccp(160, 240);
-    [menu alignItemsVerticallyWithPadding: 50.0f];
-	[self addChild:menu];
-    
-    
-    
+    [menu alignItemsVerticallyWithPadding: 55.0f];
+	[self addChild:menu z:1 tag:mainmenuTag];
 	return self;
 }
 
 - (void)onStartNew:(id)sender{
-	[SceneManager goPlay:Classic level:1];
+    [SceneManager goLevelChoose];
 }
 - (void)onInfiniteMode:(id)sender{
 	[SceneManager goGameModeChoose];
 }
 
 - (void)onOtherGames:(id)sender{
-	//[SceneManager goHighScores];
+
 }
 - (void)onHelp:(id)sender{
-	//[SceneManager goCredits];
+    
+}
+
+-(void) enableMenu:(BOOL) flag{
+    CCMenu* menu = (CCMenu*)[self getChildByTag:mainmenuTag];
+    menu.enabled=flag;
 }
 @end

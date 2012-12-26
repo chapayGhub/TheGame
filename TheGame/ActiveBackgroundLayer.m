@@ -25,7 +25,6 @@
 }
 -(void) addObject
 {
-    
     // 随机出一种孢子
     CGSize winSize = [CCDirector sharedDirector].winSize;
     

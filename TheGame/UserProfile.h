@@ -25,4 +25,8 @@
 -(NSString *)description;
 -(void)encodeWithCoder:(NSCoder *)aCoder;
 -(id)initWithCoder:(NSCoder *)aDecoder;
++(void) firstTimeFileInitialize;
+-(void) addHint:(int)value;
+-(void) addLife:(int)value;
+-(void) addRotate:(int)value;
 @end

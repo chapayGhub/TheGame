@@ -26,4 +26,5 @@
 -(void) pauseGame;
 -(void) resumeGame;
 -(void) toNextLevel:(BOOL) refresh;
+-(void) reload;
 @end

@@ -7,7 +7,6 @@
 #import "ActiveBackgroundLayer.h"
 #import "GameDef.h"
 #import "CommonUtils.h"
-#import "PauseMenuLayer.h"
 #import "GameModeChooseLayer.h"
 
 @interface SceneManager : NSObject {
@@ -18,6 +17,8 @@
 +(void) goMainMenu; //跳转到主菜单
 +(void) pushScene:(CCScene*) scence;
 +(void) popScene;
-+(void) goPauseMenu;
 +(void) goGameModeChoose;
++(void) goLevelChoose;
++(void) goRewardLayer:(int) num;
++(void) removeRewardLayer;
 @end

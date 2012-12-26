@@ -12,7 +12,7 @@
 #import "PlayLayer.h"
 
 //用于显示游戏界面的各种label和按钮
-@interface PlayDisplayLayer : CCLayer{
+@interface PlayDisplayLayer : CCLayer<UIAlertViewDelegate>{
 }
 
 
@@ -30,4 +30,6 @@
 -(void) pauseGame;
 -(void) resumeGame;
 -(void) setWithContext:(GameContext*) context;
+-(BOOL) subLife;
+-(void) gameOver;
 @end
