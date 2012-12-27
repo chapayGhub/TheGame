@@ -78,8 +78,8 @@ static PlayLayer* thisLayer;
 
 -(void) checkPos:(id) sender data: (Germ*) g
 {
-    [g.sprite setPosition:g.pixPosition];
-    [g.sprite recorrectLabelPosition];
+//    [g.sprite setPosition:g.pixPosition];
+//    [g.sprite recorrectLabelPosition];
 }
 
 -(void) resetWithContext:(GameContext *)context refresh:(BOOL) fresh
@@ -189,7 +189,6 @@ static PlayLayer* thisLayer;
 						 nil
 						 ];
 
-	
     [a.sprite runAction:actionA];
 	[b.sprite runAction:actionB];
     [a trade:b];
@@ -228,7 +227,7 @@ static PlayLayer* thisLayer;
     {
         _stepCount=1;
     }
-
+    [self checkPosition];
     NSMutableArray *content = [box content];
     for (int i=[content count]-1; i>=0; i--) {
         NSMutableArray *array = [content objectAtIndex:i];
@@ -273,7 +272,6 @@ static PlayLayer* thisLayer;
             [self changeOneGermByType:_context.type];
         }
     }
-    [self checkPosition];
 }
 
 -(void) changeOneGermByType:(GameType) type
