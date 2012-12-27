@@ -76,6 +76,11 @@ static PlayLayer* thisLayer;
     }
 }
 
+-(void) checkPos:(id) sender data: (Germ*) g
+{
+    [g.sprite setPosition:g.pixPosition];
+    [g.sprite recorrectLabelPosition];
+}
 
 -(void) resetWithContext:(GameContext *)context refresh:(BOOL) fresh
 {
@@ -91,16 +96,21 @@ static PlayLayer* thisLayer;
     }
     
 }
--(void) hint
+-(BOOL) hint
 {
     CGPoint point = [box haveMore];
+    if(point.x<0||point.y<0)
+    {
+        return NO;
+    }
     Germ *tile = [box objectAtX:point.x Y:point.y];
     if(selected == tile)
     {
-        return;
+        return YES;
     }
     selected = tile;
     [self afterOneShineTrun:tile.sprite];
+    return YES;
 }
 
 -(void) reload
@@ -166,6 +176,7 @@ static PlayLayer* thisLayer;
     CGPoint pb = b.pixPosition;
     int difx = pa.x-pb.x;
     int dify = pa.y-pb.y;
+
     CCAction *actionA = [CCSequence actions:
 						 [CCMoveBy actionWithDuration:kMoveTileTime position:ccp(-difx,-dify)],
 						 [CCCallFuncND actionWithTarget:self selector:sel data: a],
@@ -177,9 +188,11 @@ static PlayLayer* thisLayer;
 						 [CCCallFuncND actionWithTarget:self selector:sel data: b],
 						 nil
 						 ];
+
+	
     [a.sprite runAction:actionA];
 	[b.sprite runAction:actionB];
-	[a trade:b];
+    [a trade:b];
 }
 
 -(void) backCheck: (id) sender data: (id) data{
@@ -232,12 +245,8 @@ static PlayLayer* thisLayer;
                         [[PlayDisplayLayer sharedInstance:NO] gameOver];
                     }
                 }else{
-                    [self changeWithTileA:[box objectAtX:j Y:(i+1)] TileB:g sel:@selector(backCheck:data:)];
-                    CCAction *action = [CCSequence actions:[CCDelayTime actionWithDuration:kMoveTileTime+0.3f],
-                                        [CCCallFunc actionWithTarget:self selector:@selector(checkPosition)],
-                                        nil];
-                    [self runAction:action];
-                    [box check];
+                    [self changeWithTileA:g TileB:[box objectAtX:j Y:(i+1)] sel:@selector(checkPos:data:)];
+                    //[box check];
                 }
             }
             else if(g.type == BombGerm)

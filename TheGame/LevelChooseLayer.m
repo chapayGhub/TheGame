@@ -52,6 +52,7 @@
             CCSprite *sprite = nil;
             float posX = winSize.width*(0.5f + (j-1)*horisban);
             NSString* key = [CommonUtils getKeyStringByGameTypeAndLevel:type level:count];
+            count++;
             int score = [[record valueForKey: key] integerValue];
             int passScore = [[context valueForKey:key] levelScore];
             if(score==-1)
@@ -138,11 +139,4 @@
     }
 }
 
-
--(void) dealloc{
-    
-    [[self levels] release];
-    levels = nil;
-    [super dealloc];
-}
 @end

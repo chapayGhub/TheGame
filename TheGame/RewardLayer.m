@@ -34,20 +34,20 @@
         back = [CCSprite spriteWithFile:@"scoreboard_bg.png"];
         
         int score = [display score];
-        int record = [[[pro userRecord] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:Classic level:context.level]] integerValue];
-        if(score>record)
-        {
-            CCSprite *stamp = [CCSprite spriteWithFile:@"stamp.png"];
-            if(!isRetina)
-            {
-                stamp.scale=0.5f;
-            }
-            stamp.position=ccp(winSize.width*0.57,winSize.height*0.72);
-            [self addChild:stamp z:1];
-            
-            [[pro userRecord] setValue:[NSNumber numberWithInt:score] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:Classic level:context.level]];
-        }
-        
+//        int record = [[[pro userRecord] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:Classic level:context.level]] integerValue];
+//        if(score>record)
+//        {
+//            CCSprite *stamp = [CCSprite spriteWithFile:@"stamp.png"];
+//            if(!isRetina)
+//            {
+//                stamp.scale=0.5f;
+//            }
+//            stamp.position=ccp(winSize.width*0.57,winSize.height*0.72);
+//            [self addChild:stamp z:1];
+//            
+//            [[pro userRecord] setValue:[NSNumber numberWithInt:score] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:Classic level:context.level]];
+//        }
+        [[pro userRecord] setValue:[NSNumber numberWithInt:score] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:Classic level:context.level]];
         CCSprite *star1 = [CCSprite spriteWithFile:@"star1.png"];
         CCSprite *star2 = [CCSprite spriteWithFile:@"star2.png"];
         CCSprite *star3 = [CCSprite spriteWithFile:@"star3.png"];
@@ -64,7 +64,8 @@
         CCSprite* rw = [CCSprite spriteWithFile:@"rotate_wd.png"];
         if(star==3)
         {
-            hint=1;
+            // 三颗星给一个提示两个轮换
+            hint=2;
             rotate=1;
 
             hw.position = ccp(winSize.width*0.5,winSize.height*0.53);
@@ -81,8 +82,9 @@
             [self addChild:rl z:1];
         }else if(star ==2)
         {
+            // 两颗星给两个提示
             star3.visible=NO;
-            hint=1;
+            hint=2;
             
             hw.position = ccp(winSize.width*0.5,winSize.height*0.56);
             CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
@@ -92,12 +94,13 @@
             [self addChild:hl z:1];
         }else if(star ==1 )
         {
+            // 一颗星给一个提示
             star3.visible=NO;
             star2.visible=NO;
             hint=1;
             
             hw.position = ccp(winSize.width*0.5,winSize.height*0.56);
-            CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
+            CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:16];
             hl.color = ccc3(200, 200, 200);
             hl.position = ccp(winSize.width*0.57,winSize.height*0.56);
             [self addChild:hw z:1];
@@ -106,13 +109,12 @@
             star3.visible=NO;
             star2.visible=NO;
             star1.visible=NO;
-            hint=1;
+            // hint=1;
 
-            hw.position = ccp(winSize.width*0.5,winSize.height*0.56);
-            CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
-            hl.color = ccc3(200, 200, 200);
-            hl.position = ccp(winSize.width*0.57,winSize.height*0.56);
-            [self addChild:hw z:1];
+            CCLabelTTF *hl=[CCLabelTTF labelWithString: @"很遗憾，没有获得奖励" fontName:@"Arial-BoldMT" fontSize:18];
+            [hl setDimensions:CGSizeMake(winSize.width*0.4, winSize.height*0.2)];
+            hl.color = ccc3(200, 200, 0);
+            hl.position = ccp(winSize.width*0.5,winSize.height*0.5);
             [self addChild:hl z:1];
             
         }
@@ -165,6 +167,7 @@
             }
             stamp.position=ccp(winSize.width*0.57,winSize.height*0.72);
             [self addChild:stamp z:1];
+            [[pro userRecord] setValue:[NSNumber numberWithInt:score] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:context.type level:context.level]];
         }
         
         CCLabelTTF *sc=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",score] fontName:@"Arial-BoldMT" fontSize:22];

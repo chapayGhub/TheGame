@@ -39,6 +39,7 @@
     GermFigure *tempSprite = [sprite retain];
 	int tempValue = value;
 	GermType tempType = type;
+    
     self.sprite = otherGerm.sprite;
 	self.value = otherGerm.value;
 	self.type = otherGerm.type;
@@ -85,14 +86,14 @@
             break;
         case BombGerm:
             [asprite setBombPictureWithFile:@"bomb.png"];
-            [asprite setLabelValue:10];
+            [asprite setLabelValue:8];
             [layer addChild:asprite];
             [layer addChild:asprite.bomb];
             [layer addChild:asprite.label];
             break;
         case TimeBombGerm:
             [asprite setBombPictureWithFile:@"bomb.png"];
-            [asprite setLabelValue:30];
+            [asprite setLabelValue:25];
             [layer addChild:asprite];
             [layer addChild:asprite.bomb];
             [layer addChild:asprite.label];

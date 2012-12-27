@@ -21,8 +21,6 @@ int shiftvalueY;
 int size;
 ccColor3B color;
 -(CCAction*) runAction:(CCAction*) action{
-    [super runAction:action];
-    
     if(label!=nil)
     {
         tempAction = [[action copy] autorelease];
@@ -33,6 +31,8 @@ ccColor3B color;
         tempAction1 = [[action copy] autorelease];
         [bomb runAction:tempAction1];
     }
+    
+    [super runAction:action];
     return action;
 }
 
