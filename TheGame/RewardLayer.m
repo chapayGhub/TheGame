@@ -34,26 +34,13 @@
         back = [CCSprite spriteWithFile:@"scoreboard_bg.png"];
         
         int score = [display score];
-//        int record = [[[pro userRecord] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:Classic level:context.level]] integerValue];
-//        if(score>record)
-//        {
-//            CCSprite *stamp = [CCSprite spriteWithFile:@"stamp.png"];
-//            if(!isRetina)
-//            {
-//                stamp.scale=0.5f;
-//            }
-//            stamp.position=ccp(winSize.width*0.57,winSize.height*0.72);
-//            [self addChild:stamp z:1];
-//            
-//            [[pro userRecord] setValue:[NSNumber numberWithInt:score] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:Classic level:context.level]];
-//        }
         [[pro userRecord] setValue:[NSNumber numberWithInt:score] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:Classic level:context.level]];
         CCSprite *star1 = [CCSprite spriteWithFile:@"star1.png"];
         CCSprite *star2 = [CCSprite spriteWithFile:@"star2.png"];
         CCSprite *star3 = [CCSprite spriteWithFile:@"star3.png"];
         star1.position = ccp(winSize.width*0.38,winSize.height*0.8);
-        star2.position = ccp(winSize.width*0.5,winSize.height*0.822);
-        star3.position = ccp(winSize.width*0.622,winSize.height*0.804);
+        star2.position = ccp(winSize.width*0.505,winSize.height*0.822);
+        star3.position = ccp(winSize.width*0.622,winSize.height*0.805);
 
         CCLabelTTF *sc=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",score] fontName:@"Arial-BoldMT" fontSize:22];
         sc.color = ccc3(200, 200, 0);
@@ -252,7 +239,7 @@
     
     [pro addHint:hint];
     [pro addLife:heal];
-    [pro addRotate:rotate];
+    [pro addRefill:rotate];
     
     
     self.isTouchEnabled=YES;
@@ -292,10 +279,16 @@
     
     sprite = [self getChildByTag:redoTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
-        
+        GameType type= [[[PlayLayer sharedInstance:NO] context] type];
+        [SceneManager goPlay:type level:1];
     }
     
     sprite = [self getChildByTag:backtomenuTag];
+    if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
+        [SceneManager goMainMenu];
+    }
+    
+    sprite = [self getChildByTag:likeusTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
         [SceneManager goMainMenu];
     }

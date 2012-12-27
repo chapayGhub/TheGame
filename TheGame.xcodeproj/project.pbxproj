@@ -211,6 +211,12 @@
 		C68E7783168669F5007F7353 /* menu_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = C68E7782168669F5007F7353 /* menu_bt.png */; };
 		C6924611168CC44D00DA8779 /* endlesstitle.png in Resources */ = {isa = PBXBuildFile; fileRef = C6924610168CC44D00DA8779 /* endlesstitle.png */; };
 		C6924614168CC57900DA8779 /* leveltitle.png in Resources */ = {isa = PBXBuildFile; fileRef = C6924613168CC57900DA8779 /* leveltitle.png */; };
+		C6924617168CF02100DA8779 /* PauseLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6924616168CF02000DA8779 /* PauseLayer.m */; };
+		C692461B168CF11E00DA8779 /* stop_goon_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = C6924618168CF11E00DA8779 /* stop_goon_bt.png */; };
+		C692461C168CF11E00DA8779 /* stop_menu_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = C6924619168CF11E00DA8779 /* stop_menu_bt.png */; };
+		C692461D168CF11E00DA8779 /* stop_reset_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = C692461A168CF11E00DA8779 /* stop_reset_bt.png */; };
+		C6924620168CF12800DA8779 /* stop_bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = C692461E168CF12800DA8779 /* stop_bg1.png */; };
+		C6924621168CF12800DA8779 /* stop_bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = C692461F168CF12800DA8779 /* stop_bg2.png */; };
 		C693E75E1674FE8D0079D60D /* q1.png in Resources */ = {isa = PBXBuildFile; fileRef = C693E7551674FE8D0079D60D /* q1.png */; };
 		C693E75F1674FE8D0079D60D /* q2.png in Resources */ = {isa = PBXBuildFile; fileRef = C693E7561674FE8D0079D60D /* q2.png */; };
 		C693E7601674FE8D0079D60D /* q3.png in Resources */ = {isa = PBXBuildFile; fileRef = C693E7571674FE8D0079D60D /* q3.png */; };
@@ -625,6 +631,13 @@
 		C68E7782168669F5007F7353 /* menu_bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu_bt.png; path = Resources/menu_bt.png; sourceTree = "<group>"; };
 		C6924610168CC44D00DA8779 /* endlesstitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = endlesstitle.png; path = Resources/endlesstitle.png; sourceTree = "<group>"; };
 		C6924613168CC57900DA8779 /* leveltitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leveltitle.png; path = Resources/leveltitle.png; sourceTree = "<group>"; };
+		C6924615168CF01F00DA8779 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
+		C6924616168CF02000DA8779 /* PauseLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseLayer.m; sourceTree = "<group>"; };
+		C6924618168CF11E00DA8779 /* stop_goon_bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop_goon_bt.png; path = Resources/stop_goon_bt.png; sourceTree = "<group>"; };
+		C6924619168CF11E00DA8779 /* stop_menu_bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop_menu_bt.png; path = Resources/stop_menu_bt.png; sourceTree = "<group>"; };
+		C692461A168CF11E00DA8779 /* stop_reset_bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop_reset_bt.png; path = Resources/stop_reset_bt.png; sourceTree = "<group>"; };
+		C692461E168CF12800DA8779 /* stop_bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop_bg1.png; path = Resources/stop_bg1.png; sourceTree = "<group>"; };
+		C692461F168CF12800DA8779 /* stop_bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop_bg2.png; path = Resources/stop_bg2.png; sourceTree = "<group>"; };
 		C693E7551674FE8D0079D60D /* q1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = q1.png; path = Resources/q1.png; sourceTree = "<group>"; };
 		C693E7561674FE8D0079D60D /* q2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = q2.png; path = Resources/q2.png; sourceTree = "<group>"; };
 		C693E7571674FE8D0079D60D /* q3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = q3.png; path = Resources/q3.png; sourceTree = "<group>"; };
@@ -709,6 +722,8 @@
 		C60F60A8168B4A0200E28C05 /* background */ = {
 			isa = PBXGroup;
 			children = (
+				C692461E168CF12800DA8779 /* stop_bg1.png */,
+				C692461F168CF12800DA8779 /* stop_bg2.png */,
 				C6ECE98B1677E48100B4B468 /* background.png */,
 				C6924613168CC57900DA8779 /* leveltitle.png */,
 				C6924610168CC44D00DA8779 /* endlesstitle.png */,
@@ -769,6 +784,9 @@
 				C60F6095168A5A8E00E28C05 /* sounddown_bt.png */,
 				C60F6098168A5AB800E28C05 /* stop_bt.png */,
 				C6D38DB71688CEF70037145E /* mn_endless.png */,
+				C6924618168CF11E00DA8779 /* stop_goon_bt.png */,
+				C6924619168CF11E00DA8779 /* stop_menu_bt.png */,
+				C692461A168CF11E00DA8779 /* stop_reset_bt.png */,
 				C6D38DB31688CEAD0037145E /* sounddown_bt.png */,
 				C60F6086168A569D00E28C05 /* redo_bt.png */,
 				C60F60AC168B4C0800E28C05 /* likeus_bt.png */,
@@ -1227,6 +1245,8 @@
 				C6D38DC816891B320037145E /* RewardLayer.m */,
 				C60F6072168A059C00E28C05 /* LevelChooseLayer.h */,
 				C60F6073168A059C00E28C05 /* LevelChooseLayer.m */,
+				C6924615168CF01F00DA8779 /* PauseLayer.h */,
+				C6924616168CF02000DA8779 /* PauseLayer.m */,
 			);
 			name = layers;
 			sourceTree = "<group>";
@@ -1692,6 +1712,11 @@
 				C60F60B5168B64D500E28C05 /* gift_bt.png in Resources */,
 				C6924611168CC44D00DA8779 /* endlesstitle.png in Resources */,
 				C6924614168CC57900DA8779 /* leveltitle.png in Resources */,
+				C692461B168CF11E00DA8779 /* stop_goon_bt.png in Resources */,
+				C692461C168CF11E00DA8779 /* stop_menu_bt.png in Resources */,
+				C692461D168CF11E00DA8779 /* stop_reset_bt.png in Resources */,
+				C6924620168CF12800DA8779 /* stop_bg1.png in Resources */,
+				C6924621168CF12800DA8779 /* stop_bg2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1852,6 +1877,7 @@
 				C68E778116866820007F7353 /* ShowScoreLayer.m in Sources */,
 				C6D38DC916891B320037145E /* RewardLayer.m in Sources */,
 				C60F6074168A059D00E28C05 /* LevelChooseLayer.m in Sources */,
+				C6924617168CF02100DA8779 /* PauseLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

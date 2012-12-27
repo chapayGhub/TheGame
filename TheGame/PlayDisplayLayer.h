@@ -12,7 +12,7 @@
 #import "PlayLayer.h"
 
 //用于显示游戏界面的各种label和按钮
-@interface PlayDisplayLayer : CCLayer<UIAlertViewDelegate>{
+@interface PlayDisplayLayer : CCLayer{
 }
 
 

@@ -28,5 +28,5 @@
 +(void) firstTimeFileInitialize;
 -(void) addHint:(int)value;
 -(void) addLife:(int)value;
--(void) addRotate:(int)value;
+-(void) addRefill:(int)value;
 @end

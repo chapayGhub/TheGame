@@ -66,14 +66,14 @@ ccColor3B color;
 
 -(void) removeFromParentAndCleanup:(BOOL)cleanup
 {
-    if(label!=nil)
-    {
-        [label removeFromParentAndCleanup:YES];
-    }
-    if(bomb!=nil)
-    {
-        [bomb removeFromParentAndCleanup:YES];
-    }
+//    if(label!=nil&&label.parent!=nil)
+//    {
+//        [label removeFromParentAndCleanup:YES];
+//    }
+//    if(bomb!=nil&&bomb.parent!=nil)
+//    {
+//        [bomb removeFromParentAndCleanup:YES];
+//    }
     [super removeFromParentAndCleanup:YES];
     
     

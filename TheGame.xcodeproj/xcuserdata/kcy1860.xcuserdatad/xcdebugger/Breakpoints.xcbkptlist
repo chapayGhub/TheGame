@@ -45,11 +45,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "212"
-         endingLineNumber = "212"
+         startingLineNumber = "209"
+         endingLineNumber = "209"
          landmarkName = "-check"
          landmarkType = "5">
       </FileBreakpoint>
@@ -58,11 +58,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
+         startingLineNumber = "208"
+         endingLineNumber = "208"
          landmarkName = "-check"
          landmarkType = "5">
       </FileBreakpoint>
@@ -84,11 +84,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377320115.283684"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "123"
-         endingLineNumber = "123"
+         startingLineNumber = "121"
+         endingLineNumber = "121"
          landmarkName = "-combine:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -97,11 +97,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377320115.283684"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
          landmarkName = "-checkWith:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -110,11 +110,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "443"
-         endingLineNumber = "443"
+         startingLineNumber = "439"
+         endingLineNumber = "439"
          landmarkName = "-repair"
          landmarkType = "5">
       </FileBreakpoint>
@@ -123,11 +123,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377723691.972722"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "172"
-         endingLineNumber = "172"
+         startingLineNumber = "169"
+         endingLineNumber = "169"
          landmarkName = "-combine:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -136,11 +136,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377723691.972722"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "173"
-         endingLineNumber = "173"
+         startingLineNumber = "170"
+         endingLineNumber = "170"
          landmarkName = "-combine:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -149,11 +149,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "414"
-         endingLineNumber = "414"
+         startingLineNumber = "410"
+         endingLineNumber = "410"
          landmarkName = "-afterAllMoveDone"
          landmarkType = "5">
       </FileBreakpoint>
@@ -162,11 +162,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "506"
-         endingLineNumber = "506"
+         startingLineNumber = "502"
+         endingLineNumber = "502"
          landmarkName = "-addSpriteToLayer:germ:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -175,11 +175,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "486"
-         endingLineNumber = "486"
+         startingLineNumber = "482"
+         endingLineNumber = "482"
          landmarkName = "-repairSingleColumn:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -188,11 +188,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "507"
-         endingLineNumber = "507"
+         startingLineNumber = "503"
+         endingLineNumber = "503"
          landmarkName = "-addSpriteToLayer:germ:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -201,11 +201,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "505"
-         endingLineNumber = "505"
+         startingLineNumber = "501"
+         endingLineNumber = "501"
          landmarkName = "-addSpriteToLayer:germ:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -214,11 +214,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "216"
-         endingLineNumber = "216"
+         startingLineNumber = "213"
+         endingLineNumber = "213"
          landmarkName = "-check"
          landmarkType = "5">
       </FileBreakpoint>
@@ -279,11 +279,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "184"
-         endingLineNumber = "184"
+         startingLineNumber = "181"
+         endingLineNumber = "181"
          landmarkName = "-addScore:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -292,11 +292,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayDisplayLayer.m"
-         timestampString = "378325107.260035"
+         timestampString = "378331237.735386"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "390"
-         endingLineNumber = "390"
+         startingLineNumber = "393"
+         endingLineNumber = "393"
          landmarkName = "-removeLabel:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -318,11 +318,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "389"
-         endingLineNumber = "389"
+         startingLineNumber = "386"
+         endingLineNumber = "386"
          landmarkName = "-erase:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -331,11 +331,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "365"
-         endingLineNumber = "365"
+         startingLineNumber = "362"
+         endingLineNumber = "362"
          landmarkName = "-erase:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -344,11 +344,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "372"
-         endingLineNumber = "372"
+         startingLineNumber = "369"
+         endingLineNumber = "369"
          landmarkName = "-erase:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -357,11 +357,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "462"
-         endingLineNumber = "462"
+         startingLineNumber = "458"
+         endingLineNumber = "458"
          landmarkName = "-repairSingleColumn:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -526,11 +526,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "496"
-         endingLineNumber = "496"
+         startingLineNumber = "492"
+         endingLineNumber = "492"
          landmarkName = "-repairSingleColumn:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -578,11 +578,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377320115.283684"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "161"
-         endingLineNumber = "161"
+         startingLineNumber = "159"
+         endingLineNumber = "159"
          landmarkName = "-combine:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -734,11 +734,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/UserProfile.m"
-         timestampString = "377543159.599347"
+         timestampString = "378337360.20336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
+         startingLineNumber = "68"
+         endingLineNumber = "68"
          landmarkName = "+firstTimeFileInitialize"
          landmarkType = "5">
       </FileBreakpoint>
@@ -747,11 +747,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayDisplayLayer.m"
-         timestampString = "378325107.260035"
+         timestampString = "378331237.735386"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "384"
-         endingLineNumber = "384"
+         startingLineNumber = "387"
+         endingLineNumber = "387"
          landmarkName = "-addAStar"
          landmarkType = "5">
       </FileBreakpoint>
@@ -786,11 +786,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "420"
-         endingLineNumber = "420"
+         startingLineNumber = "416"
+         endingLineNumber = "416"
          landmarkName = "-afterAllMoveDone"
          landmarkType = "5">
       </FileBreakpoint>
@@ -812,37 +812,37 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "672"
+         endingLineNumber = "672"
+         landmarkName = "-fill"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TheGame/Box.m"
+         timestampString = "378338107.575316"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "671"
+         endingLineNumber = "671"
+         landmarkName = "-fill"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TheGame/Box.m"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "676"
          endingLineNumber = "676"
-         landmarkName = "-fill"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "675"
-         endingLineNumber = "675"
-         landmarkName = "-fill"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "680"
-         endingLineNumber = "680"
          landmarkName = "-fill"
          landmarkType = "5">
       </FileBreakpoint>
@@ -877,11 +877,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/UserProfile.m"
-         timestampString = "377499603.154505"
+         timestampString = "378337360.20336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "26"
-         endingLineNumber = "26"
+         startingLineNumber = "27"
+         endingLineNumber = "27"
          landmarkName = "+sharedInstance"
          landmarkType = "5">
       </FileBreakpoint>
@@ -890,11 +890,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/UserProfile.m"
-         timestampString = "377543159.599347"
+         timestampString = "378337360.20336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
          landmarkName = "+firstTimeFileInitialize"
          landmarkType = "5">
       </FileBreakpoint>
@@ -903,11 +903,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/UserProfile.m"
-         timestampString = "377543159.599347"
+         timestampString = "378337360.20336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "55"
-         endingLineNumber = "55"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
          landmarkName = "+firstTimeFileInitialize"
          landmarkType = "5">
       </FileBreakpoint>
@@ -916,11 +916,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/UserProfile.m"
-         timestampString = "377543159.599347"
+         timestampString = "378337360.20336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "111"
-         endingLineNumber = "111"
+         startingLineNumber = "112"
+         endingLineNumber = "112"
          landmarkName = "-getCountInARoll"
          landmarkType = "5">
       </FileBreakpoint>
@@ -942,7 +942,20 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/UserProfile.m"
-         timestampString = "377499603.154505"
+         timestampString = "378337360.20336"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
+         landmarkName = "+writeBackToFile"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TheGame/UserProfile.m"
+         timestampString = "378337360.20336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "46"
@@ -955,24 +968,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/UserProfile.m"
-         timestampString = "377499603.154505"
+         timestampString = "378337360.20336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "45"
-         endingLineNumber = "45"
-         landmarkName = "+writeBackToFile"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "TheGame/UserProfile.m"
-         timestampString = "377541402.277123"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "20"
-         endingLineNumber = "20"
+         startingLineNumber = "21"
+         endingLineNumber = "21"
          landmarkName = "+sharedInstance"
          landmarkType = "5">
       </FileBreakpoint>
@@ -981,11 +981,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/UserProfile.m"
-         timestampString = "377543159.599347"
+         timestampString = "378337360.20336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "51"
-         endingLineNumber = "51"
+         startingLineNumber = "52"
+         endingLineNumber = "52"
          landmarkName = "+getConfigurationFilePath"
          landmarkType = "5">
       </FileBreakpoint>
@@ -994,11 +994,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/SceneManager.h"
-         timestampString = "378227743.915207"
+         timestampString = "378336342.002591"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "23"
-         endingLineNumber = "23"
+         startingLineNumber = "24"
+         endingLineNumber = "24"
          landmarkName = "+removeRewardLayer"
          landmarkType = "4">
       </FileBreakpoint>
@@ -1033,11 +1033,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/GameModeChooseLayer.m"
-         timestampString = "377907740.277606"
+         timestampString = "378337149.419305"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "164"
-         endingLineNumber = "164"
+         startingLineNumber = "160"
+         endingLineNumber = "160"
          landmarkName = "-setLabelText:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1046,11 +1046,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "687"
-         endingLineNumber = "687"
+         startingLineNumber = "683"
+         endingLineNumber = "683"
          landmarkName = "-fill"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1059,11 +1059,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/Box.m"
-         timestampString = "377724072.075254"
+         timestampString = "378338107.575316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "688"
-         endingLineNumber = "688"
+         startingLineNumber = "684"
+         endingLineNumber = "684"
          landmarkName = "-fill"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1332,11 +1332,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/UserProfile.m"
-         timestampString = "377756309.89516"
+         timestampString = "378337360.20336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "126"
-         endingLineNumber = "126"
+         startingLineNumber = "127"
+         endingLineNumber = "127"
          landmarkName = "-getCountInARoll"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1358,11 +1358,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayDisplayLayer.m"
-         timestampString = "378325107.260035"
+         timestampString = "378331237.735386"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "381"
-         endingLineNumber = "381"
+         startingLineNumber = "384"
+         endingLineNumber = "384"
          landmarkName = "-addAStar"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1371,11 +1371,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayDisplayLayer.m"
-         timestampString = "378247870.199306"
+         timestampString = "378331237.735386"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "336"
-         endingLineNumber = "336"
+         startingLineNumber = "339"
+         endingLineNumber = "339"
          landmarkName = "-setScore:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1449,11 +1449,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/AppDelegate.m"
-         timestampString = "377839205.575629"
+         timestampString = "378337975.376704"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "126"
-         endingLineNumber = "126"
+         startingLineNumber = "125"
+         endingLineNumber = "125"
          landmarkName = "-applicationDidEnterBackground:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1527,11 +1527,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/UserProfile.m"
-         timestampString = "378143369.757508"
+         timestampString = "378337360.20336"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "68"
-         endingLineNumber = "68"
+         startingLineNumber = "69"
+         endingLineNumber = "69"
          landmarkName = "+firstTimeFileInitialize"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1696,19 +1696,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayDisplayLayer.m"
-         timestampString = "378325107.260035"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "490"
-         endingLineNumber = "490"
-         landmarkName = "-alertView:clickedButtonAtIndex:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "TheGame/PlayDisplayLayer.m"
          timestampString = "378229913.513725"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
@@ -1787,11 +1774,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayDisplayLayer.m"
-         timestampString = "378325107.260035"
+         timestampString = "378337149.419305"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "479"
-         endingLineNumber = "479"
+         startingLineNumber = "499"
+         endingLineNumber = "499"
          landmarkName = "-subLife"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1800,11 +1787,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/RewardLayer.m"
-         timestampString = "378325656.120671"
+         timestampString = "378335007.65249"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "271"
-         endingLineNumber = "271"
+         startingLineNumber = "258"
+         endingLineNumber = "258"
          landmarkName = "-ccTouchesBegan:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1813,11 +1800,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/RewardLayer.m"
-         timestampString = "378325656.120671"
+         timestampString = "378335007.65249"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "279"
-         endingLineNumber = "279"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
          landmarkName = "-ccTouchesBegan:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1884,6 +1871,43 @@
          startingLineNumber = "192"
          endingLineNumber = "192"
          landmarkName = "-changeWithTileA:TileB:sel:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TheGame/PauseLayer.h"
+         timestampString = "378335294.741613"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "12"
+         endingLineNumber = "12">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TheGame/UserProfile.m"
+         timestampString = "378337360.20336"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "19"
+         endingLineNumber = "19"
+         landmarkName = "+sharedInstance"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TheGame/libs/cocos2d/CCTextureCache.m"
+         timestampString = "378337525.857616"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "301"
+         endingLineNumber = "301"
+         landmarkName = "-addImage:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

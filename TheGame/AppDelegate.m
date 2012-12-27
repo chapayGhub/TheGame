@@ -121,8 +121,7 @@
     {
 		[director_ stopAnimation];
     }
-    
-    
+    [UserProfile writeBackToFile];
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application

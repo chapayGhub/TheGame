@@ -17,7 +17,8 @@ static UserProfile* userprofile;
     if(userprofile == nil)
     {
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        if([fileManager fileExistsAtPath:[UserProfile getConfigurationFilePath] isDirectory:NO]) //如果存在则读取文件，如果不存在则初始化文件
+        NSString *path = [UserProfile getConfigurationFilePath];
+        if([fileManager fileExistsAtPath:[UserProfile getConfigurationFilePath]]) //如果存在则读取文件，如果不存在则初始化文件
         {
             [UserProfile readFile];
         }else{
@@ -46,8 +47,8 @@ static UserProfile* userprofile;
 }
 
 +(NSString*) getConfigurationFilePath{
-    ccResolutionType resolution;
-    NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:@"user.dat" resolutionType:&resolution];
+
+    NSString *fullpath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/user.dat"];
     return fullpath;
 }
 
@@ -144,7 +145,7 @@ static UserProfile* userprofile;
 -(void) addLife:(int)value{
     tools_life+=value;
 }
--(void) addRotate:(int)value{
+-(void) addRefill:(int)value{
     tools_refill+=value;
 }
 @end

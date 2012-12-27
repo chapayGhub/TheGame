@@ -20,7 +20,6 @@
 @synthesize content;
 @synthesize paused;
 @synthesize kind;
-int runningProcedure;
 
 //初始化函数
 -(id) initWithSize: (CGSize) aSize factor: (int) aFacotr{
@@ -51,7 +50,6 @@ int runningProcedure;
     hitInARoll=0;
     maxHit=0;
     paused=NO;
-    runningProcedure = 0;
     return self;
 }
 
@@ -164,7 +162,6 @@ int runningProcedure;
             CCAction *action = [CCSequence actions:[CCMoveTo actionWithDuration:kConvergeTime position: centerP],
                                 [CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
                                 nil];
-            runningProcedure++;
             [[g sprite] runAction: action];
             
         }else if(g==center)
@@ -405,7 +402,6 @@ int runningProcedure;
 
 -(void) removeSprite: (id) sender{
     [sender removeFromParentAndCleanup:YES];
-    runningProcedure--;
 }
 
 //补全了所有的孢子

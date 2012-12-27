@@ -42,7 +42,7 @@
         [self setLabelText:0];
         
         
-        menu = [CCSprite spriteWithFile:@"menu_bt.png"];
+        menu = [CCSprite spriteWithFile:@"stop_menu_bt.png"];
         menu.position=ccp(winSize.width*0.25,winSize.height*0.88);
         
         if(!isRetina)
@@ -116,10 +116,6 @@
 
         }
     }
-    
-    
-    
-    
 }
 
 

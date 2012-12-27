@@ -8,6 +8,7 @@
 #import "GameDef.h"
 #import "CommonUtils.h"
 #import "GameModeChooseLayer.h"
+#import "PauseLayer.h"
 
 @interface SceneManager : NSObject {
 
@@ -21,4 +22,6 @@
 +(void) goLevelChoose;
 +(void) goRewardLayer:(int) num;
 +(void) removeRewardLayer;
++(void) goPauseLayer;
++(void) removePauseLayer;
 @end

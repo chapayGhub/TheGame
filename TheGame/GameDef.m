@@ -46,9 +46,9 @@ static GameDef* def;
     
     
     //无尽模式的关卡设置
-    GameContext *context10 = [[GameContext alloc] initWithValues:Poisonous Level:1 Score:200 Time:100 KindCound:5 Interval:2];
-    GameContext *context11 = [[GameContext alloc] initWithValues:Poisonous Level:2 Score:200 Time:100 KindCound:5 Interval:2];
-    GameContext *context12 = [[GameContext alloc] initWithValues:Poisonous Level:3 Score:200 Time:100 KindCound:5 Interval:2];
+    GameContext *context10 = [[GameContext alloc] initWithValues:Poisonous Level:1 Score:200 Time:0 KindCound:5 Interval:2];
+    GameContext *context11 = [[GameContext alloc] initWithValues:Poisonous Level:2 Score:200 Time:0 KindCound:5 Interval:2];
+    GameContext *context12 = [[GameContext alloc] initWithValues:Poisonous Level:3 Score:200 Time:0 KindCound:5 Interval:2];
     
     GameContext *context20 = [[GameContext alloc] initWithValues:Bomb Level:1 Score:200 Time:100 KindCound:5 Interval:2];
     

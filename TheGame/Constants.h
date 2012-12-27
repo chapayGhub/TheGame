@@ -32,6 +32,7 @@
 
 /****childtags***/
 #define rewardLayerTag 618
+#define pauseLayerTag  617
 #define giftTag 100
 #define menuLayerTag 7
 #define mainmenuTag 15

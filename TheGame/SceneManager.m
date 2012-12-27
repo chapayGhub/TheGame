@@ -126,5 +126,15 @@ static MobiSageAdBanner* banner;
     CCDirector *director = [CCDirector sharedDirector];
     [[director runningScene] removeChildByTag:rewardLayerTag cleanup:YES];
 }
++(void) goPauseLayer{
+    CCDirector *director = [CCDirector sharedDirector];
+    CCLayer* reward = [PauseLayer node];
+    [[director runningScene] addChild:reward z:2 tag:pauseLayerTag];
+}
 
++(void) removePauseLayer{
+    CCDirector *director = [CCDirector sharedDirector];
+    [[director runningScene] removeChildByTag:pauseLayerTag cleanup:YES];
+    [[PlayDisplayLayer sharedInstance:NO] resumeGame];
+}
 @end

@@ -297,7 +297,10 @@ static PlayDisplayLayer* thisLayer;
         
         return;
     }else{
-        timeRemain--;
+        if(type==Classic)
+        {
+            timeRemain--;
+        }
     }
 }
 
@@ -397,14 +400,14 @@ static PlayDisplayLayer* thisLayer;
     int randomx = arc4random()%90-45;
     int randomy = arc4random()%90-45;
     
-    CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"Courier-Bold" fontSize:28];
+    CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"Verdana-Italic" fontSize:30];
     tempLabel.position = ccp(kStartX+kTileSize*kBoxWidth/2+randomx, kStartY+kTileSize*kBoxHeight/2+randomy);
     tempLabel.color = ccc3(60,60,60);
     [self addChild:tempLabel];
     
     CCAction *action = [CCSequence actions:[CCSpawn actions:
-                                            [CCMoveBy actionWithDuration:0.6f position:ccp(0,20)],
-                                            [CCScaleBy actionWithDuration:0.6f scale:1.3],nil],
+                                            [CCMoveBy actionWithDuration:0.8f position:ccp(0,20)],
+                                            [CCScaleBy actionWithDuration:0.8f scale:1.3],nil],
                         [CCCallFuncN actionWithTarget: self selector:@selector(removeLabel:)],
                         nil];
     
@@ -415,20 +418,40 @@ static PlayDisplayLayer* thisLayer;
 	UITouch* touch = [touches anyObject];
 	CGPoint location = [touch locationInView: touch.view];
 	location = [[CCDirector sharedDirector] convertToGL: location];
+    UserProfile *pro = [UserProfile sharedInstance];
     
     if(CGRectContainsPoint([hint boundingBox], location))
     {
+        int num = [pro tools_hint];
+        if(num==0)
+        {
+            return;
+        }
+        [pro addHint:-1];
         [[PlayLayer sharedInstance:NO] hint];
         return;
     }
     
     if(CGRectContainsPoint([heal boundingBox], location))
     {
-        [self addLife];
+        int num = [pro tools_life];
+        if(num==0)
+        {
+            return;
+        }
+        if([self addLife]){
+            [pro addLife:-1];
+        }
     }
     
     if(CGRectContainsPoint([reload boundingBox], location))
     {
+        int num = [pro tools_refill];
+        if(num==0)
+        {
+            return;
+        }
+        [pro addRefill:-1];
         [[PlayLayer sharedInstance:NO] reload];
         return;
     }
@@ -437,10 +460,7 @@ static PlayDisplayLayer* thisLayer;
     if(CGRectContainsPoint([pause boundingBox], location))
     {
         [self pauseGame];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"休息一下：)" message:@"" delegate:self cancelButtonTitle:@"继续" otherButtonTitles:@"返回主菜单", @"重新开始", nil];
-        [alert show];
-        [alert release];
-        //[SceneManager goPauseMenu];
+        [SceneManager goPauseLayer];
         return;
     }
     
@@ -486,19 +506,6 @@ static PlayDisplayLayer* thisLayer;
     return NO;
 }
 
--(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
-    if(buttonIndex==1){
-        [SceneManager goMainMenu];
-    }
-    else if(buttonIndex ==0){
-        [self resumeGame];
-    }else if(buttonIndex==2)
-    {
-        GameContext *context= [[PlayLayer sharedInstance:NO] context];
-        [SceneManager goPlay:context.type level:context.type==Classic?context.level:1];
-    }
-}
 
 -(void) gameOver{
     [self pauseGame];
