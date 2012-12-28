@@ -21,6 +21,13 @@ static bool silence;
     }
 }
 
++(void) playEffect:(NSString*) file{
+    if(!silence)
+    {
+        [[SimpleAudioEngine sharedEngine] playEffect:file];
+    }
+}
+
 +(BOOL) silence{
     return silence;
 }
