@@ -9,7 +9,7 @@
 #import "GameContext.h"
 #import "GameDef.h"
 @implementation GameContext
-@synthesize level,levelScore,type,time,kindCount;
+@synthesize level,levelScore,type,time,kindCount,interval;
 
 -(id) initWithValues:(GameType)gameType Level:(int)levelcount Score:(int)levelscore Time:(int)atime KindCound:(int)kindcount Interval:(int)ainteval{
     
