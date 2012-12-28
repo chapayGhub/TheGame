@@ -370,7 +370,7 @@ static PlayDisplayLayer* thisLayer;
                                       [CCMoveBy actionWithDuration:apearspeed position:ccp(-10,20)],
                                       nil],
                   [CCSpawn actions:[CCScaleTo actionWithDuration:fixspeed scale:0.5f],
-                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.645f,winSize.height*0.915f)],
+                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.644f,winSize.height*0.915f)],
                    nil],
                   nil];
         
@@ -380,7 +380,7 @@ static PlayDisplayLayer* thisLayer;
                                       [CCMoveBy actionWithDuration:apearspeed position:ccp(-10,20)],
                                       nil],
                   [CCSpawn actions:[CCScaleTo actionWithDuration:fixspeed scale:0.5f],
-                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.746f,winSize.height*0.915f)],
+                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.744f,winSize.height*0.915f)],
                    nil],
                   nil];
         
@@ -429,7 +429,7 @@ static PlayDisplayLayer* thisLayer;
         }
         [pro addHint:-1];
         [[PlayLayer sharedInstance:NO] hint];
-        [hint setLabelValue:num-1];
+        [hint nextValue];
         return;
     }
     
@@ -442,7 +442,7 @@ static PlayDisplayLayer* thisLayer;
         }
         if([self addLife]){
             [pro addLife:-1];
-            [heal setLabelValue:num-1];
+            [heal nextValue];
         }
     }
     
@@ -454,7 +454,7 @@ static PlayDisplayLayer* thisLayer;
             return;
         }
         [pro addRefill:-1];
-        [reload setLabelValue:num-1];
+        [reload nextValue];
         [[PlayLayer sharedInstance:NO] reload];
         return;
     }
