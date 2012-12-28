@@ -64,24 +64,23 @@ ccColor3B color;
     }
 }
 
--(void) removeFromParentAndCleanup:(BOOL)cleanup
+-(void) removeFromParentAndCleanup:(BOOL)notNeedToRemoveLabelAndBomb
 {
-//    if(label!=nil&&label.parent!=nil)
-//    {
-//        [label removeFromParentAndCleanup:YES];
-//    }
-//    if(bomb!=nil&&bomb.parent!=nil)
-//    {
-//        [bomb removeFromParentAndCleanup:YES];
-//    }
-    [super removeFromParentAndCleanup:YES];
-    
-    
-}
 
--(void) removeBomb{
-    
+    if(!notNeedToRemoveLabelAndBomb)
+    {
+        if([self bomb]!=nil)
+        {
+            [[self bomb] removeFromParentAndCleanup:YES];
+        }
+        
+        if([self label]!=nil)
+        {
+            [[self label] removeFromParentAndCleanup:YES];
+        }
+    }
     [super removeFromParentAndCleanup:YES];
+
 }
 
 -(void) setLabelValue:(int) number{

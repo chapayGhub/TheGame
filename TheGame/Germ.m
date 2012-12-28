@@ -63,7 +63,7 @@
         return;
     }
     [self setType:atype];
-    [self.sprite removeFromParentAndCleanup:YES];
+    [self.sprite removeFromParentAndCleanup:NO];
     
     GermFigure* asprite = nil;
     asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q%d.png",value]];
@@ -93,7 +93,7 @@
             break;
         case TimeBombGerm:
             [asprite setBombPictureWithFile:@"bomb.png"];
-            [asprite setLabelValue:25];
+            [asprite setLabelValue:20];
             [layer addChild:asprite];
             [layer addChild:asprite.bomb];
             [layer addChild:asprite.label];

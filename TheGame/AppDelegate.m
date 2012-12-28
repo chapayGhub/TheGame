@@ -12,7 +12,7 @@
 #import "IntroLayer.h"
 #import "Constants.h"
 #import "UserProfile.h"
-
+#import "MusicHandler.h"
 @implementation AppController
 
 @synthesize window=window_, navController=navController_, director=director_;
@@ -89,7 +89,7 @@
 	// make main window visible
 	[window_ makeKeyAndVisible];
 	
-
+    [MusicHandler setSilence:[[UserProfile sharedInstance] silence]];
     
 	return YES;
 }

@@ -279,7 +279,7 @@ static PlayDisplayLayer* thisLayer;
                         [g transform:NormalGerm];
                         if([self subLife])
                         {
-                            //游戏结束
+                            [self gameOver];
                         }
                     }
                 }
@@ -429,6 +429,7 @@ static PlayDisplayLayer* thisLayer;
         }
         [pro addHint:-1];
         [[PlayLayer sharedInstance:NO] hint];
+        [hint setLabelValue:num-1];
         return;
     }
     
@@ -441,6 +442,7 @@ static PlayDisplayLayer* thisLayer;
         }
         if([self addLife]){
             [pro addLife:-1];
+            [heal setLabelValue:num-1];
         }
     }
     
@@ -452,6 +454,7 @@ static PlayDisplayLayer* thisLayer;
             return;
         }
         [pro addRefill:-1];
+        [reload setLabelValue:num-1];
         [[PlayLayer sharedInstance:NO] reload];
         return;
     }

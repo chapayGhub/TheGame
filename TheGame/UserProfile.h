@@ -17,6 +17,7 @@
 @property (nonatomic) int tools_hint,tools_life,tools_refill,count;
 @property (nonatomic,retain) NSMutableDictionary* userRecord;
 @property (nonatomic,retain) NSDate* lastTime;
+@property (nonatomic) BOOL silence;
 
 +(UserProfile*) sharedInstance;
 +(BOOL) writeBackToFile;

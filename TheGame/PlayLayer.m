@@ -147,7 +147,7 @@ static PlayLayer* thisLayer;
         if(clickcount==2)
         {
             clickcount=0;
-            GermType t = SuperGerm;
+            GermType t = NormalGerm;
             [selected transform:t];
             [self afterOneShineTrun:selected.sprite];
             [box check];
@@ -245,7 +245,7 @@ static PlayLayer* thisLayer;
                     }
                 }else{
                     [self changeWithTileA:g TileB:[box objectAtX:j Y:(i+1)] sel:@selector(checkPos:data:)];
-                    //[box check];
+                    [box check];
                 }
             }
             else if(g.type == BombGerm)

@@ -9,7 +9,7 @@
 #import "UserProfile.h"
 #import "CommonUtils.h"
 @implementation UserProfile
-@synthesize tools_hint,tools_life,tools_refill,userRecord,count,lastTime;
+@synthesize tools_hint,tools_life,tools_refill,userRecord,count,lastTime,silence;
 
 static UserProfile* userprofile;
 
@@ -17,7 +17,6 @@ static UserProfile* userprofile;
     if(userprofile == nil)
     {
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSString *path = [UserProfile getConfigurationFilePath];
         if([fileManager fileExistsAtPath:[UserProfile getConfigurationFilePath]]) //如果存在则读取文件，如果不存在则初始化文件
         {
             [UserProfile readFile];
@@ -60,7 +59,7 @@ static UserProfile* userprofile;
     [userprofile setCount:1];
     [userprofile setLastTime:[[NSDate alloc] init]];
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-
+    userprofile.silence = NO;
     GameType type = Classic;
     int levels  = 9;
     for(int i=1;i<=levels;i++)
@@ -87,6 +86,7 @@ static UserProfile* userprofile;
 }
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
+    [aCoder encodeBool:silence forKey:@"silence"];
     [aCoder encodeInt:tools_hint forKey:@"hint"];
     [aCoder encodeInt:tools_life forKey:@"life"];
     [aCoder encodeInt:tools_refill forKey:@"refill"];
@@ -97,6 +97,7 @@ static UserProfile* userprofile;
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self=[super init]) {
+        self.silence=[aDecoder decodeBoolForKey:@"silence"];
         self.tools_hint=[aDecoder decodeIntForKey:@"hint"];
         self.tools_life=[aDecoder decodeIntForKey:@"life"];
         self.tools_refill=[aDecoder decodeIntForKey:@"refill"];

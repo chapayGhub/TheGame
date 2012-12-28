@@ -154,7 +154,7 @@
             }
             stamp.position=ccp(winSize.width*0.57,winSize.height*0.72);
             [self addChild:stamp z:1];
-            [[pro userRecord] setValue:[NSNumber numberWithInt:score] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:context.type level:context.level]];
+            [[pro userRecord] setValue:[NSNumber numberWithInt:score] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:context.type level:1]];
         }
         
         CCLabelTTF *sc=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",score] fontName:@"Arial-BoldMT" fontSize:22];
