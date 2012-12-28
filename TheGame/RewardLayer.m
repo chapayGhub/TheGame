@@ -194,7 +194,7 @@
     else //连续登陆奖励的情况
     {
         back = [CCSprite spriteWithFile:@"continue_bg.png"];
-        int count = [pro getCountInARoll];
+        int count = [pro count];
         if(count>=5)
         {
             hint=1;
