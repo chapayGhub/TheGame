@@ -71,15 +71,14 @@ static PlayLayer* thisLayer;
         {
             Germ *g= [array objectAtIndex:j];
             [g.sprite setPosition:g.pixPosition];
-            [g.sprite recorrectLabelPosition];
+            //[g.sprite recorrectLabelPosition];
         }
     }
 }
 
 -(void) checkPos:(id) sender data: (Germ*) g
 {
-//    [g.sprite setPosition:g.pixPosition];
-//    [g.sprite recorrectLabelPosition];
+    [g.sprite setPosition:g.pixPosition];
 }
 
 -(void) resetWithContext:(GameContext *)context refresh:(BOOL) fresh
@@ -147,7 +146,7 @@ static PlayLayer* thisLayer;
         if(clickcount==2)
         {
             clickcount=0;
-            GermType t = NormalGerm;
+            GermType t = FixedGerm;
             [selected transform:t];
             [self afterOneShineTrun:selected.sprite];
             [box check];
@@ -157,6 +156,9 @@ static PlayLayer* thisLayer;
 	clickcount=0;
     
 	Germ *tile = [box objectAtX:x Y:y];
+    if(tile.type==FixedGerm){//如果是固定孢子 直接返回
+        return;
+    }
     
 	if (selected && [selected isNeighbor:tile]) {
 		[box setLock:YES];

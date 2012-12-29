@@ -196,12 +196,12 @@
     }else{
         hitInARoll = 1;
     }
-   
+    
 }
 
 //检查并修复
 -(BOOL) check{
-
+    
     if (paused) {
         return NO;
     }
@@ -342,7 +342,7 @@
         iterate++;
         last = germ;
     }
-
+    
     // 修复，此时被消除的孢子应该已经在屏幕上看不到了
 	int maxCount = [self repair];
 	
@@ -369,15 +369,15 @@
 			[germ.sprite runAction: action];
             
             CCAction *action1 = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
-                                [CCCallFuncN actionWithTarget: display selector:@selector(removeLabel:)],
-                                nil];
+                                 [CCCallFuncN actionWithTarget: display selector:@selector(removeLabel:)],
+                                 nil];
             CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"+%d",basicScore] fontName:@"Arial" fontSize:20];
             tempLabel.color=ccc3(200, 50, 50);
             tempLabel.position=germ.pixPosition;
             
             [display addChild:tempLabel];
             [tempLabel runAction:action1];
-
+            
             // 处理特殊孢子的情况
             // 如果是超级孢子，那把这个孢子周围3*3的孢子都干掉
             if(germ.type == SuperGerm)
@@ -421,8 +421,8 @@
 		}else {
             
             //如果已经无解，那么重新初始化游戏
-//            [self fill];
-//            [self check];
+            //            [self fill];
+            //            [self check];
             
 		}
 	}
@@ -457,7 +457,7 @@
         }else{
             //如果某个孢子下面有被消除的孢子，那么它应该移动到那个孢子的位置去
             Germ *destGerm = [self objectAtX:columnIndex Y:y-count];
-    
+            
             CGPoint dest = ccp(destGerm.pixPosition.x-germ.pixPosition.x, destGerm.pixPosition.y-germ.pixPosition.y);
             CCSequence *action = [CCSequence actions:
                                   [CCDelayTime actionWithDuration: kFallDownDelayTime],
@@ -478,7 +478,7 @@
 		int value = (arc4random()%self.kind+1);
         //从下往上来
 		Germ *destGerm = [self objectAtX:columnIndex Y:kBoxHeight-count+i];
-		GermFigure *sprite = [self getFigure:value];
+		GermFigure *sprite = [self getFigure:value position:[destGerm pixPosition]];
 		sprite.position = ccp(kStartX + columnIndex * kTileSize + kTileSize/2, kStartY + (kBoxHeight + i) * kTileSize + kTileSize/2);
         CCSequence *action = [CCSequence actions:
                               [CCDelayTime actionWithDuration: kFallDownDelayTime],
@@ -487,10 +487,18 @@
 							  nil];
 		[sprite setVisible:NO];
         [holder addChild: sprite];
+        if(sprite.bomb!=nil)
+        {
+            [destGerm setType:FixedGerm];
+            sprite.bomb.visible=NO;
+            [holder addChild:sprite.bomb];
+        }else{
+            [destGerm setType:NormalGerm];
+        }
+
         [sprite runAction: action];
 		destGerm.value = value;
 		destGerm.sprite = sprite;
-        destGerm.type = NormalGerm;
 	}
 	return count;
 }
@@ -500,6 +508,14 @@
 -(void) addSpriteToLayer:(id) sender germ:(Germ *) germ
 {
     [sender setVisible:YES];
+    if([sender isKindOfClass:[GermFigure class]])
+    {
+        if([sender bomb]!=nil)
+        {
+            [[sender bomb] setVisible:YES];
+        }
+    }
+
 }
 
 // 当前情况下是否还有解
@@ -541,7 +557,7 @@
 					{
                         Germ *cGerm = [self objectAtX:x-1 Y:y-2];
                         if (cGerm.value == aGerm.value) {
-                           return ccp(x-1,y-2);
+                            return ccp(x-1,y-2);
                         }
 					}
 					{
@@ -674,30 +690,47 @@
         {
             //从下往上来
             Germ *destGerm = [self objectAtX:j Y:i];
+            int value = (arc4random()%self.kind+1);
+            GermFigure *sprite = [self getFigure:value position:destGerm.pixPosition];
+            sprite.scale = isRetina?1:0.5;
+            destGerm.centerFlag=NO;
+            destGerm.value = value;
+            [holder addChild: sprite];
             if(destGerm.sprite)
             {
                 [self removeSprite:destGerm.sprite];
             }
-            int value = (arc4random()%self.kind+1);
-            GermFigure *sprite = [self getFigure:value];
-            sprite.scale = 0.5;
-            sprite.position = destGerm.pixPosition;
-            [holder addChild: sprite];
-            destGerm.centerFlag=NO;
-            destGerm.value = value;
+            if(sprite.bomb!=nil)
+            {
+                [destGerm setType:FixedGerm];
+                [holder addChild:sprite.bomb];
+            }else{
+                [destGerm setType:NormalGerm];
+            }
             destGerm.sprite = sprite;
-            [destGerm setType:NormalGerm];
-            
         }
 	}
 }
 
 
--(GermFigure*) getFigure:(int) value{
-    
+-(GermFigure*) getFigure:(int) value position:(CGPoint) pos{
+    int rate = [[[PlayLayer sharedInstance:NO] context] fixedGermRate];
     NSString *name = [NSString stringWithFormat:@"q%d.png",value];
     GermFigure *sprite =[GermFigure spriteWithFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:name]];
-    sprite.scale = 0.5;
+    sprite.position = pos;
+    sprite.scale = isRetina?1:0.5;
+    int r = arc4random()%1001;
+    if(r<rate)
+    {
+        [sprite setShiftValue:2];
+        [sprite setBombPictureWithFile:@"freeze.png"];
+        if(!isRetina)
+        {
+            sprite.bomb.scale=0.5f;
+        }
+
+    }
+    
     return sprite;
 }
 

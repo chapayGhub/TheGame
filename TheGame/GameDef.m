@@ -31,28 +31,28 @@ static GameDef* def;
     }
     settings = [[NSMutableDictionary alloc] init];
     //经典玩法的关卡设置
-    GameContext *context = [[GameContext alloc] initWithValues:Classic Level:1 Score:200 Time:20 KindCound:5 Interval:0];
-    GameContext *context1 = [[GameContext alloc] initWithValues:Classic Level:2 Score:300 Time:20 KindCound:5 Interval:0];
-    GameContext *context2 = [[GameContext alloc] initWithValues:Classic Level:3 Score:500 Time:20 KindCound:5 Interval:0];
+    GameContext *context = [[GameContext alloc] initWithValues:Classic Level:1 Score:200 Time:20 KindCound:5 Interval:0 FixedRate:500];
+    GameContext *context1 = [[GameContext alloc] initWithValues:Classic Level:2 Score:300 Time:20 KindCound:5 Interval:0 FixedRate:0];
+    GameContext *context2 = [[GameContext alloc] initWithValues:Classic Level:3 Score:500 Time:20 KindCound:5 Interval:0 FixedRate:0];
     
-    GameContext *context3 = [[GameContext alloc] initWithValues:Classic Level:4 Score:1000 Time:20 KindCound:6 Interval:0];
-    GameContext *context4 = [[GameContext alloc] initWithValues:Classic Level:5 Score:1200 Time:20 KindCound:6 Interval:0];
-    GameContext *context5 = [[GameContext alloc] initWithValues:Classic Level:6 Score:1300 Time:20 KindCound:6 Interval:0];
+    GameContext *context3 = [[GameContext alloc] initWithValues:Classic Level:4 Score:1000 Time:20 KindCound:6 Interval:0 FixedRate:0];
+    GameContext *context4 = [[GameContext alloc] initWithValues:Classic Level:5 Score:1200 Time:20 KindCound:6 Interval:0 FixedRate:0];
+    GameContext *context5 = [[GameContext alloc] initWithValues:Classic Level:6 Score:1300 Time:20 KindCound:6 Interval:0 FixedRate:0];
     
-    GameContext *context6 = [[GameContext alloc] initWithValues:Classic Level:7 Score:1400 Time:20 KindCound:7 Interval:0];
-    GameContext *context7 = [[GameContext alloc] initWithValues:Classic Level:8 Score:1500 Time:20 KindCound:7 Interval:0];
-    GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:1600 Time:20 KindCound:7 Interval:0];
+    GameContext *context6 = [[GameContext alloc] initWithValues:Classic Level:7 Score:1400 Time:20 KindCound:7 Interval:0 FixedRate:0];
+    GameContext *context7 = [[GameContext alloc] initWithValues:Classic Level:8 Score:1500 Time:20 KindCound:7 Interval:0 FixedRate:0];
+    GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:1600 Time:20 KindCound:7 Interval:0 FixedRate:0];
     
     
     
     //无尽模式的关卡设置
-    GameContext *context10 = [[GameContext alloc] initWithValues:Poisonous Level:1 Score:200 Time:0 KindCound:5 Interval:2];
-    GameContext *context11 = [[GameContext alloc] initWithValues:Poisonous Level:2 Score:200 Time:0 KindCound:5 Interval:2];
-    GameContext *context12 = [[GameContext alloc] initWithValues:Poisonous Level:3 Score:200 Time:0 KindCound:5 Interval:2];
+    GameContext *context10 = [[GameContext alloc] initWithValues:Poisonous Level:1 Score:200 Time:0 KindCound:5 Interval:2 FixedRate:0];
+    GameContext *context11 = [[GameContext alloc] initWithValues:Poisonous Level:2 Score:200 Time:0 KindCound:5 Interval:2 FixedRate:0];
+    GameContext *context12 = [[GameContext alloc] initWithValues:Poisonous Level:3 Score:200 Time:0 KindCound:5 Interval:2 FixedRate:0];
     
-    GameContext *context20 = [[GameContext alloc] initWithValues:Bomb Level:1 Score:200 Time:100 KindCound:5 Interval:2];
+    GameContext *context20 = [[GameContext alloc] initWithValues:Bomb Level:1 Score:200 Time:100 KindCound:5 Interval:2 FixedRate:0];
     
-    GameContext *context30 = [[GameContext alloc] initWithValues:TimeBomb Level:1 Score:200 Time:100 KindCound:5 Interval:2];
+    GameContext *context30 = [[GameContext alloc] initWithValues:TimeBomb Level:1 Score:200 Time:100 KindCound:5 Interval:2 FixedRate:0];
     
     [settings setValue:context forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context type] level:[context level]]];
     [settings setValue:context1 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context1 type] level:[context1 level]]];

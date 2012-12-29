@@ -101,6 +101,17 @@
         case NormalGerm:
             [layer addChild:asprite];
             break;
+        case FixedGerm:
+            [asprite setShiftValue:2];
+            [asprite setBombPictureWithFile:@"freeze.png"];
+            
+            if(!isRetina)
+            {
+                [[asprite bomb] setScale:0.5f];
+            }
+            [layer addChild:asprite];
+            [layer addChild:asprite.bomb];
+            break;
         default:
             break;
     }

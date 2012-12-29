@@ -18,6 +18,8 @@ CCAction *tempAction;
 CCAction *tempAction1;
 int shiftvalueX;
 int shiftvalueY;
+int figureShiftX;
+int figureShiftY;
 int size;
 ccColor3B color;
 -(CCAction*) runAction:(CCAction*) action{
@@ -42,6 +44,15 @@ ccColor3B color;
     shiftvalueY=-12;
     size=13;
     color=ccc3(255, 255, 255);
+    figureShiftX=10;
+    figureShiftY=10;
+    if(isRetina)
+    {
+        shiftvalueX*=2;
+        shiftvalueY*=2;
+        figureShiftX*=2;
+        figureShiftY*=2;
+    }
     return self;
 }
 
@@ -51,6 +62,15 @@ ccColor3B color;
     shiftvalueY=-12;
     size=13;
     color=ccc3(255, 255, 255);
+    figureShiftX=10;
+    figureShiftY=10;
+    if(isRetina)
+    {
+        shiftvalueX*=2;
+        shiftvalueY*=2;
+        figureShiftX*=2;
+        figureShiftY*=2;
+    }
     return self;
 }
 
@@ -61,6 +81,10 @@ ccColor3B color;
         shiftvalueY=10;
         size = 20;
         color = ccc3(60, 60, 60);
+    }else if(type==2)
+    {
+        figureShiftX=0;
+        figureShiftY=0;
     }
 }
 
@@ -98,23 +122,20 @@ ccColor3B color;
     CGPoint p = self.position;
     if (isRetina) {
         [label setPosition:ccp(p.x+2*shiftvalueX,p.y+2*shiftvalueY)];
+        [bomb setPosition:ccp(p.x+2*figureShiftX,p.y-2*figureShiftY)];
     }else{
         [label setPosition:ccp(p.x+shiftvalueX,p.y+shiftvalueY)];
+        [bomb setPosition:ccp(p.x+figureShiftX,p.y-figureShiftY)];
     }
 }
-
 -(void) setBombPictureWithFile:(NSString*) file{
-    int x=10;
-    int y=10;
-    if(isRetina)
-    {
-        x=20;
-        y=20;
-    }
     bomb = [CCSprite spriteWithFile:file];
     CGPoint p = self.position;
-    [bomb setPosition:ccp(p.x+x,p.y-y)];
-    [bomb setScale:0.7f];
+    [bomb setPosition:ccp(p.x+figureShiftX,p.y-figureShiftY)];
+    if(!isRetina)
+    {
+        [bomb setScale:0.7f];
+    }
 }
 -(int) nextValue{
     if(currentNumber==0)

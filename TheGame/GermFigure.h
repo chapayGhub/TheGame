@@ -22,10 +22,10 @@
 -(CCAction*) runAction:(CCAction*) action;
 +(id)spriteWithFile:(NSString*)filename;
 -(int) nextValue;//让label上的数字递减
--(void) recorrectLabelPosition;
 
 -(void) removeFromParentAndCleanup:(BOOL)notNeedToRemoveLabelAndBomb;
 -(void) setBombPictureWithFile:(NSString*) file;
 -(void) setShiftValue:(int) type;
 +(id)spriteWithFrame:(CCSpriteFrame*)frame;
+-(void) recorrectLabelPosition;
 @end

@@ -244,6 +244,7 @@
 		C6ECE97E1677951400B4B468 /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6ECE97D1677951400B4B468 /* MainMenuLayer.m */; };
 		C6ECE9821677CA4700B4B468 /* PlayDisplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6ECE9811677CA4700B4B468 /* PlayDisplayLayer.m */; };
 		C6ECE98C1677E48100B4B468 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = C6ECE98B1677E48100B4B468 /* background.png */; };
+		C6F7A8C3168E91B000037251 /* freeze.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F7A8C2168E91B000037251 /* freeze.png */; };
 		C6FFA0471678F4260069C640 /* ActiveBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FFA0461678F4260069C640 /* ActiveBackgroundLayer.m */; };
 /* End PBXBuildFile section */
 
@@ -676,6 +677,7 @@
 		C6ECE9801677CA4700B4B468 /* PlayDisplayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayDisplayLayer.h; sourceTree = "<group>"; };
 		C6ECE9811677CA4700B4B468 /* PlayDisplayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayDisplayLayer.m; sourceTree = "<group>"; };
 		C6ECE98B1677E48100B4B468 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
+		C6F7A8C2168E91B000037251 /* freeze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = freeze.png; path = Resources/freeze.png; sourceTree = "<group>"; };
 		C6FEE91816766EA700888B02 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
 		C6FFA0451678F4260069C640 /* ActiveBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveBackgroundLayer.h; sourceTree = "<group>"; };
 		C6FFA0461678F4260069C640 /* ActiveBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveBackgroundLayer.m; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 				C6236EA116839A100030DC83 /* poison.png */,
 				C693E7591674FE8D0079D60D /* q5.png */,
 				C693E75A1674FE8D0079D60D /* q6.png */,
+				C6F7A8C2168E91B000037251 /* freeze.png */,
 				C693E75B1674FE8D0079D60D /* q7.png */,
 				C693E7571674FE8D0079D60D /* q3.png */,
 				C693E7581674FE8D0079D60D /* q4.png */,
@@ -1722,6 +1725,7 @@
 				C692461D168CF11E00DA8779 /* stop_reset_bt.png in Resources */,
 				C6924620168CF12800DA8779 /* stop_bg1.png in Resources */,
 				C6924621168CF12800DA8779 /* stop_bg2.png in Resources */,
+				C6F7A8C3168E91B000037251 /* freeze.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
