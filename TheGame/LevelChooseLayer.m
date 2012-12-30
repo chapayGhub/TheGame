@@ -95,13 +95,6 @@
         [levels addObject:array];
     }
     
-    CCSprite * w = [CCSprite spriteWithFile:@"words.png"];
-    if(!isRetina)
-    {
-        w.scale=0.6f;
-    }
-    w.position = ccp(winSize.width*0.5,winSize.height*0.2);
-    [self addChild:w];
     return self;
 }
 
