@@ -93,7 +93,7 @@
             break;
         case TimeBombGerm:
             [asprite setBombPictureWithFile:@"bomb.png"];
-            [asprite setLabelValue:20];
+            [asprite setLabelValue:3];
             [layer addChild:asprite];
             [layer addChild:asprite.bomb];
             [layer addChild:asprite.label];

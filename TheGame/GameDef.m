@@ -31,7 +31,7 @@ static GameDef* def;
     }
     settings = [[NSMutableDictionary alloc] init];
     //经典玩法的关卡设置
-    GameContext *context = [[GameContext alloc] initWithValues:Classic Level:1 Score:200 Time:20 KindCound:5 Interval:0 FixedRate:500];
+    GameContext *context = [[GameContext alloc] initWithValues:Classic Level:1 Score:200 Time:6 KindCound:5 Interval:0 FixedRate:0];
     GameContext *context1 = [[GameContext alloc] initWithValues:Classic Level:2 Score:300 Time:20 KindCound:5 Interval:0 FixedRate:0];
     GameContext *context2 = [[GameContext alloc] initWithValues:Classic Level:3 Score:500 Time:20 KindCound:5 Interval:0 FixedRate:0];
     

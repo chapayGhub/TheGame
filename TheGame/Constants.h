@@ -41,6 +41,7 @@
 #define backtomenuTag 32
 #define redoTag 42
 #define menuTag 52
+#define sunTag 220
 
 /*根据num计算分数的规则*/
 // 孢子数*基础分
