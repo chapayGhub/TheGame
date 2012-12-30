@@ -185,7 +185,7 @@ static PlayDisplayLayer* thisLayer;
                 {
                     astar.scale=0.5f;
                 }
-                astar.position = ccp(winSize.width*(0.55+i*0.102) ,winSize.height*0.91f);
+                astar.position = ccp(winSize.width*(0.545+i*0.1) ,winSize.height*0.912f);
                 [starPictures addObject:astar];
                 [self addChild:astar];
             }
@@ -472,11 +472,13 @@ static PlayDisplayLayer* thisLayer;
 -(void) pauseGame{
     [timer pauseSchedulerAndActions];
     [self pauseSchedulerAndActions];
+    self.isTouchEnabled = NO;
     [[PlayLayer sharedInstance:NO]  pauseGame];
 }
 
 -(void) resumeGame
 {
+    self.isTouchEnabled = YES;
     [timer resumeSchedulerAndActions];
     [self resumeSchedulerAndActions];
     [[PlayLayer sharedInstance:NO]  resumeGame];

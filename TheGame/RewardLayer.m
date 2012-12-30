@@ -98,10 +98,10 @@
             star1.visible=NO;
             // hint=1;
 
-            CCLabelTTF *hl=[CCLabelTTF labelWithString: @"很遗憾，没有获得奖励" fontName:@"Arial-BoldMT" fontSize:18];
+            CCLabelTTF *hl=[CCLabelTTF labelWithString: @"真遗憾，这次没有获得奖励，要再接再厉哦!" fontName:@"Arial-BoldMT" fontSize:18];
             [hl setDimensions:CGSizeMake(winSize.width*0.4, winSize.height*0.2)];
             hl.color = ccc3(200, 200, 0);
-            hl.position = ccp(winSize.width*0.5,winSize.height*0.5);
+            hl.position = ccp(winSize.width*0.5,winSize.height*0.52);
             [self addChild:hl z:1];
             
         }
@@ -177,6 +177,60 @@
         CCSprite* rw = [CCSprite spriteWithFile:@"rotate_wd.png"];
         CCSprite* lw = [CCSprite spriteWithFile:@"rebirth_wd.png"];
         
+        
+        hint = score/2000;
+        rotate = score/3000;
+        heal = score/4000;
+        
+        if(heal>0) // 三种奖励都拿到了
+        {
+            lw.position = ccp(winSize.width*0.5,winSize.height*0.50);
+            hw.position = ccp(winSize.width*0.5,winSize.height*0.57);
+            rw.position = ccp(winSize.width*0.5,winSize.height*0.64);
+            
+            CCLabelTTF *ll=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",heal] fontName:@"Arial-BoldMT" fontSize:18];
+            ll.color = ccc3(200, 200, 200);
+            ll.position = ccp(winSize.width*0.57,winSize.height*0.50);
+            CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
+            hl.color = ccc3(200, 200, 200);
+            hl.position = ccp(winSize.width*0.57,winSize.height*0.57);
+            CCLabelTTF *rl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",rotate] fontName:@"Arial-BoldMT" fontSize:18];
+            rl.color = ccc3(200, 200, 200);
+            rl.position = ccp(winSize.width*0.57,winSize.height*0.64);
+            [self addChild:hw z:1];
+            [self addChild:rw z:1];
+            [self addChild:lw z:1];
+            [self addChild:ll z:1];
+            [self addChild:hl z:1];
+            [self addChild:rl z:1];
+        }else if(rotate>0){ //拿到了两种奖励
+            hw.position = ccp(winSize.width*0.5,winSize.height*0.53);
+            rw.position = ccp(winSize.width*0.5,winSize.height*0.6);
+            CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
+            hl.color = ccc3(200, 200, 200);
+            hl.position = ccp(winSize.width*0.57,winSize.height*0.53);
+            CCLabelTTF *rl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",rotate] fontName:@"Arial-BoldMT" fontSize:18];
+            rl.color = ccc3(200, 200, 200);
+            rl.position = ccp(winSize.width*0.57,winSize.height*0.6);
+            [self addChild:hw z:1];
+            [self addChild:rw z:1];
+            [self addChild:hl z:1];
+            [self addChild:rl z:1];
+        }else if(hint>0) // 只拿到了一种奖励
+        {
+            hw.position = ccp(winSize.width*0.5,winSize.height*0.56);
+            CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:16];
+            hl.color = ccc3(200, 200, 200);
+            hl.position = ccp(winSize.width*0.57,winSize.height*0.56);
+            [self addChild:hw z:1];
+            [self addChild:hl z:1];
+        }else{ // 没有拿到奖励
+            CCLabelTTF *hl=[CCLabelTTF labelWithString:  @"真遗憾，这次没有获得奖励，要再接再厉哦!" fontName:@"Arial-BoldMT" fontSize:18];
+            [hl setDimensions:CGSizeMake(winSize.width*0.4, winSize.height*0.2)];
+            hl.color = ccc3(200, 200, 0);
+            hl.position = ccp(winSize.width*0.5,winSize.height*0.52);
+            [self addChild:hl z:1];
+        }
         
         if(!isRetina)
         {

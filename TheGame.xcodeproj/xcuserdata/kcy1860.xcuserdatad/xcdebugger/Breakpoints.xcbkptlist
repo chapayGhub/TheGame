@@ -1722,11 +1722,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayDisplayLayer.m"
-         timestampString = "378360475.344626"
+         timestampString = "378495929.317943"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "502"
-         endingLineNumber = "502"
+         startingLineNumber = "504"
+         endingLineNumber = "504"
          landmarkName = "-subLife"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1735,11 +1735,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/RewardLayer.m"
-         timestampString = "378335007.65249"
+         timestampString = "378496218.843424"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "258"
-         endingLineNumber = "258"
+         startingLineNumber = "312"
+         endingLineNumber = "312"
          landmarkName = "-ccTouchesBegan:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1748,11 +1748,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/RewardLayer.m"
-         timestampString = "378335007.65249"
+         timestampString = "378496218.843424"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "266"
-         endingLineNumber = "266"
+         startingLineNumber = "320"
+         endingLineNumber = "320"
          landmarkName = "-ccTouchesBegan:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1894,7 +1894,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "717"
          endingLineNumber = "717"
-         landmarkName = "-getFigure:"
+         landmarkName = "-getFigure:position:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

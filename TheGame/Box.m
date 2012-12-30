@@ -698,7 +698,7 @@
             [holder addChild: sprite];
             if(destGerm.sprite)
             {
-                [self removeSprite:destGerm.sprite];
+                [destGerm.sprite removeFromParentAndCleanup:NO];
             }
             if(sprite.bomb!=nil)
             {
