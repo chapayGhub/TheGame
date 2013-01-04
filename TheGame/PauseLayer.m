@@ -48,7 +48,13 @@
     
     CCNode* sprite = [self getChildByTag:menuTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
-        [SceneManager goMainMenu];
+        GameType type= [[[PlayLayer sharedInstance:NO] context] type];
+        if(type==Classic)
+        {
+            [SceneManager goLevelChoose];
+        }else{
+            [SceneManager goGameModeChoose];
+        }
     }
     
     sprite = [self getChildByTag:continueTag];

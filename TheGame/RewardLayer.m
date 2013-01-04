@@ -117,12 +117,15 @@
         CCSprite* mt = [CCSprite spriteWithFile:@"menu_bt.png"];
         mt.position = ccp(winSize.width*0.35,winSize.height*0.38);
         
-        CCSprite* lt = [CCSprite spriteWithFile:@"likeus_bt.png"];
+//        CCSprite* lt = [CCSprite spriteWithFile:@"likeus_bt.png"];
+//        lt.position = ccp(winSize.width*0.65,winSize.height*0.38);
+        CCSprite* lt = [CCSprite spriteWithFile:@"stop_reset_bt.png"];
         lt.position = ccp(winSize.width*0.65,winSize.height*0.38);
         
         [self addChild:ct z:2 tag:continueTag];
         [self addChild:mt z:2 tag:backtomenuTag];
-        [self addChild:lt z:2 tag:likeusTag];
+       // [self addChild:lt z:2 tag:likeusTag];
+        [self addChild:lt z:2 tag:redoTag];
         
         if(!isRetina)
         {
@@ -168,7 +171,7 @@
         CCSprite* ct = [CCSprite spriteWithFile:@"redo_bt.png"];
         ct.position = ccp(winSize.width*0.5,winSize.height*0.38);
         
-        CCSprite* mt = [CCSprite spriteWithFile:@"menu_bt.png"];
+        CCSprite* mt = [CCSprite spriteWithFile:@"stop_menu_bt.png"];
         mt.position = ccp(winSize.width*0.35,winSize.height*0.38);
         
         CCSprite* lt = [CCSprite spriteWithFile:@"likeus_bt.png"];
@@ -366,13 +369,19 @@
     
     sprite = [self getChildByTag:redoTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
-        GameType type= [[[PlayLayer sharedInstance:NO] context] type];
-        [SceneManager goPlay:type level:1];
+        GameContext *context = [[PlayLayer sharedInstance:NO] context];
+        [SceneManager goPlay:context.type level:context.type == Classic?context.level:1];
     }
     
     sprite = [self getChildByTag:backtomenuTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
-        [SceneManager goMainMenu];
+        GameContext *context = [[PlayLayer sharedInstance:NO] context];
+        if(context.type==Classic)
+        {
+            [SceneManager goLevelChoose];
+        }else{
+            [SceneManager goGameModeChoose];
+        }
     }
     
     sprite = [self getChildByTag:likeusTag];

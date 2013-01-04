@@ -35,6 +35,8 @@
     int timeRemain;
     GameType type;
     int life;
+    
+    int starSpan;
 }
 
 @end
@@ -166,6 +168,8 @@ static PlayDisplayLayer* thisLayer;
                 heal.scale = 0.5f;
             }
         }
+        
+        starSpan = context.interval;
     }else{
         
         if(title==nil)
@@ -316,7 +320,7 @@ static PlayDisplayLayer* thisLayer;
             [self addAStar];
             while(star<3) //还没有拿到三颗星
             {
-                [self resetLevelScore:levelScore*getStarSpan];
+                [self resetLevelScore:levelScore+starSpan];
                 if(value<levelScore)
                 {
                     break;

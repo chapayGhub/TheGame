@@ -195,6 +195,7 @@
         
     }else{
         hitInARoll = 1;
+        maxHit=1;
     }
     
 }

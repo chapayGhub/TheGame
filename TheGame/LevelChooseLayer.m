@@ -54,7 +54,9 @@
             NSString* key = [CommonUtils getKeyStringByGameTypeAndLevel:type level:count];
             count++;
             int score = [[record valueForKey: key] integerValue];
-            int passScore = [[context valueForKey:key] levelScore];
+            GameContext *c = [context valueForKey:key];
+            int passScore = [c levelScore];
+            int starSpan = [c interval];
             if(score==-1)
             {
                 if(flag == YES) // 已经解锁但是还没玩
@@ -67,9 +69,9 @@
                 }
             }else{
                 if(score >= passScore)
-                {   passScore = passScore*getStarSpan;
+                {   passScore = passScore+starSpan;
                     if(score>=passScore){ // second star
-                        passScore = passScore*getStarSpan;
+                        passScore = passScore+starSpan;
                         if(score>=passScore) // third star
                         {
                             sprite = [CCSprite spriteWithFile:@"crab3.png"];

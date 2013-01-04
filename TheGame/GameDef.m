@@ -30,18 +30,29 @@ static GameDef* def;
         [settings release];
     }
     settings = [[NSMutableDictionary alloc] init];
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
     //经典玩法的关卡设置
-    GameContext *context = [[GameContext alloc] initWithValues:Classic Level:1 Score:200 Time:6 KindCound:5 Interval:0 FixedRate:0];
-    GameContext *context1 = [[GameContext alloc] initWithValues:Classic Level:2 Score:300 Time:20 KindCound:5 Interval:0 FixedRate:0];
-    GameContext *context2 = [[GameContext alloc] initWithValues:Classic Level:3 Score:500 Time:20 KindCound:5 Interval:0 FixedRate:0];
+    GameContext *context0 = [[GameContext alloc] initWithValues:Classic Level:1 Score:1500 Time:60 KindCound:5 Interval:360 FixedRate:0];
+    GameContext *context1 = [[GameContext alloc] initWithValues:Classic Level:2 Score:1650 Time:60 KindCound:5 Interval:360 FixedRate:0];
+    GameContext *context2 = [[GameContext alloc] initWithValues:Classic Level:3 Score:1800 Time:60 KindCound:5 Interval:360 FixedRate:25];
     
-    GameContext *context3 = [[GameContext alloc] initWithValues:Classic Level:4 Score:1000 Time:20 KindCound:6 Interval:0 FixedRate:0];
-    GameContext *context4 = [[GameContext alloc] initWithValues:Classic Level:5 Score:1200 Time:20 KindCound:6 Interval:0 FixedRate:0];
-    GameContext *context5 = [[GameContext alloc] initWithValues:Classic Level:6 Score:1300 Time:20 KindCound:6 Interval:0 FixedRate:0];
+    GameContext *context3 = [[GameContext alloc] initWithValues:Classic Level:4 Score:960 Time:60 KindCound:6 Interval:300 FixedRate:0];
+    GameContext *context4 = [[GameContext alloc] initWithValues:Classic Level:5 Score:1020 Time:60 KindCound:6 Interval:300 FixedRate:25];
+    GameContext *context5 = [[GameContext alloc] initWithValues:Classic Level:6 Score:1080 Time:60 KindCound:6 Interval:300 FixedRate:30];
     
-    GameContext *context6 = [[GameContext alloc] initWithValues:Classic Level:7 Score:1400 Time:20 KindCound:7 Interval:0 FixedRate:0];
-    GameContext *context7 = [[GameContext alloc] initWithValues:Classic Level:8 Score:1500 Time:20 KindCound:7 Interval:0 FixedRate:0];
-    GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:1600 Time:20 KindCound:7 Interval:0 FixedRate:0];
+    GameContext *context6 = [[GameContext alloc] initWithValues:Classic Level:7 Score:720 Time:60 KindCound:7 Interval:240 FixedRate:0];
+    GameContext *context7 = [[GameContext alloc] initWithValues:Classic Level:8 Score:810 Time:60 KindCound:7 Interval:240 FixedRate:25];
+    GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:900 Time:60 KindCound:7 Interval:240 FixedRate:50];
+    
+    [tempArray addObject:context0];
+    [tempArray addObject:context1];
+    [tempArray addObject:context2];
+    [tempArray addObject:context3];
+    [tempArray addObject:context4];
+    [tempArray addObject:context5];
+    [tempArray addObject:context6];
+    [tempArray addObject:context7];
+    [tempArray addObject:context8];
     
     
     
@@ -54,25 +65,27 @@ static GameDef* def;
     
     GameContext *context30 = [[GameContext alloc] initWithValues:TimeBomb Level:1 Score:200 Time:100 KindCound:5 Interval:2 FixedRate:0];
     
-    [settings setValue:context forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context type] level:[context level]]];
-    [settings setValue:context1 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context1 type] level:[context1 level]]];
-    [settings setValue:context2 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context2 type] level:[context2 level]]];
-    [settings setValue:context3 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context3 type] level:[context3 level]]];
-    [settings setValue:context4 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context4 type] level:[context4 level]]];
-    [settings setValue:context5 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context5 type] level:[context5 level]]];
-    [settings setValue:context6 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context6 type] level:[context6 level]]];
-    [settings setValue:context7 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context7 type] level:[context7 level]]];
-    [settings setValue:context8 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context8 type] level:[context8 level]]];
     
+    [tempArray addObject:context10];
+    [tempArray addObject:context11];
+    [tempArray addObject:context12];
     
-    [settings setValue:context10 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context10 type] level:[context10 level]]];
-    [settings setValue:context11 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context11 type] level:[context11 level]]];
-    [settings setValue:context12 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context12 type] level:[context12 level]]];
+    [tempArray addObject:context20];
     
+    [tempArray addObject:context30];
     
-    
-    [settings setValue:context20 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context20 type] level:[context20 level]]];
-    [settings setValue:context30 forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context30 type] level:[context30 level]]];
+    for(GameContext *context in tempArray)
+    {
+        //这段代码仅在测试的时候使用
+//        if(context.type==Classic)
+//        {
+//            context.time=context.time/3;
+//            context.levelScore=context.levelScore/3;
+//            context.interval=context.interval/3;
+//        }
+        
+        [settings setValue:context forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context type] level:[context level]]];
+    }
 }
 
 

@@ -17,7 +17,7 @@
 
 @property (nonatomic) int time; //时间（s），如果时间是0代表不倒计时
 @property (nonatomic) int kindCount; //孢子种类数
-@property (nonatomic) int interval; //刷新炸弹/毒药孢子的间隔步数/时间
+@property (nonatomic) int interval; //刷新炸弹/毒药孢子的间隔步数/时间, 在classic中用作获得星星的间隔分数
 @property (nonatomic) int fixedGermRate; //固定孢子出现的几率 按每一千个孢子计算
 
 -(id) initWithValues:(GameType)gameType Level:(int)levelcount Score:(int)levelscore Time:(int)atime KindCound:(int)kindcount Interval:(int)ainteval FixedRate:(int) rate;
