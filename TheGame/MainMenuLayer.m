@@ -27,10 +27,10 @@
     CCSprite *h = [CCSprite spriteWithFile:@"mn_help.png"];
     CCSprite *hs = [CCSprite spriteWithFile:@"mn_help.png"];
 
-    ls.scale=1.1f;
-    is.scale=1.1f;
-    ms.scale=1.1f;
-    hs.scale=1.1f;
+    ls.color=ccc3(80,80,80);
+    is.color=ccc3(80,80,80);
+    ms.color=ccc3(80,80,80);
+    hs.color=ccc3(80,80,80);
 
     CCMenuItemSprite *startNew = [CCMenuItemSprite  itemWithNormalSprite:l selectedSprite:ls target:self selector:@selector(onStartNew:)];
     CCMenuItemSprite *resume = [CCMenuItemSprite  itemWithNormalSprite:i selectedSprite:is target:self selector:@selector(onInfiniteMode:)];
@@ -59,7 +59,7 @@
 		[each runAction: action];
 	}
 
-	menu.position = ccp(160, 240);
+	menu.position = ccp(winSize.width*0.5, winSize.height*0.5);
     [menu alignItemsVerticallyWithPadding: 55.0f];
 	[self addChild:menu z:1 tag:mainmenuTag];
 	return self;
