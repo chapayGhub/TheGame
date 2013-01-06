@@ -58,67 +58,63 @@
 -(void)transform:(GermType)atype
 {
     PlayLayer *layer = [PlayLayer sharedInstance:NO];
+    [self.sprite removeFromParentAndCleanup:NO];
     if(value == 0)
     {
         return;
     }
     [self setType:atype];
-    [self.sprite removeFromParentAndCleanup:NO];
-    
-    GermFigure* asprite = nil;
-    asprite = [GermFigure spriteWithFile:[NSString stringWithFormat:@"q%d.png",value]];
-    if(!isRetina)
-    {
-        asprite.scale=0.5f;
-    }
-    [asprite setPosition:self.pixPosition];
 
+    
+    GermFigure *figure = [GermFigure spriteWithFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:atype==SuperGerm?@"fb%d.png":@"q%d.png",value]]];
+    [figure setPosition:[self pixPosition]];
     switch(atype)
     {
-        case SuperGerm:         
-            [asprite setColor: ccc3(100, 100, 100)];
-            [layer addChild:asprite];
+        case SuperGerm:
+            [layer addChild:figure];
             break;
         case PoisonousGerm:
-            [asprite setBombPictureWithFile:@"poison.png"];
-            [layer addChild:asprite];
-            [layer addChild:asprite.bomb];
+            [figure setBombPictureWithFile:@"poison.png"];
+            [layer addChild:figure];
+            [layer addChild:figure.bomb];
             break;
         case BombGerm:
-            [asprite setBombPictureWithFile:@"bomb.png"];
-            [asprite setLabelValue:8];
-            [layer addChild:asprite];
-            [layer addChild:asprite.bomb];
-            [layer addChild:asprite.label];
+            [figure setBombPictureWithFile:@"bomb.png"];
+            [figure setLabelValue:stepBombCount];
+            [layer addChild:figure];
+            [layer addChild:figure.bomb];
+            [layer addChild:figure.label];
             break;
         case TimeBombGerm:
-            [asprite setBombPictureWithFile:@"bomb.png"];
-            [asprite setLabelValue:3];
-            [layer addChild:asprite];
-            [layer addChild:asprite.bomb];
-            [layer addChild:asprite.label];
+            [figure setBombPictureWithFile:@"bomb.png"];
+            [figure setLabelValue:timeBombCount];
+            [layer addChild:figure];
+            [layer addChild:figure.bomb];
+            [layer addChild:figure.label];
             break;
         case NormalGerm:
-            [layer addChild:asprite];
+            [layer addChild:figure];
             break;
         case FixedGerm:
-            [asprite setShiftValue:2];
-            [asprite setBombPictureWithFile:@"freeze.png"];
+            [figure setShiftValue:2];
+            [figure setBombPictureWithFile:@"freeze.png"];
             
             if(!isRetina)
             {
-                [[asprite bomb] setScale:0.5f];
+                [[figure bomb] setScale:0.5f];
             }
-            [layer addChild:asprite];
-            [layer addChild:asprite.bomb];
+            [layer addChild:figure];
+            [layer addChild:figure.bomb];
             break;
         default:
             break;
     }
-    
-    [self setSprite:asprite];
-    
-    
+    if(!isRetina)
+    {
+        [figure setScale:0.5f];
+    }
+    [self setSprite:figure];
+
 }
 
 @end

@@ -145,11 +145,11 @@ static PlayLayer* thisLayer;
         clickcount++;
         if(clickcount==2)
         {
-//            clickcount=0;
-//            GermType t = FixedGerm;
-//            [selected transform:t];
-//            [self afterOneShineTrun:selected.sprite];
-//            [box check];
+            clickcount=0;
+            GermType t = SuperGerm;
+            [selected transform:t];
+            [self afterOneShineTrun:selected.sprite];
+            [box check];
         }
 		return;
 	}

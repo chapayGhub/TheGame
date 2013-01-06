@@ -406,7 +406,7 @@ static PlayDisplayLayer* thisLayer;
     
     CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"Verdana-Italic" fontSize:30];
     tempLabel.position = ccp(kStartX+kTileSize*kBoxWidth/2+randomx, kStartY+kTileSize*kBoxHeight/2+randomy);
-    tempLabel.color = ccc3(60,60,60);
+    tempLabel.color = ccc3(0,0,0);
     [self addChild:tempLabel];
     
     CCAction *action = [CCSequence actions:[CCSpawn actions:
@@ -431,9 +431,13 @@ static PlayDisplayLayer* thisLayer;
         {
             return;
         }
-        [pro addHint:-1];
-        [[PlayLayer sharedInstance:NO] hint];
-        [hint nextValue];
+        
+        BOOL flag = [[PlayLayer sharedInstance:NO] hint];
+        if(flag)
+        {
+            [pro addHint:-1];
+            [hint nextValue];
+        }
         return;
     }
     

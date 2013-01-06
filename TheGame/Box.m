@@ -163,13 +163,10 @@
                                 [CCCallFuncN actionWithTarget: self selector:@selector(removeSprite:)],
                                 nil];
             [[g sprite] runAction: action];
-            
-        }else if(g==center)
-        {
-            //把center变为超级孢子
-            [center transform:SuperGerm];
         }
     }
+    
+    [center transform:SuperGerm];
 }
 
 -(void) addScore:(int)num
@@ -496,7 +493,7 @@
         }else{
             [destGerm setType:NormalGerm];
         }
-
+        
         [sprite runAction: action];
 		destGerm.value = value;
 		destGerm.sprite = sprite;
@@ -516,7 +513,7 @@
             [[sender bomb] setVisible:YES];
         }
     }
-
+    
 }
 
 // 当前情况下是否还有解
@@ -524,48 +521,63 @@
 	for (int y=0; y<size.height; y++) {
 		for (int x=0; x<size.width; x++) {
 			Germ *aGerm = [self objectAtX:x Y:y];
-			
 			//v 1 2
 			if (aGerm.y-1 >= 0) {
 				Germ *bTile = [self objectAtX:x Y:y-1];
 				if (aGerm.value == bTile.value) {
 					{
 						Germ *cGerm = [self objectAtX:x Y:y+2];
-						if (cGerm.value == aGerm.value) {
-							return ccp(x,y+2);
+						if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x Y:y+1].type!=FixedGerm)
+                            {
+                                return ccp(x,y+2);
+                            }
 						}
 					}
 					{
                         Germ *cGerm = [self objectAtX:x-1 Y:y+1];
-                        if (cGerm.value == aGerm.value) {
-                            return ccp(x-1,y+1);
+                        if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x Y:y+1].type!=FixedGerm)
+                            {
+                                return ccp(x-1,y+1);
+                            }
                         }
 					}
 					{
                         Germ *cGerm = [self objectAtX:x+1 Y:y+1];
-                        if (cGerm.value == aGerm.value) {
-                            return ccp(x+1,y+1);
+                        if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x Y:y+1].type!=FixedGerm)
+                            {
+                                return ccp(x+1,y+1);
+                            }
                         }
 					}
 					
 					{
 						Germ *cGerm = [self objectAtX:x Y:y-3];
-						if (cGerm.value == aGerm.value) {
-							return ccp(x,y-3);
+						if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x Y:y-2].type!=FixedGerm)
+                            {
+                                return ccp(x,y-3);
+                            }
 						}
 					}
 					
 					{
                         Germ *cGerm = [self objectAtX:x-1 Y:y-2];
-                        if (cGerm.value == aGerm.value) {
-                            return ccp(x-1,y-2);
-                        }
+                        if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x Y:y-2].type!=FixedGerm)
+                            {
+                                return ccp(x-1,y-2);
+                            }}
 					}
 					{
                         Germ *cGerm = [self objectAtX:x+1 Y:y-2];
-                        if (cGerm.value == aGerm.value) {
-                            return ccp(x+1,y-2);
-                        }
+                        if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x Y:y-2].type!=FixedGerm)
+                            {
+                                return ccp(x+1,y-2);
+                            }}
                     }
                 }
 			}
@@ -576,70 +588,103 @@
 					{
 						Germ *cTile = [self objectAtX:x Y:y+1];
 						if (cTile.value == aGerm.value) {
-							return ccp(x,y+1);
+                            if([self objectAtX:x Y:y-1].type!=FixedGerm&&bGerm.type!=FixedGerm)
+                            {
+                                return ccp(x,y-2);
+                            }
 						}
 					}
 					{
 						Germ *cTile = [self objectAtX:x Y:y-3];
 						if (cTile.value == aGerm.value) {
-							return ccp(x,y-3);
+                            if([self objectAtX:x Y:y-1].type!=FixedGerm&&aGerm.type!=FixedGerm)
+                            {
+                                return ccp(x,y);
+                            }
 						}
 					}
 					{
 						Germ *cTile = [self objectAtX:x-1 Y:y-1];
-						if (cTile.value == aGerm.value) {
-							return ccp(x-1,y-1);
-						}
+						if (cTile.value == aGerm.value&&cTile.type!=FixedGerm) {
+                            if([self objectAtX:x Y:y-1].type!=FixedGerm)
+                            {
+                                return ccp(x-1,y-1);
+                            }
+                        }
 					}
 					{
 						Germ *cTile = [self objectAtX:x+1 Y:y-1];
-						if (cTile.value == aGerm.value) {
-							return ccp(x+1,y-1);
-						}
+						if (cTile.value == aGerm.value&&cTile.type!=FixedGerm) {
+                            if([self objectAtX:x Y:y-1].type!=FixedGerm)
+                            {
+                                return ccp(x+1,y-1);
+                            }
+                        }
 					}
 				}
 			}
+            
+            
 			// h 1 2
 			if (aGerm.x+1 < kBoxWidth) {
 				Germ *bTile = [self objectAtX:x+1 Y:y];
 				if (aGerm.value == bTile.value) {
 					{
 						Germ *cTile = [self objectAtX:x-2 Y:y];
-						if (cTile.value == aGerm.value) {
-							return ccp(x-2,y);
-						}
+						if (cTile.value == aGerm.value&&cTile.type!=FixedGerm) {
+                            if([self objectAtX:x-1 Y:y].type!=FixedGerm)
+                            {
+                                return ccp(x-2,y);
+                            }
+                        }
 					}
 					
 					{
 						Germ *cGerm = [self objectAtX:x-1 Y:y-1];
-						if (cGerm.value == aGerm.value) {
-							return ccp(x-1,y-1);
+						if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x-1 Y:y].type!=FixedGerm)
+                            {
+                                return ccp(x-1,y-1);
+                                
+                            }
                         }
                     }
 					{
 						Germ *cGerm= [self objectAtX:x-1 Y:y+1];
-						if (cGerm.value == aGerm.value) {
-                            return ccp(x-1,y+1);
+						if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x-1 Y:y].type!=FixedGerm)
+                            {
+                                return ccp(x-1,y+1);
+                            }
 						}
 					}
 					
 					{
 						Germ *cGerm = [self objectAtX:x+3 Y:y];
-						if (cGerm.value == aGerm.value) {
-							return ccp(x+3,y);
+						if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x+2 Y:y].type!=FixedGerm)
+                            {
+                                return ccp(x+3,y);
+                            }
 						}
 					}
 					
 					{
 						Germ *cGerm= [self objectAtX:x+2 Y:y-1];
-						if (cGerm.value == aGerm.value) {
-							return ccp(x+2,y-1);
+						if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x+2 Y:y].type!=FixedGerm)
+                            {
+                                return ccp(x+2,y-1);
+                            }
 						}
 					}
 					{
 						Germ *cGerm= [self objectAtX:x+2 Y:y+1];
-						if (cGerm.value == aGerm.value) {
-							return ccp(x+2,y+1);
+						if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x+2 Y:y].type!=FixedGerm)
+                            {
+                                return ccp(x+2,y+1);
+                            }
 						}
 					}
 					
@@ -653,28 +698,40 @@
 					{
 						Germ *cGerm = [self objectAtX:x+3 Y:y];
 						if (cGerm.value == aGerm.value) {
-							return ccp(x+3,y);
+                            if(aGerm.type!=FixedGerm&&[self objectAtX:x+1 Y:y].type!=FixedGerm)
+                            {
+                                return ccp(x,y);
+                            }
 						}
 					}
 					
 					{
 						Germ *cGerm = [self objectAtX:x-1 Y:y];
 						if (cGerm.value == aGerm.value) {
-							return ccp(x-1,y);
+                            if(bGerm.type!=FixedGerm&&[self objectAtX:x+1 Y:y].type!=FixedGerm)
+                            {
+                                return ccp(x+2,y);
+                            }
 						}
 					}
 					
 					
 					{
 						Germ *cGerm = [self objectAtX:x+1 Y:y-1];
-						if (cGerm.value == aGerm.value) {
-							return ccp(x+1,y-1);
+						if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x+1 Y:y].type!=FixedGerm)
+                            {
+                                return ccp(x+1,y-1);
+                            }
 						}
 					}
 					{
 						Germ *cGerm = [self objectAtX:x+1 Y:y+1];
-						if (cGerm.value == aGerm.value) {
-							return ccp(x+1,y+1);
+						if (cGerm.value == aGerm.value&&cGerm.type!=FixedGerm) {
+                            if([self objectAtX:x+1 Y:y].type!=FixedGerm)
+                            {
+                                return ccp(x+1,y+1);
+                            }
 						}
 					}
 				}
@@ -729,7 +786,7 @@
         {
             sprite.bomb.scale=0.5f;
         }
-
+        
     }
     
     return sprite;

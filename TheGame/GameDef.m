@@ -32,17 +32,17 @@ static GameDef* def;
     settings = [[NSMutableDictionary alloc] init];
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
     //经典玩法的关卡设置
-    GameContext *context0 = [[GameContext alloc] initWithValues:Classic Level:1 Score:1500 Time:60 KindCound:5 Interval:360 FixedRate:0];
-    GameContext *context1 = [[GameContext alloc] initWithValues:Classic Level:2 Score:1650 Time:60 KindCound:5 Interval:360 FixedRate:0];
-    GameContext *context2 = [[GameContext alloc] initWithValues:Classic Level:3 Score:1800 Time:60 KindCound:5 Interval:360 FixedRate:25];
+    GameContext *context0 = [[GameContext alloc] initWithValues:Classic Level:1 Score:1260 Time:60 KindCound:5 Interval:360 FixedRate:0];
+    GameContext *context1 = [[GameContext alloc] initWithValues:Classic Level:2 Score:1560 Time:60 KindCound:5 Interval:360 FixedRate:0];
+    GameContext *context2 = [[GameContext alloc] initWithValues:Classic Level:3 Score:1620 Time:60 KindCound:5 Interval:360 FixedRate:25];
     
     GameContext *context3 = [[GameContext alloc] initWithValues:Classic Level:4 Score:960 Time:60 KindCound:6 Interval:300 FixedRate:0];
     GameContext *context4 = [[GameContext alloc] initWithValues:Classic Level:5 Score:1020 Time:60 KindCound:6 Interval:300 FixedRate:25];
     GameContext *context5 = [[GameContext alloc] initWithValues:Classic Level:6 Score:1080 Time:60 KindCound:6 Interval:300 FixedRate:30];
     
-    GameContext *context6 = [[GameContext alloc] initWithValues:Classic Level:7 Score:720 Time:60 KindCound:7 Interval:240 FixedRate:0];
-    GameContext *context7 = [[GameContext alloc] initWithValues:Classic Level:8 Score:810 Time:60 KindCound:7 Interval:240 FixedRate:25];
-    GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:900 Time:60 KindCound:7 Interval:240 FixedRate:50];
+    GameContext *context6 = [[GameContext alloc] initWithValues:Classic Level:7 Score:810 Time:60 KindCound:7 Interval:240 FixedRate:0];
+    GameContext *context7 = [[GameContext alloc] initWithValues:Classic Level:8 Score:900 Time:60 KindCound:7 Interval:240 FixedRate:25];
+    GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:1020 Time:60 KindCound:7 Interval:240 FixedRate:50];
     
     [tempArray addObject:context0];
     [tempArray addObject:context1];

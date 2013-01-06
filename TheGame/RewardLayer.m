@@ -55,8 +55,8 @@
         CCSprite* rw = [CCSprite spriteWithFile:@"rotate_wd.png"];
         if(star==3)
         {
-            // 三颗星给一个提示两个轮换
-            hint=2;
+            // 三颗星给一个提示1个轮换
+            hint=1;
             rotate=1;
 
             hw.position = ccp(winSize.width*0.5,winSize.height*0.50);
@@ -74,9 +74,9 @@
             
         }else if(star ==2)
         {
-            // 两颗星给两个提示
+            // 两颗星给1个提示
             star3.visible=NO;
-            hint=2;
+            hint=1;
             
             hw.position = ccp(winSize.width*0.5,winSize.height*0.55);
             CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
@@ -187,7 +187,7 @@
         
         
         hint = score/2000;
-        rotate = score/3000;
+        rotate = score/3500;
         heal = score/4000;
         
         if(heal>0) // 三种奖励都拿到了

@@ -63,6 +63,5 @@
 -(void) makeTransition:(ccTime)dt
 {
     [SceneManager goMainMenu];
-//	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] withColor:ccWHITE]];
 }
 @end
