@@ -62,7 +62,7 @@
 #define openScale 1.0f
 
 #define stepBombCount 6
-#define timeBombCount 3
+#define timeBombCount 15
 
 #define isRetina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640,960), [[UIScreen mainScreen] currentMode].size) : NO)
 #endif
