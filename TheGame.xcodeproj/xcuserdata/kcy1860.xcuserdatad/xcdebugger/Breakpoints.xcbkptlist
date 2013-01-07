@@ -71,11 +71,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayLayer.m"
-         timestampString = "379227103.937764"
+         timestampString = "379233083.901437"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "275"
-         endingLineNumber = "275"
+         startingLineNumber = "282"
+         endingLineNumber = "282"
          landmarkName = "-nextStep"
          landmarkType = "5">
       </FileBreakpoint>
@@ -955,11 +955,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayLayer.m"
-         timestampString = "379227103.937764"
+         timestampString = "379233083.901437"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "246"
-         endingLineNumber = "246"
+         startingLineNumber = "247"
+         endingLineNumber = "247"
          landmarkName = "-nextStep"
          landmarkType = "5">
       </FileBreakpoint>
@@ -994,11 +994,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayLayer.m"
-         timestampString = "379227103.937764"
+         timestampString = "379233083.901437"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "237"
-         endingLineNumber = "237"
+         startingLineNumber = "238"
+         endingLineNumber = "238"
          landmarkName = "-nextStep"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1007,11 +1007,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayLayer.m"
-         timestampString = "379227103.937764"
+         timestampString = "379233083.901437"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "267"
-         endingLineNumber = "267"
+         startingLineNumber = "270"
+         endingLineNumber = "270"
          landmarkName = "-nextStep"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1059,11 +1059,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayLayer.m"
-         timestampString = "379227103.937764"
+         timestampString = "379233083.901437"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "300"
-         endingLineNumber = "300"
+         startingLineNumber = "307"
+         endingLineNumber = "307"
          landmarkName = "-changeOneGermByType:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1683,11 +1683,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/PlayLayer.m"
-         timestampString = "379227103.937764"
+         timestampString = "379233083.901437"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "251"
-         endingLineNumber = "251"
+         startingLineNumber = "252"
+         endingLineNumber = "252"
          landmarkName = "-nextStep"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1843,6 +1843,19 @@
          startingLineNumber = "160"
          endingLineNumber = "160"
          landmarkName = "-ccTouchesBegan:withEvent:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TheGame/PlayLayer.m"
+         timestampString = "379233130.981197"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "274"
+         endingLineNumber = "274"
+         landmarkName = "-nextStep"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

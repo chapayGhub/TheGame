@@ -232,6 +232,7 @@ static PlayLayer* thisLayer;
     }
     [self checkPosition];
     NSMutableArray *content = [box content];
+    BOOL hasBomb = NO;
     for (int i=[content count]-1; i>=0; i--) {
         NSMutableArray *array = [content objectAtIndex:i];
         for(int j =0;j<[array count];j++)
@@ -254,10 +255,12 @@ static PlayLayer* thisLayer;
             }
             else if(g.type == BombGerm)
             {
+                hasBomb=YES;
                 int i=[g.sprite nextValue];
                 if(i==0)
                 {
                     [g transform:NormalGerm];
+                    [MusicHandler playEffect:@"explosion.mp3"];
                     if([[PlayDisplayLayer sharedInstance:NO] subLife])
                     {
                         [[PlayDisplayLayer sharedInstance:NO] gameOver];
@@ -267,6 +270,10 @@ static PlayLayer* thisLayer;
             }
             
         }
+    }
+    if(hasBomb)
+    {
+        [MusicHandler playEffect:@"clockhit.wav"];
     }
     if(_context.type!=Classic && _context.interval!=0)
     {

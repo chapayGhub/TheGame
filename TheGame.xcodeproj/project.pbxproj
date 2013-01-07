@@ -53,6 +53,7 @@
 		C657DA35169A70BC00B2C1A5 /* exchangegerm.wav in Resources */ = {isa = PBXBuildFile; fileRef = C657DA34169A70BC00B2C1A5 /* exchangegerm.wav */; };
 		C657DA3B169A78CE00B2C1A5 /* erasegerm.wav in Resources */ = {isa = PBXBuildFile; fileRef = C657DA3A169A78CE00B2C1A5 /* erasegerm.wav */; };
 		C657DA3D169A87D700B2C1A5 /* combinegerm.wav in Resources */ = {isa = PBXBuildFile; fileRef = C657DA3C169A87D600B2C1A5 /* combinegerm.wav */; };
+		C677DA7E169AA3F6005253BA /* clockhit.wav in Resources */ = {isa = PBXBuildFile; fileRef = C677DA7D169AA3F6005253BA /* clockhit.wav */; };
 		C6884790167190DD008633AD /* Germ.m in Sources */ = {isa = PBXBuildFile; fileRef = C688478F167190DD008633AD /* Germ.m */; };
 		C68B0609166D82A0005306DD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68B0608166D82A0005306DD /* QuartzCore.framework */; };
 		C68B060B166D82A0005306DD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68B060A166D82A0005306DD /* OpenGLES.framework */; };
@@ -309,6 +310,7 @@
 		C657DA34169A70BC00B2C1A5 /* exchangegerm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = exchangegerm.wav; path = Resources/exchangegerm.wav; sourceTree = "<group>"; };
 		C657DA3A169A78CE00B2C1A5 /* erasegerm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = erasegerm.wav; path = Resources/erasegerm.wav; sourceTree = "<group>"; };
 		C657DA3C169A87D600B2C1A5 /* combinegerm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = combinegerm.wav; path = Resources/combinegerm.wav; sourceTree = "<group>"; };
+		C677DA7D169AA3F6005253BA /* clockhit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = clockhit.wav; path = Resources/clockhit.wav; sourceTree = "<group>"; };
 		C688478E167190DD008633AD /* Germ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Germ.h; sourceTree = "<group>"; };
 		C688478F167190DD008633AD /* Germ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Germ.m; sourceTree = "<group>"; };
 		C688479216719453008633AD /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -832,6 +834,7 @@
 				C6EEA85C169A4C49000C53C7 /* background.wav */,
 				C6C13E6B169A9E280054C57B /* stamp.wav */,
 				C6EEA85E169A4C49000C53C7 /* disabled.wav */,
+				C677DA7D169AA3F6005253BA /* clockhit.wav */,
 				C6C13E69169A9C7C0054C57B /* reward.wav */,
 				C657DA2E169A608500B2C1A5 /* poisondisappear.wav */,
 				C657DA3C169A87D600B2C1A5 /* combinegerm.wav */,
@@ -1762,6 +1765,7 @@
 				C6C13E68169A9B6F0054C57B /* button.wav in Resources */,
 				C6C13E6A169A9C7C0054C57B /* reward.wav in Resources */,
 				C6C13E6C169A9E280054C57B /* stamp.wav in Resources */,
+				C677DA7E169AA3F6005253BA /* clockhit.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
