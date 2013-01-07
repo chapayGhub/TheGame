@@ -65,10 +65,16 @@
 	return self;
 }
 
+-(void) onEnterTransitionDidFinish{
+    [MusicHandler playMusic:@"startbackground.wav" Loop:YES];
+}
+
 - (void)onStartNew:(id)sender{
+    [MusicHandler playEffect:@"button.wav"];
     [SceneManager goLevelChoose];
 }
 - (void)onInfiniteMode:(id)sender{
+    [MusicHandler playEffect:@"button.wav"];
 	[SceneManager goGameModeChoose];
 }
 

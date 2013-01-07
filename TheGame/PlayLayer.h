@@ -4,6 +4,7 @@
 #import "GameContext.h"
 #import "PlayDisplayLayer.h"
 #import "SceneManager.h"
+#import "MusicHandler.h"
 
 // 游戏界面
 @interface PlayLayer : CCLayer

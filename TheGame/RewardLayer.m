@@ -10,6 +10,7 @@
 #import "SceneManager.h"
 @implementation RewardLayer
 
+bool isNewRecord;
 +(id) node:(int) num{
     return [[[RewardLayer alloc] init:num] autorelease];
 }
@@ -18,7 +19,7 @@
     self = [super init];
     CGSize winSize = [CCDirector sharedDirector].winSize;
     UserProfile *pro =[UserProfile sharedInstance];
-
+    isNewRecord=NO;
     int heal=0;
     int rotate=0;
     int hint=0;
@@ -155,13 +156,7 @@
         int record = [[[pro userRecord] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:context.type level:1]] integerValue];
         if(score>record)
         {
-            CCSprite *stamp = [CCSprite spriteWithFile:@"stamp.png"];
-            if(!isRetina)
-            {
-                stamp.scale=0.5f;
-            }
-            stamp.position=ccp(winSize.width*0.57,winSize.height*0.72);
-            [self addChild:stamp z:1];
+            isNewRecord=YES;
             [[pro userRecord] setValue:[NSNumber numberWithInt:score] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:context.type level:1]];
         }
         
@@ -189,6 +184,11 @@
         hint = score/2000;
         rotate = score/3500;
         heal = score/4000;
+        
+        if(isNewRecord&&hint==0)
+        {
+            hint=1;
+        }
         
         if(heal>0) // 三种奖励都拿到了
         {
@@ -337,12 +337,26 @@
 
 
 -(void) onEnterTransitionDidFinish{
-    //[self scheduleOnce:@selector(doTransmit) delay:1];
+    [MusicHandler playMusic:@"reward.wav" Loop:NO];
+    if(isNewRecord)
+    {
+        [self scheduleOnce:@selector(addStamp) delay:0.8f];
+    }
 }
 
--(void) doTransmit{
-    [SceneManager goGameModeChoose];
+-(void) addStamp{
+    [MusicHandler playEffect:@"stamp.wav"];
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    CCSprite *stamp = [CCSprite spriteWithFile:@"stamp.png"];
+    if(!isRetina)
+    {
+        stamp.scale=0.5f;
+    }
+    stamp.position=ccp(winSize.width*0.57,winSize.height*0.72);
+    [self addChild:stamp z:1];
+
 }
+
 
 -(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 	UITouch* touch = [touches anyObject];

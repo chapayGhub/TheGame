@@ -32,6 +32,17 @@ static bool silence;
     return silence;
 }
 
++(void) stopBackground{
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+}
+
++(void) pauseBackground{
+    [[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
+}
+
++(void) resumeBackgound{
+    [[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
+}
 +(void) setSilence:(BOOL) value{
     silence = value;
     if(!value)

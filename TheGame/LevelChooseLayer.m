@@ -116,7 +116,7 @@
             CCSprite *sprite= [array objectAtIndex:j];
             if(CGRectContainsPoint([sprite boundingBox], location))
             {
-                if(sprite.tag!= - 1860)
+               // if(sprite.tag!= - 1860)
                 {
                     [SceneManager goPlay:Classic level:count];
                 }
@@ -130,6 +130,7 @@
     
     if(CGRectContainsPoint([menu boundingBox], location))
     {
+        [MusicHandler playEffect:@"button.wav"];
         [SceneManager goMainMenu];
     }
 }

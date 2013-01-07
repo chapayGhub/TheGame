@@ -48,6 +48,7 @@
     
     CCNode* sprite = [self getChildByTag:menuTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
+        [MusicHandler playEffect:@"button.wav"];
         GameType type= [[[PlayLayer sharedInstance:NO] context] type];
         if(type==Classic)
         {
@@ -55,15 +56,18 @@
         }else{
             [SceneManager goGameModeChoose];
         }
+        
     }
     
     sprite = [self getChildByTag:continueTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
+        [MusicHandler playEffect:@"button.wav"];
         [SceneManager removePauseLayer];
     }
     
     sprite = [self getChildByTag:redoTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
+        [MusicHandler playEffect:@"button.wav"];
         GameType type= [[[PlayLayer sharedInstance:NO] context] type];
         [SceneManager goPlay:type level:1];
     }

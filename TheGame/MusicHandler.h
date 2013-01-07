@@ -13,4 +13,8 @@
 +(void) playMusic:(NSString*) file Loop:(BOOL) flag;
 +(BOOL) silence;
 +(void) setSilence:(BOOL) value;
++(void) playEffect:(NSString*) file;
++(void) stopBackground;
++(void) pauseBackground;
++(void) resumeBackgound;
 @end

@@ -83,6 +83,7 @@
     CCNode *sprite = [self getChildByTag:menuTag];
     if(sprite!=nil&&  CGRectContainsPoint([sprite boundingBox], location))
     {
+        [MusicHandler playEffect:@"button.wav"];
         [SceneManager goMainMenu];
     }
 }

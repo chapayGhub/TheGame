@@ -281,6 +281,7 @@ static PlayDisplayLayer* thisLayer;
                     if(i==0)
                     {
                         [g transform:NormalGerm];
+                        [MusicHandler playEffect:@"explosion.mp3"];
                         if([self subLife])
                         {
                             [self gameOver];
@@ -451,6 +452,7 @@ static PlayDisplayLayer* thisLayer;
         if([self addLife]){
             [pro addLife:-1];
             [heal nextValue];
+            [MusicHandler playEffect:@"addlife.wav"];
         }
     }
     
@@ -464,6 +466,7 @@ static PlayDisplayLayer* thisLayer;
         [pro addRefill:-1];
         [reload nextValue];
         [[PlayLayer sharedInstance:NO] reload];
+        [MusicHandler playEffect:@"enter.wav"];
         return;
     }
     
@@ -522,6 +525,7 @@ static PlayDisplayLayer* thisLayer;
 
 -(void) gameOver{
     [self pauseGame];
+    [MusicHandler stopBackground];
     [SceneManager goRewardLayer:type==Classic?1:2];
 }
 @end

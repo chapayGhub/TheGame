@@ -18,6 +18,8 @@
 @property (nonatomic,retain) CCSprite* bomb;
 @property (atomic) int currentNumber;
 
+
+
 -(void) setLabelValue:(int) number;
 -(CCAction*) runAction:(CCAction*) action;
 +(id)spriteWithFile:(NSString*)filename;

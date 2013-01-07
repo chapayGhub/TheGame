@@ -77,6 +77,7 @@
             [figure setBombPictureWithFile:@"poison.png"];
             [layer addChild:figure];
             [layer addChild:figure.bomb];
+            [MusicHandler playEffect:@"poisonappear.wav"];
             break;
         case BombGerm:
             [figure setBombPictureWithFile:@"bomb.png"];
@@ -84,6 +85,7 @@
             [layer addChild:figure];
             [layer addChild:figure.bomb];
             [layer addChild:figure.label];
+            [MusicHandler playEffect:@"bombappear.wav"];
             break;
         case TimeBombGerm:
             [figure setBombPictureWithFile:@"bomb.png"];
@@ -91,6 +93,7 @@
             [layer addChild:figure];
             [layer addChild:figure.bomb];
             [layer addChild:figure.label];
+            [MusicHandler playEffect:@"bombappear.wav"];
             break;
         case NormalGerm:
             [layer addChild:figure];

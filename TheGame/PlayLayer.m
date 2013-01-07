@@ -57,7 +57,9 @@ static PlayLayer* thisLayer;
 }
 
 -(void) onEnterTransitionDidFinish{
-    [self checkPosition];
+    [MusicHandler playEffect:@"enter.wav"];
+    [MusicHandler playMusic:@"background.wav" Loop:YES];
+    [box fill];
     [box check];
     [box unlock];
 }
@@ -70,8 +72,12 @@ static PlayLayer* thisLayer;
         for(int j =0;j<[array count];j++)
         {
             Germ *g= [array objectAtIndex:j];
+            if(g.type==FixedGerm)
+            {
+                continue;
+            }
             [g.sprite setPosition:g.pixPosition];
-            //[g.sprite recorrectLabelPosition];
+            [g.sprite recorrectLabelPosition];
         }
     }
 }
@@ -87,12 +93,6 @@ static PlayLayer* thisLayer;
     [[PlayDisplayLayer sharedInstance:NO] setWithContext:context];
 
     [box setKind:context.kindCount];
-    if(fresh)
-    {
-        [box fill];
-        [box check];
-        [box unlock];
-    }
     
 }
 -(BOOL) hint
@@ -157,6 +157,7 @@ static PlayLayer* thisLayer;
     
 	Germ *tile = [box objectAtX:x Y:y];
     if(tile.type==FixedGerm){//如果是固定孢子 直接返回
+        [MusicHandler playEffect:@"disabled.wav"];
         return;
     }
     
@@ -190,7 +191,7 @@ static PlayLayer* thisLayer;
 						 [CCCallFuncND actionWithTarget:self selector:sel data: b],
 						 nil
 						 ];
-
+    [MusicHandler playEffect:@"germexchange.wav"];
     [a.sprite runAction:actionA];
 	[b.sprite runAction:actionB];
     [a trade:b];
@@ -241,6 +242,7 @@ static PlayLayer* thisLayer;
                 if(i==6)
                 {
                     [g transform:NormalGerm];
+                    [MusicHandler playEffect:@"poisondisappear.wav"];
                     if([[PlayDisplayLayer sharedInstance:NO] subLife])
                     {
                         [[PlayDisplayLayer sharedInstance:NO] gameOver];
@@ -323,4 +325,5 @@ static PlayLayer* thisLayer;
 -(Box*) getBox{
     return box;
 }
+
 @end

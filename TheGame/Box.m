@@ -165,7 +165,7 @@
             [[g sprite] runAction: action];
         }
     }
-    
+    [MusicHandler playEffect:@"combinegerm.wav"];
     [center transform:SuperGerm];
 }
 
@@ -381,6 +381,7 @@
             if(germ.type == SuperGerm)
             {
                 germ.type = NormalGerm;
+                [MusicHandler playEffect:@"supergermdisappear.wav"];
                 NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:9];
                 for(int i=-1;i<=1;i++)
                 {
@@ -395,6 +396,7 @@
             
 		}
 	}
+    [MusicHandler playEffect:@"erasegerm.wav"];
 }
 
 
