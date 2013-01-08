@@ -8,9 +8,28 @@
 	CGSize winSize = [CCDirector sharedDirector].winSize;
     CCSprite* background = [CCSprite spriteWithFile:@"start_bg.png"];
     background.position=ccp(winSize.width*0.5f,winSize.height*0.5f);
+    
+    
+    UserProfile *pro = [UserProfile sharedInstance];
+    CCSprite *music=nil;
+    if(pro.silence){
+        [MusicHandler setSilence:YES];
+        music = [CCSprite spriteWithFile:@"sounddown_bt.png"];
+    }else{
+        music = [CCSprite spriteWithFile:@"sound_bt.png"];
+    }
+    music.position = ccp(winSize.width*0.27f,winSize.height*0.21f);
+    [self addChild:music z:1 tag:musicTag];
+    
+    CCSprite* like = [CCSprite spriteWithFile:@"likeus_bt.png"];
+    like.position = ccp(winSize.width*0.73f,winSize.height*0.21f);
+    [self addChild:like z:1 tag:likeusTag];
+    
     if(!isRetina)
     {
         background.scale=0.5f;
+        music.scale=0.5f;
+        like.scale=0.5f;
     }
     [self addChild:background];
     
@@ -44,8 +63,6 @@
         highscores.scale=0.5f;
         mygerms.scale=0.5;
     }
-
-	
 	CCMenu *menu = [CCMenu menuWithItems:startNew, resume, highscores, mygerms, nil];
 	
     float delayTime = 0.3f;
@@ -62,11 +79,13 @@
 	menu.position = ccp(winSize.width*0.5, winSize.height*0.5);
     [menu alignItemsVerticallyWithPadding: 55.0f];
 	[self addChild:menu z:1 tag:mainmenuTag];
+    self.isTouchEnabled = YES;
 	return self;
+    
 }
 
 -(void) onEnterTransitionDidFinish{
-    [MusicHandler playMusic:@"startbackground.wav" Loop:YES];
+    [MusicHandler playMainBackground];
 }
 
 - (void)onStartNew:(id)sender{
@@ -88,5 +107,49 @@
 -(void) enableMenu:(BOOL) flag{
     CCMenu* menu = (CCMenu*)[self getChildByTag:mainmenuTag];
     menu.enabled=flag;
+}
+
+-(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch* touch = [touches anyObject];
+	CGPoint location = [touch locationInView: touch.view];
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+
+	location = [[CCDirector sharedDirector] convertToGL: location];
+    
+    CCNode *node = [self getChildByTag:likeusTag];
+    
+    if(node!=nil&&CGRectContainsPoint([node boundingBox], location))
+    {
+        [MusicHandler playEffect:@"button.wav"];
+        
+    }
+    
+    node = [self getChildByTag:musicTag];
+    if(node!=nil&&CGRectContainsPoint([node boundingBox], location))
+    {
+        [MusicHandler playEffect:@"button.wav"];
+        [node removeFromParentAndCleanup:YES];
+        UserProfile *pro = [UserProfile sharedInstance];
+        CCSprite *music=nil;
+        
+        if(pro.silence)
+        {
+            [pro setSilence:NO];
+            [MusicHandler setSilence:NO];
+            music = [CCSprite spriteWithFile:@"sound_bt.png"];
+            
+        }else{
+            [pro setSilence:YES];
+            [MusicHandler setSilence:YES];
+            music = [CCSprite spriteWithFile:@"sounddown_bt.png"];
+        }
+        if(!isRetina)
+        {
+            music.scale=0.5f;
+        }
+        music.position = ccp(winSize.width*0.27f,winSize.height*0.21f);
+        [self addChild:music z:1 tag:musicTag];
+    }
+
 }
 @end

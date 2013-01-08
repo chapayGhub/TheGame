@@ -17,4 +17,6 @@
 +(void) stopBackground;
 +(void) pauseBackground;
 +(void) resumeBackgound;
++(void) playMainBackground;
++(void) playGameBackground;
 @end

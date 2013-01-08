@@ -118,9 +118,7 @@ static PlayDisplayLayer* thisLayer;
     CGSize winSize = [CCDirector sharedDirector].winSize;
     type = context.type;
     if(type==Classic)
-    {
-
-        
+    {        
         CGPoint pos = heal.position;
         [heal removeFromParentAndCleanup:YES];
         heal = [GermFigure spriteWithFile:@"grayreset_bt.png"];
@@ -229,9 +227,9 @@ static PlayDisplayLayer* thisLayer;
 }
 -(void) onEnterTransitionDidFinish
 {
+    [self schedule:@selector(changeClock) interval:1];
     if(self.time!=0)
     {
-        [self schedule:@selector(changeClock) interval:1];
         CCProgressTo* to = [CCProgressTo actionWithDuration:self.time+0.5f percent:100];
         [timer runAction:to];
     }
@@ -294,7 +292,7 @@ static PlayDisplayLayer* thisLayer;
     }
     
     
-    if(timeRemain<=0)
+    if(timeRemain<=0&&type==Classic)
     {
         timeRemain =0;
         // 游戏结束
@@ -359,6 +357,7 @@ static PlayDisplayLayer* thisLayer;
     
     star++;
     CCAction *action;
+    [MusicHandler playEffect:@"star.wav"];
     
     if(star==1)
     {
@@ -436,6 +435,7 @@ static PlayDisplayLayer* thisLayer;
         BOOL flag = [[PlayLayer sharedInstance:NO] hint];
         if(flag)
         {
+            [MusicHandler playEffect:@"hint.wav"];
             [pro addHint:-1];
             [hint nextValue];
         }

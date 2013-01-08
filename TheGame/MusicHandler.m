@@ -43,14 +43,24 @@ static bool silence;
 +(void) resumeBackgound{
     [[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
 }
+
 +(void) setSilence:(BOOL) value{
     silence = value;
-    if(!value)
+    if(value)
     {
-        [[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
+        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
     }else{
-        [[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
+        [MusicHandler playMainBackground];
     }
 }
 
++(void) playMainBackground{
+    [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.7f];
+    [MusicHandler playMusic:@"startbackground.wav" Loop:YES];
+}
+
++(void) playGameBackground{
+    [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.6f];
+    [MusicHandler playMusic:@"background.wav" Loop:YES];
+}
 @end

@@ -58,7 +58,7 @@ static PlayLayer* thisLayer;
 
 -(void) onEnterTransitionDidFinish{
     [MusicHandler playEffect:@"enter.wav"];
-    [MusicHandler playMusic:@"background.wav" Loop:YES];
+    [MusicHandler playGameBackground];
     [box fill];
     [box check];
     [box unlock];

@@ -343,7 +343,6 @@
     
     // 修复，此时被消除的孢子应该已经在屏幕上看不到了
 	int maxCount = [self repair];
-	
     //等修复完成以后，执行afterAllMoveDone的方法
 	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kTileDropTime * maxCount + 0.6f],
                         [CCCallFunc actionWithTarget:self selector:@selector(afterAllMoveDone)],
