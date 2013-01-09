@@ -244,6 +244,7 @@ static PlayLayer* thisLayer;
                 {
                     [g transform:NormalGerm];
                     [MusicHandler playEffect:@"poisondisappear.wav"];
+
                     if([[PlayDisplayLayer sharedInstance:NO] subLife])
                     {
                         [[PlayDisplayLayer sharedInstance:NO] gameOver];
@@ -259,8 +260,10 @@ static PlayLayer* thisLayer;
                 int i=[g.sprite nextValue];
                 if(i==0)
                 {
+                    CGPoint pos = [[[g sprite] bomb] position];
                     [g transform:NormalGerm];
                     [MusicHandler playEffect:@"explosion.mp3"];
+                    [[PlayDisplayLayer sharedInstance:NO] showExplosion:pos];
                     if([[PlayDisplayLayer sharedInstance:NO] subLife])
                     {
                         [[PlayDisplayLayer sharedInstance:NO] gameOver];

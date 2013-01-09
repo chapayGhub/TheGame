@@ -775,7 +775,7 @@
 -(GermFigure*) getFigure:(int) value position:(CGPoint) pos{
     int rate = [[[PlayLayer sharedInstance:NO] context] fixedGermRate];
     NSString *name = [NSString stringWithFormat:@"q%d.png",value];
-    GermFigure *sprite =[GermFigure spriteWithFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:name]];
+    GermFigure *sprite =[GermFigure spriteWithFrame:name];
     sprite.position = pos;
     sprite.scale = isRetina?1:0.5;
     int r = arc4random()%1001;

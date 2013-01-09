@@ -28,6 +28,6 @@
 -(void) removeFromParentAndCleanup:(BOOL)notNeedToRemoveLabelAndBomb;
 -(void) setBombPictureWithFile:(NSString*) file;
 -(void) setShiftValue:(int) type;
-+(id)spriteWithFrame:(CCSpriteFrame*)frame;
++(id)spriteWithFrame:(NSString*)frame;
 -(void) recorrectLabelPosition;
 @end

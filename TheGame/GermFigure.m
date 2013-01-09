@@ -56,8 +56,8 @@ ccColor3B color;
     return self;
 }
 
-+(id)spriteWithFrame:(CCSpriteFrame*)frame{
-    self = [super spriteWithSpriteFrame:frame];
++(id)spriteWithFrame:(NSString*)frame{
+    self = [super spriteWithSpriteFrameName:frame];
     shiftvalueX=10;//default values
     shiftvalueY=-12;
     size=13;

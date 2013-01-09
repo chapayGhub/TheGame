@@ -32,4 +32,5 @@
 -(void) setWithContext:(GameContext*) context;
 -(BOOL) subLife;
 -(void) gameOver;
+-(void) showExplosion:(CGPoint) pos;
 @end

@@ -57,6 +57,7 @@
 	[self scheduleOnce:@selector(makeTransition:) delay:1];
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"germs.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"fire.plist"];
     
 }
 

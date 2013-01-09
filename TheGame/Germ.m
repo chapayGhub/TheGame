@@ -66,7 +66,7 @@
     [self setType:atype];
 
     
-    GermFigure *figure = [GermFigure spriteWithFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:atype==SuperGerm?@"fb%d.png":@"q%d.png",value]]];
+    GermFigure *figure = [GermFigure spriteWithFrame:[NSString stringWithFormat:atype==SuperGerm?@"fb%d.png":@"q%d.png",value]];
     [figure setPosition:[self pixPosition]];
     switch(atype)
     {

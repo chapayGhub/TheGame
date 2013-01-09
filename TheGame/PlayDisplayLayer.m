@@ -36,6 +36,8 @@
     GameType type;
     int life;
     
+    
+    CCSpriteBatchNode *explodeSheet;
     int starSpan;
 }
 
@@ -110,10 +112,39 @@ static PlayDisplayLayer* thisLayer;
         [self addChild:[hint label]];
         [self addChild:[heal label]];
         [self addChild:[reload label]];
+        
+        explodeSheet = [CCSpriteBatchNode batchNodeWithFile:@"fire.png"];
+        [self addChild:explodeSheet];
+
     }
     return self;
 }
 
+-(void) showExplosion:(CGPoint) pos{
+
+    NSMutableArray *frames = [NSMutableArray array];
+    for(int i = 1; i <= 8; ++i) {
+        [frames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+          [NSString stringWithFormat:@"fire%d.png", i]]];
+    }
+    
+    CCAnimation *anim = [CCAnimation
+                         animationWithSpriteFrames:frames delay:0.1f];
+
+    CCSprite *bomb = [CCSprite spriteWithSpriteFrameName:@"fire1.png"];
+    bomb.position = pos;
+    CCAction *action = [CCSequence actions:[CCAnimate actionWithAnimation:anim],
+                        [CCCallFuncN actionWithTarget:self selector:@selector(removeExplosion:)],
+                        nil];
+    [bomb runAction:action];
+    [explodeSheet addChild:bomb];
+
+}
+
+-(void) removeExplosion:(id) sender{
+    [sender removeFromParentAndCleanup:YES];
+}
 -(void) setWithContext:(GameContext*) context{
     CGSize winSize = [CCDirector sharedDirector].winSize;
     type = context.type;
@@ -278,7 +309,9 @@ static PlayDisplayLayer* thisLayer;
                     int i=[sprite nextValue];
                     if(i==0)
                     {
+                        CGPoint pos = [[[g sprite] bomb] position];
                         [g transform:NormalGerm];
+                        [[PlayDisplayLayer sharedInstance:NO] showExplosion:pos];
                         [MusicHandler playEffect:@"explosion.mp3"];
                         if([self subLife])
                         {
