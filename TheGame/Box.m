@@ -369,7 +369,7 @@
                                  [CCCallFuncN actionWithTarget: display selector:@selector(removeLabel:)],
                                  nil];
             CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"+%d",basicScore] fontName:@"HelveticaNeue" fontSize:20];
-            tempLabel.color=ccc3(200, 50, 50);
+            tempLabel.color=ccc3(255, 255, 255);
             tempLabel.position=germ.pixPosition;
             
             [display addChild:tempLabel];
