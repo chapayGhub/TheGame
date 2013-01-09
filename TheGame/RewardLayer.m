@@ -11,6 +11,7 @@
 @implementation RewardLayer
 
 bool isNewRecord;
+int type;
 +(id) node:(int) num{
     return [[[RewardLayer alloc] init:num] autorelease];
 }
@@ -25,14 +26,7 @@ bool isNewRecord;
     int hint=0;
     
     CCSprite *back;
-    CCSprite *sun=[CCSprite spriteWithFile:@"sun_ray.png"];
-    //CCAction *rotateSun = [CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:5 angle:180]];
-    
-    if(!isRetina)
-    {
-        sun.scale=0.5f;
-    }
-    
+    type=num;
     if (num==1) { // level的情况
         PlayDisplayLayer* display= [PlayDisplayLayer sharedInstance:NO];
         GameContext *context = [[PlayLayer sharedInstance:NO] context];
@@ -118,8 +112,6 @@ bool isNewRecord;
         CCSprite* mt = [CCSprite spriteWithFile:@"menu_bt.png"];
         mt.position = ccp(winSize.width*0.35,winSize.height*0.38);
         
-//        CCSprite* lt = [CCSprite spriteWithFile:@"likeus_bt.png"];
-//        lt.position = ccp(winSize.width*0.65,winSize.height*0.38);
         CCSprite* lt = [CCSprite spriteWithFile:@"stop_reset_bt.png"];
         lt.position = ccp(winSize.width*0.65,winSize.height*0.38);
         
@@ -337,10 +329,13 @@ bool isNewRecord;
 
 
 -(void) onEnterTransitionDidFinish{
-    [MusicHandler playMusic:@"reward.wav" Loop:NO];
-    if(isNewRecord)
+    if(type!=3)
     {
-        [self scheduleOnce:@selector(addStamp) delay:0.8f];
+        [MusicHandler playEffect:@"reward.wav"];
+        if(isNewRecord)
+        {
+            [self scheduleOnce:@selector(addStamp) delay:0.8f];
+        }
     }
 }
 
@@ -353,7 +348,7 @@ bool isNewRecord;
         stamp.scale=0.5f;
     }
     stamp.position=ccp(winSize.width*0.57,winSize.height*0.72);
-    [self addChild:stamp z:1];
+    [self addChild:stamp z:2];
 
 }
 

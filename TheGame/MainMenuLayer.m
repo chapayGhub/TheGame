@@ -9,6 +9,16 @@
     CCSprite* background = [CCSprite spriteWithFile:@"start_bg.png"];
     background.position=ccp(winSize.width*0.5f,winSize.height*0.5f);
     
+    CCSprite *sun = [CCSprite spriteWithFile:@"sun.png"];
+    CCSprite *sunray = [CCSprite spriteWithFile:@"sun_ray.png"];
+    sun.position = ccp(winSize.width*0.25,winSize.height*0.802);
+    sunray.position = ccp(winSize.width*0.25,winSize.height*0.8);
+    
+    CCAction *rotate = [CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:5 angle:180]];
+    [self addChild:sunray z:1];
+    [self addChild:sun z:1];
+    [sunray runAction:rotate];
+    
     
     UserProfile *pro = [UserProfile sharedInstance];
     CCSprite *music=nil;
@@ -30,6 +40,8 @@
         background.scale=0.5f;
         music.scale=0.5f;
         like.scale=0.5f;
+        sun.scale=0.5f;
+        sunray.scale=0.5f;
     }
     [self addChild:background];
     

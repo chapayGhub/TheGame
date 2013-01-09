@@ -20,7 +20,7 @@ static MobiSageAdBanner* banner;
     MainMenuLayer* menu = [MainMenuLayer node];
     [newScene addChild:menu z:0 tag:menuLayerTag];
     [newScene addChild:[ActiveBackgroundLayer node] z:2];
-    if(count>1)
+    //if(count>1)
     {
         [menu enableMenu:NO];
         [newScene addChild:[RewardLayer node:3] z:2 tag:rewardLayerTag];

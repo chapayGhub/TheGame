@@ -79,8 +79,8 @@ ccColor3B color;
     {
         shiftvalueX=12;
         shiftvalueY=10;
-        size = 20;
-        color = ccc3(60, 60, 60);
+        size = 15;
+        color = ccc3(0, 0, 0);
     }else if(type==2)
     {
         figureShiftX=0;

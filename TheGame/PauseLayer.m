@@ -15,8 +15,8 @@
     self = [super init];
     
     CGSize winSize = [CCDirector sharedDirector].winSize;
-    CCSprite * back = [CCSprite spriteWithFile:@"stop_bg1.png"];
-    back.position = ccp(winSize.width*0.5f,winSize.height*0.5f);
+    CCSprite * back = [CCSprite spriteWithFile:@"stop_bg.png"];
+    back.position = ccp(winSize.width*0.5f,winSize.height*0.55f);
     [self  addChild:back];
     
     CCSprite *menu = [CCSprite spriteWithFile:@"stop_menu_bt.png"];

@@ -368,7 +368,7 @@
             CCAction *action1 = [CCSequence actions:[CCMoveBy actionWithDuration:1 position:ccp(0,20)],
                                  [CCCallFuncN actionWithTarget: display selector:@selector(removeLabel:)],
                                  nil];
-            CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"+%d",basicScore] fontName:@"Arial" fontSize:20];
+            CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"+%d",basicScore] fontName:@"HelveticaNeue" fontSize:20];
             tempLabel.color=ccc3(200, 50, 50);
             tempLabel.position=germ.pixPosition;
             
