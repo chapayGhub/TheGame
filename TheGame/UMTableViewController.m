@@ -8,9 +8,14 @@
 
 #import "UMTableViewController.h"
 #import "UMTableViewCell.h"
-
+#import "SceneManager.h"
 @implementation UMTableViewController
 
+
+-(id) init{
+    self = [super init];
+    return self;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -34,16 +39,56 @@
 }
 
 #pragma mark - View lifecycle
+-(void) backToPrevious{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.5];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(animDone:finished:context:)];
+    
+    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:[[CCDirector sharedDirector] view] cache:YES];
+    
+    [self.view removeFromSuperview];
+    
+    [UIView commitAnimations];
+}
+
+-(void)animDone:(NSString*) animationID finished:(BOOL) finished context:(void*) context
+{
+    [[CCDirector sharedDirector] resume];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   // self.navigationItem.title = @"精彩推荐";
-   // self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    //创建一个导航栏
+    UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    
+    //创建一个导航栏集合
+    UINavigationItem *navigationItem = [[UINavigationItem alloc] initWithTitle:nil];
+    
+    //创建一个左边按钮
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(backToPrevious)];
+    
+    //设置导航栏内容
+    [navigationItem setTitle:@"推荐应用"];
+    
+    
+    //把导航栏集合添加入导航栏中，设置动画关闭
+    [navigationBar pushNavigationItem:navigationItem animated:NO];
+    
+    //把左右两个按钮添加入导航栏集合中
+    [navigationItem setLeftBarButtonItem:leftButton];
+    //把导航栏添加到视图中
+    [self.view addSubview:navigationBar];
+
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    CGFloat navigationBarHeight = self.navigationController.navigationBar.bounds.size.height;
-    
+//    
+    CGFloat navigationBarHeight = self.navigationController.navigationBar.bounds.size.height+50;
+
     _mTableView = [[UMUFPTableView alloc] initWithFrame:CGRectMake(0, navigationBarHeight, self.view.bounds.size.width, self.view.bounds.size.height - navigationBarHeight) style:UITableViewStylePlain appkey:@"50ee3d23527015717600000f" slotId:nil currentViewController:self];
     _mTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _mTableView.rowHeight = 70.0f;

@@ -16,7 +16,8 @@
     UIView *_mLoadingWaitView;
     UILabel *_mLoadingStatusLabel;
     UIImageView *_mNoNetworkImageView;
-    UIActivityIndicatorView *_mLoadingActivityIndicator;  
-}
+    UIActivityIndicatorView *_mLoadingActivityIndicator;
 
+}
+-(id) init;
 @end

@@ -80,6 +80,7 @@ static UMTableViewController *controller;
     return controller;
 }
 
+
 +(void) addAdBanner
 {
     CCDirector *director = [CCDirector sharedDirector];
