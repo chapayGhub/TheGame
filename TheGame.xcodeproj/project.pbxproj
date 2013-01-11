@@ -60,6 +60,10 @@
 		C677DA97169CB63E005253BA /* icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = C677DA85169BA3F4005253BA /* icon-hd.png */; };
 		C677DA99169CB772005253BA /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = C677DA98169CB772005253BA /* sun.png */; };
 		C6884790167190DD008633AD /* Germ.m in Sources */ = {isa = PBXBuildFile; fileRef = C688478F167190DD008633AD /* Germ.m */; };
+		C68AF234169E75A5004E82A4 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C68AF232169E75A5004E82A4 /* libMobClickLibrary.a */; };
+		C68AF236169E75E3004E82A4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C68AF235169E75E3004E82A4 /* libz.dylib */; };
+		C68AF240169E7B6D004E82A4 /* libUMAppNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C68AF237169E7B6D004E82A4 /* libUMAppNetwork.a */; };
+		C68AF241169E7B6D004E82A4 /* UMUFP.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C68AF238169E7B6D004E82A4 /* UMUFP.bundle */; };
 		C68B0609166D82A0005306DD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68B0608166D82A0005306DD /* QuartzCore.framework */; };
 		C68B060B166D82A0005306DD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68B060A166D82A0005306DD /* OpenGLES.framework */; };
 		C68B060D166D82A0005306DD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68B060C166D82A0005306DD /* OpenAL.framework */; };
@@ -229,6 +233,8 @@
 		C692461C168CF11E00DA8779 /* stop_menu_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = C6924619168CF11E00DA8779 /* stop_menu_bt.png */; };
 		C692461D168CF11E00DA8779 /* stop_reset_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = C692461A168CF11E00DA8779 /* stop_reset_bt.png */; };
 		C693E7721675A3FE0079D60D /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = C693E7711675A3FE0079D60D /* UserProfile.m */; };
+		C6B7749B169FD62D0048A434 /* UMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B77498169FD62D0048A434 /* UMTableViewCell.m */; };
+		C6B7749C169FD62D0048A434 /* UMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B7749A169FD62D0048A434 /* UMTableViewController.m */; };
 		C6B9251E169DF58A00958A95 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = C6B9251C169DF58A00958A95 /* fire.png */; };
 		C6B9251F169DF58A00958A95 /* fire.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6B9251D169DF58A00958A95 /* fire.plist */; };
 		C6B92524169DF61E00958A95 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6B92523169DF61E00958A95 /* Default@2x.png */; };
@@ -323,6 +329,18 @@
 		C688478E167190DD008633AD /* Germ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Germ.h; sourceTree = "<group>"; };
 		C688478F167190DD008633AD /* Germ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Germ.m; sourceTree = "<group>"; };
 		C688479216719453008633AD /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C68AF232169E75A5004E82A4 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		C68AF233169E75A5004E82A4 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		C68AF235169E75E3004E82A4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C68AF237169E7B6D004E82A4 /* libUMAppNetwork.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMAppNetwork.a; sourceTree = "<group>"; };
+		C68AF238169E7B6D004E82A4 /* UMUFP.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMUFP.bundle; sourceTree = "<group>"; };
+		C68AF239169E7B6D004E82A4 /* UMUFPBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPBannerView.h; sourceTree = "<group>"; };
+		C68AF23A169E7B6D004E82A4 /* UMUFPGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPGridCell.h; sourceTree = "<group>"; };
+		C68AF23B169E7B6D004E82A4 /* UMUFPGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPGridView.h; sourceTree = "<group>"; };
+		C68AF23C169E7B6D004E82A4 /* UMUFPHandleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPHandleView.h; sourceTree = "<group>"; };
+		C68AF23D169E7B6D004E82A4 /* UMUFPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPImageView.h; sourceTree = "<group>"; };
+		C68AF23E169E7B6D004E82A4 /* UMUFPTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPTableView.h; sourceTree = "<group>"; };
+		C68AF23F169E7B6D004E82A4 /* UMUFPWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPWebView.h; sourceTree = "<group>"; };
 		C68B0604166D82A0005306DD /* TheGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C68B0608166D82A0005306DD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C68B060A166D82A0005306DD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -668,6 +686,10 @@
 		C692461A168CF11E00DA8779 /* stop_reset_bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop_reset_bt.png; path = Resources/stop_reset_bt.png; sourceTree = "<group>"; };
 		C693E7701675A3FE0079D60D /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
 		C693E7711675A3FE0079D60D /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
+		C6B77497169FD62D0048A434 /* UMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMTableViewCell.h; sourceTree = "<group>"; };
+		C6B77498169FD62D0048A434 /* UMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMTableViewCell.m; sourceTree = "<group>"; };
+		C6B77499169FD62D0048A434 /* UMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMTableViewController.h; sourceTree = "<group>"; };
+		C6B7749A169FD62D0048A434 /* UMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMTableViewController.m; sourceTree = "<group>"; };
 		C6B9251C169DF58A00958A95 /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire.png; path = Resources/fire.png; sourceTree = "<group>"; };
 		C6B9251D169DF58A00958A95 /* fire.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fire.plist; path = Resources/fire.plist; sourceTree = "<group>"; };
 		C6B92521169DF61900958A95 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -717,6 +739,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C68AF236169E75E3004E82A4 /* libz.dylib in Frameworks */,
 				C68DC6511676E8E100F5412F /* StoreKit.framework in Frameworks */,
 				C68DC64F1676E8D800F5412F /* MessageUI.framework in Frameworks */,
 				C68DC64D1676E8C100F5412F /* CoreTelephony.framework in Frameworks */,
@@ -732,6 +755,8 @@
 				C68B0617166D82A0005306DD /* CoreGraphics.framework in Frameworks */,
 				C68B0619166D82A0005306DD /* GameKit.framework in Frameworks */,
 				C68DC6CC1677091F00F5412F /* libMobiSageMediatorSDK_2.0.0.a in Frameworks */,
+				C68AF234169E75A5004E82A4 /* libMobClickLibrary.a in Frameworks */,
+				C68AF240169E7B6D004E82A4 /* libUMAppNetwork.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,9 +888,29 @@
 			name = sounds;
 			sourceTree = "<group>";
 		};
+		C68AF22D169E7558004E82A4 /* umeng */ = {
+			isa = PBXGroup;
+			children = (
+				C68AF237169E7B6D004E82A4 /* libUMAppNetwork.a */,
+				C6B77495169FD5DF0048A434 /* TableView */,
+				C68AF238169E7B6D004E82A4 /* UMUFP.bundle */,
+				C68AF239169E7B6D004E82A4 /* UMUFPBannerView.h */,
+				C68AF23A169E7B6D004E82A4 /* UMUFPGridCell.h */,
+				C68AF23B169E7B6D004E82A4 /* UMUFPGridView.h */,
+				C68AF23C169E7B6D004E82A4 /* UMUFPHandleView.h */,
+				C68AF23D169E7B6D004E82A4 /* UMUFPImageView.h */,
+				C68AF23E169E7B6D004E82A4 /* UMUFPTableView.h */,
+				C68AF23F169E7B6D004E82A4 /* UMUFPWebView.h */,
+				C68AF232169E75A5004E82A4 /* libMobClickLibrary.a */,
+				C68AF233169E75A5004E82A4 /* MobClick.h */,
+			);
+			name = umeng;
+			sourceTree = "<group>";
+		};
 		C68B05F9166D82A0005306DD = {
 			isa = PBXGroup;
 			children = (
+				C68AF235169E75E3004E82A4 /* libz.dylib */,
 				C6B92523169DF61E00958A95 /* Default@2x.png */,
 				C6B92521169DF61900958A95 /* Default.png */,
 				C677DA85169BA3F4005253BA /* icon-hd.png */,
@@ -931,6 +976,7 @@
 		C68B0635166D82A1005306DD /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				C68AF22D169E7558004E82A4 /* umeng */,
 				C68DC6691677091F00F5412F /* MobiSageMediatorSDK */,
 				C68B074C166D82A2005306DD /* LICENSE_cocos2d.txt */,
 				C68B075B166D82A2005306DD /* LICENSE_CocosDenshion.txt */,
@@ -1648,6 +1694,17 @@
 			path = "Public File";
 			sourceTree = "<group>";
 		};
+		C6B77495169FD5DF0048A434 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				C6B77497169FD62D0048A434 /* UMTableViewCell.h */,
+				C6B77498169FD62D0048A434 /* UMTableViewCell.m */,
+				C6B77499169FD62D0048A434 /* UMTableViewController.h */,
+				C6B7749A169FD62D0048A434 /* UMTableViewController.m */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1784,6 +1841,7 @@
 				C6B9251E169DF58A00958A95 /* fire.png in Resources */,
 				C6B9251F169DF58A00958A95 /* fire.plist in Resources */,
 				C6B92524169DF61E00958A95 /* Default@2x.png in Resources */,
+				C68AF241169E7B6D004E82A4 /* UMUFP.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1946,6 +2004,8 @@
 				C60F6074168A059D00E28C05 /* LevelChooseLayer.m in Sources */,
 				C6924617168CF02100DA8779 /* PauseLayer.m in Sources */,
 				C652D641168D4C1F001F4719 /* MusicHandler.m in Sources */,
+				C6B7749B169FD62D0048A434 /* UMTableViewCell.m in Sources */,
+				C6B7749C169FD62D0048A434 /* UMTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2009,6 +2069,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/TheGame/libs\"",
 					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK\"",
+					"\"$(SRCROOT)/TheGame\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -2033,6 +2094,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/TheGame/libs\"",
 					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK\"",
+					"\"$(SRCROOT)/TheGame\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",

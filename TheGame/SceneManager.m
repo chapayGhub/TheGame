@@ -3,6 +3,9 @@
 #import "PlayLayer.h"
 #import "RewardLayer.h"
 #import "LevelChooseLayer.h"
+#import "UMUFPTableView.h"
+#import "AppDelegate.h"
+#import "UMTableViewController.h"
 @interface SceneManager ()
 
 @end
@@ -10,7 +13,7 @@
 
 @implementation SceneManager
 static MobiSageAdBanner* banner;
-
+static UMTableViewController *controller;
 +(void) goMainMenu{
     //[UserProfile firstTimeFileInitialize];
     CCDirector *director = [CCDirector sharedDirector];
@@ -57,10 +60,30 @@ static MobiSageAdBanner* banner;
 	}
 }
 
+
++(void) goRecommand{
+    [[CCDirector sharedDirector] pause];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.5];
+    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:[[CCDirector sharedDirector] view] cache:YES];
+    
+    [[[CCDirector sharedDirector] view] addSubview:[SceneManager getRecommand].view];
+    
+    [UIView commitAnimations];
+    
+}
++(UMTableViewController*) getRecommand{
+    if(controller==nil)
+    {
+        controller = [[UMTableViewController alloc] init];
+    }
+    return controller;
+}
+
 +(void) addAdBanner
 {
     CCDirector *director = [CCDirector sharedDirector];
-    [[MobiSageManager getInstance] setPublisherID:@"ea1b5c3fa4b6434fa38b2e3d689b6169"];
+
     [director.view addSubview:[SceneManager getBanner]];
 }
 
@@ -80,6 +103,8 @@ static MobiSageAdBanner* banner;
     }
     return banner;
 }
+
+
 
 +(void) pushScene:(CCScene*) scence{
     CCDirector *director = [CCDirector sharedDirector];

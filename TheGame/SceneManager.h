@@ -24,4 +24,5 @@
 +(void) removeRewardLayer;
 +(void) goPauseLayer;
 +(void) removePauseLayer;
++(void) goRecommand;
 @end

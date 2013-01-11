@@ -13,9 +13,11 @@
 #import "Constants.h"
 #import "UserProfile.h"
 #import "MusicHandler.h"
+#import "SceneManager.h"
+#import "MobClick.h"
 @implementation AppController
 
-@synthesize window=window_, navController=navController_, director=director_;
+@synthesize window=window_, navController=navController_, director=director_,viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -88,11 +90,15 @@
 	
 	// make main window visible
 	[window_ makeKeyAndVisible];
-	
-    [MusicHandler setSilence:[[UserProfile sharedInstance] silence]];
     
+    
+    [MusicHandler setSilence:[[UserProfile sharedInstance] silence]];
+    [[MobiSageManager getInstance] setPublisherID:@"ea1b5c3fa4b6434fa38b2e3d689b6169"];
+    [MobClick startWithAppkey:@"50ee3d23527015717600000f"];
+
 	return YES;
 }
+
 
 // Supported orientations: Landscape. Customize it for your own needs
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
