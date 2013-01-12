@@ -468,9 +468,11 @@ static PlayDisplayLayer* thisLayer;
         BOOL flag = [[PlayLayer sharedInstance:NO] hint];
         if(flag)
         {
+            
             [MusicHandler playEffect:@"hint.wav"];
             [pro addHint:-1];
-            [hint nextValue];
+            int value = [hint nextValue];
+            [MobClick event:@"useHint" label:[NSString stringWithFormat:@"%d",value]];
         }
         return;
     }
@@ -483,8 +485,10 @@ static PlayDisplayLayer* thisLayer;
             return;
         }
         if([self addLife]){
+            
             [pro addLife:-1];
-            [heal nextValue];
+            int value = [heal nextValue];
+            [MobClick event:@"useRebirth" label:[NSString stringWithFormat:@"%d",value]];
             [MusicHandler playEffect:@"addlife.wav"];
         }
     }
@@ -496,8 +500,10 @@ static PlayDisplayLayer* thisLayer;
         {
             return;
         }
+        
         [pro addRefill:-1];
-        [reload nextValue];
+        int value = [reload nextValue];
+        [MobClick event:@"useRefill" label:[NSString stringWithFormat:@"%d",value]];
         [[PlayLayer sharedInstance:NO] reload];
         [MusicHandler playEffect:@"enter.wav"];
         return;

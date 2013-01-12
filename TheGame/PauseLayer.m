@@ -50,6 +50,21 @@
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
         [MusicHandler playEffect:@"button.wav"];
         GameType type= [[[PlayLayer sharedInstance:NO] context] type];
+        
+        switch(type){
+            case Poisonous:
+                [MobClick endEvent:@"playpoisonous"];
+                break;
+            case TimeBomb:
+                [MobClick endEvent:@"playtimebomb"];
+                break;
+            case Bomb:
+                [MobClick endEvent:@"playcountbomb"];
+                break;
+            default:
+                [MobClick endEvent:@"playlevelmode"];
+                break;
+        }
         if(type==Classic)
         {
             [SceneManager goLevelChoose];

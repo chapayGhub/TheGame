@@ -48,7 +48,7 @@
     [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:[[CCDirector sharedDirector] view] cache:YES];
     
     [self.view removeFromSuperview];
-    
+    [MusicHandler resumeBackgound];
     [UIView commitAnimations];
 }
 
@@ -127,6 +127,9 @@
     [self.view insertSubview:_mLoadingWaitView aboveSubview:_mTableView];
     
     [_mTableView requestPromoterDataInBackground];
+    [navigationBar release];
+    [navigationItem release];
+    [leftButton release];
 }
 
 - (void)viewDidUnload

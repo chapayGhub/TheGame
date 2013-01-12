@@ -23,7 +23,7 @@ static UMTableViewController *controller;
     MainMenuLayer* menu = [MainMenuLayer node];
     [newScene addChild:menu z:0 tag:menuLayerTag];
     [newScene addChild:[ActiveBackgroundLayer node] z:2];
-    //if(count>1)
+    if(count>1)
     {
         [menu enableMenu:NO];
         [newScene addChild:[RewardLayer node:3] z:2 tag:rewardLayerTag];
@@ -68,7 +68,7 @@ static UMTableViewController *controller;
     [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:[[CCDirector sharedDirector] view] cache:YES];
     
     [[[CCDirector sharedDirector] view] addSubview:[SceneManager getRecommand].view];
-    
+    [MusicHandler pauseBackground];
     [UIView commitAnimations];
     
 }

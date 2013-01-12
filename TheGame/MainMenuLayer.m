@@ -112,6 +112,7 @@
 
 - (void)onOtherGames:(id)sender{
     [MusicHandler playEffect:@"button.wav"];
+    [MobClick event:@"clickmoreapp"];
     [SceneManager goRecommand];
 }
 - (void)onHelp:(id)sender{

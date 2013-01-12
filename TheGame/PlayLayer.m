@@ -59,6 +59,25 @@ static PlayLayer* thisLayer;
 -(void) onEnterTransitionDidFinish{
     [MusicHandler playEffect:@"enter.wav"];
     [MusicHandler playGameBackground];
+    // 统计部分的代码
+    GameContext *c = self.context;
+    if(c.type==Classic){
+        [MobClick beginEvent:@"playlevelmode" label:[NSString stringWithFormat:@"%d",c.level]];
+    }else{
+        switch(c.type){
+            case Poisonous:
+                [MobClick beginEvent:@"playpoisonous"];
+                break;
+            case TimeBomb:
+                [MobClick beginEvent:@"playtimebomb"];
+                break;
+            case Bomb:
+                [MobClick beginEvent:@"playcountbomb"];
+                break;
+            default:
+                break;
+        }
+    }
     [box fill];
     [box check];
     [box unlock];

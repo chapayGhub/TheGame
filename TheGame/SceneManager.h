@@ -9,6 +9,7 @@
 #import "CommonUtils.h"
 #import "GameModeChooseLayer.h"
 #import "PauseLayer.h"
+#import "MobClick.h"
 
 @interface SceneManager : NSObject {
 

@@ -910,7 +910,6 @@
 		C68B05F9166D82A0005306DD = {
 			isa = PBXGroup;
 			children = (
-				C68AF235169E75E3004E82A4 /* libz.dylib */,
 				C6B92523169DF61E00958A95 /* Default@2x.png */,
 				C6B92521169DF61900958A95 /* Default.png */,
 				C677DA85169BA3F4005253BA /* icon-hd.png */,
@@ -976,6 +975,7 @@
 		C68B0635166D82A1005306DD /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				C68AF235169E75E3004E82A4 /* libz.dylib */,
 				C68AF22D169E7558004E82A4 /* umeng */,
 				C68DC6691677091F00F5412F /* MobiSageMediatorSDK */,
 				C68B074C166D82A2005306DD /* LICENSE_cocos2d.txt */,

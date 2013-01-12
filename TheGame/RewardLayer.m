@@ -137,6 +137,9 @@ int type;
         [self addChild:star3 z:1];
         [self addChild:sc z:1];
         
+
+        [MobClick endEvent:@"playlevelmode" label:[NSString stringWithFormat:@"%d",context.level]];
+              
     }
     else if(num==2) //无尽的情况
     {
@@ -173,9 +176,18 @@ int type;
         CCSprite* lw = [CCSprite spriteWithFile:@"rebirth_wd.png"];
         
         
-        hint = score/2000;
-        rotate = score/3500;
-        heal = score/4000;
+        hint = score/1000;
+        rotate = score/2000;
+        heal = score/3000;
+        if(hint>3){
+            hint=3;
+        }
+        if(rotate>2){
+            rotate=2;
+        }
+        if(heal>1){
+            heal = 1;
+        }
         
         if(isNewRecord&&hint==0)
         {
@@ -248,6 +260,22 @@ int type;
             lw.scale=0.5f;
         }
         [self addChild:sc z:2];
+        
+
+        switch(context.type){
+            case Poisonous:
+                [MobClick endEvent:@"playpoisonous" label:[NSString stringWithFormat:@"%d",score]];
+                break;
+            case TimeBomb:
+                [MobClick endEvent:@"playtimebomb" label:[NSString stringWithFormat:@"%d",score]];
+                break;
+            case Bomb:
+                [MobClick endEvent:@"playcountbomb" label:[NSString stringWithFormat:@"%d",score]];
+                break;
+            default:
+                break;
+        }
+        
     }
     else //连续登陆奖励的情况
     {
