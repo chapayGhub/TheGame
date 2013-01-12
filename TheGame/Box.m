@@ -165,7 +165,7 @@
             [[g sprite] runAction: action];
         }
     }
-    [MusicHandler playEffect:@"combinegerm.wav"];
+    [MusicHandler playEffect:@"combinegerm.mp3"];
     [center transform:SuperGerm];
 }
 
@@ -380,7 +380,7 @@
             if(germ.type == SuperGerm)
             {
                 germ.type = NormalGerm;
-                [MusicHandler playEffect:@"supergermdisappear.wav"];
+                [MusicHandler playEffect:@"supergermdisappear.mp3"];
                 NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:9];
                 for(int i=-1;i<=1;i++)
                 {
@@ -418,11 +418,11 @@
             
             
 		}else {
-            
-            //如果已经无解，那么重新初始化游戏
-            //            [self fill];
-            //            [self check];
-            
+            if([[PlayLayer sharedInstance:NO] context].type!=Classic){
+                [self fill];
+                [self check];
+                [self unlock];
+            }
 		}
 	}
 }

@@ -48,23 +48,10 @@
     
     CCNode* sprite = [self getChildByTag:menuTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
-        [MusicHandler playEffect:@"button.wav"];
-        GameType type= [[[PlayLayer sharedInstance:NO] context] type];
-        
-        switch(type){
-            case Poisonous:
-                [MobClick endEvent:@"playpoisonous"];
-                break;
-            case TimeBomb:
-                [MobClick endEvent:@"playtimebomb"];
-                break;
-            case Bomb:
-                [MobClick endEvent:@"playcountbomb"];
-                break;
-            default:
-                [MobClick endEvent:@"playlevelmode"];
-                break;
-        }
+        [MusicHandler playEffect:@"button.mp3"];
+        GameContext *context = [[PlayLayer sharedInstance:NO] context];
+        GameType type= [context type];
+
         if(type==Classic)
         {
             [SceneManager goLevelChoose];
@@ -76,13 +63,13 @@
     
     sprite = [self getChildByTag:continueTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
-        [MusicHandler playEffect:@"button.wav"];
+        [MusicHandler playEffect:@"button.mp3"];
         [SceneManager removePauseLayer];
     }
     
     sprite = [self getChildByTag:redoTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
-        [MusicHandler playEffect:@"button.wav"];
+        [MusicHandler playEffect:@"button.mp3"];
         GameType type= [[[PlayLayer sharedInstance:NO] context] type];
         [SceneManager goPlay:type level:1];
     }

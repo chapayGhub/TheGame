@@ -390,7 +390,7 @@ static PlayDisplayLayer* thisLayer;
     
     star++;
     CCAction *action;
-    [MusicHandler playEffect:@"star.wav"];
+    [MusicHandler playEffect:@"star.mp3"];
     
     if(star==1)
     {
@@ -469,10 +469,12 @@ static PlayDisplayLayer* thisLayer;
         if(flag)
         {
             
-            [MusicHandler playEffect:@"hint.wav"];
+            [MusicHandler playEffect:@"hint.mp3"];
             [pro addHint:-1];
             int value = [hint nextValue];
             [MobClick event:@"useHint" label:[NSString stringWithFormat:@"%d",value]];
+        }else{
+            [MusicHandler playEffect:@"disabled.mp3"];
         }
         return;
     }
@@ -489,7 +491,7 @@ static PlayDisplayLayer* thisLayer;
             [pro addLife:-1];
             int value = [heal nextValue];
             [MobClick event:@"useRebirth" label:[NSString stringWithFormat:@"%d",value]];
-            [MusicHandler playEffect:@"addlife.wav"];
+            [MusicHandler playEffect:@"addlife.mp3"];
         }
     }
     
@@ -505,7 +507,7 @@ static PlayDisplayLayer* thisLayer;
         int value = [reload nextValue];
         [MobClick event:@"useRefill" label:[NSString stringWithFormat:@"%d",value]];
         [[PlayLayer sharedInstance:NO] reload];
-        [MusicHandler playEffect:@"enter.wav"];
+        [MusicHandler playEffect:@"enter.mp3"];
         return;
     }
     

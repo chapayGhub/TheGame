@@ -57,30 +57,46 @@ static PlayLayer* thisLayer;
 }
 
 -(void) onEnterTransitionDidFinish{
-    [MusicHandler playEffect:@"enter.wav"];
+    [MusicHandler playEffect:@"enter.mp3"];
     [MusicHandler playGameBackground];
     // 统计部分的代码
     GameContext *c = self.context;
-    if(c.type==Classic){
-        [MobClick beginEvent:@"playlevelmode" label:[NSString stringWithFormat:@"%d",c.level]];
-    }else{
-        switch(c.type){
-            case Poisonous:
-                [MobClick beginEvent:@"playpoisonous"];
-                break;
-            case TimeBomb:
-                [MobClick beginEvent:@"playtimebomb"];
-                break;
-            case Bomb:
-                [MobClick beginEvent:@"playcountbomb"];
-                break;
-            default:
-                break;
-        }
+
+    switch(c.type){
+        case Poisonous:
+            [MobClick  beginEvent:@"playpoisonous"];
+            break;
+        case TimeBomb:
+            [MobClick beginEvent:@"playtimebomb"];
+            break;
+        case Bomb:
+            [MobClick beginEvent:@"playcountbomb"];
+            break;
+        case Classic:
+            [MobClick event:@"playlevelmode" label:[NSString stringWithFormat:@"%d",c.level]];
+            break;
     }
+
     [box fill];
     [box check];
     [box unlock];
+}
+
+-(void) onExitTransitionDidStart{
+    GameContext *c = self.context;
+    switch(c.type){
+        case Poisonous:
+            [MobClick  endEvent:@"playpoisonous"];
+            break;
+        case TimeBomb:
+            [MobClick endEvent:@"playtimebomb"];
+            break;
+        case Bomb:
+            [MobClick endEvent:@"playcountbomb"];
+            break;
+        default:
+            break;
+    }
 }
 
 -(void) checkPosition
@@ -176,7 +192,7 @@ static PlayLayer* thisLayer;
     
 	Germ *tile = [box objectAtX:x Y:y];
     if(tile.type==FixedGerm){//如果是固定孢子 直接返回
-        [MusicHandler playEffect:@"disabled.wav"];
+        [MusicHandler playEffect:@"disabled.mp3"];
         return;
     }
     
@@ -210,7 +226,7 @@ static PlayLayer* thisLayer;
 						 [CCCallFuncND actionWithTarget:self selector:sel data: b],
 						 nil
 						 ];
-    [MusicHandler playEffect:@"germexchange.wav"];
+    [MusicHandler playEffect:@"germexchange.mp3"];
     [a.sprite runAction:actionA];
 	[b.sprite runAction:actionB];
     [a trade:b];
@@ -262,7 +278,7 @@ static PlayLayer* thisLayer;
                 if(i==6)
                 {
                     [g transform:NormalGerm];
-                    [MusicHandler playEffect:@"poisondisappear.wav"];
+                    [MusicHandler playEffect:@"poisondisappear.mp3"];
 
                     if([[PlayDisplayLayer sharedInstance:NO] subLife])
                     {
@@ -295,7 +311,7 @@ static PlayLayer* thisLayer;
     }
     if(hasBomb)
     {
-        [MusicHandler playEffect:@"clockhit.wav"];
+        [MusicHandler playEffect:@"clockhit.mp3"];
     }
     if(_context.type!=Classic && _context.interval!=0)
     {

@@ -130,7 +130,7 @@
     
     if(CGRectContainsPoint([menu boundingBox], location))
     {
-        [MusicHandler playEffect:@"button.wav"];
+        [MusicHandler playEffect:@"button.mp3"];
         [SceneManager goMainMenu];
     }
 }

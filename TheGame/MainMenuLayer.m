@@ -102,16 +102,16 @@
 }
 
 - (void)onStartNew:(id)sender{
-    [MusicHandler playEffect:@"button.wav"];
+    [MusicHandler playEffect:@"button.mp3"];
     [SceneManager goLevelChoose];
 }
 - (void)onInfiniteMode:(id)sender{
-    [MusicHandler playEffect:@"button.wav"];
+    [MusicHandler playEffect:@"button.mp3"];
 	[SceneManager goGameModeChoose];
 }
 
 - (void)onOtherGames:(id)sender{
-    [MusicHandler playEffect:@"button.wav"];
+    [MusicHandler playEffect:@"button.mp3"];
     [MobClick event:@"clickmoreapp"];
     [SceneManager goRecommand];
 }
@@ -135,7 +135,7 @@
     
     if(node!=nil&&CGRectContainsPoint([node boundingBox], location))
     {
-        [MusicHandler playEffect:@"button.wav"];
+        [MusicHandler playEffect:@"button.mp3"];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=40461254"]];
         
     }
@@ -143,7 +143,7 @@
     node = [self getChildByTag:musicTag];
     if(node!=nil&&CGRectContainsPoint([node boundingBox], location))
     {
-        [MusicHandler playEffect:@"button.wav"];
+        [MusicHandler playEffect:@"button.mp3"];
         [node removeFromParentAndCleanup:YES];
         UserProfile *pro = [UserProfile sharedInstance];
         CCSprite *music=nil;

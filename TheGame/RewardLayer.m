@@ -50,8 +50,8 @@ int type;
         CCSprite* rw = [CCSprite spriteWithFile:@"rotate_wd.png"];
         if(star==3)
         {
-            // 三颗星给一个提示1个轮换
-            hint=1;
+            // 三颗星给2个提示1个轮换
+            hint=2;
             rotate=1;
 
             hw.position = ccp(winSize.width*0.5,winSize.height*0.50);
@@ -69,9 +69,9 @@ int type;
             
         }else if(star ==2)
         {
-            // 两颗星给1个提示
+            // 两颗星给2个提示
             star3.visible=NO;
-            hint=1;
+            hint=2;
             
             hw.position = ccp(winSize.width*0.5,winSize.height*0.55);
             CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
@@ -136,10 +136,6 @@ int type;
         [self addChild:star2 z:1];
         [self addChild:star3 z:1];
         [self addChild:sc z:1];
-        
-
-        [MobClick endEvent:@"playlevelmode" label:[NSString stringWithFormat:@"%d",context.level]];
-              
     }
     else if(num==2) //无尽的情况
     {
@@ -178,18 +174,18 @@ int type;
         
         hint = score/1000;
         rotate = score/2000;
-        heal = score/3000;
+        heal = score/2500;
         if(hint>3){
             hint=3;
         }
         if(rotate>2){
             rotate=2;
         }
-        if(heal>1){
-            heal = 1;
+        if(heal>2){
+            heal = 2;
         }
         
-        if(isNewRecord&&hint==0)
+        if(hint==0)
         {
             hint=1;
         }
@@ -260,22 +256,7 @@ int type;
             lw.scale=0.5f;
         }
         [self addChild:sc z:2];
-        
 
-        switch(context.type){
-            case Poisonous:
-                [MobClick endEvent:@"playpoisonous" label:[NSString stringWithFormat:@"%d",score]];
-                break;
-            case TimeBomb:
-                [MobClick endEvent:@"playtimebomb" label:[NSString stringWithFormat:@"%d",score]];
-                break;
-            case Bomb:
-                [MobClick endEvent:@"playcountbomb" label:[NSString stringWithFormat:@"%d",score]];
-                break;
-            default:
-                break;
-        }
-        
     }
     else //连续登陆奖励的情况
     {
@@ -359,7 +340,7 @@ int type;
 -(void) onEnterTransitionDidFinish{
     if(type!=3)
     {
-        [MusicHandler playEffect:@"reward.wav"];
+        [MusicHandler playEffect:@"reward.mp3"];
         if(isNewRecord)
         {
             [self scheduleOnce:@selector(addStamp) delay:0.8f];
@@ -368,7 +349,7 @@ int type;
 }
 
 -(void) addStamp{
-    [MusicHandler playEffect:@"stamp.wav"];
+    [MusicHandler playEffect:@"stamp.mp3"];
     CGSize winSize = [CCDirector sharedDirector].winSize;
     CCSprite *stamp = [CCSprite spriteWithFile:@"stamp.png"];
     if(!isRetina)
