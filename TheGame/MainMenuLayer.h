@@ -4,6 +4,7 @@
 
 // 主菜单
 @interface MainMenuLayer :CCLayer{
+    CCMenu *menu;
 }
 
 - (void)onStartNew:(id)sender;

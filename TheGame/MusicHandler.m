@@ -58,7 +58,7 @@ static bool silence;
     [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.7f];
     if(![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
     {
-        [MusicHandler playMusic:@"startbackground.mp3" Loop:YES];
+        [MusicHandler playMusic:@"startbackground.wav" Loop:YES];
     }
 }
 

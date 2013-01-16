@@ -6,6 +6,7 @@
 #import "UMUFPTableView.h"
 #import "AppDelegate.h"
 #import "UMTableViewController.h"
+#import "HelpLayer.h"
 @interface SceneManager ()
 
 @end
@@ -164,5 +165,16 @@ static UMTableViewController *controller;
     [[director runningScene] removeChildByTag:pauseLayerTag cleanup:YES];
     [[PlayDisplayLayer sharedInstance:NO] resumeGame];
     [MusicHandler resumeBackgound];
+}
+
++(void) goHelp{
+    CCDirector *director = [CCDirector sharedDirector];
+    CCScene *newScene = [CCScene node];
+    [newScene addChild:[HelpLayer node]];
+    if ([director runningScene]) {
+        [director replaceScene:[CCTransitionCrossFade transitionWithDuration: 0.5f scene: newScene]];
+	}else {
+		[director runWithScene:newScene];
+	}
 }
 @end

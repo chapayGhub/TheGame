@@ -3,6 +3,7 @@
 
 @implementation MainMenuLayer
 
+
 -(id) init{
 	self = [super init];
 	CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -34,15 +35,9 @@
     CCSprite* like = [CCSprite spriteWithFile:@"likeus_bt.png"];
     like.position = ccp(winSize.width*0.73f,winSize.height*0.21f);
     [self addChild:like z:1 tag:likeusTag];
+    CCSprite *titleLeft = [CCSprite spriteWithFile:@"title1.png"];
+    CCSprite *titleRight = [CCSprite spriteWithFile:@"title1.png"];
     
-    if(!isRetina)
-    {
-        background.scale=0.5f;
-        music.scale=0.5f;
-        like.scale=0.5f;
-        sun.scale=0.5f;
-        sunray.scale=0.5f;
-    }
     [self addChild:background];
     
 	
@@ -66,7 +61,7 @@
     CCMenuItemSprite *startNew = [CCMenuItemSprite  itemWithNormalSprite:l selectedSprite:ls target:self selector:@selector(onStartNew:)];
     CCMenuItemSprite *resume = [CCMenuItemSprite  itemWithNormalSprite:i selectedSprite:is target:self selector:@selector(onInfiniteMode:)];
     CCMenuItemSprite *highscores = [CCMenuItemSprite  itemWithNormalSprite:m selectedSprite:ms target:self selector:@selector(onOtherGames:)];
-    CCMenuItemSprite *mygerms = [CCMenuItemSprite  itemWithNormalSprite:h selectedSprite:hs target:self selector:@selector(onStartNew:)];
+    CCMenuItemSprite *mygerms = [CCMenuItemSprite  itemWithNormalSprite:h selectedSprite:hs target:self selector:@selector(onHelp:)];
 
     if(!isRetina)
     {
@@ -74,23 +69,50 @@
         resume.scale=0.5f;
         highscores.scale=0.5f;
         mygerms.scale=0.5;
+        
+        background.scale=0.5f;
+        music.scale=0.5f;
+        like.scale=0.5f;
+        sun.scale=0.5f;
+        sunray.scale=0.5f;
+        
+        titleLeft.scale=0.5f;
+        titleRight.scale=0.5f;
     }
-	CCMenu *menu = [CCMenu menuWithItems:startNew, resume, highscores, mygerms, nil];
-	
+	menu = [CCMenu menuWithItems:startNew, resume, highscores, mygerms, nil];
     float delayTime = 0.3f;
 	for (CCMenuItemFont *each in [menu children]) {
 		each.scale=0;
         CCAction *action = [CCSequence actions:
-		 [CCDelayTime actionWithDuration: delayTime],
-		 [CCScaleTo actionWithDuration:0.5F scale:0.5],
-		 nil];
+                            [CCDelayTime actionWithDuration: delayTime],
+                            [CCScaleTo actionWithDuration:0.5F scale:0.5],
+                            nil];
 		delayTime += 0.2f;
 		[each runAction: action];
 	}
-
-	menu.position = ccp(winSize.width*0.5, winSize.height*0.5);
-    [menu alignItemsVerticallyWithPadding: 55.0f];
+	menu.position = ccp(winSize.width*0.5, winSize.height*0.47);
+    [menu alignItemsVerticallyWithPadding: 50.0f];
 	[self addChild:menu z:1 tag:mainmenuTag];
+	
+    
+    titleLeft.position = ccp(-80, 345);
+	CCAction *titleLeftAction = [CCSequence actions:
+                                 [CCDelayTime actionWithDuration: delayTime],
+                                 [CCEaseBackOut actionWithAction:
+                                  [CCMoveTo actionWithDuration: 1.0 position:ccp(116,345)]],
+                                 nil];
+	[self addChild: titleLeft z:3];
+	[titleLeft runAction: titleLeftAction];
+	
+	titleRight.position = ccp(400, 343);
+	CCAction *titleRightAction = [CCSequence actions:
+                                  [CCDelayTime actionWithDuration: delayTime],
+                                  [CCEaseBackOut actionWithAction:
+                                   [CCMoveTo actionWithDuration: 1.0 position:ccp(205,345)]],
+                                  nil];
+	[self addChild: titleRight z:3];
+	[titleRight runAction: titleRightAction];
+    
     self.isTouchEnabled = YES;
 	return self;
     
@@ -98,6 +120,8 @@
 
 -(void) onEnterTransitionDidFinish{
     [MusicHandler playMainBackground];
+
+    
 
 }
 
@@ -116,7 +140,8 @@
     [SceneManager goRecommand];
 }
 - (void)onHelp:(id)sender{
-    
+    [MusicHandler playEffect:@"button.mp3"];
+	[SceneManager goHelp];
 }
 
 -(void) enableMenu:(BOOL) flag{

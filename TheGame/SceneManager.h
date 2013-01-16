@@ -26,4 +26,5 @@
 +(void) goPauseLayer;
 +(void) removePauseLayer;
 +(void) goRecommand;
++(void) goHelp;
 @end
