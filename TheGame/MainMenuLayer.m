@@ -91,24 +91,24 @@
 		[each runAction: action];
 	}
 	menu.position = ccp(winSize.width*0.5, winSize.height*0.47);
-    [menu alignItemsVerticallyWithPadding: 50.0f];
+    [menu alignItemsVerticallyWithPadding: 45.0f];
 	[self addChild:menu z:1 tag:mainmenuTag];
 	
     
-    titleLeft.position = ccp(-80, 345);
+    titleLeft.position = ccp(-80, 350);
 	CCAction *titleLeftAction = [CCSequence actions:
                                  [CCDelayTime actionWithDuration: delayTime],
                                  [CCEaseBackOut actionWithAction:
-                                  [CCMoveTo actionWithDuration: 1.0 position:ccp(116,345)]],
+                                  [CCMoveTo actionWithDuration: 1.0 position:ccp(116,350)]],
                                  nil];
 	[self addChild: titleLeft z:3];
 	[titleLeft runAction: titleLeftAction];
 	
-	titleRight.position = ccp(400, 343);
+	titleRight.position = ccp(400, 350);
 	CCAction *titleRightAction = [CCSequence actions:
                                   [CCDelayTime actionWithDuration: delayTime],
                                   [CCEaseBackOut actionWithAction:
-                                   [CCMoveTo actionWithDuration: 1.0 position:ccp(205,345)]],
+                                   [CCMoveTo actionWithDuration: 1.0 position:ccp(205,350)]],
                                   nil];
 	[self addChild: titleRight z:3];
 	[titleRight runAction: titleRightAction];
