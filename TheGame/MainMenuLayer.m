@@ -36,7 +36,7 @@
     like.position = ccp(winSize.width*0.73f,winSize.height*0.21f);
     [self addChild:like z:1 tag:likeusTag];
     CCSprite *titleLeft = [CCSprite spriteWithFile:@"title1.png"];
-    CCSprite *titleRight = [CCSprite spriteWithFile:@"title1.png"];
+    CCSprite *titleRight = [CCSprite spriteWithFile:@"title2.png"];
     
     [self addChild:background];
     
@@ -99,7 +99,7 @@
 	CCAction *titleLeftAction = [CCSequence actions:
                                  [CCDelayTime actionWithDuration: delayTime],
                                  [CCEaseBackOut actionWithAction:
-                                  [CCMoveTo actionWithDuration: 1.0 position:ccp(116,350)]],
+                                  [CCMoveTo actionWithDuration: 1.0 position:ccp(111,350)]],
                                  nil];
 	[self addChild: titleLeft z:3];
 	[titleLeft runAction: titleLeftAction];
@@ -108,7 +108,7 @@
 	CCAction *titleRightAction = [CCSequence actions:
                                   [CCDelayTime actionWithDuration: delayTime],
                                   [CCEaseBackOut actionWithAction:
-                                   [CCMoveTo actionWithDuration: 1.0 position:ccp(205,350)]],
+                                   [CCMoveTo actionWithDuration: 1.0 position:ccp(210,350)]],
                                   nil];
 	[self addChild: titleRight z:3];
 	[titleRight runAction: titleRightAction];
