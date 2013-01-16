@@ -2082,6 +2082,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lu Zhang (LG2ULW36M4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lu Zhang (LG2ULW36M4)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2100,6 +2102,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "919C9408-ED7C-49FA-B79B-014A4F393548";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "919C9408-ED7C-49FA-B79B-014A4F393548";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2108,6 +2112,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lu Zhang (LG2ULW36M4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lu Zhang (LG2ULW36M4)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TheGame/Prefix.pch;
@@ -2125,6 +2131,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "919C9408-ED7C-49FA-B79B-014A4F393548";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "919C9408-ED7C-49FA-B79B-014A4F393548";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

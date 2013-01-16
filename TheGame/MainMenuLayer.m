@@ -85,7 +85,7 @@
 		each.scale=0;
         CCAction *action = [CCSequence actions:
                             [CCDelayTime actionWithDuration: delayTime],
-                            [CCScaleTo actionWithDuration:0.5F scale:0.5],
+                            [CCScaleTo actionWithDuration:0.5F scale:isRetina?1:0.5],
                             nil];
 		delayTime += 0.2f;
 		[each runAction: action];
