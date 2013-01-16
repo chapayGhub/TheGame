@@ -32,7 +32,7 @@
     int range = 0.6*winSize.height;
     int kind = 4+ arc4random()%2;
     NSString *name = [NSString stringWithFormat:@"q%d.png",kind];
-    CCSprite *sprite = [CCSprite spriteWithFile:name];
+    CCSprite *sprite = [CCSprite spriteWithSpriteFrameName:name];
    
     int size = (arc4random()%7)/10;
     sprite.scale = 0.5f + size;
