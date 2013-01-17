@@ -85,7 +85,7 @@
             [layer addChild:figure];
             [layer addChild:figure.bomb];
             [layer addChild:figure.label];
-            [MusicHandler playEffect:@"bombappear.mp3"];
+            [MusicHandler playEffect:@"bombappear.wav"];
             break;
         case TimeBombGerm:
             [figure setBombPictureWithFile:@"bomb.png"];
@@ -93,19 +93,14 @@
             [layer addChild:figure];
             [layer addChild:figure.bomb];
             [layer addChild:figure.label];
-            [MusicHandler playEffect:@"bombappear.mp3"];
+            [MusicHandler playEffect:@"bombappear.wav"];
             break;
         case NormalGerm:
             [layer addChild:figure];
             break;
         case FixedGerm:
             [figure setShiftValue:2];
-            [figure setBombPictureWithFile:@"freeze.png"];
-            
-            if(!isRetina)
-            {
-                [[figure bomb] setScale:0.5f];
-            }
+            [figure setFreezePictureWithFile:@"freeze.png"];
             [layer addChild:figure];
             [layer addChild:figure.bomb];
             break;

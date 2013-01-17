@@ -37,9 +37,9 @@ int type;
         CCSprite *star1 = [CCSprite spriteWithFile:@"star1.png"];
         CCSprite *star2 = [CCSprite spriteWithFile:@"star2.png"];
         CCSprite *star3 = [CCSprite spriteWithFile:@"star3.png"];
-        star1.position = ccp(winSize.width*0.379,winSize.height*0.769);
-        star2.position = ccp(winSize.width*0.505,winSize.height*0.785);
-        star3.position = ccp(winSize.width*0.623,winSize.height*0.769);
+        star1.position = ccp(winSize.width*0.379,winSize.height*0.767);
+        star2.position = ccp(winSize.width*0.503,winSize.height*0.785);
+        star3.position = ccp(winSize.width*0.623,winSize.height*0.768);
 
         CCLabelTTF *sc=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",score] fontName:@"Arial-BoldMT" fontSize:22];
         sc.color = ccc3(200, 200, 0);
@@ -173,16 +173,18 @@ int type;
         
         
         hint = score/1000;
-        rotate = score/2000;
-        heal = score/2500;
+        rotate = score/2500;
+        heal = score/3000;
         if(hint>3){
             hint=3;
         }
-        if(rotate>2){
+        if(rotate>=2){
             rotate=2;
         }
-        if(heal>2){
+        if(heal>=2){
             heal = 2;
+            rotate-=1;
+            hint-=1;
         }
         
         if(hint==0)
@@ -330,7 +332,7 @@ int type;
     [pro addHint:hint];
     [pro addLife:heal];
     [pro addRefill:rotate];
-    
+   // [UserProfile writeBackToFile];
     
     self.isTouchEnabled=YES;
     return self;

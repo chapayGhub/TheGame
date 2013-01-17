@@ -273,6 +273,7 @@
 		C6F5291A16A659A500D3948F /* title2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F5291816A659A500D3948F /* title2.png */; };
 		C6F5291C16A659EF00D3948F /* startbackground.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6F5291B16A659EF00D3948F /* startbackground.wav */; };
 		C6F7A8C3168E91B000037251 /* freeze.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F7A8C2168E91B000037251 /* freeze.png */; };
+		C6FAC43716A7B2A7006D4858 /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6FAC43616A7B2A7006D4858 /* background.wav */; };
 		C6FFA0471678F4260069C640 /* ActiveBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FFA0461678F4260069C640 /* ActiveBackgroundLayer.m */; };
 /* End PBXBuildFile section */
 
@@ -745,6 +746,7 @@
 		C6F5291816A659A500D3948F /* title2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title2.png; path = Resources/title2.png; sourceTree = "<group>"; };
 		C6F5291B16A659EF00D3948F /* startbackground.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = startbackground.wav; path = Resources/startbackground.wav; sourceTree = "<group>"; };
 		C6F7A8C2168E91B000037251 /* freeze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = freeze.png; path = Resources/freeze.png; sourceTree = "<group>"; };
+		C6FAC43616A7B2A7006D4858 /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = background.wav; path = Resources/background.wav; sourceTree = "<group>"; };
 		C6FEE91816766EA700888B02 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
 		C6FFA0451678F4260069C640 /* ActiveBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveBackgroundLayer.h; sourceTree = "<group>"; };
 		C6FFA0461678F4260069C640 /* ActiveBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveBackgroundLayer.m; sourceTree = "<group>"; };
@@ -896,6 +898,7 @@
 				C6C8111816A2105F0079A574 /* stamp.mp3 */,
 				C62CC30416A795BA0098B2E4 /* bombappear.wav */,
 				C62CC30516A795BB0098B2E4 /* explosion.mp3 */,
+				C6FAC43616A7B2A7006D4858 /* background.wav */,
 				C6C8111916A2105F0079A574 /* button.mp3 */,
 				C6C8111A16A2105F0079A574 /* germexchange.mp3 */,
 				C6C8111B16A2105F0079A574 /* star.mp3 */,
@@ -1873,6 +1876,7 @@
 				C6F5291C16A659EF00D3948F /* startbackground.wav in Resources */,
 				C62CC30616A795BB0098B2E4 /* bombappear.wav in Resources */,
 				C62CC30716A795BB0098B2E4 /* explosion.mp3 in Resources */,
+				C6FAC43716A7B2A7006D4858 /* background.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

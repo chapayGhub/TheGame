@@ -60,13 +60,13 @@ static GameDef* def;
     GameContext *context10 = [[GameContext alloc] initWithValues:Poisonous Level:1 Score:500 Time:0 KindCound:6 Interval:5 FixedRate:0];
     GameContext *context11 = [[GameContext alloc] initWithValues:Poisonous Level:2 Score:1000 Time:0 KindCound:6 Interval:5 FixedRate:0];
     
-    GameContext *context12 = [[GameContext alloc] initWithValues:Poisonous Level:3 Score:1500 Time:0 KindCound:6 Interval:5 FixedRate:15];
-    GameContext *context13 = [[GameContext alloc] initWithValues:Poisonous Level:4 Score:2000 Time:0 KindCound:6 Interval:4 FixedRate:25];
-    GameContext *context14 = [[GameContext alloc] initWithValues:Poisonous Level:5 Score:2500 Time:0 KindCound:6 Interval:4 FixedRate:35];
-    GameContext *context15 = [[GameContext alloc] initWithValues:Poisonous Level:6 Score:3000 Time:0 KindCound:7 Interval:3 FixedRate:45];
-    GameContext *context16 = [[GameContext alloc] initWithValues:Poisonous Level:7 Score:3500 Time:0 KindCound:7 Interval:3 FixedRate:55];
-    GameContext *context17 = [[GameContext alloc] initWithValues:Poisonous Level:8 Score:4000 Time:0 KindCound:7 Interval:2 FixedRate:65];
-    GameContext *context18 = [[GameContext alloc] initWithValues:Poisonous Level:9 Score:4500 Time:0 KindCound:7 Interval:2 FixedRate:75];
+    GameContext *context12 = [[GameContext alloc] initWithValues:Poisonous Level:3 Score:125 Time:0 KindCound:6 Interval:5 FixedRate:15];
+    GameContext *context13 = [[GameContext alloc] initWithValues:Poisonous Level:4 Score:1500 Time:0 KindCound:6 Interval:4 FixedRate:25];
+    GameContext *context14 = [[GameContext alloc] initWithValues:Poisonous Level:5 Score:2000 Time:0 KindCound:6 Interval:4 FixedRate:35];
+    GameContext *context15 = [[GameContext alloc] initWithValues:Poisonous Level:6 Score:2500 Time:0 KindCound:7 Interval:3 FixedRate:45];
+    GameContext *context16 = [[GameContext alloc] initWithValues:Poisonous Level:7 Score:3000 Time:0 KindCound:7 Interval:3 FixedRate:55];
+    GameContext *context17 = [[GameContext alloc] initWithValues:Poisonous Level:8 Score:3500 Time:0 KindCound:7 Interval:2 FixedRate:65];
+    GameContext *context18 = [[GameContext alloc] initWithValues:Poisonous Level:9 Score:3700 Time:0 KindCound:7 Interval:2 FixedRate:75];
     
     
     GameContext *context20 = [[GameContext alloc] initWithValues:Bomb Level:1 Score:500 Time:0 KindCound:6 Interval:5 FixedRate:0];

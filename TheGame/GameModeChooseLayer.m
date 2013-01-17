@@ -65,13 +65,16 @@
 }
 
 -(void) goPoison{
+    [MusicHandler playEffect:@"button.mp3"];
     [SceneManager goPlay:Poisonous level:1];
 }
 
 -(void) goTimeBomb{
+    [MusicHandler playEffect:@"button.mp3"];
     [SceneManager goPlay:TimeBomb level:1];
 }
 -(void)goBomb{
+    [MusicHandler playEffect:@"button.mp3"];
     [SceneManager goPlay:Bomb level:1];
 }
 

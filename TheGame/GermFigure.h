@@ -30,4 +30,5 @@
 -(void) setShiftValue:(int) type;
 +(id)spriteWithFrame:(NSString*)frame;
 -(void) recorrectLabelPosition;
+-(void) setFreezePictureWithFile:(NSString*) file;
 @end

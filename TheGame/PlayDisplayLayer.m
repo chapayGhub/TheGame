@@ -218,7 +218,7 @@ static PlayDisplayLayer* thisLayer;
                 {
                     astar.scale=0.5f;
                 }
-                astar.position = ccp(winSize.width*(0.545+i*0.1) ,winSize.height*0.912f);
+                astar.position = ccp(winSize.width*(0.544+i*0.1) ,winSize.height*0.916f);
                 [starPictures addObject:astar];
                 [self addChild:astar];
             }
@@ -397,8 +397,8 @@ static PlayDisplayLayer* thisLayer;
         action = [CCSequence actions:[CCSpawn actions:[CCScaleTo actionWithDuration:apearspeed scale:openScale],
                                       [CCMoveBy actionWithDuration:apearspeed position:ccp(-10,20)],
                                       nil],
-                  [CCSpawn actions:[CCScaleTo actionWithDuration:fixspeed scale:0.5f],
-                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.543f,winSize.height*0.915f)],
+                  [CCSpawn actions:[CCScaleTo actionWithDuration:fixspeed scale:isRetina?1:0.5f],
+                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.540f,winSize.height*0.915f)],
                    nil],
                   nil];
     }else if(star==2)
@@ -406,8 +406,8 @@ static PlayDisplayLayer* thisLayer;
         action = [CCSequence actions:[CCSpawn actions:[CCScaleTo actionWithDuration:apearspeed scale:openScale],
                                       [CCMoveBy actionWithDuration:apearspeed position:ccp(-10,20)],
                                       nil],
-                  [CCSpawn actions:[CCScaleTo actionWithDuration:fixspeed scale:0.5f],
-                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.644f,winSize.height*0.915f)],
+                  [CCSpawn actions:[CCScaleTo actionWithDuration:fixspeed scale:isRetina?1:0.5f],
+                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.641f,winSize.height*0.915f)],
                    nil],
                   nil];
         
@@ -416,8 +416,8 @@ static PlayDisplayLayer* thisLayer;
         action = [CCSequence actions:[CCSpawn actions:[CCScaleTo actionWithDuration:apearspeed scale:openScale],
                                       [CCMoveBy actionWithDuration:apearspeed position:ccp(-10,20)],
                                       nil],
-                  [CCSpawn actions:[CCScaleTo actionWithDuration:fixspeed scale:0.5f],
-                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.744f,winSize.height*0.915f)],
+                  [CCSpawn actions:[CCScaleTo actionWithDuration:fixspeed scale:isRetina?1:0.5f],
+                   [CCMoveTo actionWithDuration:fixspeed position:ccp(winSize.width*0.741f,winSize.height*0.915f)],
                    nil],
                   nil];
         
@@ -471,6 +471,7 @@ static PlayDisplayLayer* thisLayer;
             
             [MusicHandler playEffect:@"hint.mp3"];
             [pro addHint:-1];
+            //[UserProfile writeBackToFile];
             int value = [hint nextValue];
             [MobClick event:@"useHint" label:[NSString stringWithFormat:@"%d",value]];
         }else{
@@ -489,6 +490,7 @@ static PlayDisplayLayer* thisLayer;
         if([self addLife]){
             
             [pro addLife:-1];
+            //[UserProfile writeBackToFile];
             int value = [heal nextValue];
             [MobClick event:@"useRebirth" label:[NSString stringWithFormat:@"%d",value]];
             [MusicHandler playEffect:@"addlife.mp3"];
@@ -504,6 +506,7 @@ static PlayDisplayLayer* thisLayer;
         }
         
         [pro addRefill:-1];
+        //[UserProfile writeBackToFile];
         int value = [reload nextValue];
         [MobClick event:@"useRefill" label:[NSString stringWithFormat:@"%d",value]];
         [[PlayLayer sharedInstance:NO] reload];

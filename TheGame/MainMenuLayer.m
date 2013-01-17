@@ -145,7 +145,7 @@
 }
 
 -(void) enableMenu:(BOOL) flag{
-    CCMenu* menu = (CCMenu*)[self getChildByTag:mainmenuTag];
+    menu = (CCMenu*)[self getChildByTag:mainmenuTag];
     menu.enabled=flag;
 }
 
@@ -184,6 +184,8 @@
             [MusicHandler setSilence:YES];
             music = [CCSprite spriteWithFile:@"sounddown_bt.png"];
         }
+        
+     //   [UserProfile writeBackToFile];
         if(!isRetina)
         {
             music.scale=0.5f;

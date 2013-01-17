@@ -64,6 +64,6 @@ static bool silence;
 
 +(void) playGameBackground{
     [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.6f];
-    [MusicHandler playMusic:@"background.mp3" Loop:YES];
+    [MusicHandler playMusic:@"background.wav" Loop:YES];
 }
 @end

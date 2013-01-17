@@ -16,14 +16,14 @@ static UserProfile* userprofile;
 +(UserProfile*) sharedInstance{
     if(userprofile == nil)
     {
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        if([fileManager fileExistsAtPath:[UserProfile getConfigurationFilePath]]) //如果存在则读取文件，如果不存在则初始化文件
-        {
+//        NSFileManager *fileManager = [NSFileManager defaultManager];
+//        if([fileManager fileExistsAtPath:[UserProfile getConfigurationFilePath]]) //如果存在则读取文件，如果不存在则初始化文件
+//        {
             [UserProfile readFile];
-        }else{
-            [UserProfile firstTimeFileInitialize];
-            [UserProfile writeBackToFile];
-        }
+//        }else{
+//            [UserProfile firstTimeFileInitialize];
+//            [UserProfile writeBackToFile];
+//        }
     }
 
     return userprofile;
@@ -32,7 +32,12 @@ static UserProfile* userprofile;
 //读取文件初始化
 +(void) readFile
 {
-    NSData *data=[NSData dataWithContentsOfFile:[UserProfile getConfigurationFilePath]];
+    //NSData *data=[NSData dataWithContentsOfFile:[UserProfile getConfigurationFilePath]];
+    NSData *data=[[NSUserDefaults standardUserDefaults] valueForKey:@"userprofile"];
+    if(data==nil){
+        [UserProfile firstTimeFileInitialize];
+        [UserProfile writeBackToFile];
+    }
     userprofile=[[NSKeyedUnarchiver unarchiveObjectWithData:data] retain];
 }
 
@@ -41,8 +46,10 @@ static UserProfile* userprofile;
 {
     NSData *data=[NSKeyedArchiver archivedDataWithRootObject:userprofile];
     //转成NSData类型后就可以写入本地磁盘了
-    BOOL result = [data writeToFile:[UserProfile getConfigurationFilePath] atomically:YES];
-    return result;
+    //BOOL result = [data writeToFile:[UserProfile getConfigurationFilePath] atomically:YES];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setValue:data forKey:@"userprofile"];
+    return YES;
 }
 
 +(NSString*) getConfigurationFilePath{
@@ -136,6 +143,7 @@ static UserProfile* userprofile;
         count = 1;
         self.lastTime = date;
     }
+    [UserProfile writeBackToFile];
     return self.count;
 }
 

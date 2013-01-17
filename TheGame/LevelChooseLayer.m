@@ -119,7 +119,12 @@
                // if(sprite.tag!= - 1860)
                 {
                     [SceneManager goPlay:Classic level:count];
+                    
+                    [MusicHandler playEffect:@"button.mp3"];
                 }
+//                else{
+//                    [MusicHandler playEffect:@"disabled.mp3"];
+//                }
                 return;
             }
             count++;

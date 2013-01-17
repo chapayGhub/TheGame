@@ -46,13 +46,6 @@ ccColor3B color;
     color=ccc3(255, 255, 255);
     figureShiftX=10;
     figureShiftY=10;
-    if(isRetina)
-    {
-        shiftvalueX*=2;
-        shiftvalueY*=2;
-        figureShiftX*=2;
-        figureShiftY*=2;
-    }
     return self;
 }
 
@@ -64,13 +57,6 @@ ccColor3B color;
     color=ccc3(255, 255, 255);
     figureShiftX=10;
     figureShiftY=10;
-    if(isRetina)
-    {
-        shiftvalueX*=2;
-        shiftvalueY*=2;
-        figureShiftX*=2;
-        figureShiftY*=2;
-    }
     return self;
 }
 
@@ -120,13 +106,9 @@ ccColor3B color;
 }
 -(void) recorrectLabelPosition{
     CGPoint p = self.position;
-    if (isRetina) {
-        [label setPosition:ccp(p.x+2*shiftvalueX,p.y+2*shiftvalueY)];
-        [bomb setPosition:ccp(p.x+2*figureShiftX,p.y-2*figureShiftY)];
-    }else{
-        [label setPosition:ccp(p.x+shiftvalueX,p.y+shiftvalueY)];
-        [bomb setPosition:ccp(p.x+figureShiftX,p.y-figureShiftY)];
-    }
+    [label setPosition:ccp(p.x+shiftvalueX,p.y+shiftvalueY)];
+    [bomb setPosition:ccp(p.x+figureShiftX,p.y-figureShiftY)];
+
 }
 -(void) setBombPictureWithFile:(NSString*) file{
     bomb = [CCSprite spriteWithFile:file];
@@ -135,8 +117,23 @@ ccColor3B color;
     if(!isRetina)
     {
         [bomb setScale:0.7f];
+    }else{
+        [bomb setScale:1.3f];
     }
 }
+
+-(void) setFreezePictureWithFile:(NSString*) file{
+    bomb = [CCSprite spriteWithFile:file];
+    CGPoint p = self.position;
+    [bomb setPosition:ccp(p.x+figureShiftX,p.y-figureShiftY)];
+    if(!isRetina)
+    {
+        [bomb setScale:0.5f];
+    }else{
+        [bomb setScale:1];
+    }
+}
+
 -(int) nextValue{
     if(currentNumber==0)
     {

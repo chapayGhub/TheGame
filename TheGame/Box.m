@@ -782,7 +782,7 @@
     if(r<rate)
     {
         [sprite setShiftValue:2];
-        [sprite setBombPictureWithFile:@"freeze.png"];
+        [sprite setFreezePictureWithFile:@"freeze.png"];
         if(!isRetina)
         {
             sprite.bomb.scale=0.5f;
