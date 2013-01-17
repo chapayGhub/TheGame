@@ -70,7 +70,7 @@ static GameDef* def;
     
     
     GameContext *context20 = [[GameContext alloc] initWithValues:Bomb Level:1 Score:500 Time:0 KindCound:6 Interval:5 FixedRate:0];
-    GameContext *context21 = [[GameContext alloc] initWithValues:Bomb Level:2 Score:1000 Time:0 KindCound:6 Interval:2 FixedRate:0];
+    GameContext *context21 = [[GameContext alloc] initWithValues:Bomb Level:2 Score:1000 Time:0 KindCound:6 Interval:5 FixedRate:0];
     GameContext *context22 = [[GameContext alloc] initWithValues:Bomb Level:3 Score:1500 Time:0 KindCound:6 Interval:5 FixedRate:15];
     GameContext *context23 = [[GameContext alloc] initWithValues:Bomb Level:4 Score:2000 Time:0 KindCound:6 Interval:4 FixedRate:25];
     GameContext *context24 = [[GameContext alloc] initWithValues:Bomb Level:5 Score:2500 Time:0 KindCound:6 Interval:4 FixedRate:35];
