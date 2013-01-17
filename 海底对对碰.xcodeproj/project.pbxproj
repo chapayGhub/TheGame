@@ -171,7 +171,7 @@
 		C68B078A166D82A3005306DD /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = C68B0789166D82A3005306DD /* vec3.c */; };
 		C68B078C166D82A3005306DD /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C68B078B166D82A3005306DD /* vec4.c */; };
 		C68B0791166D82A3005306DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0790166D82A3005306DD /* main.m */; };
-		C68B0794166D82A3005306DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0793166D82A3005306DD /* AppDelegate.m */; };
+		C68B0794166D82A3005306DD /* SeaCraftAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0793166D82A3005306DD /* SeaCraftAppDelegate.m */; };
 		C68B079A166D82A3005306DD /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0799166D82A3005306DD /* IntroLayer.m */; };
 		C68B07AE166D8673005306DD /* SceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B07AD166D8673005306DD /* SceneManager.m */; };
 		C68DC6491676E8AA00F5412F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68DC6481676E8AA00F5412F /* SystemConfiguration.framework */; };
@@ -341,7 +341,7 @@
 		C68AF23D169E7B6D004E82A4 /* UMUFPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPImageView.h; sourceTree = "<group>"; };
 		C68AF23E169E7B6D004E82A4 /* UMUFPTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPTableView.h; sourceTree = "<group>"; };
 		C68AF23F169E7B6D004E82A4 /* UMUFPWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPWebView.h; sourceTree = "<group>"; };
-		C68B0604166D82A0005306DD /* TheGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C68B0604166D82A0005306DD /* 海底对对碰.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "海底对对碰.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C68B0608166D82A0005306DD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C68B060A166D82A0005306DD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		C68B060C166D82A0005306DD /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -590,7 +590,7 @@
 		C68B078F166D82A3005306DD /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		C68B0790166D82A3005306DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C68B0792166D82A3005306DD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C68B0793166D82A3005306DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C68B0793166D82A3005306DD /* SeaCraftAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeaCraftAppDelegate.m; sourceTree = "<group>"; };
 		C68B0798166D82A3005306DD /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		C68B0799166D82A3005306DD /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		C68B07AC166D8673005306DD /* SceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneManager.h; sourceTree = "<group>"; };
@@ -945,7 +945,7 @@
 		C68B0605166D82A0005306DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C68B0604166D82A0005306DD /* TheGame.app */,
+				C68B0604166D82A0005306DD /* 海底对对碰.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1409,7 +1409,7 @@
 			isa = PBXGroup;
 			children = (
 				C68B0792166D82A3005306DD /* AppDelegate.h */,
-				C68B0793166D82A3005306DD /* AppDelegate.m */,
+				C68B0793166D82A3005306DD /* SeaCraftAppDelegate.m */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -1732,9 +1732,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C68B0603166D82A0005306DD /* TheGame */ = {
+		C68B0603166D82A0005306DD /* 海底对对碰 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C68B079D166D82A3005306DD /* Build configuration list for PBXNativeTarget "TheGame" */;
+			buildConfigurationList = C68B079D166D82A3005306DD /* Build configuration list for PBXNativeTarget "海底对对碰" */;
 			buildPhases = (
 				C68B0600166D82A0005306DD /* Sources */,
 				C68B0601166D82A0005306DD /* Frameworks */,
@@ -1744,9 +1744,9 @@
 			);
 			dependencies = (
 			);
-			name = TheGame;
+			name = "海底对对碰";
 			productName = TheGame;
-			productReference = C68B0604166D82A0005306DD /* TheGame.app */;
+			productReference = C68B0604166D82A0005306DD /* 海底对对碰.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1757,7 +1757,7 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 			};
-			buildConfigurationList = C68B05FE166D82A0005306DD /* Build configuration list for PBXProject "TheGame" */;
+			buildConfigurationList = C68B05FE166D82A0005306DD /* Build configuration list for PBXProject "海底对对碰" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1769,7 +1769,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C68B0603166D82A0005306DD /* TheGame */,
+				C68B0603166D82A0005306DD /* 海底对对碰 */,
 			);
 		};
 /* End PBXProject section */
@@ -1984,7 +1984,7 @@
 				C68B078A166D82A3005306DD /* vec3.c in Sources */,
 				C68B078C166D82A3005306DD /* vec4.c in Sources */,
 				C68B0791166D82A3005306DD /* main.m in Sources */,
-				C68B0794166D82A3005306DD /* AppDelegate.m in Sources */,
+				C68B0794166D82A3005306DD /* SeaCraftAppDelegate.m in Sources */,
 				C68B079A166D82A3005306DD /* IntroLayer.m in Sources */,
 				C68B07AE166D8673005306DD /* SceneManager.m in Sources */,
 				C6884790167190DD008633AD /* Germ.m in Sources */,
@@ -2109,7 +2109,7 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "海底对对碰";
 				PROVISIONING_PROFILE = "919C9408-ED7C-49FA-B79B-014A4F393548";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "919C9408-ED7C-49FA-B79B-014A4F393548";
 				WRAPPER_EXTENSION = app;
@@ -2138,7 +2138,7 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "海底对对碰";
 				PROVISIONING_PROFILE = "919C9408-ED7C-49FA-B79B-014A4F393548";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "919C9408-ED7C-49FA-B79B-014A4F393548";
 				VALIDATE_PRODUCT = YES;
@@ -2149,7 +2149,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C68B05FE166D82A0005306DD /* Build configuration list for PBXProject "TheGame" */ = {
+		C68B05FE166D82A0005306DD /* Build configuration list for PBXProject "海底对对碰" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C68B079B166D82A3005306DD /* Debug */,
@@ -2158,7 +2158,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C68B079D166D82A3005306DD /* Build configuration list for PBXNativeTarget "TheGame" */ = {
+		C68B079D166D82A3005306DD /* Build configuration list for PBXNativeTarget "海底对对碰" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C68B079E166D82A3005306DD /* Debug */,
