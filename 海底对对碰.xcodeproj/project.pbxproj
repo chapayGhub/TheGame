@@ -171,7 +171,7 @@
 		C68B078A166D82A3005306DD /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = C68B0789166D82A3005306DD /* vec3.c */; };
 		C68B078C166D82A3005306DD /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = C68B078B166D82A3005306DD /* vec4.c */; };
 		C68B0791166D82A3005306DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0790166D82A3005306DD /* main.m */; };
-		C68B0794166D82A3005306DD /* SeaCraftAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0793166D82A3005306DD /* SeaCraftAppDelegate.m */; };
+		C68B0794166D82A3005306DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0793166D82A3005306DD /* AppDelegate.m */; };
 		C68B079A166D82A3005306DD /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B0799166D82A3005306DD /* IntroLayer.m */; };
 		C68B07AE166D8673005306DD /* SceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C68B07AD166D8673005306DD /* SceneManager.m */; };
 		C68DC6491676E8AA00F5412F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68DC6481676E8AA00F5412F /* SystemConfiguration.framework */; };
@@ -590,7 +590,7 @@
 		C68B078F166D82A3005306DD /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		C68B0790166D82A3005306DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C68B0792166D82A3005306DD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C68B0793166D82A3005306DD /* SeaCraftAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeaCraftAppDelegate.m; sourceTree = "<group>"; };
+		C68B0793166D82A3005306DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C68B0798166D82A3005306DD /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		C68B0799166D82A3005306DD /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		C68B07AC166D8673005306DD /* SceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneManager.h; sourceTree = "<group>"; };
@@ -1409,7 +1409,7 @@
 			isa = PBXGroup;
 			children = (
 				C68B0792166D82A3005306DD /* AppDelegate.h */,
-				C68B0793166D82A3005306DD /* SeaCraftAppDelegate.m */,
+				C68B0793166D82A3005306DD /* AppDelegate.m */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -1984,7 +1984,7 @@
 				C68B078A166D82A3005306DD /* vec3.c in Sources */,
 				C68B078C166D82A3005306DD /* vec4.c in Sources */,
 				C68B0791166D82A3005306DD /* main.m in Sources */,
-				C68B0794166D82A3005306DD /* SeaCraftAppDelegate.m in Sources */,
+				C68B0794166D82A3005306DD /* AppDelegate.m in Sources */,
 				C68B079A166D82A3005306DD /* IntroLayer.m in Sources */,
 				C68B07AE166D8673005306DD /* SceneManager.m in Sources */,
 				C6884790167190DD008633AD /* Germ.m in Sources */,
