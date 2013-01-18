@@ -1,9 +1,10 @@
 #import "cocos2d.h"
 #import "SceneManager.h"
 #import "UserProfile.h"
+#import "AdLayer.h"
 
 // 主菜单
-@interface MainMenuLayer :CCLayer{
+@interface MainMenuLayer :AdLayer{
     CCMenu *menu;
 }
 

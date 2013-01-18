@@ -65,9 +65,10 @@
     }
     [self setType:atype];
 
-    
     GermFigure *figure = [GermFigure spriteWithFrame:[NSString stringWithFormat:atype==SuperGerm?@"fb%d.png":@"q%d.png",value]];
     [figure setPosition:[self pixPosition]];
+
+
     switch(atype)
     {
         case SuperGerm:
@@ -77,6 +78,7 @@
             [figure setBombPictureWithFile:@"poison.png"];
             [layer addChild:figure];
             [layer addChild:figure.bomb];
+            [self showLight:figure.position];
             [MusicHandler playEffect:@"poisonappear.mp3"];
             break;
         case BombGerm:
@@ -85,6 +87,7 @@
             [layer addChild:figure];
             [layer addChild:figure.bomb];
             [layer addChild:figure.label];
+            [self showLight:figure.position];
             [MusicHandler playEffect:@"bombappear.wav"];
             break;
         case TimeBombGerm:
@@ -93,6 +96,7 @@
             [layer addChild:figure];
             [layer addChild:figure.bomb];
             [layer addChild:figure.label];
+            [self showLight:figure.position];
             [MusicHandler playEffect:@"bombappear.wav"];
             break;
         case NormalGerm:
@@ -113,6 +117,24 @@
     }
     [self setSprite:figure];
 
+}
+
+-(void) showLight:(CGPoint) pos{
+    PlayLayer *layer = [PlayLayer sharedInstance:NO];
+    CCSprite* light = [CCSprite spriteWithFile:@"light.png"];
+    if(!isRetina)
+    {
+        [light setScale:0.5f];
+    }
+    light.position=pos;
+    CCAction *action = [CCSequence actions:[CCRotateBy actionWithDuration:1 angle:60],
+                        [CCCallFuncN actionWithTarget:self selector:@selector(removeSprite:)], nil];
+    [layer addChild:light z:2];
+    [light runAction:action];
+
+}
+-(void) removeSprite: (id) sender{
+    [sender removeFromParentAndCleanup:YES];
 }
 
 @end

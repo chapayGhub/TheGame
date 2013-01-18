@@ -1,7 +1,6 @@
 
 #import "cocos2d.h"
 #import "CCTransition.h"
-#import "MobiSageSDK.h"
 #import "MainMenuLayer.h"
 #import "PlayDisplayLayer.h"
 #import "ActiveBackgroundLayer.h"
@@ -10,8 +9,10 @@
 #import "GameModeChooseLayer.h"
 #import "PauseLayer.h"
 #import "MobClick.h"
+#import "AdSageDelegate.h"
+#import "AdLayer.h"
 
-@interface SceneManager : NSObject {
+@interface SceneManager : NSObject{
 
 }
 

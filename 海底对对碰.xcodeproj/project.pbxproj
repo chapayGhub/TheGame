@@ -45,6 +45,42 @@
 		C62CC30716A795BB0098B2E4 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C62CC30516A795BB0098B2E4 /* explosion.mp3 */; };
 		C62DB9E91690A11000B72EF8 /* sun_ray.png in Resources */ = {isa = PBXBuildFile; fileRef = C62DB9E81690A11000B72EF8 /* sun_ray.png */; };
 		C652D641168D4C1F001F4719 /* MusicHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C652D640168D4C1F001F4719 /* MusicHandler.m */; };
+		C65363A416A902B5002B860A /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = C65363A316A902B5002B860A /* light.png */; };
+		C65363AF16A915A0002B860A /* AdLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C65363AE16A915A0002B860A /* AdLayer.m */; };
+		C653644316A9CACD002B860A /* libMobiSageMediatorSDK_2.1.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C65363E016A9CACD002B860A /* libMobiSageMediatorSDK_2.1.2.a */; };
+		C653644416A9CACD002B860A /* libMobiSageRecommend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C65363E316A9CACD002B860A /* libMobiSageRecommend.a */; };
+		C653644516A9CACD002B860A /* MobiSageRecommendBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C65363E416A9CACD002B860A /* MobiSageRecommendBundle.bundle */; };
+		C653644616A9CACD002B860A /* MSKaixinAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C65363EC16A9CACD002B860A /* MSKaixinAccessToken.m */; };
+		C653644716A9CACD002B860A /* MSKaixinAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = C65363EE16A9CACD002B860A /* MSKaixinAuthorize.m */; };
+		C653644816A9CACD002B860A /* MSKaixinFriendsMe.m in Sources */ = {isa = PBXBuildFile; fileRef = C65363F116A9CACD002B860A /* MSKaixinFriendsMe.m */; };
+		C653644916A9CACD002B860A /* MSKaixinPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = C65363F316A9CACD002B860A /* MSKaixinPackage.m */; };
+		C653644A16A9CACD002B860A /* MSKaixinPageAddFan.m in Sources */ = {isa = PBXBuildFile; fileRef = C65363F616A9CACD002B860A /* MSKaixinPageAddFan.m */; };
+		C653644B16A9CACD002B860A /* MSKaixinAlbumShow.m in Sources */ = {isa = PBXBuildFile; fileRef = C65363F916A9CACD002B860A /* MSKaixinAlbumShow.m */; };
+		C653644C16A9CACD002B860A /* MSKaixinPhotoUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = C65363FB16A9CACD002B860A /* MSKaixinPhotoUpload.m */; };
+		C653644D16A9CACD002B860A /* MSKaixinRecordsUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = C65363FE16A9CACD002B860A /* MSKaixinRecordsUpload.m */; };
+		C653644E16A9CACD002B860A /* MSRenrenAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = C653640216A9CACD002B860A /* MSRenrenAuthorize.m */; };
+		C653644F16A9CACD002B860A /* MSRenrenToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C653640416A9CACD002B860A /* MSRenrenToken.m */; };
+		C653645016A9CACD002B860A /* MSRenrenFriendsGetFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = C653640716A9CACD002B860A /* MSRenrenFriendsGetFriends.m */; };
+		C653645116A9CACD002B860A /* MSRenrenPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = C653640916A9CACD002B860A /* MSRenrenPackage.m */; };
+		C653645216A9CACD002B860A /* MSRenrenPagesBecomeFan.m in Sources */ = {isa = PBXBuildFile; fileRef = C653640C16A9CACD002B860A /* MSRenrenPagesBecomeFan.m */; };
+		C653645316A9CACD002B860A /* MSRenrenPhotosGetAlbums.m in Sources */ = {isa = PBXBuildFile; fileRef = C653640F16A9CACD002B860A /* MSRenrenPhotosGetAlbums.m */; };
+		C653645416A9CACD002B860A /* MSRenrenPhototsUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = C653641116A9CACD002B860A /* MSRenrenPhototsUpload.m */; };
+		C653645516A9CACD002B860A /* MSRenrenStatusSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C653641416A9CACD002B860A /* MSRenrenStatusSet.m */; };
+		C653645616A9CACD002B860A /* MSSinaAccountGetUID.m in Sources */ = {isa = PBXBuildFile; fileRef = C653641816A9CACD002B860A /* MSSinaAccountGetUID.m */; };
+		C653645716A9CACD002B860A /* MSSinaAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C653641B16A9CACD002B860A /* MSSinaAccessToken.m */; };
+		C653645816A9CACD002B860A /* MSSinaFriendshipCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = C653641E16A9CACD002B860A /* MSSinaFriendshipCreate.m */; };
+		C653645916A9CACD002B860A /* MSSinaFriendshipsDestroy.m in Sources */ = {isa = PBXBuildFile; fileRef = C653642016A9CACD002B860A /* MSSinaFriendshipsDestroy.m */; };
+		C653645A16A9CACD002B860A /* MSSinaFriendshipsFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = C653642216A9CACD002B860A /* MSSinaFriendshipsFriends.m */; };
+		C653645B16A9CACD002B860A /* MSSinaWeiboPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = C653642416A9CACD002B860A /* MSSinaWeiboPackage.m */; };
+		C653645C16A9CACD002B860A /* MSSinaStatusUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C653642716A9CACD002B860A /* MSSinaStatusUpdate.m */; };
+		C653645D16A9CACD002B860A /* MSSinaStatusUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = C653642916A9CACD002B860A /* MSSinaStatusUpload.m */; };
+		C653645E16A9CACD002B860A /* MSSinaUserShow.m in Sources */ = {isa = PBXBuildFile; fileRef = C653642C16A9CACD002B860A /* MSSinaUserShow.m */; };
+		C653645F16A9CACD002B860A /* MSTencentAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C653643016A9CACD002B860A /* MSTencentAccessToken.m */; };
+		C653646016A9CACD002B860A /* MSTencentFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = C653643316A9CACD002B860A /* MSTencentFriends.m */; };
+		C653646116A9CACD002B860A /* MSTencentWeiboPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = C653643516A9CACD002B860A /* MSTencentWeiboPackage.m */; };
+		C653646216A9CACD002B860A /* MSTencentPicWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = C653643816A9CACD002B860A /* MSTencentPicWeibo.m */; };
+		C653646316A9CACD002B860A /* MSTencentWeiboAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C653643A16A9CACD002B860A /* MSTencentWeiboAdd.m */; };
+		C653646416A9CACD002B860A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C653644116A9CACD002B860A /* JSONKit.m */; };
 		C656B112167A812700B24E87 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C656B111167A812700B24E87 /* CommonUtils.m */; };
 		C656B115167A838100B24E87 /* GameDef.m in Sources */ = {isa = PBXBuildFile; fileRef = C656B114167A838100B24E87 /* GameDef.m */; };
 		C677DA84169BA3E7005253BA /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C677DA83169BA3E7005253BA /* icon.png */; };
@@ -179,38 +215,6 @@
 		C68DC64D1676E8C100F5412F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68DC64C1676E8C100F5412F /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C68DC64F1676E8D800F5412F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68DC64E1676E8D800F5412F /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C68DC6511676E8E100F5412F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68DC6501676E8E100F5412F /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		C68DC6CC1677091F00F5412F /* libMobiSageMediatorSDK_2.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C68DC66A1677091F00F5412F /* libMobiSageMediatorSDK_2.0.0.a */; };
-		C68DC6CE1677091F00F5412F /* MobiSageRecommendBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C68DC66F1677091F00F5412F /* MobiSageRecommendBundle.bundle */; };
-		C68DC6CF1677091F00F5412F /* MSKaixinAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6761677091F00F5412F /* MSKaixinAccessToken.m */; };
-		C68DC6D01677091F00F5412F /* MSKaixinAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6781677091F00F5412F /* MSKaixinAuthorize.m */; };
-		C68DC6D11677091F00F5412F /* MSKaixinFriendsMe.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC67B1677091F00F5412F /* MSKaixinFriendsMe.m */; };
-		C68DC6D21677091F00F5412F /* MSKaixinPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC67D1677091F00F5412F /* MSKaixinPackage.m */; };
-		C68DC6D31677091F00F5412F /* MSKaixinPageAddFan.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6801677091F00F5412F /* MSKaixinPageAddFan.m */; };
-		C68DC6D41677091F00F5412F /* MSKaixinAlbumShow.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6831677091F00F5412F /* MSKaixinAlbumShow.m */; };
-		C68DC6D51677091F00F5412F /* MSKaixinPhotoUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6851677091F00F5412F /* MSKaixinPhotoUpload.m */; };
-		C68DC6D61677091F00F5412F /* MSKaixinRecordsUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6881677091F00F5412F /* MSKaixinRecordsUpload.m */; };
-		C68DC6D71677091F00F5412F /* MSRenrenAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC68C1677091F00F5412F /* MSRenrenAuthorize.m */; };
-		C68DC6D81677091F00F5412F /* MSRenrenToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC68E1677091F00F5412F /* MSRenrenToken.m */; };
-		C68DC6D91677091F00F5412F /* MSRenrenFriendsGetFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6911677091F00F5412F /* MSRenrenFriendsGetFriends.m */; };
-		C68DC6DA1677091F00F5412F /* MSRenrenPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6931677091F00F5412F /* MSRenrenPackage.m */; };
-		C68DC6DB1677091F00F5412F /* MSRenrenPagesBecomeFan.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6961677091F00F5412F /* MSRenrenPagesBecomeFan.m */; };
-		C68DC6DC1677091F00F5412F /* MSRenrenPhotosGetAlbums.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6991677091F00F5412F /* MSRenrenPhotosGetAlbums.m */; };
-		C68DC6DD1677091F00F5412F /* MSRenrenPhototsUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC69B1677091F00F5412F /* MSRenrenPhototsUpload.m */; };
-		C68DC6DE1677091F00F5412F /* MSRenrenStatusSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC69E1677091F00F5412F /* MSRenrenStatusSet.m */; };
-		C68DC6DF1677091F00F5412F /* MSSinaAccountGetUID.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6A21677091F00F5412F /* MSSinaAccountGetUID.m */; };
-		C68DC6E01677091F00F5412F /* MSSinaAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6A51677091F00F5412F /* MSSinaAccessToken.m */; };
-		C68DC6E11677091F00F5412F /* MSSinaFriendshipCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6A81677091F00F5412F /* MSSinaFriendshipCreate.m */; };
-		C68DC6E21677091F00F5412F /* MSSinaFriendshipsDestroy.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6AA1677091F00F5412F /* MSSinaFriendshipsDestroy.m */; };
-		C68DC6E31677091F00F5412F /* MSSinaFriendshipsFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6AC1677091F00F5412F /* MSSinaFriendshipsFriends.m */; };
-		C68DC6E41677091F00F5412F /* MSSinaWeiboPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6AE1677091F00F5412F /* MSSinaWeiboPackage.m */; };
-		C68DC6E51677091F00F5412F /* MSSinaStatusUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6B11677091F00F5412F /* MSSinaStatusUpdate.m */; };
-		C68DC6E61677091F00F5412F /* MSSinaStatusUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6B31677091F00F5412F /* MSSinaStatusUpload.m */; };
-		C68DC6E71677091F00F5412F /* MSSinaUserShow.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6B61677091F00F5412F /* MSSinaUserShow.m */; };
-		C68DC6E81677091F00F5412F /* MSTencentAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6BA1677091F00F5412F /* MSTencentAccessToken.m */; };
-		C68DC6E91677091F00F5412F /* MSTencentFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6BD1677091F00F5412F /* MSTencentFriends.m */; };
-		C68DC6EA1677091F00F5412F /* MSTencentWeiboPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6BF1677091F00F5412F /* MSTencentWeiboPackage.m */; };
-		C68DC6EB1677091F00F5412F /* MSTencentPicWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6C21677091F00F5412F /* MSTencentPicWeibo.m */; };
-		C68DC6EC1677091F00F5412F /* MSTencentWeiboAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C68DC6C41677091F00F5412F /* MSTencentWeiboAdd.m */; };
 		C68E7773168662A6007F7353 /* level_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C68E7772168662A6007F7353 /* level_bg.png */; };
 		C68E7776168662E7007F7353 /* start_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C68E7775168662E7007F7353 /* start_bg.png */; };
 		C68E777C1686647A007F7353 /* numbomb_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = C68E77791686647A007F7353 /* numbomb_bt.png */; };
@@ -269,11 +273,10 @@
 		C6F5291116A615F800D3948F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F5291016A615F800D3948F /* Default@2x.png */; };
 		C6F5291316A6428E00D3948F /* help_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F5291216A6428E00D3948F /* help_bg.png */; };
 		C6F5291616A6570200D3948F /* HelpLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6F5291516A6570200D3948F /* HelpLayer.m */; };
-		C6F5291916A659A500D3948F /* title1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F5291716A659A500D3948F /* title1.png */; };
-		C6F5291A16A659A500D3948F /* title2.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F5291816A659A500D3948F /* title2.png */; };
 		C6F5291C16A659EF00D3948F /* startbackground.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6F5291B16A659EF00D3948F /* startbackground.wav */; };
 		C6F7A8C3168E91B000037251 /* freeze.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F7A8C2168E91B000037251 /* freeze.png */; };
 		C6FAC43716A7B2A7006D4858 /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6FAC43616A7B2A7006D4858 /* background.wav */; };
+		C6FAC43916A870E7006D4858 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = C6FAC43816A870E7006D4858 /* title.png */; };
 		C6FFA0471678F4260069C640 /* ActiveBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FFA0461678F4260069C640 /* ActiveBackgroundLayer.m */; };
 /* End PBXBuildFile section */
 
@@ -319,6 +322,81 @@
 		C62DB9E81690A11000B72EF8 /* sun_ray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sun_ray.png; path = Resources/sun_ray.png; sourceTree = "<group>"; };
 		C652D63F168D4C1F001F4719 /* MusicHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicHandler.h; sourceTree = "<group>"; };
 		C652D640168D4C1F001F4719 /* MusicHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicHandler.m; sourceTree = "<group>"; };
+		C65363A316A902B5002B860A /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = light.png; path = Resources/light.png; sourceTree = "<group>"; };
+		C65363AD16A915A0002B860A /* AdLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdLayer.h; sourceTree = "<group>"; };
+		C65363AE16A915A0002B860A /* AdLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdLayer.m; sourceTree = "<group>"; };
+		C65363E016A9CACD002B860A /* libMobiSageMediatorSDK_2.1.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobiSageMediatorSDK_2.1.2.a; sourceTree = "<group>"; };
+		C65363E316A9CACD002B860A /* libMobiSageRecommend.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobiSageRecommend.a; sourceTree = "<group>"; };
+		C65363E416A9CACD002B860A /* MobiSageRecommendBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobiSageRecommendBundle.bundle; sourceTree = "<group>"; };
+		C65363E516A9CACD002B860A /* MobiSageRecommendSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobiSageRecommendSDK.h; sourceTree = "<group>"; };
+		C65363E816A9CACD002B860A /* MobiSageSNSPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobiSageSNSPackage.h; sourceTree = "<group>"; };
+		C65363EB16A9CACD002B860A /* MSKaixinAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinAccessToken.h; sourceTree = "<group>"; };
+		C65363EC16A9CACD002B860A /* MSKaixinAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinAccessToken.m; sourceTree = "<group>"; };
+		C65363ED16A9CACD002B860A /* MSKaixinAuthorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinAuthorize.h; sourceTree = "<group>"; };
+		C65363EE16A9CACD002B860A /* MSKaixinAuthorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinAuthorize.m; sourceTree = "<group>"; };
+		C65363F016A9CACD002B860A /* MSKaixinFriendsMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinFriendsMe.h; sourceTree = "<group>"; };
+		C65363F116A9CACD002B860A /* MSKaixinFriendsMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinFriendsMe.m; sourceTree = "<group>"; };
+		C65363F216A9CACD002B860A /* MSKaixinPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinPackage.h; sourceTree = "<group>"; };
+		C65363F316A9CACD002B860A /* MSKaixinPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinPackage.m; sourceTree = "<group>"; };
+		C65363F516A9CACD002B860A /* MSKaixinPageAddFan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinPageAddFan.h; sourceTree = "<group>"; };
+		C65363F616A9CACD002B860A /* MSKaixinPageAddFan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinPageAddFan.m; sourceTree = "<group>"; };
+		C65363F816A9CACD002B860A /* MSKaixinAlbumShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinAlbumShow.h; sourceTree = "<group>"; };
+		C65363F916A9CACD002B860A /* MSKaixinAlbumShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinAlbumShow.m; sourceTree = "<group>"; };
+		C65363FA16A9CACD002B860A /* MSKaixinPhotoUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinPhotoUpload.h; sourceTree = "<group>"; };
+		C65363FB16A9CACD002B860A /* MSKaixinPhotoUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinPhotoUpload.m; sourceTree = "<group>"; };
+		C65363FD16A9CACD002B860A /* MSKaixinRecordsUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinRecordsUpload.h; sourceTree = "<group>"; };
+		C65363FE16A9CACD002B860A /* MSKaixinRecordsUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinRecordsUpload.m; sourceTree = "<group>"; };
+		C653640116A9CACD002B860A /* MSRenrenAuthorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenAuthorize.h; sourceTree = "<group>"; };
+		C653640216A9CACD002B860A /* MSRenrenAuthorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenAuthorize.m; sourceTree = "<group>"; };
+		C653640316A9CACD002B860A /* MSRenrenToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenToken.h; sourceTree = "<group>"; };
+		C653640416A9CACD002B860A /* MSRenrenToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenToken.m; sourceTree = "<group>"; };
+		C653640616A9CACD002B860A /* MSRenrenFriendsGetFriends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenFriendsGetFriends.h; sourceTree = "<group>"; };
+		C653640716A9CACD002B860A /* MSRenrenFriendsGetFriends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenFriendsGetFriends.m; sourceTree = "<group>"; };
+		C653640816A9CACD002B860A /* MSRenrenPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenPackage.h; sourceTree = "<group>"; };
+		C653640916A9CACD002B860A /* MSRenrenPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenPackage.m; sourceTree = "<group>"; };
+		C653640B16A9CACD002B860A /* MSRenrenPagesBecomeFan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenPagesBecomeFan.h; sourceTree = "<group>"; };
+		C653640C16A9CACD002B860A /* MSRenrenPagesBecomeFan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenPagesBecomeFan.m; sourceTree = "<group>"; };
+		C653640E16A9CACD002B860A /* MSRenrenPhotosGetAlbums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenPhotosGetAlbums.h; sourceTree = "<group>"; };
+		C653640F16A9CACD002B860A /* MSRenrenPhotosGetAlbums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenPhotosGetAlbums.m; sourceTree = "<group>"; };
+		C653641016A9CACD002B860A /* MSRenrenPhototsUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenPhototsUpload.h; sourceTree = "<group>"; };
+		C653641116A9CACD002B860A /* MSRenrenPhototsUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenPhototsUpload.m; sourceTree = "<group>"; };
+		C653641316A9CACD002B860A /* MSRenrenStatusSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenStatusSet.h; sourceTree = "<group>"; };
+		C653641416A9CACD002B860A /* MSRenrenStatusSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenStatusSet.m; sourceTree = "<group>"; };
+		C653641716A9CACD002B860A /* MSSinaAccountGetUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaAccountGetUID.h; sourceTree = "<group>"; };
+		C653641816A9CACD002B860A /* MSSinaAccountGetUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaAccountGetUID.m; sourceTree = "<group>"; };
+		C653641A16A9CACD002B860A /* MSSinaAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaAccessToken.h; sourceTree = "<group>"; };
+		C653641B16A9CACD002B860A /* MSSinaAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaAccessToken.m; sourceTree = "<group>"; };
+		C653641D16A9CACD002B860A /* MSSinaFriendshipCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaFriendshipCreate.h; sourceTree = "<group>"; };
+		C653641E16A9CACD002B860A /* MSSinaFriendshipCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaFriendshipCreate.m; sourceTree = "<group>"; };
+		C653641F16A9CACD002B860A /* MSSinaFriendshipsDestroy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaFriendshipsDestroy.h; sourceTree = "<group>"; };
+		C653642016A9CACD002B860A /* MSSinaFriendshipsDestroy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaFriendshipsDestroy.m; sourceTree = "<group>"; };
+		C653642116A9CACD002B860A /* MSSinaFriendshipsFriends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaFriendshipsFriends.h; sourceTree = "<group>"; };
+		C653642216A9CACD002B860A /* MSSinaFriendshipsFriends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaFriendshipsFriends.m; sourceTree = "<group>"; };
+		C653642316A9CACD002B860A /* MSSinaWeiboPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaWeiboPackage.h; sourceTree = "<group>"; };
+		C653642416A9CACD002B860A /* MSSinaWeiboPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaWeiboPackage.m; sourceTree = "<group>"; };
+		C653642616A9CACD002B860A /* MSSinaStatusUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaStatusUpdate.h; sourceTree = "<group>"; };
+		C653642716A9CACD002B860A /* MSSinaStatusUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaStatusUpdate.m; sourceTree = "<group>"; };
+		C653642816A9CACD002B860A /* MSSinaStatusUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaStatusUpload.h; sourceTree = "<group>"; };
+		C653642916A9CACD002B860A /* MSSinaStatusUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaStatusUpload.m; sourceTree = "<group>"; };
+		C653642B16A9CACD002B860A /* MSSinaUserShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaUserShow.h; sourceTree = "<group>"; };
+		C653642C16A9CACD002B860A /* MSSinaUserShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaUserShow.m; sourceTree = "<group>"; };
+		C653642F16A9CACD002B860A /* MSTencentAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTencentAccessToken.h; sourceTree = "<group>"; };
+		C653643016A9CACD002B860A /* MSTencentAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTencentAccessToken.m; sourceTree = "<group>"; };
+		C653643216A9CACD002B860A /* MSTencentFriends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTencentFriends.h; sourceTree = "<group>"; };
+		C653643316A9CACD002B860A /* MSTencentFriends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTencentFriends.m; sourceTree = "<group>"; };
+		C653643416A9CACD002B860A /* MSTencentWeiboPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTencentWeiboPackage.h; sourceTree = "<group>"; };
+		C653643516A9CACD002B860A /* MSTencentWeiboPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTencentWeiboPackage.m; sourceTree = "<group>"; };
+		C653643716A9CACD002B860A /* MSTencentPicWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTencentPicWeibo.h; sourceTree = "<group>"; };
+		C653643816A9CACD002B860A /* MSTencentPicWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTencentPicWeibo.m; sourceTree = "<group>"; };
+		C653643916A9CACD002B860A /* MSTencentWeiboAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTencentWeiboAdd.h; sourceTree = "<group>"; };
+		C653643A16A9CACD002B860A /* MSTencentWeiboAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTencentWeiboAdd.m; sourceTree = "<group>"; };
+		C653643C16A9CACD002B860A /* AdSageAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSageAdapter.h; sourceTree = "<group>"; };
+		C653643D16A9CACD002B860A /* AdSageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSageDelegate.h; sourceTree = "<group>"; };
+		C653643E16A9CACD002B860A /* AdSageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSageManager.h; sourceTree = "<group>"; };
+		C653643F16A9CACD002B860A /* AdSageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSageView.h; sourceTree = "<group>"; };
+		C653644016A9CACD002B860A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		C653644116A9CACD002B860A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		C653644216A9CACD002B860A /* MobiSageSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobiSageSDK.h; sourceTree = "<group>"; };
 		C656B110167A812700B24E87 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
 		C656B111167A812700B24E87 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
 		C656B113167A838100B24E87 /* GameDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDef.h; sourceTree = "<group>"; };
@@ -601,75 +679,6 @@
 		C68DC64C1676E8C100F5412F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C68DC64E1676E8D800F5412F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C68DC6501676E8E100F5412F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		C68DC66A1677091F00F5412F /* libMobiSageMediatorSDK_2.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobiSageMediatorSDK_2.0.0.a; sourceTree = "<group>"; };
-		C68DC66F1677091F00F5412F /* MobiSageRecommendBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobiSageRecommendBundle.bundle; sourceTree = "<group>"; };
-		C68DC6721677091F00F5412F /* MobiSageSNSPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobiSageSNSPackage.h; sourceTree = "<group>"; };
-		C68DC6751677091F00F5412F /* MSKaixinAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinAccessToken.h; sourceTree = "<group>"; };
-		C68DC6761677091F00F5412F /* MSKaixinAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinAccessToken.m; sourceTree = "<group>"; };
-		C68DC6771677091F00F5412F /* MSKaixinAuthorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinAuthorize.h; sourceTree = "<group>"; };
-		C68DC6781677091F00F5412F /* MSKaixinAuthorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinAuthorize.m; sourceTree = "<group>"; };
-		C68DC67A1677091F00F5412F /* MSKaixinFriendsMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinFriendsMe.h; sourceTree = "<group>"; };
-		C68DC67B1677091F00F5412F /* MSKaixinFriendsMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinFriendsMe.m; sourceTree = "<group>"; };
-		C68DC67C1677091F00F5412F /* MSKaixinPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinPackage.h; sourceTree = "<group>"; };
-		C68DC67D1677091F00F5412F /* MSKaixinPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinPackage.m; sourceTree = "<group>"; };
-		C68DC67F1677091F00F5412F /* MSKaixinPageAddFan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinPageAddFan.h; sourceTree = "<group>"; };
-		C68DC6801677091F00F5412F /* MSKaixinPageAddFan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinPageAddFan.m; sourceTree = "<group>"; };
-		C68DC6821677091F00F5412F /* MSKaixinAlbumShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinAlbumShow.h; sourceTree = "<group>"; };
-		C68DC6831677091F00F5412F /* MSKaixinAlbumShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinAlbumShow.m; sourceTree = "<group>"; };
-		C68DC6841677091F00F5412F /* MSKaixinPhotoUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinPhotoUpload.h; sourceTree = "<group>"; };
-		C68DC6851677091F00F5412F /* MSKaixinPhotoUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinPhotoUpload.m; sourceTree = "<group>"; };
-		C68DC6871677091F00F5412F /* MSKaixinRecordsUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSKaixinRecordsUpload.h; sourceTree = "<group>"; };
-		C68DC6881677091F00F5412F /* MSKaixinRecordsUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSKaixinRecordsUpload.m; sourceTree = "<group>"; };
-		C68DC68B1677091F00F5412F /* MSRenrenAuthorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenAuthorize.h; sourceTree = "<group>"; };
-		C68DC68C1677091F00F5412F /* MSRenrenAuthorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenAuthorize.m; sourceTree = "<group>"; };
-		C68DC68D1677091F00F5412F /* MSRenrenToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenToken.h; sourceTree = "<group>"; };
-		C68DC68E1677091F00F5412F /* MSRenrenToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenToken.m; sourceTree = "<group>"; };
-		C68DC6901677091F00F5412F /* MSRenrenFriendsGetFriends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenFriendsGetFriends.h; sourceTree = "<group>"; };
-		C68DC6911677091F00F5412F /* MSRenrenFriendsGetFriends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenFriendsGetFriends.m; sourceTree = "<group>"; };
-		C68DC6921677091F00F5412F /* MSRenrenPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenPackage.h; sourceTree = "<group>"; };
-		C68DC6931677091F00F5412F /* MSRenrenPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenPackage.m; sourceTree = "<group>"; };
-		C68DC6951677091F00F5412F /* MSRenrenPagesBecomeFan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenPagesBecomeFan.h; sourceTree = "<group>"; };
-		C68DC6961677091F00F5412F /* MSRenrenPagesBecomeFan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenPagesBecomeFan.m; sourceTree = "<group>"; };
-		C68DC6981677091F00F5412F /* MSRenrenPhotosGetAlbums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenPhotosGetAlbums.h; sourceTree = "<group>"; };
-		C68DC6991677091F00F5412F /* MSRenrenPhotosGetAlbums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenPhotosGetAlbums.m; sourceTree = "<group>"; };
-		C68DC69A1677091F00F5412F /* MSRenrenPhototsUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenPhototsUpload.h; sourceTree = "<group>"; };
-		C68DC69B1677091F00F5412F /* MSRenrenPhototsUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenPhototsUpload.m; sourceTree = "<group>"; };
-		C68DC69D1677091F00F5412F /* MSRenrenStatusSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRenrenStatusSet.h; sourceTree = "<group>"; };
-		C68DC69E1677091F00F5412F /* MSRenrenStatusSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRenrenStatusSet.m; sourceTree = "<group>"; };
-		C68DC6A11677091F00F5412F /* MSSinaAccountGetUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaAccountGetUID.h; sourceTree = "<group>"; };
-		C68DC6A21677091F00F5412F /* MSSinaAccountGetUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaAccountGetUID.m; sourceTree = "<group>"; };
-		C68DC6A41677091F00F5412F /* MSSinaAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaAccessToken.h; sourceTree = "<group>"; };
-		C68DC6A51677091F00F5412F /* MSSinaAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaAccessToken.m; sourceTree = "<group>"; };
-		C68DC6A71677091F00F5412F /* MSSinaFriendshipCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaFriendshipCreate.h; sourceTree = "<group>"; };
-		C68DC6A81677091F00F5412F /* MSSinaFriendshipCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaFriendshipCreate.m; sourceTree = "<group>"; };
-		C68DC6A91677091F00F5412F /* MSSinaFriendshipsDestroy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaFriendshipsDestroy.h; sourceTree = "<group>"; };
-		C68DC6AA1677091F00F5412F /* MSSinaFriendshipsDestroy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaFriendshipsDestroy.m; sourceTree = "<group>"; };
-		C68DC6AB1677091F00F5412F /* MSSinaFriendshipsFriends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaFriendshipsFriends.h; sourceTree = "<group>"; };
-		C68DC6AC1677091F00F5412F /* MSSinaFriendshipsFriends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaFriendshipsFriends.m; sourceTree = "<group>"; };
-		C68DC6AD1677091F00F5412F /* MSSinaWeiboPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaWeiboPackage.h; sourceTree = "<group>"; };
-		C68DC6AE1677091F00F5412F /* MSSinaWeiboPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaWeiboPackage.m; sourceTree = "<group>"; };
-		C68DC6B01677091F00F5412F /* MSSinaStatusUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaStatusUpdate.h; sourceTree = "<group>"; };
-		C68DC6B11677091F00F5412F /* MSSinaStatusUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaStatusUpdate.m; sourceTree = "<group>"; };
-		C68DC6B21677091F00F5412F /* MSSinaStatusUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaStatusUpload.h; sourceTree = "<group>"; };
-		C68DC6B31677091F00F5412F /* MSSinaStatusUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaStatusUpload.m; sourceTree = "<group>"; };
-		C68DC6B51677091F00F5412F /* MSSinaUserShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSinaUserShow.h; sourceTree = "<group>"; };
-		C68DC6B61677091F00F5412F /* MSSinaUserShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSinaUserShow.m; sourceTree = "<group>"; };
-		C68DC6B91677091F00F5412F /* MSTencentAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTencentAccessToken.h; sourceTree = "<group>"; };
-		C68DC6BA1677091F00F5412F /* MSTencentAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTencentAccessToken.m; sourceTree = "<group>"; };
-		C68DC6BC1677091F00F5412F /* MSTencentFriends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTencentFriends.h; sourceTree = "<group>"; };
-		C68DC6BD1677091F00F5412F /* MSTencentFriends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTencentFriends.m; sourceTree = "<group>"; };
-		C68DC6BE1677091F00F5412F /* MSTencentWeiboPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTencentWeiboPackage.h; sourceTree = "<group>"; };
-		C68DC6BF1677091F00F5412F /* MSTencentWeiboPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTencentWeiboPackage.m; sourceTree = "<group>"; };
-		C68DC6C11677091F00F5412F /* MSTencentPicWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTencentPicWeibo.h; sourceTree = "<group>"; };
-		C68DC6C21677091F00F5412F /* MSTencentPicWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTencentPicWeibo.m; sourceTree = "<group>"; };
-		C68DC6C31677091F00F5412F /* MSTencentWeiboAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTencentWeiboAdd.h; sourceTree = "<group>"; };
-		C68DC6C41677091F00F5412F /* MSTencentWeiboAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTencentWeiboAdd.m; sourceTree = "<group>"; };
-		C68DC6C61677091F00F5412F /* AdSageAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSageAdapter.h; sourceTree = "<group>"; };
-		C68DC6C71677091F00F5412F /* AdSageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSageDelegate.h; sourceTree = "<group>"; };
-		C68DC6C81677091F00F5412F /* AdSageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSageManager.h; sourceTree = "<group>"; };
-		C68DC6C91677091F00F5412F /* AdSageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSageView.h; sourceTree = "<group>"; };
-		C68DC6CA1677091F00F5412F /* MobiSageRecommendSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobiSageRecommendSDK.h; sourceTree = "<group>"; };
-		C68DC6CB1677091F00F5412F /* MobiSageSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobiSageSDK.h; sourceTree = "<group>"; };
 		C68E7772168662A6007F7353 /* level_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level_bg.png; path = Resources/level_bg.png; sourceTree = "<group>"; };
 		C68E7775168662E7007F7353 /* start_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = start_bg.png; path = Resources/start_bg.png; sourceTree = "<group>"; };
 		C68E77791686647A007F7353 /* numbomb_bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = numbomb_bt.png; path = Resources/numbomb_bt.png; sourceTree = "<group>"; };
@@ -742,11 +751,10 @@
 		C6F5291216A6428E00D3948F /* help_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = help_bg.png; path = Resources/help_bg.png; sourceTree = "<group>"; };
 		C6F5291416A6570200D3948F /* HelpLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpLayer.h; sourceTree = "<group>"; };
 		C6F5291516A6570200D3948F /* HelpLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpLayer.m; sourceTree = "<group>"; };
-		C6F5291716A659A500D3948F /* title1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title1.png; path = Resources/title1.png; sourceTree = "<group>"; };
-		C6F5291816A659A500D3948F /* title2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title2.png; path = Resources/title2.png; sourceTree = "<group>"; };
 		C6F5291B16A659EF00D3948F /* startbackground.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = startbackground.wav; path = Resources/startbackground.wav; sourceTree = "<group>"; };
 		C6F7A8C2168E91B000037251 /* freeze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = freeze.png; path = Resources/freeze.png; sourceTree = "<group>"; };
 		C6FAC43616A7B2A7006D4858 /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = background.wav; path = Resources/background.wav; sourceTree = "<group>"; };
+		C6FAC43816A870E7006D4858 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = Resources/title.png; sourceTree = "<group>"; };
 		C6FEE91816766EA700888B02 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
 		C6FFA0451678F4260069C640 /* ActiveBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveBackgroundLayer.h; sourceTree = "<group>"; };
 		C6FFA0461678F4260069C640 /* ActiveBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveBackgroundLayer.m; sourceTree = "<group>"; };
@@ -772,9 +780,10 @@
 				C68B0615166D82A0005306DD /* Foundation.framework in Frameworks */,
 				C68B0617166D82A0005306DD /* CoreGraphics.framework in Frameworks */,
 				C68B0619166D82A0005306DD /* GameKit.framework in Frameworks */,
-				C68DC6CC1677091F00F5412F /* libMobiSageMediatorSDK_2.0.0.a in Frameworks */,
 				C68AF234169E75A5004E82A4 /* libMobClickLibrary.a in Frameworks */,
 				C68AF240169E7B6D004E82A4 /* libUMAppNetwork.a in Frameworks */,
+				C653644316A9CACD002B860A /* libMobiSageMediatorSDK_2.1.2.a in Frameworks */,
+				C653644416A9CACD002B860A /* libMobiSageRecommend.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +793,7 @@
 		C60F60A2168ABB1C00E28C05 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C68B0624166D82A1005306DD /* fps_images-ipadhd.png */,
 				C6B9251C169DF58A00958A95 /* fire.png */,
 				C6B9251D169DF58A00958A95 /* fire.plist */,
 				C60F60AB168B4A7F00E28C05 /* button */,
@@ -822,8 +832,7 @@
 				C60F6089168A56CA00E28C05 /* heart.png */,
 				C60F607E168A2A6E00E28C05 /* lock.png */,
 				C6236EA81684205B0030DC83 /* star1.png */,
-				C6F5291716A659A500D3948F /* title1.png */,
-				C6F5291816A659A500D3948F /* title2.png */,
+				C6FAC43816A870E7006D4858 /* title.png */,
 				C6236EA91684205B0030DC83 /* star2.png */,
 				C6236EAA1684205B0030DC83 /* star3.png */,
 				C60F6076168A0EAF00E28C05 /* crab0.png */,
@@ -843,6 +852,7 @@
 				C677DA98169CB772005253BA /* sun.png */,
 				C6236EA41683A2660030DC83 /* clock.png */,
 				C6236EA61683A2EF0030DC83 /* clock_line.png */,
+				C65363A316A902B5002B860A /* light.png */,
 				C60F609A168A5AD000E28C05 /* rebirth_wd.png */,
 				C62DB9E81690A11000B72EF8 /* sun_ray.png */,
 				C60F60A0168A5ADD00E28C05 /* stamp.png */,
@@ -911,6 +921,291 @@
 				C6C8112216A2105F0079A574 /* background2.mp3 */,
 			);
 			name = sounds;
+			sourceTree = "<group>";
+		};
+		C65363E116A9CACD002B860A /* Other File */ = {
+			isa = PBXGroup;
+			children = (
+				C65363E216A9CACD002B860A /* Recommend */,
+				C65363E616A9CACD002B860A /* SNS */,
+			);
+			path = "Other File";
+			sourceTree = "<group>";
+		};
+		C65363E216A9CACD002B860A /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				C65363E316A9CACD002B860A /* libMobiSageRecommend.a */,
+				C65363E416A9CACD002B860A /* MobiSageRecommendBundle.bundle */,
+				C65363E516A9CACD002B860A /* MobiSageRecommendSDK.h */,
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
+		C65363E616A9CACD002B860A /* SNS */ = {
+			isa = PBXGroup;
+			children = (
+				C65363E716A9CACD002B860A /* Common */,
+				C65363E916A9CACD002B860A /* Kaixin */,
+				C65363FF16A9CACD002B860A /* Renren */,
+				C653641516A9CACD002B860A /* Sina */,
+				C653642D16A9CACD002B860A /* Tencent */,
+			);
+			path = SNS;
+			sourceTree = "<group>";
+		};
+		C65363E716A9CACD002B860A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C65363E816A9CACD002B860A /* MobiSageSNSPackage.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C65363E916A9CACD002B860A /* Kaixin */ = {
+			isa = PBXGroup;
+			children = (
+				C65363EA16A9CACD002B860A /* Authorize */,
+				C65363EF16A9CACD002B860A /* Friends */,
+				C65363F216A9CACD002B860A /* MSKaixinPackage.h */,
+				C65363F316A9CACD002B860A /* MSKaixinPackage.m */,
+				C65363F416A9CACD002B860A /* Pages */,
+				C65363F716A9CACD002B860A /* Photos */,
+				C65363FC16A9CACD002B860A /* Records */,
+			);
+			path = Kaixin;
+			sourceTree = "<group>";
+		};
+		C65363EA16A9CACD002B860A /* Authorize */ = {
+			isa = PBXGroup;
+			children = (
+				C65363EB16A9CACD002B860A /* MSKaixinAccessToken.h */,
+				C65363EC16A9CACD002B860A /* MSKaixinAccessToken.m */,
+				C65363ED16A9CACD002B860A /* MSKaixinAuthorize.h */,
+				C65363EE16A9CACD002B860A /* MSKaixinAuthorize.m */,
+			);
+			path = Authorize;
+			sourceTree = "<group>";
+		};
+		C65363EF16A9CACD002B860A /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				C65363F016A9CACD002B860A /* MSKaixinFriendsMe.h */,
+				C65363F116A9CACD002B860A /* MSKaixinFriendsMe.m */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		C65363F416A9CACD002B860A /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				C65363F516A9CACD002B860A /* MSKaixinPageAddFan.h */,
+				C65363F616A9CACD002B860A /* MSKaixinPageAddFan.m */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		C65363F716A9CACD002B860A /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				C65363F816A9CACD002B860A /* MSKaixinAlbumShow.h */,
+				C65363F916A9CACD002B860A /* MSKaixinAlbumShow.m */,
+				C65363FA16A9CACD002B860A /* MSKaixinPhotoUpload.h */,
+				C65363FB16A9CACD002B860A /* MSKaixinPhotoUpload.m */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		C65363FC16A9CACD002B860A /* Records */ = {
+			isa = PBXGroup;
+			children = (
+				C65363FD16A9CACD002B860A /* MSKaixinRecordsUpload.h */,
+				C65363FE16A9CACD002B860A /* MSKaixinRecordsUpload.m */,
+			);
+			path = Records;
+			sourceTree = "<group>";
+		};
+		C65363FF16A9CACD002B860A /* Renren */ = {
+			isa = PBXGroup;
+			children = (
+				C653640016A9CACD002B860A /* Authorize */,
+				C653640516A9CACD002B860A /* Friends */,
+				C653640816A9CACD002B860A /* MSRenrenPackage.h */,
+				C653640916A9CACD002B860A /* MSRenrenPackage.m */,
+				C653640A16A9CACD002B860A /* Pages */,
+				C653640D16A9CACD002B860A /* Photos */,
+				C653641216A9CACD002B860A /* Status */,
+			);
+			path = Renren;
+			sourceTree = "<group>";
+		};
+		C653640016A9CACD002B860A /* Authorize */ = {
+			isa = PBXGroup;
+			children = (
+				C653640116A9CACD002B860A /* MSRenrenAuthorize.h */,
+				C653640216A9CACD002B860A /* MSRenrenAuthorize.m */,
+				C653640316A9CACD002B860A /* MSRenrenToken.h */,
+				C653640416A9CACD002B860A /* MSRenrenToken.m */,
+			);
+			path = Authorize;
+			sourceTree = "<group>";
+		};
+		C653640516A9CACD002B860A /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				C653640616A9CACD002B860A /* MSRenrenFriendsGetFriends.h */,
+				C653640716A9CACD002B860A /* MSRenrenFriendsGetFriends.m */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		C653640A16A9CACD002B860A /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				C653640B16A9CACD002B860A /* MSRenrenPagesBecomeFan.h */,
+				C653640C16A9CACD002B860A /* MSRenrenPagesBecomeFan.m */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		C653640D16A9CACD002B860A /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				C653640E16A9CACD002B860A /* MSRenrenPhotosGetAlbums.h */,
+				C653640F16A9CACD002B860A /* MSRenrenPhotosGetAlbums.m */,
+				C653641016A9CACD002B860A /* MSRenrenPhototsUpload.h */,
+				C653641116A9CACD002B860A /* MSRenrenPhototsUpload.m */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		C653641216A9CACD002B860A /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				C653641316A9CACD002B860A /* MSRenrenStatusSet.h */,
+				C653641416A9CACD002B860A /* MSRenrenStatusSet.m */,
+			);
+			path = Status;
+			sourceTree = "<group>";
+		};
+		C653641516A9CACD002B860A /* Sina */ = {
+			isa = PBXGroup;
+			children = (
+				C653641616A9CACD002B860A /* Account */,
+				C653641916A9CACD002B860A /* Authorize */,
+				C653641C16A9CACD002B860A /* Friendship */,
+				C653642316A9CACD002B860A /* MSSinaWeiboPackage.h */,
+				C653642416A9CACD002B860A /* MSSinaWeiboPackage.m */,
+				C653642516A9CACD002B860A /* Push */,
+				C653642A16A9CACD002B860A /* User */,
+			);
+			path = Sina;
+			sourceTree = "<group>";
+		};
+		C653641616A9CACD002B860A /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C653641716A9CACD002B860A /* MSSinaAccountGetUID.h */,
+				C653641816A9CACD002B860A /* MSSinaAccountGetUID.m */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		C653641916A9CACD002B860A /* Authorize */ = {
+			isa = PBXGroup;
+			children = (
+				C653641A16A9CACD002B860A /* MSSinaAccessToken.h */,
+				C653641B16A9CACD002B860A /* MSSinaAccessToken.m */,
+			);
+			path = Authorize;
+			sourceTree = "<group>";
+		};
+		C653641C16A9CACD002B860A /* Friendship */ = {
+			isa = PBXGroup;
+			children = (
+				C653641D16A9CACD002B860A /* MSSinaFriendshipCreate.h */,
+				C653641E16A9CACD002B860A /* MSSinaFriendshipCreate.m */,
+				C653641F16A9CACD002B860A /* MSSinaFriendshipsDestroy.h */,
+				C653642016A9CACD002B860A /* MSSinaFriendshipsDestroy.m */,
+				C653642116A9CACD002B860A /* MSSinaFriendshipsFriends.h */,
+				C653642216A9CACD002B860A /* MSSinaFriendshipsFriends.m */,
+			);
+			path = Friendship;
+			sourceTree = "<group>";
+		};
+		C653642516A9CACD002B860A /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				C653642616A9CACD002B860A /* MSSinaStatusUpdate.h */,
+				C653642716A9CACD002B860A /* MSSinaStatusUpdate.m */,
+				C653642816A9CACD002B860A /* MSSinaStatusUpload.h */,
+				C653642916A9CACD002B860A /* MSSinaStatusUpload.m */,
+			);
+			path = Push;
+			sourceTree = "<group>";
+		};
+		C653642A16A9CACD002B860A /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C653642B16A9CACD002B860A /* MSSinaUserShow.h */,
+				C653642C16A9CACD002B860A /* MSSinaUserShow.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		C653642D16A9CACD002B860A /* Tencent */ = {
+			isa = PBXGroup;
+			children = (
+				C653642E16A9CACD002B860A /* Authorize */,
+				C653643116A9CACD002B860A /* Friends */,
+				C653643416A9CACD002B860A /* MSTencentWeiboPackage.h */,
+				C653643516A9CACD002B860A /* MSTencentWeiboPackage.m */,
+				C653643616A9CACD002B860A /* Push */,
+			);
+			path = Tencent;
+			sourceTree = "<group>";
+		};
+		C653642E16A9CACD002B860A /* Authorize */ = {
+			isa = PBXGroup;
+			children = (
+				C653642F16A9CACD002B860A /* MSTencentAccessToken.h */,
+				C653643016A9CACD002B860A /* MSTencentAccessToken.m */,
+			);
+			path = Authorize;
+			sourceTree = "<group>";
+		};
+		C653643116A9CACD002B860A /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				C653643216A9CACD002B860A /* MSTencentFriends.h */,
+				C653643316A9CACD002B860A /* MSTencentFriends.m */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		C653643616A9CACD002B860A /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				C653643716A9CACD002B860A /* MSTencentPicWeibo.h */,
+				C653643816A9CACD002B860A /* MSTencentPicWeibo.m */,
+				C653643916A9CACD002B860A /* MSTencentWeiboAdd.h */,
+				C653643A16A9CACD002B860A /* MSTencentWeiboAdd.m */,
+			);
+			path = Push;
+			sourceTree = "<group>";
+		};
+		C653643B16A9CACD002B860A /* Public File */ = {
+			isa = PBXGroup;
+			children = (
+				C653643C16A9CACD002B860A /* AdSageAdapter.h */,
+				C653643D16A9CACD002B860A /* AdSageDelegate.h */,
+				C653643E16A9CACD002B860A /* AdSageManager.h */,
+				C653643F16A9CACD002B860A /* AdSageView.h */,
+				C653644016A9CACD002B860A /* JSONKit.h */,
+				C653644116A9CACD002B860A /* JSONKit.m */,
+				C653644216A9CACD002B860A /* MobiSageSDK.h */,
+			);
+			path = "Public File";
 			sourceTree = "<group>";
 		};
 		C68AF22D169E7558004E82A4 /* umeng */ = {
@@ -990,7 +1285,6 @@
 			children = (
 				C60F60B6168B7FDB00E28C05 /* sounds */,
 				C60F60A2168ABB1C00E28C05 /* images */,
-				C68B0624166D82A1005306DD /* fps_images-ipadhd.png */,
 				C68B0632166D82A1005306DD /* Info.plist */,
 				C68B0633166D82A1005306DD /* iTunesArtwork */,
 			);
@@ -1370,6 +1664,8 @@
 				C6924616168CF02000DA8779 /* PauseLayer.m */,
 				C6F5291416A6570200D3948F /* HelpLayer.h */,
 				C6F5291516A6570200D3948F /* HelpLayer.m */,
+				C65363AD16A915A0002B860A /* AdLayer.h */,
+				C65363AE16A915A0002B860A /* AdLayer.m */,
 			);
 			name = layers;
 			sourceTree = "<group>";
@@ -1439,286 +1735,12 @@
 		C68DC6691677091F00F5412F /* MobiSageMediatorSDK */ = {
 			isa = PBXGroup;
 			children = (
-				C68DC66A1677091F00F5412F /* libMobiSageMediatorSDK_2.0.0.a */,
-				C68DC66B1677091F00F5412F /* Other File */,
-				C68DC6C51677091F00F5412F /* Public File */,
+				C65363E016A9CACD002B860A /* libMobiSageMediatorSDK_2.1.2.a */,
+				C65363E116A9CACD002B860A /* Other File */,
+				C653643B16A9CACD002B860A /* Public File */,
 			);
 			name = MobiSageMediatorSDK;
 			path = libs/MobiSageMediatorSDK;
-			sourceTree = "<group>";
-		};
-		C68DC66B1677091F00F5412F /* Other File */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC66F1677091F00F5412F /* MobiSageRecommendBundle.bundle */,
-				C68DC6701677091F00F5412F /* SNS */,
-			);
-			path = "Other File";
-			sourceTree = "<group>";
-		};
-		C68DC6701677091F00F5412F /* SNS */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6711677091F00F5412F /* Common */,
-				C68DC6731677091F00F5412F /* Kaixin */,
-				C68DC6891677091F00F5412F /* Renren */,
-				C68DC69F1677091F00F5412F /* Sina */,
-				C68DC6B71677091F00F5412F /* Tencent */,
-			);
-			path = SNS;
-			sourceTree = "<group>";
-		};
-		C68DC6711677091F00F5412F /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6721677091F00F5412F /* MobiSageSNSPackage.h */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		C68DC6731677091F00F5412F /* Kaixin */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6741677091F00F5412F /* Authorize */,
-				C68DC6791677091F00F5412F /* Friends */,
-				C68DC67C1677091F00F5412F /* MSKaixinPackage.h */,
-				C68DC67D1677091F00F5412F /* MSKaixinPackage.m */,
-				C68DC67E1677091F00F5412F /* Pages */,
-				C68DC6811677091F00F5412F /* Photos */,
-				C68DC6861677091F00F5412F /* Records */,
-			);
-			path = Kaixin;
-			sourceTree = "<group>";
-		};
-		C68DC6741677091F00F5412F /* Authorize */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6751677091F00F5412F /* MSKaixinAccessToken.h */,
-				C68DC6761677091F00F5412F /* MSKaixinAccessToken.m */,
-				C68DC6771677091F00F5412F /* MSKaixinAuthorize.h */,
-				C68DC6781677091F00F5412F /* MSKaixinAuthorize.m */,
-			);
-			path = Authorize;
-			sourceTree = "<group>";
-		};
-		C68DC6791677091F00F5412F /* Friends */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC67A1677091F00F5412F /* MSKaixinFriendsMe.h */,
-				C68DC67B1677091F00F5412F /* MSKaixinFriendsMe.m */,
-			);
-			path = Friends;
-			sourceTree = "<group>";
-		};
-		C68DC67E1677091F00F5412F /* Pages */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC67F1677091F00F5412F /* MSKaixinPageAddFan.h */,
-				C68DC6801677091F00F5412F /* MSKaixinPageAddFan.m */,
-			);
-			path = Pages;
-			sourceTree = "<group>";
-		};
-		C68DC6811677091F00F5412F /* Photos */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6821677091F00F5412F /* MSKaixinAlbumShow.h */,
-				C68DC6831677091F00F5412F /* MSKaixinAlbumShow.m */,
-				C68DC6841677091F00F5412F /* MSKaixinPhotoUpload.h */,
-				C68DC6851677091F00F5412F /* MSKaixinPhotoUpload.m */,
-			);
-			path = Photos;
-			sourceTree = "<group>";
-		};
-		C68DC6861677091F00F5412F /* Records */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6871677091F00F5412F /* MSKaixinRecordsUpload.h */,
-				C68DC6881677091F00F5412F /* MSKaixinRecordsUpload.m */,
-			);
-			path = Records;
-			sourceTree = "<group>";
-		};
-		C68DC6891677091F00F5412F /* Renren */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC68A1677091F00F5412F /* Authorize */,
-				C68DC68F1677091F00F5412F /* Friends */,
-				C68DC6921677091F00F5412F /* MSRenrenPackage.h */,
-				C68DC6931677091F00F5412F /* MSRenrenPackage.m */,
-				C68DC6941677091F00F5412F /* Pages */,
-				C68DC6971677091F00F5412F /* Photos */,
-				C68DC69C1677091F00F5412F /* Status */,
-			);
-			path = Renren;
-			sourceTree = "<group>";
-		};
-		C68DC68A1677091F00F5412F /* Authorize */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC68B1677091F00F5412F /* MSRenrenAuthorize.h */,
-				C68DC68C1677091F00F5412F /* MSRenrenAuthorize.m */,
-				C68DC68D1677091F00F5412F /* MSRenrenToken.h */,
-				C68DC68E1677091F00F5412F /* MSRenrenToken.m */,
-			);
-			path = Authorize;
-			sourceTree = "<group>";
-		};
-		C68DC68F1677091F00F5412F /* Friends */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6901677091F00F5412F /* MSRenrenFriendsGetFriends.h */,
-				C68DC6911677091F00F5412F /* MSRenrenFriendsGetFriends.m */,
-			);
-			path = Friends;
-			sourceTree = "<group>";
-		};
-		C68DC6941677091F00F5412F /* Pages */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6951677091F00F5412F /* MSRenrenPagesBecomeFan.h */,
-				C68DC6961677091F00F5412F /* MSRenrenPagesBecomeFan.m */,
-			);
-			path = Pages;
-			sourceTree = "<group>";
-		};
-		C68DC6971677091F00F5412F /* Photos */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6981677091F00F5412F /* MSRenrenPhotosGetAlbums.h */,
-				C68DC6991677091F00F5412F /* MSRenrenPhotosGetAlbums.m */,
-				C68DC69A1677091F00F5412F /* MSRenrenPhototsUpload.h */,
-				C68DC69B1677091F00F5412F /* MSRenrenPhototsUpload.m */,
-			);
-			path = Photos;
-			sourceTree = "<group>";
-		};
-		C68DC69C1677091F00F5412F /* Status */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC69D1677091F00F5412F /* MSRenrenStatusSet.h */,
-				C68DC69E1677091F00F5412F /* MSRenrenStatusSet.m */,
-			);
-			path = Status;
-			sourceTree = "<group>";
-		};
-		C68DC69F1677091F00F5412F /* Sina */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6A01677091F00F5412F /* Account */,
-				C68DC6A31677091F00F5412F /* Authorize */,
-				C68DC6A61677091F00F5412F /* Friendship */,
-				C68DC6AD1677091F00F5412F /* MSSinaWeiboPackage.h */,
-				C68DC6AE1677091F00F5412F /* MSSinaWeiboPackage.m */,
-				C68DC6AF1677091F00F5412F /* Push */,
-				C68DC6B41677091F00F5412F /* User */,
-			);
-			path = Sina;
-			sourceTree = "<group>";
-		};
-		C68DC6A01677091F00F5412F /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6A11677091F00F5412F /* MSSinaAccountGetUID.h */,
-				C68DC6A21677091F00F5412F /* MSSinaAccountGetUID.m */,
-			);
-			path = Account;
-			sourceTree = "<group>";
-		};
-		C68DC6A31677091F00F5412F /* Authorize */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6A41677091F00F5412F /* MSSinaAccessToken.h */,
-				C68DC6A51677091F00F5412F /* MSSinaAccessToken.m */,
-			);
-			path = Authorize;
-			sourceTree = "<group>";
-		};
-		C68DC6A61677091F00F5412F /* Friendship */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6A71677091F00F5412F /* MSSinaFriendshipCreate.h */,
-				C68DC6A81677091F00F5412F /* MSSinaFriendshipCreate.m */,
-				C68DC6A91677091F00F5412F /* MSSinaFriendshipsDestroy.h */,
-				C68DC6AA1677091F00F5412F /* MSSinaFriendshipsDestroy.m */,
-				C68DC6AB1677091F00F5412F /* MSSinaFriendshipsFriends.h */,
-				C68DC6AC1677091F00F5412F /* MSSinaFriendshipsFriends.m */,
-			);
-			path = Friendship;
-			sourceTree = "<group>";
-		};
-		C68DC6AF1677091F00F5412F /* Push */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6B01677091F00F5412F /* MSSinaStatusUpdate.h */,
-				C68DC6B11677091F00F5412F /* MSSinaStatusUpdate.m */,
-				C68DC6B21677091F00F5412F /* MSSinaStatusUpload.h */,
-				C68DC6B31677091F00F5412F /* MSSinaStatusUpload.m */,
-			);
-			path = Push;
-			sourceTree = "<group>";
-		};
-		C68DC6B41677091F00F5412F /* User */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6B51677091F00F5412F /* MSSinaUserShow.h */,
-				C68DC6B61677091F00F5412F /* MSSinaUserShow.m */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		C68DC6B71677091F00F5412F /* Tencent */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6B81677091F00F5412F /* Authorize */,
-				C68DC6BB1677091F00F5412F /* Friends */,
-				C68DC6BE1677091F00F5412F /* MSTencentWeiboPackage.h */,
-				C68DC6BF1677091F00F5412F /* MSTencentWeiboPackage.m */,
-				C68DC6C01677091F00F5412F /* Push */,
-			);
-			path = Tencent;
-			sourceTree = "<group>";
-		};
-		C68DC6B81677091F00F5412F /* Authorize */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6B91677091F00F5412F /* MSTencentAccessToken.h */,
-				C68DC6BA1677091F00F5412F /* MSTencentAccessToken.m */,
-			);
-			path = Authorize;
-			sourceTree = "<group>";
-		};
-		C68DC6BB1677091F00F5412F /* Friends */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6BC1677091F00F5412F /* MSTencentFriends.h */,
-				C68DC6BD1677091F00F5412F /* MSTencentFriends.m */,
-			);
-			path = Friends;
-			sourceTree = "<group>";
-		};
-		C68DC6C01677091F00F5412F /* Push */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6C11677091F00F5412F /* MSTencentPicWeibo.h */,
-				C68DC6C21677091F00F5412F /* MSTencentPicWeibo.m */,
-				C68DC6C31677091F00F5412F /* MSTencentWeiboAdd.h */,
-				C68DC6C41677091F00F5412F /* MSTencentWeiboAdd.m */,
-			);
-			path = Push;
-			sourceTree = "<group>";
-		};
-		C68DC6C51677091F00F5412F /* Public File */ = {
-			isa = PBXGroup;
-			children = (
-				C68DC6C61677091F00F5412F /* AdSageAdapter.h */,
-				C68DC6C71677091F00F5412F /* AdSageDelegate.h */,
-				C68DC6C81677091F00F5412F /* AdSageManager.h */,
-				C68DC6C91677091F00F5412F /* AdSageView.h */,
-				C68DC6CA1677091F00F5412F /* MobiSageRecommendSDK.h */,
-				C68DC6CB1677091F00F5412F /* MobiSageSDK.h */,
-			);
-			path = "Public File";
 			sourceTree = "<group>";
 		};
 		C6B77495169FD5DF0048A434 /* TableView */ = {
@@ -1787,7 +1809,6 @@
 				C68B0625166D82A1005306DD /* fps_images-ipadhd.png in Resources */,
 				C68B0634166D82A1005306DD /* iTunesArtwork in Resources */,
 				C68B0772166D82A3005306DD /* ChangeLog in Resources */,
-				C68DC6CE1677091F00F5412F /* MobiSageRecommendBundle.bundle in Resources */,
 				C6ECE98C1677E48100B4B468 /* background.png in Resources */,
 				C6236E9816837DCB0030DC83 /* t_hint.png in Resources */,
 				C6236E9916837DCB0030DC83 /* t_reset.png in Resources */,
@@ -1871,12 +1892,13 @@
 				C6F5290F16A615F300D3948F /* Default.png in Resources */,
 				C6F5291116A615F800D3948F /* Default@2x.png in Resources */,
 				C6F5291316A6428E00D3948F /* help_bg.png in Resources */,
-				C6F5291916A659A500D3948F /* title1.png in Resources */,
-				C6F5291A16A659A500D3948F /* title2.png in Resources */,
 				C6F5291C16A659EF00D3948F /* startbackground.wav in Resources */,
 				C62CC30616A795BB0098B2E4 /* bombappear.wav in Resources */,
 				C62CC30716A795BB0098B2E4 /* explosion.mp3 in Resources */,
 				C6FAC43716A7B2A7006D4858 /* background.wav in Resources */,
+				C6FAC43916A870E7006D4858 /* title.png in Resources */,
+				C65363A416A902B5002B860A /* light.png in Resources */,
+				C653644516A9CACD002B860A /* MobiSageRecommendBundle.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1997,36 +2019,6 @@
 				C6B9B7B71674513A00D19F8C /* PlayLayer.m in Sources */,
 				C6B9B7BA167458EF00D19F8C /* GameContext.m in Sources */,
 				C693E7721675A3FE0079D60D /* UserProfile.m in Sources */,
-				C68DC6CF1677091F00F5412F /* MSKaixinAccessToken.m in Sources */,
-				C68DC6D01677091F00F5412F /* MSKaixinAuthorize.m in Sources */,
-				C68DC6D11677091F00F5412F /* MSKaixinFriendsMe.m in Sources */,
-				C68DC6D21677091F00F5412F /* MSKaixinPackage.m in Sources */,
-				C68DC6D31677091F00F5412F /* MSKaixinPageAddFan.m in Sources */,
-				C68DC6D41677091F00F5412F /* MSKaixinAlbumShow.m in Sources */,
-				C68DC6D51677091F00F5412F /* MSKaixinPhotoUpload.m in Sources */,
-				C68DC6D61677091F00F5412F /* MSKaixinRecordsUpload.m in Sources */,
-				C68DC6D71677091F00F5412F /* MSRenrenAuthorize.m in Sources */,
-				C68DC6D81677091F00F5412F /* MSRenrenToken.m in Sources */,
-				C68DC6D91677091F00F5412F /* MSRenrenFriendsGetFriends.m in Sources */,
-				C68DC6DA1677091F00F5412F /* MSRenrenPackage.m in Sources */,
-				C68DC6DB1677091F00F5412F /* MSRenrenPagesBecomeFan.m in Sources */,
-				C68DC6DC1677091F00F5412F /* MSRenrenPhotosGetAlbums.m in Sources */,
-				C68DC6DD1677091F00F5412F /* MSRenrenPhototsUpload.m in Sources */,
-				C68DC6DE1677091F00F5412F /* MSRenrenStatusSet.m in Sources */,
-				C68DC6DF1677091F00F5412F /* MSSinaAccountGetUID.m in Sources */,
-				C68DC6E01677091F00F5412F /* MSSinaAccessToken.m in Sources */,
-				C68DC6E11677091F00F5412F /* MSSinaFriendshipCreate.m in Sources */,
-				C68DC6E21677091F00F5412F /* MSSinaFriendshipsDestroy.m in Sources */,
-				C68DC6E31677091F00F5412F /* MSSinaFriendshipsFriends.m in Sources */,
-				C68DC6E41677091F00F5412F /* MSSinaWeiboPackage.m in Sources */,
-				C68DC6E51677091F00F5412F /* MSSinaStatusUpdate.m in Sources */,
-				C68DC6E61677091F00F5412F /* MSSinaStatusUpload.m in Sources */,
-				C68DC6E71677091F00F5412F /* MSSinaUserShow.m in Sources */,
-				C68DC6E81677091F00F5412F /* MSTencentAccessToken.m in Sources */,
-				C68DC6E91677091F00F5412F /* MSTencentFriends.m in Sources */,
-				C68DC6EA1677091F00F5412F /* MSTencentWeiboPackage.m in Sources */,
-				C68DC6EB1677091F00F5412F /* MSTencentPicWeibo.m in Sources */,
-				C68DC6EC1677091F00F5412F /* MSTencentWeiboAdd.m in Sources */,
 				C6ECE97E1677951400B4B468 /* MainMenuLayer.m in Sources */,
 				C6ECE9821677CA4700B4B468 /* PlayDisplayLayer.m in Sources */,
 				C6FFA0471678F4260069C640 /* ActiveBackgroundLayer.m in Sources */,
@@ -2042,6 +2034,38 @@
 				C6B7749B169FD62D0048A434 /* UMTableViewCell.m in Sources */,
 				C6B7749C169FD62D0048A434 /* UMTableViewController.m in Sources */,
 				C6F5291616A6570200D3948F /* HelpLayer.m in Sources */,
+				C65363AF16A915A0002B860A /* AdLayer.m in Sources */,
+				C653644616A9CACD002B860A /* MSKaixinAccessToken.m in Sources */,
+				C653644716A9CACD002B860A /* MSKaixinAuthorize.m in Sources */,
+				C653644816A9CACD002B860A /* MSKaixinFriendsMe.m in Sources */,
+				C653644916A9CACD002B860A /* MSKaixinPackage.m in Sources */,
+				C653644A16A9CACD002B860A /* MSKaixinPageAddFan.m in Sources */,
+				C653644B16A9CACD002B860A /* MSKaixinAlbumShow.m in Sources */,
+				C653644C16A9CACD002B860A /* MSKaixinPhotoUpload.m in Sources */,
+				C653644D16A9CACD002B860A /* MSKaixinRecordsUpload.m in Sources */,
+				C653644E16A9CACD002B860A /* MSRenrenAuthorize.m in Sources */,
+				C653644F16A9CACD002B860A /* MSRenrenToken.m in Sources */,
+				C653645016A9CACD002B860A /* MSRenrenFriendsGetFriends.m in Sources */,
+				C653645116A9CACD002B860A /* MSRenrenPackage.m in Sources */,
+				C653645216A9CACD002B860A /* MSRenrenPagesBecomeFan.m in Sources */,
+				C653645316A9CACD002B860A /* MSRenrenPhotosGetAlbums.m in Sources */,
+				C653645416A9CACD002B860A /* MSRenrenPhototsUpload.m in Sources */,
+				C653645516A9CACD002B860A /* MSRenrenStatusSet.m in Sources */,
+				C653645616A9CACD002B860A /* MSSinaAccountGetUID.m in Sources */,
+				C653645716A9CACD002B860A /* MSSinaAccessToken.m in Sources */,
+				C653645816A9CACD002B860A /* MSSinaFriendshipCreate.m in Sources */,
+				C653645916A9CACD002B860A /* MSSinaFriendshipsDestroy.m in Sources */,
+				C653645A16A9CACD002B860A /* MSSinaFriendshipsFriends.m in Sources */,
+				C653645B16A9CACD002B860A /* MSSinaWeiboPackage.m in Sources */,
+				C653645C16A9CACD002B860A /* MSSinaStatusUpdate.m in Sources */,
+				C653645D16A9CACD002B860A /* MSSinaStatusUpload.m in Sources */,
+				C653645E16A9CACD002B860A /* MSSinaUserShow.m in Sources */,
+				C653645F16A9CACD002B860A /* MSTencentAccessToken.m in Sources */,
+				C653646016A9CACD002B860A /* MSTencentFriends.m in Sources */,
+				C653646116A9CACD002B860A /* MSTencentWeiboPackage.m in Sources */,
+				C653646216A9CACD002B860A /* MSTencentPicWeibo.m in Sources */,
+				C653646316A9CACD002B860A /* MSTencentWeiboAdd.m in Sources */,
+				C653646416A9CACD002B860A /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2108,10 +2132,14 @@
 					"\"$(SRCROOT)/TheGame/libs\"",
 					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK\"",
 					"\"$(SRCROOT)/TheGame\"",
+					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK/Other File/Recommend\"",
+					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK/Adapter File/Ader\"",
+					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK/Adapter File/AdMob\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "海底对对碰";
 				PROVISIONING_PROFILE = "919C9408-ED7C-49FA-B79B-014A4F393548";
@@ -2137,10 +2165,14 @@
 					"\"$(SRCROOT)/TheGame/libs\"",
 					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK\"",
 					"\"$(SRCROOT)/TheGame\"",
+					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK/Other File/Recommend\"",
+					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK/Adapter File/Ader\"",
+					"\"$(SRCROOT)/TheGame/libs/MobiSageMediatorSDK/Adapter File/AdMob\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "海底对对碰";
 				PROVISIONING_PROFILE = "919C9408-ED7C-49FA-B79B-014A4F393548";

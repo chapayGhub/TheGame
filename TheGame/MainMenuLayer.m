@@ -12,8 +12,8 @@
     
     CCSprite *sun = [CCSprite spriteWithFile:@"sun.png"];
     CCSprite *sunray = [CCSprite spriteWithFile:@"sun_ray.png"];
-    sun.position = ccp(winSize.width*0.25,winSize.height*0.802);
-    sunray.position = ccp(winSize.width*0.25,winSize.height*0.8);
+    sun.position = ccp(winSize.width*0.23,winSize.height*0.822);
+    sunray.position = ccp(winSize.width*0.23,winSize.height*0.82);
     
     CCAction *rotate = [CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:5 angle:180]];
     [self addChild:sunray z:1];
@@ -35,8 +35,8 @@
     CCSprite* like = [CCSprite spriteWithFile:@"likeus_bt.png"];
     like.position = ccp(winSize.width*0.73f,winSize.height*0.21f);
     [self addChild:like z:1 tag:likeusTag];
-    CCSprite *titleLeft = [CCSprite spriteWithFile:@"title1.png"];
-    CCSprite *titleRight = [CCSprite spriteWithFile:@"title2.png"];
+    CCSprite *title = [CCSprite spriteWithFile:@"title.png"];
+    title.scale=0;
     
     [self addChild:background];
     
@@ -75,11 +75,19 @@
         like.scale=0.5f;
         sun.scale=0.5f;
         sunray.scale=0.5f;
-        
-        titleLeft.scale=0.5f;
-        titleRight.scale=0.5f;
     }
 	menu = [CCMenu menuWithItems:startNew, resume, highscores, mygerms, nil];
+    
+    
+    title.position = ccp(winSize.width*0.5, winSize.height*0.78);
+	CCAction *titleAction = [CCSequence actions:
+                             [CCDelayTime actionWithDuration: 0.3f],
+                             [CCScaleTo actionWithDuration: 0.5 scale:isRetina?1:0.5f],
+                             nil];
+	
+    [self addChild: title z:3];
+    [title runAction:titleAction];
+    
     float delayTime = 0.3f;
 	for (CCMenuItemFont *each in [menu children]) {
 		each.scale=0;
@@ -90,29 +98,10 @@
 		delayTime += 0.2f;
 		[each runAction: action];
 	}
-	menu.position = ccp(winSize.width*0.5, winSize.height*0.47);
-    [menu alignItemsVerticallyWithPadding: 45.0f];
+	menu.position = ccp(winSize.width*0.5, winSize.height*0.49);
+    [menu alignItemsVerticallyWithPadding: 50.0f];
 	[self addChild:menu z:1 tag:mainmenuTag];
 	
-    
-    titleLeft.position = ccp(-80, 350);
-	CCAction *titleLeftAction = [CCSequence actions:
-                                 [CCDelayTime actionWithDuration: delayTime],
-                                 [CCEaseBackOut actionWithAction:
-                                  [CCMoveTo actionWithDuration: 1.0 position:ccp(111,350)]],
-                                 nil];
-	[self addChild: titleLeft z:3];
-	[titleLeft runAction: titleLeftAction];
-	
-	titleRight.position = ccp(400, 350);
-	CCAction *titleRightAction = [CCSequence actions:
-                                  [CCDelayTime actionWithDuration: delayTime],
-                                  [CCEaseBackOut actionWithAction:
-                                   [CCMoveTo actionWithDuration: 1.0 position:ccp(210,350)]],
-                                  nil];
-	[self addChild: titleRight z:3];
-	[titleRight runAction: titleRightAction];
-    
     self.isTouchEnabled = YES;
 	return self;
     
@@ -120,9 +109,6 @@
 
 -(void) onEnterTransitionDidFinish{
     [MusicHandler playMainBackground];
-
-    
-
 }
 
 - (void)onStartNew:(id)sender{

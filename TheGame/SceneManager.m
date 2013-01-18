@@ -7,21 +7,28 @@
 #import "AppDelegate.h"
 #import "UMTableViewController.h"
 #import "HelpLayer.h"
+#import "AdSageView.h"
+
 @interface SceneManager ()
 
 @end
 
 
 @implementation SceneManager
-static MobiSageAdBanner* banner;
+//static MobiSageAdBanner* banner;
 static UMTableViewController *controller;
+static AdSageView *adView;
+
 +(void) goMainMenu{
-    //[UserProfile firstTimeFileInitialize];
+    
     CCDirector *director = [CCDirector sharedDirector];
     CCScene *newScene = [CCScene node];
     UserProfile * profile = [UserProfile sharedInstance];
     int count = [profile getCountInARoll];
     MainMenuLayer* menu = [MainMenuLayer node];
+    
+
+    [SceneManager getadBanner];
     [newScene addChild:menu z:0 tag:menuLayerTag];
     [newScene addChild:[ActiveBackgroundLayer node] z:2];
     if(count>1)
@@ -29,13 +36,25 @@ static UMTableViewController *controller;
         [menu enableMenu:NO];
         [newScene addChild:[RewardLayer node:3] z:2 tag:rewardLayerTag];
     }
-    
-    [SceneManager addAdBanner];
+
     if ([director runningScene]) {
         [director replaceScene:[CCTransitionCrossFade transitionWithDuration: 0.5f scene: newScene]];
 	}else {
 		[director runWithScene:newScene];
 	}
+}
+
+
++(AdSageView*) getadBanner
+{
+    if(adView == nil)
+    {
+        AdLayer* tmp = [AdLayer node];
+        adView = [AdSageView requestAdSageBannerAdView:tmp sizeType:AdSageBannerAdViewSize_320X50];
+
+        [adView setFrame:CGRectMake(0,430, 320, 50)];
+    }
+    return adView;
 }
 
 +(void) goPlay:(GameType)type level:(int)level{
@@ -51,7 +70,7 @@ static UMTableViewController *controller;
     [newScene addChild:display z:2];
     [newScene addChild:play z:1];
     
-    [SceneManager addAdBanner];
+   // [SceneManager addAdBanner];
     
     
     if ([director runningScene]) {
@@ -85,7 +104,6 @@ static UMTableViewController *controller;
 +(void) addAdBanner
 {
     CCDirector *director = [CCDirector sharedDirector];
-
     [director.view addSubview:[SceneManager getBanner]];
 }
 
@@ -94,18 +112,17 @@ static UMTableViewController *controller;
     [[SceneManager getBanner] removeFromSuperview];
 }
 
-
-+(MobiSageAdBanner*) getBanner
-{
-    if(banner == nil)
-    {
-        banner = [[MobiSageAdBanner alloc] initWithAdSize:Ad_320X50];
-        [banner setInterval:Ad_Refresh_15];
-        [banner setFrame:CGRectMake(0,430, 320, 50)];
-    }
-    return banner;
-}
-
+//
+//+(MobiSageAdBanner*) getBanner
+//{
+//    if(banner == nil)
+//    {
+//        banner = [[MobiSageAdBanner alloc] initWithAdSize:Ad_320X50];
+//        [banner setInterval:Ad_Refresh_15];
+//        [banner setFrame:CGRectMake(0,430, 320, 50)];
+//    }
+//    return banner;
+//}
 
 
 +(void) pushScene:(CCScene*) scence{
