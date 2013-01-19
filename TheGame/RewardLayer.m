@@ -50,8 +50,8 @@ int type;
         CCSprite* rw = [CCSprite spriteWithFile:@"rotate_wd.png"];
         if(star==3)
         {
-            // 三颗星给2个提示1个轮换
-            hint=2;
+            // 三颗星给1个提示1个轮换
+            hint=1;
             rotate=1;
 
             hw.position = ccp(winSize.width*0.5,winSize.height*0.50);
@@ -69,9 +69,9 @@ int type;
             
         }else if(star ==2)
         {
-            // 两颗星给2个提示
+            // 两颗星给1个提示
             star3.visible=NO;
-            hint=2;
+            hint=1;
             
             hw.position = ccp(winSize.width*0.5,winSize.height*0.55);
             CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
@@ -81,16 +81,15 @@ int type;
             [self addChild:hl z:2];
         }else if(star ==1 )
         {
-            // 一颗星给一个提示
+            // 一颗星不给奖励
             star3.visible=NO;
             star2.visible=NO;
-            hint=1;
+            //hint=1;
             
-            hw.position = ccp(winSize.width*0.5,winSize.height*0.55);
-            CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
-            hl.color = ccc3(200, 200, 200);
-            hl.position = ccp(winSize.width*0.57,winSize.height*0.55);
-            [self addChild:hw z:2];
+            CCLabelTTF *hl=[CCLabelTTF labelWithString: @"真遗憾，这次没有获得奖励，要再接再厉哦!" fontName:@"Arial-BoldMT" fontSize:18];
+            [hl setDimensions:CGSizeMake(winSize.width*0.4, winSize.height*0.2)];
+            hl.color = ccc3(200, 200, 0);
+            hl.position = ccp(winSize.width*0.5,winSize.height*0.52);
             [self addChild:hl z:2];
         }else{
             star3.visible=NO;
@@ -172,20 +171,29 @@ int type;
         CCSprite* lw = [CCSprite spriteWithFile:@"rebirth_wd.png"];
         
         
-        hint = score/1000;
-        rotate = score/2500;
-        heal = score/3000;
-        if(hint>3){
-            hint=3;
+        if(score>8000){
+            hint = 2;
+            rotate =2;
+            heal =2;
         }
-        if(rotate>=2){
-            rotate=2;
+        else if(score >6000){
+            hint = 2;
+            rotate =1;
+            heal =2;
+        }else if(score >4000){
+            hint = 2;
+            rotate =1;
+            heal =1;
+        }else if(score>3000){
+            rotate = 1;
+            hint =2;
         }
-        if(heal>=2){
-            heal = 2;
-            rotate-=1;
-            hint-=1;
+        else if(score>2000){
+            hint = 2;
         }
+        
+        
+        
         
         if(hint==0)
         {

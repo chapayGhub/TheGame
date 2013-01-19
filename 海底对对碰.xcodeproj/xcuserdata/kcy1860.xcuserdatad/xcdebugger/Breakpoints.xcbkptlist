@@ -650,7 +650,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "74"
          endingLineNumber = "74"
-         landmarkName = "+firstTimeFileInitialize"
+         landmarkName = "-description"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -767,7 +767,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "86"
          endingLineNumber = "86"
-         landmarkName = "+firstTimeFileInitialize"
+         landmarkName = "-encodeWithCoder:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -819,7 +819,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "53"
          endingLineNumber = "53"
-         landmarkName = "+writeBackToFile"
+         landmarkName = "+firstTimeFileInitialize"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -832,7 +832,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "52"
          endingLineNumber = "52"
-         landmarkName = "+writeBackToFile"
+         landmarkName = "+firstTimeFileInitialize"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1118,7 +1118,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "135"
          endingLineNumber = "135"
-         landmarkName = "-getCountInARoll"
+         landmarkName = "-addHint:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1300,7 +1300,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "75"
          endingLineNumber = "75"
-         landmarkName = "+firstTimeFileInitialize"
+         landmarkName = "-description"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1542,11 +1542,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/RewardLayer.m"
-         timestampString = "380090069.717978"
+         timestampString = "380315644.1716"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "368"
-         endingLineNumber = "368"
+         startingLineNumber = "376"
+         endingLineNumber = "376"
          landmarkName = "-ccTouchesBegan:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1555,11 +1555,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TheGame/RewardLayer.m"
-         timestampString = "380090069.717978"
+         timestampString = "380315644.1716"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "376"
-         endingLineNumber = "376"
+         startingLineNumber = "384"
+         endingLineNumber = "384"
          landmarkName = "-ccTouchesBegan:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>

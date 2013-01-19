@@ -437,14 +437,14 @@ static PlayDisplayLayer* thisLayer;
     int randomx = arc4random()%90-45;
     int randomy = arc4random()%90-45;
     
-    CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"Verdana-Italic" fontSize:30];
+    CCLabelTTF* tempLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d连击！！！",hit] fontName:@"AmericanTypewriter-Bold" fontSize:28];
     tempLabel.position = ccp(kStartX+kTileSize*kBoxWidth/2+randomx, kStartY+kTileSize*kBoxHeight/2+randomy);
     tempLabel.color = ccc3(253,217,71);
     [self addChild:tempLabel];
     
     CCAction *action = [CCSequence actions:[CCSpawn actions:
-                                            [CCMoveBy actionWithDuration:0.8f position:ccp(0,20)],
-                                            [CCScaleBy actionWithDuration:0.8f scale:1.3],nil],
+                                            [CCMoveBy actionWithDuration:1 position:ccp(0,20)],
+                                            [CCScaleBy actionWithDuration:1 scale:1.3],nil],
                         [CCCallFuncN actionWithTarget: self selector:@selector(removeLabel:)],
                         nil];
     

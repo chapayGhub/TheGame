@@ -34,15 +34,15 @@ static GameDef* def;
     //经典玩法的关卡设置
     GameContext *context0 = [[GameContext alloc] initWithValues:Classic Level:1 Score:1260 Time:60 KindCound:5 Interval:360 FixedRate:0];
     GameContext *context1 = [[GameContext alloc] initWithValues:Classic Level:2 Score:1560 Time:60 KindCound:5 Interval:360 FixedRate:0];
-    GameContext *context2 = [[GameContext alloc] initWithValues:Classic Level:3 Score:1620 Time:60 KindCound:5 Interval:360 FixedRate:25];
+    GameContext *context2 = [[GameContext alloc] initWithValues:Classic Level:3 Score:1770 Time:60 KindCound:5 Interval:390 FixedRate:25];
     
-    GameContext *context3 = [[GameContext alloc] initWithValues:Classic Level:4 Score:960 Time:60 KindCound:6 Interval:300 FixedRate:0];
-    GameContext *context4 = [[GameContext alloc] initWithValues:Classic Level:5 Score:1020 Time:60 KindCound:6 Interval:300 FixedRate:25];
-    GameContext *context5 = [[GameContext alloc] initWithValues:Classic Level:6 Score:1080 Time:60 KindCound:6 Interval:300 FixedRate:30];
+    GameContext *context3 = [[GameContext alloc] initWithValues:Classic Level:4 Score:960 Time:60 KindCound:6 Interval:360 FixedRate:0];
+    GameContext *context4 = [[GameContext alloc] initWithValues:Classic Level:5 Score:1020 Time:60 KindCound:6 Interval:360 FixedRate:25];
+    GameContext *context5 = [[GameContext alloc] initWithValues:Classic Level:6 Score:1080 Time:60 KindCound:6 Interval:360 FixedRate:30];
     
-    GameContext *context6 = [[GameContext alloc] initWithValues:Classic Level:7 Score:810 Time:60 KindCound:7 Interval:300 FixedRate:0];
-    GameContext *context7 = [[GameContext alloc] initWithValues:Classic Level:8 Score:900 Time:60 KindCound:7 Interval:300 FixedRate:25];
-    GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:1020 Time:60 KindCound:7 Interval:300 FixedRate:50];
+    GameContext *context6 = [[GameContext alloc] initWithValues:Classic Level:7 Score:810 Time:60 KindCound:7 Interval:360 FixedRate:0];
+    GameContext *context7 = [[GameContext alloc] initWithValues:Classic Level:8 Score:900 Time:60 KindCound:7 Interval:360 FixedRate:25];
+    GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:1020 Time:60 KindCound:7 Interval:360 FixedRate:50];
     
     [tempArray addObject:context0];
     [tempArray addObject:context1];
@@ -120,15 +120,15 @@ static GameDef* def;
     [tempArray addObject:context37];
     [tempArray addObject:context38];
     
+    float factor = 1.5;
     for(GameContext *context in tempArray)
     {
-        //这段代码仅在测试的时候使用
-//        if(context.type==Classic)
-//        {
-//            context.time=context.time/3;
-//            context.levelScore=context.levelScore/3;
-//            context.interval=context.interval/3;
-//        }
+        if(context.type==Classic&&context.level>5)
+        {
+            context.time=context.time*factor;
+            context.levelScore=context.levelScore*factor;
+            context.interval=context.interval*factor;
+        }
         
         [settings setValue:context forKey:[CommonUtils getKeyStringByGameTypeAndLevel:[context type] level:[context level]]];
     }
