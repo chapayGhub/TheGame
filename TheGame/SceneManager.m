@@ -8,6 +8,7 @@
 #import "UMTableViewController.h"
 #import "HelpLayer.h"
 #import "AdSageView.h"
+#import "MobiSageSDK.h"
 
 @interface SceneManager ()
 
@@ -15,7 +16,7 @@
 
 
 @implementation SceneManager
-//static MobiSageAdBanner* banner;
+static MobiSageAdBanner* banner;
 static UMTableViewController *controller;
 static AdSageView *adView;
 
@@ -28,7 +29,8 @@ static AdSageView *adView;
     MainMenuLayer* menu = [MainMenuLayer node];
     
 
-    [SceneManager getadBanner];
+    [SceneManager getBanner];
+    [[director view] addSubview:banner];
     [newScene addChild:menu z:0 tag:menuLayerTag];
     [newScene addChild:[ActiveBackgroundLayer node] z:2];
     if(count>1)
@@ -70,7 +72,6 @@ static AdSageView *adView;
     [newScene addChild:display z:2];
     [newScene addChild:play z:1];
     
-   // [SceneManager addAdBanner];
     
     
     if ([director runningScene]) {
@@ -112,17 +113,18 @@ static AdSageView *adView;
     [[SceneManager getBanner] removeFromSuperview];
 }
 
-//
-//+(MobiSageAdBanner*) getBanner
-//{
-//    if(banner == nil)
-//    {
-//        banner = [[MobiSageAdBanner alloc] initWithAdSize:Ad_320X50];
-//        [banner setInterval:Ad_Refresh_15];
-//        [banner setFrame:CGRectMake(0,430, 320, 50)];
-//    }
-//    return banner;
-//}
+
++(MobiSageAdBanner*) getBanner
+{
+    if(banner == nil)
+    {
+        banner = [[MobiSageAdBanner alloc] initWithAdSize:Ad_320X50];
+        [banner setInterval:Ad_Refresh_15];
+        [banner setFrame:CGRectMake(0,430, 320, 50)];
+        [banner setSwitchAnimeType: Ripple];
+    }
+    return banner;
+}
 
 
 +(void) pushScene:(CCScene*) scence{

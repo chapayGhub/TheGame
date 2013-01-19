@@ -410,20 +410,14 @@
 		
 	}else {//如果没有
 		CGPoint p = [self haveMore];
-        
         [self unlock];
-        [[PlayLayer sharedInstance:NO] nextStep];
-        
-        if (p.x!=-1||p.y!=-1) {//检查是否还有解，如果存在解，那么解锁继续游戏
-            
-            
-		}else {
-            if([[PlayLayer sharedInstance:NO] context].type!=Classic){
+        if (p.x==-1||p.y==-1) {//检查是否还有解，如果存在解，那么解锁继续游戏
                 [self fill];
                 [self check];
                 [self unlock];
-            }
 		}
+        
+        [[PlayLayer sharedInstance:NO] nextStep];
 	}
 }
 
@@ -461,7 +455,7 @@
             CCSequence *action = [CCSequence actions:
                                   [CCDelayTime actionWithDuration: kFallDownDelayTime],
                                   [CCMoveBy actionWithDuration:kTileDropTime*count position:dest],
-                                  [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:germ],
+                                 // [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:germ],
                                   nil];
             [germ.sprite runAction: action];
             destGerm.value = germ.value;
@@ -478,14 +472,15 @@
         //从下往上来
 		Germ *destGerm = [self objectAtX:columnIndex Y:kBoxHeight-count+i];
 		GermFigure *sprite = [self getFigure:value position:[destGerm pixPosition]];
+
 		sprite.position = ccp(kStartX + columnIndex * kTileSize + kTileSize/2, kStartY + (kBoxHeight + i) * kTileSize + kTileSize/2);
         CCSequence *action = [CCSequence actions:
                               [CCDelayTime actionWithDuration: kFallDownDelayTime],
 							  [CCMoveTo actionWithDuration:kTileDropTime*count position:destGerm.pixPosition],
                               [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:destGerm],
 							  nil];
-		[sprite setVisible:NO];
         [holder addChild: sprite];
+       
         if(sprite.bomb!=nil)
         {
             [destGerm setType:FixedGerm];
@@ -743,6 +738,7 @@
 }
 
 -(void)fill{
+    [MusicHandler playEffect:@"enter.mp3"];
     for (int i=0; i<[content count]; i++) {
         NSMutableArray *array = [content objectAtIndex:i];
         for(int j =0;j<[array count];j++)

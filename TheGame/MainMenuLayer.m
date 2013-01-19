@@ -147,7 +147,7 @@
     if(node!=nil&&CGRectContainsPoint([node boundingBox], location))
     {
         [MusicHandler playEffect:@"button.mp3"];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=40461254"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/napkin-concise-image-annotation/id581789185?mt=12"]];
         
     }
     

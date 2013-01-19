@@ -40,9 +40,9 @@ static GameDef* def;
     GameContext *context4 = [[GameContext alloc] initWithValues:Classic Level:5 Score:1020 Time:60 KindCound:6 Interval:360 FixedRate:25];
     GameContext *context5 = [[GameContext alloc] initWithValues:Classic Level:6 Score:1080 Time:60 KindCound:6 Interval:360 FixedRate:30];
     
-    GameContext *context6 = [[GameContext alloc] initWithValues:Classic Level:7 Score:810 Time:60 KindCound:7 Interval:360 FixedRate:0];
-    GameContext *context7 = [[GameContext alloc] initWithValues:Classic Level:8 Score:900 Time:60 KindCound:7 Interval:360 FixedRate:25];
-    GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:1020 Time:60 KindCound:7 Interval:360 FixedRate:50];
+    GameContext *context6 = [[GameContext alloc] initWithValues:Classic Level:7 Score:780 Time:60 KindCound:7 Interval:360 FixedRate:0];
+    GameContext *context7 = [[GameContext alloc] initWithValues:Classic Level:8 Score:870 Time:60 KindCound:7 Interval:360 FixedRate:25];
+    GameContext *context8 = [[GameContext alloc] initWithValues:Classic Level:9 Score:960 Time:60 KindCound:7 Interval:360 FixedRate:50];
     
     [tempArray addObject:context0];
     [tempArray addObject:context1];
@@ -57,8 +57,8 @@ static GameDef* def;
     
     
     //无尽模式的关卡设置
-    GameContext *context10 = [[GameContext alloc] initWithValues:Poisonous Level:1 Score:500 Time:0 KindCound:6 Interval:5 FixedRate:0];
-    GameContext *context11 = [[GameContext alloc] initWithValues:Poisonous Level:2 Score:1000 Time:0 KindCound:6 Interval:5 FixedRate:0];
+    GameContext *context10 = [[GameContext alloc] initWithValues:Poisonous Level:1 Score:500 Time:0 KindCound:6 Interval:5 FixedRate:90];
+    GameContext *context11 = [[GameContext alloc] initWithValues:Poisonous Level:2 Score:1000 Time:0 KindCound:6 Interval:5 FixedRate:90];
     
     GameContext *context12 = [[GameContext alloc] initWithValues:Poisonous Level:3 Score:125 Time:0 KindCound:6 Interval:5 FixedRate:15];
     GameContext *context13 = [[GameContext alloc] initWithValues:Poisonous Level:4 Score:1500 Time:0 KindCound:6 Interval:4 FixedRate:25];

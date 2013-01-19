@@ -57,7 +57,7 @@ static PlayLayer* thisLayer;
 }
 
 -(void) onEnterTransitionDidFinish{
-    [MusicHandler playEffect:@"enter.mp3"];
+
     [MusicHandler playGameBackground];
     // 统计部分的代码
     GameContext *c = self.context;

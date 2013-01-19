@@ -54,6 +54,12 @@ int type;
             hint=1;
             rotate=1;
 
+            if(context.level>5)
+            {
+                hint=2;
+                rotate=2;
+            }
+            
             hw.position = ccp(winSize.width*0.5,winSize.height*0.50);
             rw.position = ccp(winSize.width*0.5,winSize.height*0.58);
             CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
@@ -72,7 +78,10 @@ int type;
             // 两颗星给1个提示
             star3.visible=NO;
             hint=1;
-            
+            if(context.level>5)
+            {
+                hint=2;
+            }
             hw.position = ccp(winSize.width*0.5,winSize.height*0.55);
             CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
             hl.color = ccc3(200, 200, 200);
@@ -171,29 +180,26 @@ int type;
         CCSprite* lw = [CCSprite spriteWithFile:@"rebirth_wd.png"];
         
         
-        if(score>8000){
+        if(score>6000){
             hint = 2;
             rotate =2;
             heal =2;
         }
-        else if(score >6000){
-            hint = 2;
-            rotate =1;
-            heal =2;
-        }else if(score >4000){
+        else if(score >4000){
             hint = 2;
             rotate =1;
             heal =1;
-        }else if(score>3000){
+        }else if(score >3000){
+            hint = 1;
+            rotate =1;
+            heal =1;
+        }else if(score>2000){
             rotate = 1;
             hint =2;
         }
-        else if(score>2000){
+        else if(score>1200){
             hint = 2;
         }
-        
-        
-        
         
         if(hint==0)
         {

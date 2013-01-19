@@ -467,8 +467,7 @@ static PlayDisplayLayer* thisLayer;
         
         BOOL flag = [[PlayLayer sharedInstance:NO] hint];
         if(flag)
-        {
-            
+        { 
             [MusicHandler playEffect:@"hint.mp3"];
             [pro addHint:-1];
             //[UserProfile writeBackToFile];
@@ -510,7 +509,6 @@ static PlayDisplayLayer* thisLayer;
         int value = [reload nextValue];
         [MobClick event:@"useRefill" label:[NSString stringWithFormat:@"%d",value]];
         [[PlayLayer sharedInstance:NO] reload];
-        [MusicHandler playEffect:@"enter.mp3"];
         return;
     }
     
