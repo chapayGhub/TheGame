@@ -100,14 +100,14 @@ ccColor3B color;
         [label release];
     }
     label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",number] fontName:@"Arial-BoldMT" fontSize:size];
-    [self recorrectLabelPosition];
+    [label setPosition:ccp(self.position.x+shiftvalueX,self.position.y+shiftvalueY)];
     [label setColor:color];
     
 }
 -(void) recorrectLabelPosition{
-    CGPoint p = self.position;
-    [label setPosition:ccp(p.x+shiftvalueX,p.y+shiftvalueY)];
-    [bomb setPosition:ccp(p.x+figureShiftX,p.y-figureShiftY)];
+    // CGPoint p = self.position;
+   // [label setPosition:ccp(p.x+shiftvalueX,p.y+shiftvalueY)];
+   // [bomb setPosition:ccp(p.x+figureShiftX,p.y-figureShiftY)];
 
 }
 -(void) setBombPictureWithFile:(NSString*) file{

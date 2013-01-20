@@ -120,6 +120,7 @@ static PlayLayer* thisLayer;
 -(void) checkPos:(id) sender data: (Germ*) g
 {
     [g.sprite setPosition:g.pixPosition];
+    [g.sprite recorrectLabelPosition];
 }
 
 -(void) resetWithContext:(GameContext *)context refresh:(BOOL) fresh
@@ -303,7 +304,6 @@ static PlayLayer* thisLayer;
                     {
                         [[PlayDisplayLayer sharedInstance:NO] gameOver];
                     }
-
                 }
             }
             
@@ -315,7 +315,7 @@ static PlayLayer* thisLayer;
     }
     if(_context.type!=Classic && _context.interval!=0)
     {
-        if(_stepCount%_context.interval==0||_stepCount==2)
+        if(_stepCount%_context.interval==0)
         {
             // 刷新孢子
             [self changeOneGermByType:_context.type];
@@ -327,6 +327,7 @@ static PlayLayer* thisLayer;
 {
     int x = arc4random()%7;
     int y = arc4random()%7;
+    
     
     GermType t = TimeBombGerm;
     switch (type) {
@@ -340,7 +341,6 @@ static PlayLayer* thisLayer;
         default:
             break;
     }
-    
     Germ* g = [box objectAtX:x Y:y];
     [g transform:t];
 }

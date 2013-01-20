@@ -48,30 +48,58 @@ int type;
         
         CCSprite* hw = [CCSprite spriteWithFile:@"remaid_wd.png"];
         CCSprite* rw = [CCSprite spriteWithFile:@"rotate_wd.png"];
+        CCSprite* lw = [CCSprite spriteWithFile:@"rebirth_wd.png"];
+        
         if(star==3)
         {
             // 三颗星给1个提示1个轮换
             hint=1;
             rotate=1;
-
             if(context.level>5)
             {
                 hint=2;
                 rotate=2;
+                heal = 1;
             }
             
-            hw.position = ccp(winSize.width*0.5,winSize.height*0.50);
-            rw.position = ccp(winSize.width*0.5,winSize.height*0.58);
-            CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
-            hl.color = ccc3(200, 200, 200);
-            hl.position = ccp(winSize.width*0.57,winSize.height*0.50);
-            CCLabelTTF *rl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",rotate] fontName:@"Arial-BoldMT" fontSize:18];
-            rl.color = ccc3(200, 200, 200);
-            rl.position = ccp(winSize.width*0.57,winSize.height*0.58);
-            [self addChild:hw z:2];
-            [self addChild:rw z:2];
-            [self addChild:hl z:2];
-            [self addChild:rl z:2];
+            if(heal==0){
+                hw.position = ccp(winSize.width*0.5,winSize.height*0.50);
+                rw.position = ccp(winSize.width*0.5,winSize.height*0.58);
+                CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
+                hl.color = ccc3(200, 200, 200);
+                hl.position = ccp(winSize.width*0.57,winSize.height*0.50);
+                CCLabelTTF *rl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",rotate] fontName:@"Arial-BoldMT" fontSize:18];
+                rl.color = ccc3(200, 200, 200);
+                rl.position = ccp(winSize.width*0.57,winSize.height*0.58);
+                [self addChild:hw z:2];
+                [self addChild:rw z:2];
+                [self addChild:hl z:2];
+                [self addChild:rl z:2];
+            }else{
+                hw.position = ccp(winSize.width*0.5,winSize.height*0.49);
+                rw.position = ccp(winSize.width*0.5,winSize.height*0.54);
+                lw.position = ccp(winSize.width*0.5,winSize.height*0.59);
+                
+                CCLabelTTF *hl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",hint] fontName:@"Arial-BoldMT" fontSize:18];
+                hl.color = ccc3(200, 200, 200);
+                hl.position = ccp(winSize.width*0.57,winSize.height*0.49);
+                
+                CCLabelTTF *rl=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",rotate] fontName:@"Arial-BoldMT" fontSize:18];
+                rl.color = ccc3(200, 200, 200);
+                rl.position = ccp(winSize.width*0.57,winSize.height*0.54);
+                
+                CCLabelTTF *ll=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",heal] fontName:@"Arial-BoldMT" fontSize:18];
+                ll.color = ccc3(200, 200, 200);
+                ll.position = ccp(winSize.width*0.572,winSize.height*0.59);
+                
+                [self addChild:hw z:2];
+                [self addChild:rw z:2];
+                [self addChild:lw z:2];
+                [self addChild:hl z:2];
+                [self addChild:rl z:2];
+                [self addChild:ll z:2];
+
+            }
             
         }else if(star ==2)
         {
@@ -136,6 +164,7 @@ int type;
             star3.scale=0.5f;
             hw.scale=0.5f;
             rw.scale=0.5f;
+            lw.scale=0.5f;
             ct.scale=0.5f;
             mt.scale=0.5f;
             lt.scale=0.5f;
@@ -180,32 +209,30 @@ int type;
         CCSprite* lw = [CCSprite spriteWithFile:@"rebirth_wd.png"];
         
         
-        if(score>6000){
+        if(score>15000){
             hint = 2;
             rotate =2;
             heal =2;
         }
-        else if(score >4000){
-            hint = 2;
-            rotate =1;
+        else if(score >8000){
+            hint = 1;
+            rotate =2;
             heal =1;
-        }else if(score >3000){
+        }else if(score >6500){
             hint = 1;
             rotate =1;
             heal =1;
-        }else if(score>2000){
+        }else if(score>5000){
             rotate = 1;
-            hint =2;
+            hint =1;
         }
-        else if(score>1200){
+        else if(score>3500){
             hint = 2;
+        }else{
+            hint = 1;
         }
         
-        if(hint==0)
-        {
-            hint=1;
-        }
-        
+
         if(heal>0) // 三种奖励都拿到了
         {
             lw.position = ccp(winSize.width*0.5,winSize.height*0.47);

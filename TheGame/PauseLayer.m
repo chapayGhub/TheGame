@@ -45,12 +45,13 @@
 	UITouch* touch = [touches anyObject];
 	CGPoint location = [touch locationInView: touch.view];
 	location = [[CCDirector sharedDirector] convertToGL: location];
+    GameContext *context = [[PlayLayer sharedInstance:NO] context];
+    GameType type= [context type];
     
     CCNode* sprite = [self getChildByTag:menuTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
         [MusicHandler playEffect:@"button.mp3"];
-        GameContext *context = [[PlayLayer sharedInstance:NO] context];
-        GameType type= [context type];
+
 
         if(type==Classic)
         {
@@ -70,8 +71,7 @@
     sprite = [self getChildByTag:redoTag];
     if(sprite!=nil && CGRectContainsPoint([sprite boundingBox], location)){
         [MusicHandler playEffect:@"button.mp3"];
-        GameType type= [[[PlayLayer sharedInstance:NO] context] type];
-        [SceneManager goPlay:type level:1];
+        [SceneManager goPlay:type level:type==Classic?context.level:1];
     }
 }
 @end

@@ -38,6 +38,28 @@
         CCMenuItemSprite *timeBomb = [CCMenuItemSprite  itemWithNormalSprite:i selectedSprite:is target:self selector:@selector(goTimeBomb)];
         CCMenuItemSprite *bomb = [CCMenuItemSprite  itemWithNormalSprite:m selectedSprite:ms target:self selector:@selector(goBomb)];
     
+        UserProfile* pro = [UserProfile sharedInstance];
+        
+        int size = 15;
+        ccColor3B labelColor = ccc3(1, 100, 200);
+        int poisonRecord = [[[pro userRecord] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:Poisonous level:1]] integerValue];
+        int timeBombRecord = [[[pro userRecord] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:TimeBomb level:1]] integerValue];
+        int bombRecord = [[[pro userRecord] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:Bomb level:1]] integerValue];
+        
+        CCLabelTTF* pl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"纪录: %d", poisonRecord==-1?0:poisonRecord] fontName:@"Arial" fontSize:size];
+        CCLabelTTF* tl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"纪录: %d", timeBombRecord==-1?0:timeBombRecord] fontName:@"Arial" fontSize:size];
+        CCLabelTTF* bl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"纪录: %d", bombRecord==-1?0:bombRecord] fontName:@"Arial" fontSize:size];
+        pl.color=labelColor;
+        tl.color=labelColor;
+        bl.color=labelColor;
+        pl.anchorPoint=ccp(1,0);
+        tl.anchorPoint=ccp(0,0);
+        bl.anchorPoint=ccp(1,0);
+        
+        pl.position = ccp(winSize.width*0.75, winSize.height*0.659);
+        tl.position = ccp(winSize.width*0.28, winSize.height*0.471);
+        bl.position = ccp(winSize.width*0.75, winSize.height*0.283);
+        
         menu = [CCSprite spriteWithFile:@"stop_menu_bt.png"];
         menu.position=ccp(winSize.width*0.25,winSize.height*0.88);
         
@@ -59,6 +81,9 @@
         [self addChild:background];
         [self addChild:mainmenu];
         [self addChild:menu z:1 tag:menuTag];
+        [self addChild:pl z:2];
+        [self addChild:tl z:2];
+        [self addChild:bl z:2];
         [self setIsTouchEnabled:YES];
     }
     return self;

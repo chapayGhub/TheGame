@@ -501,7 +501,7 @@ static PlayDisplayLayer* thisLayer;
         int num = [pro tools_refill];
         if(num==0)
         {
-            return;
+   //         return;
         }
         
         [pro addRefill:-1];
