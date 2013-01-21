@@ -119,7 +119,7 @@ static AdSageView *adView;
     if(banner == nil)
     {
         banner = [[MobiSageAdBanner alloc] initWithAdSize:Ad_320X50];
-        [banner setInterval:Ad_Refresh_15];
+        [banner setInterval:Ad_Refresh_30];
         [banner setFrame:CGRectMake(0,430, 320, 50)];
         [banner setSwitchAnimeType: Ripple];
     }
