@@ -75,6 +75,7 @@
             [layer addChild:figure];
             break;
         case PoisonousGerm:
+            [figure setShiftValue:0];
             [figure setBombPictureWithFile:@"poison.png"];
             [layer addChild:figure];
             [layer addChild:figure.bomb];
@@ -82,6 +83,7 @@
             [MusicHandler playEffect:@"poisonappear.mp3"];
             break;
         case BombGerm:
+            [figure setShiftValue:0];
             [figure setBombPictureWithFile:@"bomb.png"];
             [figure setLabelValue:stepBombCount];
             [layer addChild:figure];
@@ -91,6 +93,7 @@
             [MusicHandler playEffect:@"bombappear.wav"];
             break;
         case TimeBombGerm:
+            [figure setShiftValue:0];
             [figure setBombPictureWithFile:@"bomb.png"];
             [figure setLabelValue:timeBombCount];
             [layer addChild:figure];

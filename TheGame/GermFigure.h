@@ -10,6 +10,7 @@
 
 #import "cocos2d.h"
 #import "Constants.h"
+
 // 重载CCSprite 方便做特殊孢子的效果
 @interface GermFigure:CCSprite
 
@@ -18,7 +19,10 @@
 @property (nonatomic,retain) CCSprite* bomb;
 @property (atomic) int currentNumber;
 
-
+@property (nonatomic) int shiftvalueX;
+@property (nonatomic) int shiftvalueY;
+@property (nonatomic) int figureShiftX;
+@property (nonatomic) int figureShiftY;
 
 -(void) setLabelValue:(int) number;
 -(CCAction*) runAction:(CCAction*) action;
@@ -29,6 +33,6 @@
 -(void) setBombPictureWithFile:(NSString*) file;
 -(void) setShiftValue:(int) type;
 +(id)spriteWithFrame:(NSString*)frame;
--(void) recorrectLabelPosition;
+-(void) resetPosition:(CGPoint)position;
 -(void) setFreezePictureWithFile:(NSString*) file;
 @end

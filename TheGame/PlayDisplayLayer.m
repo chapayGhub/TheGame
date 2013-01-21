@@ -169,7 +169,8 @@ static PlayDisplayLayer* thisLayer;
             
             
             passScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",levelScore] fontName:@"Arial-BoldMT" fontSize:15];
-            passScoreLabel.position = ccp(winSize.width*0.68, winSize.height*0.967);
+            passScoreLabel.position = ccp(winSize.width*0.63, winSize.height*0.97);
+            passScoreLabel.anchorPoint=ccp(0,0.5);
             passScoreLabel.color = ccc3(250,250,250);
             [self addChild:passScoreLabel];
             
@@ -229,8 +230,10 @@ static PlayDisplayLayer* thisLayer;
                 r=0;
             }
             CCLabelTTF *record = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",r] fontName:@"Arial-BoldMT" fontSize:15];
-            record.color=ccc3(220,220,0);
-            record.position = ccp(winSize.width*0.37 ,winSize.height*0.963f);
+            record.color=ccc3(255,255,0);
+            [record setAnchorPoint:ccp(0,0.5)];
+            record.position = ccp(winSize.width*0.33 ,winSize.height*0.9635f);
+            
             [self addChild:record];
         }
     }
@@ -242,11 +245,12 @@ static PlayDisplayLayer* thisLayer;
     if(scoreLabel==nil)
     {
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Arial-BoldMT" fontSize:15];
+        scoreLabel.anchorPoint = ccp(0,0.5);
         if(context.type==Classic)
         {
-            scoreLabel.position = ccp(winSize.width*0.26, winSize.height*0.967);
+            scoreLabel.position = ccp(winSize.width*0.21, winSize.height*0.97);
         }else{
-            scoreLabel.position = ccp(winSize.width*0.31, winSize.height*0.91);
+            scoreLabel.position = ccp(winSize.width*0.23, winSize.height*0.91);
         }
         scoreLabel.color = ccc3(250,250,250);
         [self addChild:scoreLabel];
@@ -460,9 +464,9 @@ static PlayDisplayLayer* thisLayer;
     if(CGRectContainsPoint([hint boundingBox], location))
     {
         int num = [pro tools_hint];
-        if(num==0)
+        if(num<=0)
         {
-            return;
+//            return;
         }
         
         BOOL flag = [[PlayLayer sharedInstance:NO] hint];
@@ -482,12 +486,13 @@ static PlayDisplayLayer* thisLayer;
     if(CGRectContainsPoint([heal boundingBox], location))
     {
         int num = [pro tools_life];
-        if(num==0)
+        if(num<=0)
         {
-            return;
+ //           return;
         }
         if([self addLife]){
-            
+            while([self addLife]){
+            }
             [pro addLife:-1];
             //[UserProfile writeBackToFile];
             int value = [heal nextValue];
@@ -499,7 +504,7 @@ static PlayDisplayLayer* thisLayer;
     if(CGRectContainsPoint([reload boundingBox], location))
     {
         int num = [pro tools_refill];
-        if(num==0)
+        if(num<=0)
         {
    //         return;
         }

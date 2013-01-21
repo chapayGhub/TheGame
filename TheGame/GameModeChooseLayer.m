@@ -40,7 +40,7 @@
     
         UserProfile* pro = [UserProfile sharedInstance];
         
-        int size = 15;
+        int size = 12;
         ccColor3B labelColor = ccc3(1, 100, 200);
         int poisonRecord = [[[pro userRecord] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:Poisonous level:1]] integerValue];
         int timeBombRecord = [[[pro userRecord] valueForKey:[CommonUtils getKeyStringByGameTypeAndLevel:TimeBomb level:1]] integerValue];

@@ -7,19 +7,15 @@
 //
 
 #import "GermFigure.h"
-#import "cocos2d.h"
 
 @implementation GermFigure
 
 
-@synthesize label,currentNumber,bomb;
+@synthesize label,currentNumber,bomb,shiftvalueX,shiftvalueY,figureShiftX,figureShiftY;
 
 CCAction *tempAction;
 CCAction *tempAction1;
-int shiftvalueX;
-int shiftvalueY;
-int figureShiftX;
-int figureShiftY;
+
 int size;
 ccColor3B color;
 -(CCAction*) runAction:(CCAction*) action{
@@ -40,23 +36,17 @@ ccColor3B color;
 
 +(id)spriteWithFile:(NSString*)filename{
     self = [super spriteWithFile:filename];
-    shiftvalueX=10;//default values
-    shiftvalueY=-12;
+
     size=13;
     color=ccc3(255, 255, 255);
-    figureShiftX=10;
-    figureShiftY=10;
+
     return self;
 }
 
 +(id)spriteWithFrame:(NSString*)frame{
     self = [super spriteWithSpriteFrameName:frame];
-    shiftvalueX=10;//default values
-    shiftvalueY=-12;
     size=13;
     color=ccc3(255, 255, 255);
-    figureShiftX=10;
-    figureShiftY=10;
     return self;
 }
 
@@ -71,6 +61,11 @@ ccColor3B color;
     {
         figureShiftX=0;
         figureShiftY=0;
+    }else{
+        shiftvalueX=10;//default values
+        shiftvalueY=-12;
+        figureShiftX=10;
+        figureShiftY=10;
     }
 }
 
@@ -104,11 +99,17 @@ ccColor3B color;
     [label setColor:color];
     
 }
--(void) recorrectLabelPosition{
-    // CGPoint p = self.position;
-   // [label setPosition:ccp(p.x+shiftvalueX,p.y+shiftvalueY)];
-   // [bomb setPosition:ccp(p.x+figureShiftX,p.y-figureShiftY)];
 
+
+-(void) resetPosition:(CGPoint)position{
+    [super setPosition:position];
+    if(label!=nil)
+    {
+        [label setPosition:ccp(position.x+shiftvalueX,position.y+shiftvalueY)];
+    }
+    if(bomb!=nil){
+        [bomb setPosition:ccp(position.x+figureShiftX,position.y-figureShiftY)];
+    }
 }
 -(void) setBombPictureWithFile:(NSString*) file{
     bomb = [CCSprite spriteWithFile:file];
@@ -125,7 +126,9 @@ ccColor3B color;
 -(void) setFreezePictureWithFile:(NSString*) file{
     bomb = [CCSprite spriteWithFile:file];
     CGPoint p = self.position;
-    [bomb setPosition:ccp(p.x+figureShiftX,p.y-figureShiftY)];
+    [bomb setPosition:ccp(p.x,p.y)];
+    figureShiftX=0;
+    figureShiftY=0;
     if(!isRetina)
     {
         [bomb setScale:0.5f];
@@ -135,7 +138,7 @@ ccColor3B color;
 }
 
 -(int) nextValue{
-    if(currentNumber==0)
+    if(currentNumber<=0)
     {
         return -1;
     }

@@ -133,11 +133,20 @@ static UserProfile* userprofile;
 
 -(void) addHint:(int)value{
     tools_hint+=value;
+    if(tools_hint<0){
+        tools_hint=0;
+    }
 }
 -(void) addLife:(int)value{
     tools_life+=value;
+    if(tools_life<0){
+        tools_life=0;
+    }
 }
 -(void) addRefill:(int)value{
     tools_refill+=value;
+    if(tools_refill<0){
+        tools_refill=0;
+    }
 }
 @end

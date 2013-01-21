@@ -107,20 +107,14 @@ static PlayLayer* thisLayer;
         for(int j =0;j<[array count];j++)
         {
             Germ *g= [array objectAtIndex:j];
-            if(g.type==FixedGerm)
-            {
-                continue;
-            }
-            [g.sprite setPosition:g.pixPosition];
-            [g.sprite recorrectLabelPosition];
+            [g.sprite resetPosition:g.pixPosition];
         }
     }
 }
 
 -(void) checkPos:(id) sender data: (Germ*) g
 {
-    [g.sprite setPosition:g.pixPosition];
-    [g.sprite recorrectLabelPosition];
+    [g.sprite resetPosition:g.pixPosition];
 }
 
 -(void) resetWithContext:(GameContext *)context refresh:(BOOL) fresh
@@ -182,7 +176,7 @@ static PlayLayer* thisLayer;
         if(clickcount==2)
         {
             clickcount=0;
-            GermType t = SuperGerm;
+            GermType t = FixedGerm;
             [selected transform:t];
             [self afterOneShineTrun:selected.sprite];
             [box check];
