@@ -10,9 +10,9 @@
 #import "cocos2d.h"
 #import "Constants.h"
 #import "PlayLayer.h"
-
+#import "AdLayer.h"
 //用于显示游戏界面的各种label和按钮
-@interface PlayDisplayLayer : CCLayer{
+@interface PlayDisplayLayer :AdLayer{
 }
 
 

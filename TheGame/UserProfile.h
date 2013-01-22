@@ -14,7 +14,7 @@
 }
 
 //道具数目 count代表连续登陆天数
-@property (nonatomic) int tools_hint,tools_life,tools_refill,count;
+@property (nonatomic) int tools_hint,tools_life,tools_refill,count,clickAd;
 @property (nonatomic,retain) NSMutableDictionary* userRecord;
 @property (nonatomic,retain) NSDate* lastTime;
 @property (nonatomic) BOOL silence;

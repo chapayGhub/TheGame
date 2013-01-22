@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "SceneManager.h"
-
-@interface GameModeChooseLayer : CCLayer
+#import "AdLayer.h"
+@interface GameModeChooseLayer  :AdLayer
 {
     CCSprite * menu;
 }

@@ -8,7 +8,7 @@
 #import "UMTableViewController.h"
 #import "HelpLayer.h"
 #import "AdSageView.h"
-#import "MobiSageSDK.h"
+
 
 @interface SceneManager ()
 
@@ -16,9 +16,10 @@
 
 
 @implementation SceneManager
-static MobiSageAdBanner* banner;
+//static MobiSageAdBanner* banner;
 static UMTableViewController *controller;
 static AdSageView *adView;
+static AdLayer * layer1;
 
 +(void) goMainMenu{
     
@@ -28,9 +29,9 @@ static AdSageView *adView;
     int count = [profile getCountInARoll];
     MainMenuLayer* menu = [MainMenuLayer node];
     
-
-    [SceneManager getBanner];
-    [[director view] addSubview:banner];
+    [SceneManager getAdBanner];
+    [[director view] addSubview:adView];
+    
     [newScene addChild:menu z:0 tag:menuLayerTag];
     [newScene addChild:[ActiveBackgroundLayer node] z:2];
     if(count>1)
@@ -47,13 +48,12 @@ static AdSageView *adView;
 }
 
 
-+(AdSageView*) getadBanner
++(AdSageView*) getAdBanner
 {
     if(adView == nil)
     {
-        AdLayer* tmp = [AdLayer node];
-        adView = [AdSageView requestAdSageBannerAdView:tmp sizeType:AdSageBannerAdViewSize_320X50];
-
+        layer1 = [[AdLayer node] retain];
+        adView = [AdSageView requestAdSageBannerAdView:layer1 sizeType:AdSageBannerAdViewSize_320X50];
         [adView setFrame:CGRectMake(0,430, 320, 50)];
     }
     return adView;
@@ -71,8 +71,6 @@ static AdSageView *adView;
     [newScene addChild:[PlayBackgroundLayer node] z:0];
     [newScene addChild:display z:2];
     [newScene addChild:play z:1];
-    
-    
     
     if ([director runningScene]) {
         [director replaceScene:[CCTransitionMoveInT transitionWithDuration: 0.5f scene: newScene]];
@@ -102,29 +100,29 @@ static AdSageView *adView;
 }
 
 
-+(void) addAdBanner
-{
-    CCDirector *director = [CCDirector sharedDirector];
-    [director.view addSubview:[SceneManager getBanner]];
-}
+//+(void) addAdBanner
+//{
+//    CCDirector *director = [CCDirector sharedDirector];
+//    [director.view addSubview:[SceneManager getBanner]];
+//}
+//
+//+(void) removeAdBanner
+//{
+//    [[SceneManager getBanner] removeFromSuperview];
+//}
 
-+(void) removeAdBanner
-{
-    [[SceneManager getBanner] removeFromSuperview];
-}
-
-
-+(MobiSageAdBanner*) getBanner
-{
-    if(banner == nil)
-    {
-        banner = [[MobiSageAdBanner alloc] initWithAdSize:Ad_320X50];
-        [banner setInterval:Ad_Refresh_30];
-        [banner setFrame:CGRectMake(0,430, 320, 50)];
-        [banner setSwitchAnimeType: Ripple];
-    }
-    return banner;
-}
+//
+//+(MobiSageAdBanner*) getBanner
+//{
+//    if(banner == nil)
+//    {
+//        banner = [[MobiSageAdBanner alloc] initWithAdSize:Ad_320X50];
+//        [banner setInterval:Ad_Refresh_30];
+//        [banner setFrame:CGRectMake(0,430, 320, 50)];
+//        [banner setSwitchAnimeType: Ripple];
+//    }
+//    return banner;
+//}
 
 
 +(void) pushScene:(CCScene*) scence{

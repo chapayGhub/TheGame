@@ -9,7 +9,7 @@
 #import "UserProfile.h"
 #import "CommonUtils.h"
 @implementation UserProfile
-@synthesize tools_hint,tools_life,tools_refill,userRecord,count,lastTime,silence;
+@synthesize tools_hint,tools_life,tools_refill,userRecord,count,lastTime,silence,clickAd;
 
 static UserProfile* userprofile;
 
@@ -49,6 +49,8 @@ static UserProfile* userprofile;
     [userprofile setTools_refill:0];
     [userprofile setCount:1];
     [userprofile setLastTime:[[NSDate alloc] init]];
+    [userprofile setClickAd:0];
+    
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     userprofile.silence = NO;
     GameType type = Classic;
@@ -84,6 +86,7 @@ static UserProfile* userprofile;
     [aCoder encodeInt:count forKey:@"count"];
     [aCoder encodeObject:userRecord forKey:@"record"];
     [aCoder encodeObject:lastTime forKey:@"lasttime"];
+    [aCoder encodeInt:clickAd forKey:@"clickAd"];
 }
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -91,6 +94,7 @@ static UserProfile* userprofile;
         self.silence=[aDecoder decodeBoolForKey:@"silence"];
         self.tools_hint=[aDecoder decodeIntForKey:@"hint"];
         self.tools_life=[aDecoder decodeIntForKey:@"life"];
+        self.clickAd = [aDecoder decodeIntForKey:@"clickAd"];
         self.tools_refill=[aDecoder decodeIntForKey:@"refill"];
         self.count=[aDecoder decodeIntForKey:@"count"];
         self.userRecord=[aDecoder decodeObjectForKey:@"record"];

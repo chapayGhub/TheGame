@@ -43,6 +43,7 @@
 #define menuTag 52
 #define sunTag 220
 #define musicTag 99
+#define colorEggTag 1314
 
 /*根据num计算分数的规则*/
 // 孢子数*基础分

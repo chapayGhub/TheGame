@@ -451,7 +451,7 @@
             //如果某个孢子下面有被消除的孢子，那么它应该移动到那个孢子的位置去
             Germ *destGerm = [self objectAtX:columnIndex Y:y-count];
             
-            CGPoint dest = ccp(destGerm.pixPosition.x-germ.pixPosition.x, destGerm.pixPosition.y-germ.pixPosition.y);
+            CGPoint dest = ccp(destGerm.pixPosition.x-germ.pixPosition.x, destGerm.pixPosition.y-germ.sprite.position.y);
             CCSequence *action = [CCSequence actions:
                                   [CCDelayTime actionWithDuration: kFallDownDelayTime],
                                   [CCMoveBy actionWithDuration:kTileDropTime*count position:dest],
@@ -739,6 +739,8 @@
 
 -(void)fill{
     [MusicHandler playEffect:@"enter.mp3"];
+    [[PlayLayer sharedInstance:NO] stopAllActions];
+    
     for (int i=0; i<[content count]; i++) {
         NSMutableArray *array = [content objectAtIndex:i];
         for(int j =0;j<[array count];j++)
@@ -751,7 +753,7 @@
             destGerm.centerFlag=NO;
             destGerm.value = value;
             [holder addChild: sprite];
-            if(destGerm.sprite)
+            if(destGerm.sprite!=nil)
             {
                 [destGerm.sprite removeFromParentAndCleanup:NO];
             }

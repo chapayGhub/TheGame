@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "SceneManager.h"
 
-@interface HelpLayer : CCLayer{
+@interface HelpLayer :AdLayer{
     CCSprite* menu;
 }
 

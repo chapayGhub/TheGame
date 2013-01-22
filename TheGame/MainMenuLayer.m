@@ -3,7 +3,7 @@
 
 @implementation MainMenuLayer
 
-
+int clickCount;
 -(id) init{
 	self = [super init];
 	CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -17,7 +17,7 @@
     
     CCAction *rotate = [CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:5 angle:180]];
     [self addChild:sunray z:1];
-    [self addChild:sun z:1];
+    [self addChild:sun z:1 tag:colorEggTag];
     [sunray runAction:rotate];
     
     
@@ -178,6 +178,26 @@
         }
         music.position = ccp(winSize.width*0.27f,winSize.height*0.21f);
         [self addChild:music z:1 tag:musicTag];
+    }
+    
+    node = [self getChildByTag:colorEggTag];
+    if(node!=nil&&CGRectContainsPoint([node boundingBox], location))
+    {
+        clickCount++;
+        if(clickCount==3)
+        {
+            clickCount=0;
+            UIAlertView*alert = [[UIAlertView alloc]initWithTitle:@"宅男福利~"
+                                                      message:@"主页下面的QQ号是单身大美女哦~~"
+                                                     delegate:nil
+                                            cancelButtonTitle:@"确定"
+                                            otherButtonTitles:nil]; 
+            [alert show];
+        
+            [alert release];
+        }
+    }else{
+        clickCount=0;
     }
 
 }

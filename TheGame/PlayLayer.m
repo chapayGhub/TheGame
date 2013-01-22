@@ -186,6 +186,8 @@ static PlayLayer* thisLayer;
 	clickcount=0;
     
 	Germ *tile = [box objectAtX:x Y:y];
+    [tile.sprite resetPosition:tile.pixPosition];
+    
     if(tile.type==FixedGerm){//如果是固定孢子 直接返回
         [MusicHandler playEffect:@"disabled.mp3"];
         return;
@@ -242,8 +244,6 @@ static PlayLayer* thisLayer;
 	}
 	BOOL result = [box check];
 	if (result) {
-        //[self nextStep];
-		//[box setLock:NO];
 	}else {
 		[self changeWithTileA:(Germ *)data TileB:firstOne sel:@selector(backCheck:data:)];
 		[self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:kMoveTileTime + 0.03f],
@@ -330,7 +330,7 @@ static PlayLayer* thisLayer;
             break;
         case Poisonous:
             t =PoisonousGerm;
-            y=0;
+            y=arc4random()%3;
             break;
         default:
             break;

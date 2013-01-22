@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "SceneManager.h"
 
-@interface LevelChooseLayer : CCLayer
+@interface LevelChooseLayer :AdLayer
 {
     CCSprite* menu;
 }

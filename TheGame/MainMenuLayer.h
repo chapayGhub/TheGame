@@ -2,7 +2,7 @@
 #import "SceneManager.h"
 #import "UserProfile.h"
 #import "AdLayer.h"
-
+#import "Constants.h"
 // 主菜单
 @interface MainMenuLayer :AdLayer{
     CCMenu *menu;
