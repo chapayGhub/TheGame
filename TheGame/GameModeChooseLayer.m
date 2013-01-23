@@ -60,7 +60,7 @@
         tl.position = ccp(winSize.width*0.28, winSize.height*0.471);
         bl.position = ccp(winSize.width*0.75, winSize.height*0.283);
         
-        menu = [CCSprite spriteWithFile:@"stop_menu_bt.png"];
+        menu = [CCSprite spriteWithFile:@"big_bt.png"];
         menu.position=ccp(winSize.width*0.25,winSize.height*0.88);
         
         if(!isRetina)

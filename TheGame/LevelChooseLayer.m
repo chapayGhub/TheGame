@@ -18,7 +18,7 @@
     CCSprite * back = [CCSprite spriteWithFile:@"level_bg.png"];
     back.position = ccp(winSize.width*0.5f,winSize.height*0.5f);
 
-    menu = [CCSprite spriteWithFile:@"stop_menu_bt.png"];
+    menu = [CCSprite spriteWithFile:@"big_bt.png"];
     menu.position=ccp(winSize.width*0.25,winSize.height*0.88);
     
     if(!isRetina)

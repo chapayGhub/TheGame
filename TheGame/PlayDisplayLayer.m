@@ -478,6 +478,7 @@ static PlayDisplayLayer* thisLayer;
             int value = [hint nextValue];
             [MobClick event:@"useHint" label:[NSString stringWithFormat:@"%d",value]];
         }else{
+            [[PlayLayer sharedInstance:NO] reload];
             [MusicHandler playEffect:@"disabled.mp3"];
         }
         return;
@@ -510,7 +511,6 @@ static PlayDisplayLayer* thisLayer;
         }
         
         [pro addRefill:-1];
-        //[UserProfile writeBackToFile];
         int value = [reload nextValue];
         [MobClick event:@"useRefill" label:[NSString stringWithFormat:@"%d",value]];
         [[PlayLayer sharedInstance:NO] reload];

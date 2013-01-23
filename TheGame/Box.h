@@ -30,7 +30,7 @@
 -(Germ *) objectAtX: (int) posX Y: (int) posY;
 
 -(void) fill;
--(BOOL) check;
+-(BOOL) check: (BOOL) nextstep;
 -(void) unlock;
 -(void) removeSprite: (id) sender;
 -(void) afterAllMoveDone;

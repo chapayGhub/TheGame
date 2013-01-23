@@ -42,7 +42,7 @@ int type;
         star3.position = ccp(winSize.width*0.623,winSize.height*0.768);
 
         CCLabelTTF *sc=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",score] fontName:@"Arial-BoldMT" fontSize:22];
-        sc.color = ccc3(200, 200, 0);
+        sc.color = ccc3(253,217,71);
         sc.position=ccp(winSize.width*0.55,winSize.height*0.71);
         int star = display.star;
         
@@ -125,7 +125,7 @@ int type;
             
             CCLabelTTF *hl=[CCLabelTTF labelWithString: @"真遗憾，这次没有获得奖励，要再接再厉哦!" fontName:@"Arial-BoldMT" fontSize:18];
             [hl setDimensions:CGSizeMake(winSize.width*0.4, winSize.height*0.2)];
-            hl.color = ccc3(200, 200, 0);
+            hl.color = ccc3(253,217,71);
             hl.position = ccp(winSize.width*0.5,winSize.height*0.52);
             [self addChild:hl z:2];
         }else{
@@ -136,7 +136,7 @@ int type;
 
             CCLabelTTF *hl=[CCLabelTTF labelWithString: @"真遗憾，这次没有获得奖励，要再接再厉哦!" fontName:@"Arial-BoldMT" fontSize:18];
             [hl setDimensions:CGSizeMake(winSize.width*0.4, winSize.height*0.2)];
-            hl.color = ccc3(200, 200, 0);
+            hl.color = ccc3(253,217,71);
             hl.position = ccp(winSize.width*0.5,winSize.height*0.52);
             [self addChild:hl z:2];
             
@@ -189,7 +189,7 @@ int type;
         }
         
         CCLabelTTF *sc=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",score] fontName:@"Arial-BoldMT" fontSize:22];
-        sc.color = ccc3(200, 200, 0);
+        sc.color = ccc3(253,217,71);
         sc.position=ccp(winSize.width*0.55,winSize.height*0.71);
         CCSprite* ct = [CCSprite spriteWithFile:@"redo_bt.png"];
         ct.position = ccp(winSize.width*0.5,winSize.height*0.38);
@@ -282,7 +282,7 @@ int type;
         }else{ // 没有拿到奖励
             CCLabelTTF *hl=[CCLabelTTF labelWithString:  @"真遗憾，这次没有获得奖励，要再接再厉哦!" fontName:@"Arial-BoldMT" fontSize:18];
             [hl setDimensions:CGSizeMake(winSize.width*0.4, winSize.height*0.2)];
-            hl.color = ccc3(200, 200, 0);
+            hl.color = ccc3(253,217,71);
             hl.position = ccp(winSize.width*0.5,winSize.height*0.52);
             [self addChild:hl z:2];
         }

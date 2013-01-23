@@ -12,7 +12,7 @@
 int lastHit;
 int clickcount;
 bool paused;
-
+bool flag;
 static PlayLayer* thisLayer;
 
 +(PlayLayer*) sharedInstance:(BOOL) refresh
@@ -41,6 +41,7 @@ static PlayLayer* thisLayer;
     lastHit = 0;
     clickcount=0;
     paused=NO;
+    flag = YES;
 	return self;
 }
 
@@ -78,7 +79,6 @@ static PlayLayer* thisLayer;
     }
 
     [box fill];
-    [box check];
     [box unlock];
 }
 
@@ -115,6 +115,19 @@ static PlayLayer* thisLayer;
 -(void) checkPos:(id) sender data: (Germ*) g
 {
     [g.sprite resetPosition:g.pixPosition];
+    flag = !flag;
+    if(flag){
+        [self runAction: [CCSequence actions: [CCDelayTime actionWithDuration: 0.0f],
+                            [CCCallFunc actionWithTarget:self selector:@selector(checkOrder)],
+                            nil]];
+        //[box check:NO];
+    }
+    [box unlock];
+
+}
+
+-(void) checkOrder{
+    [box check:NO];
 }
 
 -(void) resetWithContext:(GameContext *)context refresh:(BOOL) fresh
@@ -145,7 +158,6 @@ static PlayLayer* thisLayer;
 -(void) reload
 {
     [box fill];
-    [box check];
     [box unlock];
 }
 
@@ -176,10 +188,9 @@ static PlayLayer* thisLayer;
         if(clickcount==2)
         {
             clickcount=0;
-            GermType t = FixedGerm;
+            GermType t = PoisonousGerm;
             [selected transform:t];
             [self afterOneShineTrun:selected.sprite];
-            [box check];
         }
 		return;
 	}
@@ -200,6 +211,8 @@ static PlayLayer* thisLayer;
         firstOne = nil;
 	}else {
         //如果选择到的不是neighbor 相当于重新选择
+        [selected.sprite stopAllActions];
+        [selected.sprite runAction:[CCScaleTo actionWithDuration:0.2f scale:isRetina?1:0.5f]];
 		selected = tile;
         firstOne = tile;
 		[self afterOneShineTrun:tile.sprite];
@@ -242,10 +255,11 @@ static PlayLayer* thisLayer;
 		firstOne = data;
 		return;
 	}
-	BOOL result = [box check];
+	BOOL result = [box check:YES];
 	if (result) {
 	}else {
-		[self changeWithTileA:(Germ *)data TileB:firstOne sel:@selector(backCheck:data:)];
+        Germ * d =(Germ *)data;
+		[self changeWithTileA:d TileB:firstOne sel:@selector(backCheck:data:)];
 		[self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:kMoveTileTime + 0.03f],
 						 [CCCallFunc actionWithTarget:box selector:@selector(unlock)],
 						 nil]];
@@ -270,6 +284,7 @@ static PlayLayer* thisLayer;
             Germ *g= [array objectAtIndex:j];
             if( g.type ==PoisonousGerm )
             {
+                [box lock];
                 if(i==6)
                 {
                     [g transform:NormalGerm];
@@ -279,10 +294,10 @@ static PlayLayer* thisLayer;
                     {
                         [[PlayDisplayLayer sharedInstance:NO] gameOver];
                     }
+                    [box unlock];
                 }else{
                     [self changeWithTileA:g TileB:[box objectAtX:j Y:(i+1)] sel:@selector(checkPos:data:)];
-                    [box check];
-                }
+              }
             }
             else if(g.type == BombGerm)
             {
@@ -315,6 +330,8 @@ static PlayLayer* thisLayer;
             [self changeOneGermByType:_context.type];
         }
     }
+    
+    
 }
 
 -(void) changeOneGermByType:(GameType) type
@@ -341,15 +358,13 @@ static PlayLayer* thisLayer;
 
 
 -(void)afterOneShineTrun: (id) node{
-	if (selected && node == selected.sprite) {
+	if (selected&&node == selected.sprite) {
 		GermFigure *sprite = (GermFigure *)node;
-		CCSequence *someAction = [CCSequence actions:
+		CCSequence *someAction =    [CCSequence actions:
 								  [CCScaleBy actionWithDuration:kShineFreq scale:0.5f],
 								  [CCScaleBy actionWithDuration:kShineFreq scale:2],
-                                  
 								  [CCCallFuncN actionWithTarget:self selector:@selector(afterOneShineTrun:)],//重新调用 持续闪烁
-                                  
-								  nil];
+                                     nil];
         
 		[sprite runAction:someAction];
 	}
