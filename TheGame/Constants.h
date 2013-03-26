@@ -63,9 +63,9 @@
 // 这个参数控制变大的大小
 #define openScale 1.0f
 
-#define stepBombCount 6
+#define stepBombCount 9
 #define timeBombCount 25
-//#define isRetina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640,960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define isRetina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640,960), [[UIScreen mainScreen] currentMode].size) : NO)
 
-#define isRetina YES
+//#define isRetina YES
 #endif

@@ -20,6 +20,7 @@
 @synthesize content;
 @synthesize paused;
 @synthesize kind;
+
 //初始化函数
 -(id) initWithSize: (CGSize) aSize factor: (int) aFacotr{
 	self = [super init];
@@ -199,6 +200,7 @@
 //检查并修复
 -(BOOL) check: (BOOL) nextstep{
     
+    [self lock];
     if (paused) {
         return NO;
     }
@@ -211,6 +213,11 @@
     int countV = [readyToRemoveVerti count];
     if(countH==0&&countV==0)
     {
+        CGPoint p = [self haveMore];
+        if (p.x==-1||p.y==-1) {//检查是否还有解，如果存在解，那么解锁继续游戏
+            [self fill];
+		}
+        [self unlock];
         return NO;
     }
     
@@ -345,8 +352,8 @@
     if(nextstep)
     {
     	[holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kTileDropTime * maxCount + 0.6f],
-                        [CCCallFunc actionWithTarget:self selector:@selector(afterAllMoveDone)],
-                                                nil]];
+                            [CCCallFunc actionWithTarget:self selector:@selector(afterAllMoveDone)],
+                            nil]];
     }else{
         [holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kTileDropTime * maxCount + 0.6f],
                             [CCCallFunc actionWithTarget:self selector:@selector(_afterAllMoveDone)],
@@ -415,12 +422,10 @@
 		
 	}else {//如果没有
 		CGPoint p = [self haveMore];
-        [self unlock];
         if (p.x==-1||p.y==-1) {//检查是否还有解，如果存在解，那么解锁继续游戏
             [self fill];
-            [self unlock];
 		}
-        
+        [self unlock];
         [[PlayLayer sharedInstance:NO] nextStep];
 	}
 }
@@ -432,11 +437,10 @@
 		
 	}else {//如果没有
 		CGPoint p = [self haveMore];
-        [self unlock];
         if (p.x==-1||p.y==-1) {//检查是否还有解，如果存在解，那么解锁继续游戏
             [self fill];
-            [self unlock];
 		}
+        [self unlock];
 	}
 }
 
@@ -474,7 +478,6 @@
             CCSequence *action = [CCSequence actions:
                                   [CCDelayTime actionWithDuration: kFallDownDelayTime],
                                   [CCMoveBy actionWithDuration:kTileDropTime*count position:dest],
-                                  // [CCCallFuncND actionWithTarget:self selector:@selector(addSpriteToLayer:germ:) data:germ],
                                   nil];
             [germ.sprite runAction: action];
             destGerm.value = germ.value;
@@ -758,37 +761,43 @@
 
 -(void)fill{
     [MusicHandler playEffect:@"enter.mp3"];
-    [[PlayLayer sharedInstance:NO] stopAllActions];
 
-        for (int i=0; i<[content count]; i++) {
-            NSMutableArray *array = [content objectAtIndex:i];
-            for(int j =0;j<[array count];j++)
+    for (int i=0; i<[content count]; i++) {
+        NSMutableArray *array = [content objectAtIndex:i];
+        for(int j =0;j<[array count];j++)
+        {
+            //从下往上来
+            Germ *destGerm = [self objectAtX:j Y:i];
+            int value = (arc4random()%self.kind+1);
+            GermFigure *sprite = [self getFigure:value position:destGerm.pixPosition];
+            sprite.scale = isRetina?1:0.5;
+            destGerm.centerFlag=NO;
+            destGerm.value = value;
+            [holder addChild: sprite];
+            
+            if(destGerm.sprite!=nil)
             {
-                //从下往上来
-                Germ *destGerm = [self objectAtX:j Y:i];
-                int value = (arc4random()%self.kind+1);
-                GermFigure *sprite = [self getFigure:value position:destGerm.pixPosition];
-                sprite.scale = isRetina?1:0.5;
-                destGerm.centerFlag=NO;
-                destGerm.value = value;
-                [holder addChild: sprite];
-                if(destGerm.sprite!=nil)
-                {
-                    [destGerm.sprite removeFromParentAndCleanup:NO];
-                }
-                if(sprite.bomb!=nil)
-                {
-                    [destGerm setType:FixedGerm];
-                    [holder addChild:sprite.bomb];
-                }else{
-                    [destGerm setType:NormalGerm];
-                }
-                destGerm.sprite = sprite;
+                [destGerm.sprite removeFromParentAndCleanup:NO];
             }
-           
+            if(sprite.bomb!=nil)
+            {
+                [destGerm setType:FixedGerm];
+                [holder addChild:sprite.bomb];
+            }else{
+                [destGerm setType:NormalGerm];
+            }
+            destGerm.sprite = sprite;
         }
-        [self check:NO];
+    }
+    
+    [holder runAction: [CCSequence actions: [CCDelayTime actionWithDuration: 0.5f],
+                        [CCCallFunc actionWithTarget:self selector:@selector(checkWithOutNextStep)],
+                        nil]];
+    
+}
 
+-(void) checkWithOutNextStep{
+    [self check:NO];
 }
 
 

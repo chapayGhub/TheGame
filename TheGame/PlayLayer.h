@@ -9,10 +9,11 @@
 // 游戏界面
 @interface PlayLayer : CCLayer
 {
-	Box *box;
+	
 	Germ *selected;
 	Germ *firstOne;
 }
+@property (atomic,retain) Box *box; 
 @property (nonatomic,retain) GameContext* context;
 @property (nonatomic) int stepCount;
 

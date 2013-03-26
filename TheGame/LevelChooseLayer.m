@@ -11,7 +11,12 @@
 @implementation LevelChooseLayer
 @synthesize levels;
 
+double prevX;
+int current;
+CCSprite *page;
+
 -(id) init{
+
     self = [super init];
     self.isTouchEnabled = YES;
     CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -30,7 +35,7 @@
     [self addChild:menu];
 
     
-    levels = [[NSMutableArray alloc] initWithCapacity:3];
+    levels = [[NSMutableArray alloc] initWithCapacity:9];
     UserProfile* profile = [UserProfile sharedInstance];
     NSMutableDictionary* record = [profile userRecord];
     
@@ -43,6 +48,7 @@
     int count = 1;
     GameType type = Classic;
     BOOL flag = YES;
+    for(int k=0;k<3;k++){
     for(int i=0;i<3;i++)
     {
         float posY = winSize.height* (middle - (i-1)*vertispan);
@@ -50,7 +56,7 @@
         for(int j=0;j<3;j++)
         {
             CCSprite *sprite = nil;
-            float posX = winSize.width*(0.5f + (j-1)*horisban);
+            float posX = k*winSize.width+winSize.width*(0.5f + (j-1)*horisban);
             NSString* key = [CommonUtils getKeyStringByGameTypeAndLevel:type level:count];
             count++;
             int score = [[record valueForKey: key] integerValue];
@@ -96,8 +102,102 @@
         }
         [levels addObject:array];
     }
-    
+    }
+    prevX=-1;
+    current = 1;
+    page = [CCSprite spriteWithFile:@"point1.png"];
+    page.position=ccp(winSize.width*0.5,winSize.height*0.25);
+    if(!isRetina){
+        page.scale=0.5f;
+    }
+    [self addChild:page];
     return self;
+}
+
+-(void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch* touch = [touches anyObject];
+    CGPoint location = [touch locationInView: touch.view];
+	location = [[CCDirector sharedDirector] convertToGL: location];
+    if(prevX==-1)
+    {
+        prevX=location.x;
+        return;
+    }
+    else{
+        int x = location.x-prevX;
+        prevX=location.x;
+        for(int i=0;i<9;i++){
+            for(int j=0;j<3;j++)
+            {
+                CCSprite *sprite = [[levels objectAtIndex:i] objectAtIndex:j];
+                CGPoint pos=sprite.position;
+                [sprite setPosition:ccp(pos.x+x,pos.y)];
+            }
+        }
+    }
+    
+}
+
+-(void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    prevX=-1;
+    // 检测是否应该翻页
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    CCSprite *s = [[levels objectAtIndex:0] objectAtIndex:0];
+    float horisban = 0.28;
+    float x=s.position.x;
+    float xo = (1-current)*winSize.width + winSize.width*(0.5f + (0-1)*horisban);
+    float diff= x-xo>0?x-xo:xo-x;
+    
+    if(x-xo>winSize.width*0.3&&current>1)// level--
+    {
+        current--;
+        [page removeFromParentAndCleanup:YES];
+        page=[CCSprite spriteWithFile:[NSString stringWithFormat:@"point%d.png",current]];
+        page.position=ccp(winSize.width*0.5,winSize.height*0.25);
+        if(!isRetina){
+            page.scale=0.5f;
+        }
+        [self addChild:page];
+        for(int i=0;i<9;i++){
+            for(int j=0;j<3;j++)
+            {
+                CCSprite *sprite = [[levels objectAtIndex:i] objectAtIndex:j];
+                CCAction *action = [CCMoveBy actionWithDuration:0.005*diff position:ccp(winSize.width-diff,0)];
+                [sprite runAction:action];
+            }
+        }
+        return;
+    }else if(x-xo<-winSize.width*0.3&&current<3){ // level++
+        current++;
+        [page removeFromParentAndCleanup:YES];
+        page=[CCSprite spriteWithFile:[NSString stringWithFormat:@"point%d.png",current]];
+        page.position=ccp(winSize.width*0.5,winSize.height*0.25);
+        if(!isRetina){
+            page.scale=0.5f;
+        }
+        [self addChild:page];
+        for(int i=0;i<9;i++){
+            for(int j=0;j<3;j++)
+            {
+                CCSprite *sprite = [[levels objectAtIndex:i] objectAtIndex:j];
+                CCAction *action = [CCMoveBy actionWithDuration:0.3f position:ccp(diff-winSize.width,0)];
+                [sprite runAction:action];
+            }
+        }
+        return;
+    }
+    
+
+    // 返回原来的
+    for(int i=0;i<9;i++){
+        for(int j=0;j<3;j++)
+        {
+            CCSprite *sprite = [[levels objectAtIndex:i] objectAtIndex:j];
+            CCAction *action = [CCMoveBy actionWithDuration:0.005*diff position:ccp(xo-x,0)];
+            [sprite runAction:action];
+        }
+    }
 }
 
 -(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -108,7 +208,7 @@
     
     
     int count = 1;
-    for(int i=0;i<3;i++)
+    for(int i=0;i<9;i++)
     {
         NSMutableArray *array = [levels objectAtIndex:i];
         for(int j=0;j<3;j++)

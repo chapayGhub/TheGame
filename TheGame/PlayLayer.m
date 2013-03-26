@@ -8,7 +8,7 @@
 @implementation PlayLayer
 @synthesize context = _context;
 @synthesize stepCount=_stepCount;
-
+@synthesize box;
 int lastHit;
 int clickcount;
 bool paused;
@@ -65,16 +65,14 @@ static PlayLayer* thisLayer;
 
     switch(c.type){
         case Poisonous:
-            [MobClick  beginEvent:@"playpoisonous"];
-            break;
         case TimeBomb:
-            [MobClick beginEvent:@"playtimebomb"];
-            break;
         case Bomb:
-            [MobClick beginEvent:@"playcountbomb"];
+            [MobClick beginEvent:@"playInfiniteMode"];
             break;
         case Classic:
             [MobClick event:@"playlevelmode" label:[NSString stringWithFormat:@"%d",c.level]];
+            break;
+        default:
             break;
     }
 
@@ -86,13 +84,9 @@ static PlayLayer* thisLayer;
     GameContext *c = self.context;
     switch(c.type){
         case Poisonous:
-            [MobClick  endEvent:@"playpoisonous"];
-            break;
         case TimeBomb:
-            [MobClick endEvent:@"playtimebomb"];
-            break;
         case Bomb:
-            [MobClick endEvent:@"playcountbomb"];
+            [MobClick endEvent:@"playInfiniteMode"];
             break;
         default:
             break;
@@ -115,18 +109,9 @@ static PlayLayer* thisLayer;
 -(void) checkPos:(id) sender data: (Germ*) g
 {
     [g.sprite resetPosition:g.pixPosition];
-    flag = !flag;
-    if(flag){
-        [self runAction: [CCSequence actions: [CCDelayTime actionWithDuration: 0.0f],
-                            [CCCallFunc actionWithTarget:self selector:@selector(checkOrder)],
-                            nil]];
-        //[box check:NO];
-    }
-    [box unlock];
-
 }
 
--(void) checkOrder{
+-(void) checkBox{
     [box check:NO];
 }
 
@@ -205,7 +190,6 @@ static PlayLayer* thisLayer;
     }
     
 	if (selected && [selected isNeighbor:tile]) {
-		[box setLock:YES];
 		[self changeWithTileA: selected TileB: tile sel: @selector(check:data:)];
 		selected = nil;
         firstOne = nil;
@@ -220,6 +204,7 @@ static PlayLayer* thisLayer;
 }
 
 -(void) changeWithTileA: (Germ *) a TileB: (Germ *) b sel : (SEL) sel{
+    [box setLock:YES];
 	CGPoint pa = a.pixPosition;
     CGPoint pb = b.pixPosition;
     int difx = pa.x-pb.x;
@@ -277,6 +262,7 @@ static PlayLayer* thisLayer;
     [self checkPosition];
     NSMutableArray *content = [box content];
     BOOL hasBomb = NO;
+    int poisonousCount =0 ;
     for (int i=[content count]-1; i>=0; i--) {
         NSMutableArray *array = [content objectAtIndex:i];
         for(int j =0;j<[array count];j++)
@@ -284,7 +270,6 @@ static PlayLayer* thisLayer;
             Germ *g= [array objectAtIndex:j];
             if( g.type ==PoisonousGerm )
             {
-                [box lock];
                 if(i==6)
                 {
                     [g transform:NormalGerm];
@@ -294,10 +279,10 @@ static PlayLayer* thisLayer;
                     {
                         [[PlayDisplayLayer sharedInstance:NO] gameOver];
                     }
-                    [box unlock];
                 }else{
                     [self changeWithTileA:g TileB:[box objectAtX:j Y:(i+1)] sel:@selector(checkPos:data:)];
-              }
+                }
+                poisonousCount++;
             }
             else if(g.type == BombGerm)
             {
@@ -318,6 +303,13 @@ static PlayLayer* thisLayer;
             
         }
     }
+    
+    if(poisonousCount>0){
+        [self runAction: [CCSequence actions: [CCDelayTime actionWithDuration: kMoveTileTime+0.1*poisonousCount],
+                          [CCCallFunc actionWithTarget:self selector:@selector(checkBox)],
+                          nil]];
+    }
+
     if(hasBomb)
     {
         [MusicHandler playEffect:@"clockhit.mp3"];

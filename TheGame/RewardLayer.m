@@ -187,6 +187,21 @@ int type;
             isNewRecord=YES;
             [[pro userRecord] setValue:[NSNumber numberWithInt:score] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:context.type level:1]];
         }
+    
+        switch(context.type){
+            case Poisonous:
+                [MobClick event:@"playpoisonous" label:[NSString stringWithFormat:@"%d",score/1000]];
+                break;
+            case TimeBomb:
+                [MobClick event:@"playtimebomb" label:[NSString stringWithFormat:@"%d",score/1000]];
+                break;
+            case Bomb:
+                [MobClick event:@"playcountbomb" label:[NSString stringWithFormat:@"%d",score/1000]];
+                break;
+            default:
+                break;
+        }
+
         
         CCLabelTTF *sc=[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",score] fontName:@"Arial-BoldMT" fontSize:22];
         sc.color = ccc3(253,217,71);
@@ -208,15 +223,19 @@ int type;
         CCSprite* rw = [CCSprite spriteWithFile:@"rotate_wd.png"];
         CCSprite* lw = [CCSprite spriteWithFile:@"rebirth_wd.png"];
         
-        
-        if(score>15000){
+        if(score>12000){
             hint = 2;
             rotate =2;
             heal =2;
         }
-        else if(score >8000){
-            hint = 1;
+        else if(score>10000){
+            hint = 2;
             rotate =2;
+            heal =1;
+        }
+        else if(score >8000){
+            hint = 2;
+            rotate =1;
             heal =1;
         }else if(score >6500){
             hint = 1;
@@ -224,10 +243,11 @@ int type;
             heal =1;
         }else if(score>5000){
             rotate = 1;
-            hint =1;
+            hint =2;
         }
         else if(score>3500){
-            hint = 2;
+            hint = 1;
+            rotate = 1;
         }else{
             hint = 1;
         }

@@ -54,7 +54,7 @@ static UserProfile* userprofile;
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     userprofile.silence = NO;
     GameType type = Classic;
-    int levels  = 9;
+    int levels  = 27;
     for(int i=1;i<=levels;i++)
     {
         [dictionary setValue:[NSNumber numberWithInt:-1] forKey:[CommonUtils getKeyStringByGameTypeAndLevel:type level:i]];
