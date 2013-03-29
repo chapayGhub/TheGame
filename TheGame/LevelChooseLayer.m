@@ -216,15 +216,15 @@ CCSprite *page;
             CCSprite *sprite= [array objectAtIndex:j];
             if(CGRectContainsPoint([sprite boundingBox], location))
             {
-               // if(sprite.tag!= - 1860)
+                if(sprite.tag!= - 1860)
                 {
                     [SceneManager goPlay:Classic level:count];
                     
                     [MusicHandler playEffect:@"button.mp3"];
                 }
-//                else{
-//                    [MusicHandler playEffect:@"disabled.mp3"];
-//                }
+                else{
+                    [MusicHandler playEffect:@"disabled.mp3"];
+                }
                 return;
             }
             count++;

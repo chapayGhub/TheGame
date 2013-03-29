@@ -39,6 +39,8 @@
     
     CCSpriteBatchNode *explodeSheet;
     int starSpan;
+    
+    BOOL tools_enable;
 }
 
 @end
@@ -96,7 +98,7 @@ static PlayDisplayLayer* thisLayer;
         [reload setLabelValue:[profile tools_refill]];
         
 
-        
+        tools_enable = true;
         if(!isRetina)
         {
             hint.scale=0.5f;
@@ -328,7 +330,6 @@ static PlayDisplayLayer* thisLayer;
         }
     }
     
-    
     if(timeRemain<=0&&type==Classic)
     {
         timeRemain =0;
@@ -466,7 +467,7 @@ static PlayDisplayLayer* thisLayer;
         int num = [pro tools_hint];
         if(num<=0)
         {
-//            return;
+            return;
         }
         
         BOOL flag = [[PlayLayer sharedInstance:NO] hint];
@@ -489,7 +490,7 @@ static PlayDisplayLayer* thisLayer;
         int num = [pro tools_life];
         if(num<=0)
         {
- //           return;
+            return;
         }
         if([self addLife]){
             while([self addLife]){
@@ -504,12 +505,17 @@ static PlayDisplayLayer* thisLayer;
     
     if(CGRectContainsPoint([reload boundingBox], location))
     {
+        if(tools_enable==NO)
+        {
+            return;
+        }
         int num = [pro tools_refill];
         if(num<=0)
         {
-   //         return;
+            //return;
         }
-        
+        tools_enable = NO;
+        [self scheduleOnce:@selector(enableTools) delay:2];
         [pro addRefill:-1];
         int value = [reload nextValue];
         [MobClick event:@"useRefill" label:[NSString stringWithFormat:@"%d",value]];
@@ -568,7 +574,9 @@ static PlayDisplayLayer* thisLayer;
     }
     return NO;
 }
-
+-(void) enableTools{
+    tools_enable=YES;
+}
 
 -(void) gameOver{
     [self pauseGame];
